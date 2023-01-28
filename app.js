@@ -27,28 +27,18 @@ tree.height = 200;
 tree.x = app.screen.width / 2;
 tree.y = app.screen.height / 2;
 
-// const texture = PIXI.Texture.from(
-//   'Sprout Lands - Sprites - premium pack/tilesets/water frames/Water_1.png'
-// );
 
-// for (let i = 0; i < 100; i++) {
-//   const grass = new PIXI.Sprite(texture);
-//   grass.anchor.set(0.5);
-//   grass.x = i;
-//   grass.y = Math.floor(i / 5) * 40;
-//   container.addChild(grass);
-// }
 
 const texture = PIXI.Texture.from('Sprout Lands - Sprites - premium pack/tilesets/water frames/Water_1.png');
 
 // Create a 5x5 grid of bunnies
-for (let i = 0; i < 25; i++) {
-    const bunny = new PIXI.Sprite(texture);
-    bunny.anchor.set(0.5);
-    bunny.x = (i % 10) * 40;
-    bunny.y = Math.floor(i / 5) * 40;
-    container.addChild(bunny);
-}
+// for (let i = 0; i < 25; i++) {
+//     const bunny = new PIXI.Sprite(texture);
+//     bunny.anchor.set(0.5);
+//     bunny.x = (i % 10) * 40;
+//     bunny.y = Math.floor(i / 5) * 40;
+//     container.addChild(bunny);
+// }
 
 
 
@@ -116,3 +106,5 @@ function gameLoop() {
     bunny.y += 5;
   }
 }
+
+

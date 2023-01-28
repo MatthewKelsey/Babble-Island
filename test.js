@@ -13,6 +13,7 @@ app.renderer.resize(window.innerWidth, window.innerHeight);
 
 document.body.appendChild(app.view);
 
+
 app.loader.add('water', 'water.json');
 app.loader.add('piknik', 'piknik.json')
 app.loader.add('cows', 'cows.json' )  
@@ -91,7 +92,8 @@ app.loader.load(function onAssetsLoaded(loader, resources) {
   bunny.animationSpeed = slowSpeed
   bunny.width = 50
   bunny.height = 50
-
+  bunny.x = app.screen.width / 2
+bunny.y = app.screen.height / 2.5 
   bunny.play()
 
   cow.width = 50 
@@ -102,17 +104,20 @@ app.loader.load(function onAssetsLoaded(loader, resources) {
   cow.animationSpeed = slowSpeed
   cow.play()
 
-  
-  
+  const island = new PIXI.Sprite.from('./images/island1.png')
+  island.x = app.screen.width /2
   
   tilemap2.width = 100 
   tilemap2.height = 100
-  
+
+ 
   app.stage.addChild(tilemap1);
   app.stage.addChild(tilemap2);
+  app.stage.addChild(island)
   app.stage.addChild(cow)
   app.stage.addChild(boat)
   app.stage.addChild(bunny) 
+  
   // app.stage.addChild(tilemap3)
 
   app.render();
@@ -132,28 +137,39 @@ app.loader.load(function onAssetsLoaded(loader, resources) {
     keys[e.keyCode] = true;
     console.log(keys);
   }
-  
   function keysUp(e) {
     keys[e.keyCode] = false;
   }
-  
   function gameLoop() {
     document.innerHTML = JSON.stringify(keys);
-    // LEFT
     if (keys['37']) {
-      boat.x -= 5;
+      bunny.x -= 5;
     }
-    // UP
     if (keys['38']) {
-      boat.y -= 5;
+      bunny.y -= 5;
     }
-    // RIGHT
     if (keys['39']) {
-      boat.x += 5;
+      bunny.x += 5;
     }
-    // DOWN
     if (keys['40']) {
-      boat.y += 5;
+      bunny.y += 5;
     }
   }
 })
+
+let character = {
+  x:0, y:0,
+  vx:0, vy:0
+}
+
+
+app.ticker.add(()=>{
+  if(character.vy > 0){
+    for (let i=0; i< character.vy; i++){
+
+    }
+   }
+})
+
+
+// checkCollision( bunny, boat)
