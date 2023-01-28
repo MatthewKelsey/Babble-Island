@@ -1,0 +1,20 @@
+{"frames": {
+
+"Piknik blanket.png":
+{
+	"frame": {"x":0,"y":0,"w":48,"h":48},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":48},
+	"sourceSize": {"w":48,"h":48}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "piknik.png",
+	"format": "RGBA8888",
+	"size": {"w":48,"h":48},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:c592bdf04024875b5c30985601578d8c:25b224ea64bb1dff1a720e2a41283f60:23a22c017b343710ed2606aa8bc15303$"
+}
+}

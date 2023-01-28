@@ -1,0 +1,39 @@
+{"frames": {
+
+"cow1.png":
+{
+	"frame": {"x":1,"y":1,"w":29,"h":18},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":13,"w":29,"h":18},
+	"sourceSize": {"w":32,"h":32}
+},
+"cow2.png":
+{
+	"frame": {"x":1,"y":21,"w":29,"h":18},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":13,"w":29,"h":18},
+	"sourceSize": {"w":32,"h":32}
+},
+"cow3.png":
+{
+	"frame": {"x":1,"y":41,"w":29,"h":18},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":13,"w":29,"h":18},
+	"sourceSize": {"w":32,"h":32}
+}},
+"animations": {
+	"cow": ["cow1.png","cow2.png","cow3.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "cows.png",
+	"format": "RGBA8888",
+	"size": {"w":31,"h":60},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:9140148247612ed1b65e5824078fe58c:140c2cfa4553b428ddf9c41b9b879f9c:f20f765c3f84bc5248fa94acff65b2f5$"
+}
+}
