@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Babble Island</title>
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<script type="text/javascript">
+
+    var config = {
+        type: Phaser.AUTO,
+        width: 2000,
+        height: 2000,
+        physics: {
+            default: 'arcade',
+            arcade: {
+                // gravity: { y: 300 },
+                debug: true,
+
+            }
+        },
+        scene: {
+            preload: preload,
+            create: create,
+            update: update
+        }
+    };
+
+
+
+    let game = new Phaser.Game(config);
+
+    function preload ()
+    {
+        this.load.image('water', 'assets/Water.png');
+        this.load.image('grass', 'assets/Darker Tall Grass hill tiles v.2.png');
+        this.load.image('trees', 'assets/Trees, stumps and bushes.png');
+        this.load.image('objects', 'assets/Mushrooms, Flowers, Stones.png');
+        this.load.image('houses', 'assets/Wooden House.png');
+        this.load.image('doors', 'assets/door animation sprites.png');
+        this.load.image('bridges', 'assets/Wood Bridge v.2 .png');
+        this.load.image('water', 'assets/Water_4.png');
+        this.load.tilemapTiledJSON('map', 'assets/babble island.json');
+        this.load.spritesheet('dude',
+            'assets/dude.png',
+            { frameWidth: 32, frameHeight: 48 }
+        );
+    }
+
+    function create ()
+    {
+        // game.world.setBounds(0,0,2000,2000)
+        const map = this.make.tilemap({key: 'map'});
+
+        const tileset = map.addTilesetImage('Water', 'water', 16,16,0,0);
+        const tileset2 = map.addTilesetImage('Darker Tall Grass hill tiles v.2', 'grass', 16,16,0,0);
+        const tileset3 = map.addTilesetImage('Trees, stumps and bushes', 'trees', 16,16,0,0);
+        const tileset4 = map.addTilesetImage('Mushrooms, Flowers, Stones', 'objects', 16,16,0,0);
+        const tileset5 = map.addTilesetImage('Wooden House', 'houses', 16,16,0,0);
+        const tileset6 = map.addTilesetImage('door animation sprites', 'doors', 16,16,0,0);
+        const tileset7 = map.addTilesetImage('Wood Bridge v.2 ', 'bridges', 16,16,0,0);
+        const tileset8 = map.addTilesetImage('Water_4', 'water', 16,16,0,0);
+
+        const layer0 = map.createLayer('sea', tileset)
+        const layer = map.createLayer('water', tileset8)
+        const layer2 = map.createLayer('land', tileset2)
+        const layer1 = map.createLayer('trees', tileset3)
+        const layer4 = map.createLayer('objects', tileset4)
+        const layer5 = map.createLayer('houses', tileset5)
+        const layer6 = map.createLayer('doors', tileset6)
+        const layer7 = map.createLayer('roof', tileset5)
+        const layer8 = map.createLayer('bridges', tileset7)
+
+
+
+        layer1.setCollisionByProperty({collisions:true});
+        // layer2.setCollisionByProperty({collisions:true});
+        layer.setCollisionByProperty({collisions:true});
+
+        layer4.setCollisionByProperty({collisions:true});
+        layer5.setCollisionByProperty({collisions:true});
+        layer6.setCollisionByProperty({collisions:true});
+        layer7.setCollisionByProperty({collisions:true});
+        // layer8.setCollisionByProperty({collisions:true});
+
+
+
+
+
+        const debugGraphics = this.add.graphics().setAlpha(0.75);
+
+        // layer2.renderDebug(debugGraphics, {
+        //     tileColor: null, // Color of non-colliding tiles
+        //     collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
+        //     faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
+        //     });
+
+
+
+        // layer1.renderDebug(debugGraphics, {
+        // tileColor: null, // Color of non-colliding tiles
+        // collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
+        // faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
+        // });
+
+        // layer.renderDebug(debugGraphics, {
+        //     tileColor: null, // Color of non-colliding tiles
+        //     collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
+        //     faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
+        //     });
+
+
+        player = this.physics.add.sprite(500, 500, 'dude')
+        .setSize(10,10).setOffset(10,35);
+        this.physics.add.collider(player, layer1)
+        // this.physics.add.collider(player, layer2)
+
+        this.physics.add.collider(player, layer)
+        this.physics.add.collider(player, layer4)
+        this.physics.add.collider(player, layer5)
+        this.physics.add.collider(player, layer6)
+        this.physics.add.collider(player, layer7)
+        // this.physics.add.collider(player, layer8)
+
+        player.setCollideWorldBounds(true);
+
+        // player.setScale(1);
+
+
+
+
+
+        this.anims.create({
+            key: 'left',
+            frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 3 }),
+            frameRate: 10,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'turn',
+            frames: [ { key: 'dude', frame: 4 } ],
+            frameRate: 20
+        });
+
+        this.anims.create({
+            key: 'right',
+            frames: this.anims.generateFrameNumbers('dude', { start: 5, end: 8 }),
+            frameRate: 10,
+            repeat: -1
+        });
+
+        cursors = this.input.keyboard.createCursorKeys();
+
+    }
+
+    function update ()
+    {
+            if (cursors.left.isDown)
+    {
+        player.setVelocityX(-160);
+        // game.camera.y -= 5
+        player.anims.play('left', true);
+    }
+    else if (cursors.right.isDown)
+    {
+        player.setVelocityX(160);
+
+        player.anims.play('right', true);
+    }
+    else if (cursors.up.isDown)
+    {
+        player.setVelocityY(-160);
+
+        player.anims.play('left', true);
+    }
+    else if (cursors.down.isDown)
+    {
+        player.setVelocityY(160);
+
+        player.anims.play('left', true);
+    }
+    else
+    {
+        player.setVelocity(0,0);
+
+        player.anims.play('turn');
+    }
+
+    if (cursors.up.isDown && player.body.touching.down)
+    {
+        player.setVelocityY(-330);
+    }
+
+    this.cameras.main.setBounds(0, 0);
+    this.cameras.main.startFollow(player);
+    }
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
