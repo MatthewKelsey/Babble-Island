@@ -1,6 +1,9 @@
+// @ts-nocheck
+
+
 import React from "react";
 // import auth from '../utils/auth';
-import { login } from "../ApiClient";
+import { login } from "../ApiClient.js";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -46,6 +49,8 @@ function Login(props) {
   };
 
   return (
+
+
     <section className="register">
       
       <br></br>

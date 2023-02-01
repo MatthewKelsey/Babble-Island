@@ -1,2 +1,0 @@
-# Babble-Island
-Thesis Project
