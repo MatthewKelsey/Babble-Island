@@ -69,7 +69,10 @@ class Map extends Phaser.Scene {
     const layer1 = map.createLayer('trees', tileset3);
     const layer4 = map.createLayer('objects', tileset4);
     const layer5 = map.createLayer('houses', tileset5);
-    const layer6 = map.createLayer('doors', tileset6);
+    const door1 = map.createLayer('door1', tileset6);
+    const door2 = map.createLayer('door2', tileset6);
+    const door3 = map.createLayer('door3', tileset6);
+    const door4 = map.createLayer('door4', tileset6);
     const layer7 = map.createLayer('roof', tileset5);
     const layer8 = map.createLayer('bridges', tileset7);
 
@@ -79,9 +82,13 @@ class Map extends Phaser.Scene {
 
     layer4.setCollisionByProperty({ collisions: true });
     layer5.setCollisionByProperty({ collisions: true });
-    layer6.setCollisionByProperty({ collisions: true });
+    // layer6.setCollisionByProperty({ collisions: true });
     layer7.setCollisionByProperty({ collisions: true });
     // layer8.setCollisionByProperty({collisions:true});
+    door1.setCollisionByProperty({ collisions: true });
+    door2.setCollisionByProperty({ collisions: true });
+    door3.setCollisionByProperty({ collisions: true });
+    door4.setCollisionByProperty({ collisions: true });
 
     const debugGraphics = this.add.graphics().setAlpha(0.75);
 
@@ -115,8 +122,12 @@ class Map extends Phaser.Scene {
     this.physics.add.collider(this.player, layer);
     this.physics.add.collider(this.player, layer4);
     this.physics.add.collider(this.player, layer5);
-    this.physics.add.collider(this.player, layer6);
+    // this.physics.add.collider(this.player, layer6);
     this.physics.add.collider(this.player, layer7);
+    this.physics.add.collider(this.player, door1);
+    this.physics.add.collider(this.player, door2);
+    this.physics.add.collider(this.player, door3);
+    this.physics.add.collider(this.player, door4);
     // this.physics.add.collider(player, layer8)
 
     // this.player.setCollideWorldBounds(true);
@@ -182,7 +193,7 @@ class Map extends Phaser.Scene {
       repeat: -1,
     });
   }
-  
+
 
   update() {
     const cursors = this.input.keyboard.createCursorKeys();
@@ -212,7 +223,7 @@ class Map extends Phaser.Scene {
       this.player.setVelocityY(-330);
     }
 
-    this.cameras.main.setBounds(0, 0);
+    this.cameras.main.setBounds(0, 0, 100,100, true);
     this.cameras.main.startFollow(this.player);
   }
 }
