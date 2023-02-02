@@ -124,10 +124,14 @@ class Map extends Phaser.Scene {
     // player.setScale(1);
 
     this.cursors = this.input.keyboard.createCursorKeys();
-    this.door = this.physics.add.sprite(1200, 450, 'bomb')
+    this.door = this.physics.add.sprite(600, 550, 'bomb')
+    this.door2 = this.physics.add.sprite(600,500,'bomb')
 
     this.physics.add.collider(this.player, this.door, ()=>{
       this.scene.start('MiniGame1', this.player)
+    })
+    this.physics.add.collider(this.player, this.door2, ()=>{
+      this.scene.start('MiniGame2', this.player)
     })
 
 
