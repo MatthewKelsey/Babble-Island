@@ -61,48 +61,42 @@ class Map extends Phaser.Scene {
       0,
       0
     );
-    const tileset8 = map.addTilesetImage('Water_4', 'water', 16, 16, 0, 0);
+    const tileset8 = map.addTilesetImage(
+      'Water_4',
+      'water',
+      16,
+      16,
+      0,
+      0
+    );
 
     const layer0 = map.createLayer('sea', tileset);
     const layer = map.createLayer('water', tileset8);
-    const layer2 = map.createLayer('land', tileset2);
-    const layer1 = map.createLayer('trees', tileset3);
-    const layer4 = map.createLayer('objects', tileset4);
-    const layer5 = map.createLayer('houses', tileset5);
+    const land = map.createLayer('land', tileset2);
+    const trees = map.createLayer('trees', tileset3);
+    const objects = map.createLayer('objects', tileset4);
+    const houses = map.createLayer('houses', tileset5);
     const door1 = map.createLayer('door1', tileset6);
     const door2 = map.createLayer('door2', tileset6);
     const door3 = map.createLayer('door3', tileset6);
     const door4 = map.createLayer('door4', tileset6);
-    const layer7 = map.createLayer('roof', tileset5);
-    const layer8 = map.createLayer('bridges', tileset7);
+    const roof = map.createLayer('roof', tileset5);
+    const bridges = map.createLayer('bridges', tileset7);
 
-    layer1.setCollisionByProperty({ collisions: true });
-    // layer2.setCollisionByProperty({collisions:true});
+    // land.setCollisionByProperty({collisions:true});
     layer.setCollisionByProperty({ collisions: true });
-
-    layer4.setCollisionByProperty({ collisions: true });
-    layer5.setCollisionByProperty({ collisions: true });
-    // layer6.setCollisionByProperty({ collisions: true });
-    layer7.setCollisionByProperty({ collisions: true });
-    // layer8.setCollisionByProperty({collisions:true});
+    trees.setCollisionByProperty({ collisions: true });
+    objects.setCollisionByProperty({ collisions: true });
+    houses.setCollisionByProperty({ collisions: true });
     door1.setCollisionByProperty({ collisions: true });
     door2.setCollisionByProperty({ collisions: true });
     door3.setCollisionByProperty({ collisions: true });
     door4.setCollisionByProperty({ collisions: true });
+    // layer6.setCollisionByProperty({ collisions: true });
+    roof.setCollisionByProperty({ collisions: true });
+
 
     const debugGraphics = this.add.graphics().setAlpha(0.75);
-
-    // layer2.renderDebug(debugGraphics, {
-    //     tileColor: null, // Color of non-colliding tiles
-    //     collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
-    //     faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
-    //     });
-
-    // layer1.renderDebug(debugGraphics, {
-    // tileColor: null, // Color of non-colliding tiles
-    // collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
-    // faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
-    // });
 
     // layer.renderDebug(debugGraphics, {
     //     tileColor: null, // Color of non-colliding tiles
@@ -116,19 +110,17 @@ class Map extends Phaser.Scene {
       .setScale(1.5)
 
 
-    this.physics.add.collider(this.player, layer1);
-    // this.physics.add.collider(player, layer2)
-
     this.physics.add.collider(this.player, layer);
-    this.physics.add.collider(this.player, layer4);
-    this.physics.add.collider(this.player, layer5);
-    // this.physics.add.collider(this.player, layer6);
-    this.physics.add.collider(this.player, layer7);
+    this.physics.add.collider(this.player, trees);
+    this.physics.add.collider(this.player, objects);
+    this.physics.add.collider(this.player, houses);
     this.physics.add.collider(this.player, door1);
     this.physics.add.collider(this.player, door2);
     this.physics.add.collider(this.player, door3);
     this.physics.add.collider(this.player, door4);
-    // this.physics.add.collider(player, layer8)
+    this.physics.add.collider(this.player, roof);
+
+
 
     // this.player.setCollideWorldBounds(true);
 
@@ -223,7 +215,7 @@ class Map extends Phaser.Scene {
       this.player.setVelocityY(-330);
     }
 
-    this.cameras.main.setBounds(0, 0, 100,100, true);
+    this.cameras.main.setBounds(0, 0);
     this.cameras.main.startFollow(this.player);
   }
 }

@@ -17,7 +17,7 @@ const config = {
 			debug:true,
 			gravity: { y: 0},
 		},
-		
+
 	},
 	scene: [Preloader, MiniGame1, MiniGame2, Scene, Map],
 	scale: {
