@@ -7,9 +7,8 @@ export default class Preloader extends Phaser.Scene {
     super('preloader');
   }
   preload() {
+    // Load all audio files
 
-    // Load all audio files 
-    
     this.load.audio('mini_game_1_audio', 'assets/audio/mini_game1.mp3');
     this.load.audio('pears', 'assets/audio/peras.mp3');
     this.load.audio('apples', 'assets/audio/manzanas.mp3');
@@ -26,7 +25,7 @@ export default class Preloader extends Phaser.Scene {
     // First id is what you want to call it, second is the file!
 
     // MAP
-    
+
     this.load.image('water', 'assets/map/Water.png');
     this.load.image('grass', 'assets/map/Darker Tall Grass hill tiles v.2.png');
     this.load.image('trees', 'assets/map/Trees, stumps and bushes.png');
@@ -43,7 +42,7 @@ export default class Preloader extends Phaser.Scene {
 
     // MINI GAME 1
 
-    this.load.image('settings', 'assets/mini_game1/Setting menu.png')
+    this.load.image('settings', 'assets/mini_game1/Setting menu.png');
     this.load.image('mini_game_1', 'assets/mini_game1/Wooden House.png');
     this.load.image('pear', 'assets/mini_game1/pear.png');
     this.load.image('apple', 'assets/mini_game1/apple.png');
@@ -52,18 +51,19 @@ export default class Preloader extends Phaser.Scene {
     this.load.image('strawberry', 'assets/mini_game1/strawberry.png');
     this.load.image('doors', 'assets/mini_game1/door animation sprites.png');
     this.load.tilemapTiledJSON('tilemap', 'assets/mini_game1/house.json');
+    this.load.spritesheet('doorsAnim', 'assets/mini_game1/doorsOpen.png', {
+      frameWidth: 48,
+      frameHeight: 16,
+    });
     this.load.spritesheet('chest', 'assets/mini_game1/chestTest2.png', {
-
-        frameWidth: 16,
-        frameHeight: 32,
-
-      });
+      frameWidth: 16,
+      frameHeight: 32,
+    });
 
     this.load.spritesheet('bunny', '../assets/bunnyFinal.png', {
       frameWidth: 16,
       frameHeight: 19,
     });
-
 
     this.load.spritesheet('fruit', '../assets/fruit.png', {
       frameWidth: 16,
@@ -73,7 +73,6 @@ export default class Preloader extends Phaser.Scene {
     });
     this.load.spritesheet('bomb', '../assets/bomb.png', { frameWidth: 16 });
   }
-
 
   create() {
     this.anims.create({
@@ -104,6 +103,6 @@ export default class Preloader extends Phaser.Scene {
       frameRate: 10,
       repeat: -1,
     });
-    this.scene.start('MiniGame1');
+    this.scene.start('Map');
   }
 }

@@ -7,14 +7,11 @@ class MiniGame1 extends Phaser.Scene {
   constructor() {
     super({
       key: 'MiniGame1',
-
-      width: window.innerWidth,
-      height: window.innerHeight,
-      zoom: 3,
     });
   }
 
   init() {
+    this.game.scale.setZoom(2);
     this.cursors = this.input.keyboard.createCursorKeys();
   }
 
@@ -51,28 +48,16 @@ class MiniGame1 extends Phaser.Scene {
     // create layers ie ground or walls
     const ground = map.createLayer('ground', tileset);
     const walls = map.createLayer('walls', tileset);
-    const doors = map.createLayer('doors', tileset2);
+    // const doors = map.createLayer('doors', tileset2);
     const fruitsLayer = map.getObjectLayer('all fruits')['objects'];
-
-    let newZoom = this.game.scale.setZoom(4);
-
-    // walls.setScale(2);
-    // ground.setScale(2);
-    // doors.setScale(2);
-
-    // ground.displayWidth = 1000
-    // walls.displayWidth = 1000
-    // doors.displayWidth = 1000
-    // fruitsLayer.width = 1000
-
-    // ground.displayHeight = 1000
-    // walls.displayHeigth = 1000
-    // doors.displayHeight = 1000
-    // fruitsLayer.displayHeight = 1000
 
     // set collisions
     walls.setCollisionByProperty({ collides: true });
-    doors.setCollisionByProperty({ collides: true });
+
+    // create doors Sprite 
+
+    this.doorSprite = this.physics.add.sprite(440,472, 'doorsAnim').setFrame(4)
+    this.doorSprite.body.immovable = true;
 
     // create fruits on map according to name and position
 
@@ -104,8 +89,10 @@ class MiniGame1 extends Phaser.Scene {
     this.player = this.physics.add.sprite(30, 30, 'bunny');
     this.player.setCollideWorldBounds(true);
     this.physics.add.collider(this.player, walls);
-    this.physics.add.collider(this.player, doors);
-
+    this.physics.add.collider(this.player, this.doorSprite, ()=>{
+      this.scene.start('Map', this.player)
+    })
+    
     this.physics.add.overlap(this.player, fruits, collectFruits, null, this);
 
     // SETTINGS
@@ -229,8 +216,9 @@ class MiniGame1 extends Phaser.Scene {
 
       const fruitsRemaining = fruitsLayer.slice(fruitScore);
 
-      if (fruitsRemaining.length) {
+      if (!fruitsRemaining.length) {
         generateChest(350, 180);
+        this.doorSprite.anims.play('openDoors')
       }
       console.log(fruitsRemaining);
     }
@@ -312,9 +300,27 @@ class MiniGame1 extends Phaser.Scene {
       frameRate: 50,
       repeat: 0,
     });
-  }
 
-  // move player on map
+    // OPEN DOORS 
+
+    this.anims.create({
+      key: 'openDoors',
+      frames: this.anims.generateFrameNumbers('doorsAnim', {
+        start: 4,
+        end: 0,
+      }),
+      frameRate: 10,
+      repeat: 0,
+    });
+
+    // GO BACK TO MAP 
+
+    this.physics.add.collider(this.player, this.doorSprite, ()=>{
+      this.scene.launch('Map')
+      // this.scene.start('Map')
+    })
+
+  }
 
   update() {
     const cursors = this.input.keyboard.createCursorKeys();

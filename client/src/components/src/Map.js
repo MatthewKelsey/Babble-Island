@@ -7,8 +7,11 @@ class Map extends Phaser.Scene {
       key: 'Map',
     });
   }
-
+  
   create() {
+
+    
+    
     // game.world.setBounds(0,0,2000,2000)
     const map = this.make.tilemap({ key: 'map' });
 
@@ -72,11 +75,13 @@ class Map extends Phaser.Scene {
     const layer6 = map.createLayer('doors', tileset6);
     const layer7 = map.createLayer('roof', tileset5);
     const layer8 = map.createLayer('bridges', tileset7);
+    
+    // this.game.scale.setZoom(2);
 
     layer1.setCollisionByProperty({ collisions: true });
     // layer2.setCollisionByProperty({collisions:true});
     layer.setCollisionByProperty({ collisions: true });
-
+    
     layer4.setCollisionByProperty({ collisions: true });
     layer5.setCollisionByProperty({ collisions: true });
     layer6.setCollisionByProperty({ collisions: true });
@@ -215,9 +220,9 @@ class Map extends Phaser.Scene {
     if (cursors.up.isDown && this.player.body.touching.down) {
       this.player.setVelocityY(-330);
     }
-
-    this.cameras.main.setBounds(0, 0);
+    this.game.scale.setZoom(1)
     this.cameras.main.startFollow(this.player);
+    this.cameras.main.setBounds(0, 0);
   }
 }
 

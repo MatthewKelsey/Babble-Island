@@ -12,18 +12,18 @@ const config = {
   physics: {
     default: 'arcade',
     arcade: {
-      debug: true,
+      debug: false,
       gravity: { y: 0 },
     },
   },
   scene: [ Preloader, MiniGame1, MiniGame2, Scene, Map],
   scale: {
-    zoom: 2,
+    zoom: 1,
     parent: 'app',
     width: window.innerWidth,
     height: window.innerHeight,
   },
 };
-console.log(config.scale)
+
 
 export default new Phaser.Game(config);
