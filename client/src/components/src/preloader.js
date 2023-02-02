@@ -9,6 +9,7 @@ export default class Preloader extends Phaser.Scene {
   preload() {
     // Load all audio files
 
+
     this.load.audio('mini_game_1_audio', 'assets/audio/mini_game1.mp3');
     this.load.audio('pears', 'assets/audio/peras.mp3');
     this.load.audio('apples', 'assets/audio/manzanas.mp3');

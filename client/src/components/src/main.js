@@ -8,22 +8,23 @@ import MiniGame2 from './MiniGame2';
 import Map from './map';
 
 const config = {
-  type: Phaser.AUTO,
-  physics: {
-    default: 'arcade',
-    arcade: {
-      debug: false,
-      gravity: { y: 0 },
-    },
-  },
-  scene: [ Preloader, MiniGame1, MiniGame2, Scene, Map],
-  scale: {
-    zoom: 1,
+	type: Phaser.AUTO,
+	physics: {
+		default: 'arcade',
+		arcade: {
+			debug:false,
+			gravity: { y: 0},
+		},
+
+	},
+	scene: [Preloader, MiniGame1, MiniGame2, Scene, Map],
+	scale: {
+    zoom: 1.5,
     parent: 'app',
     width: window.innerWidth,
     height: window.innerHeight,
   },
 };
 
+export default new Phaser.Game(config)
 
-export default new Phaser.Game(config);
