@@ -4,12 +4,15 @@ import Phaser from 'phaser';
 
 class MiniGame1 extends Phaser.Scene {
   constructor() {
+
     super({
       key: 'MiniGame1',
     });
+    console.log('help im stuck in the MiniGam1!!!')
   }
 
-  create() {
+    create() {
+    console.log('fdsfdsfds')
     // create music config and load audio files
     this.music = this.sound.add('mini_game_1_audio');
     this.pear = this.sound.add('pears');
@@ -36,19 +39,19 @@ class MiniGame1 extends Phaser.Scene {
 
     // first id is the name on the JSON, second id refers the id used for the image
 
-    const tileset = map.addTilesetImage('Wooden House', 'mini_game_1');
+    const tileset = map.addTilesetImage('Wooden_House', 'mini_game_1');
     const tileset2 = map.addTilesetImage('doors', 'doors');
 
     // create layers ie ground or walls
     const ground = map.createStaticLayer('ground', tileset);
     const walls = map.createStaticLayer('walls', tileset);
     const doors = map.createStaticLayer('doors', tileset2);
-    const fruitsLayer = map.getObjectLayer('all fruits')['objects'];
+    const fruitsLayer = map.getObjectLayer('all_fruits')['objects'];
 
     // set collisions
     walls.setCollisionByProperty({ collides: true });
     doors.setCollisionByProperty({ collides: true });
-
+ground.setCollisionsByProperty({collides:false})
     // create fruits on map according to name and position
 
     const fruits = this.physics.add.staticGroup();
