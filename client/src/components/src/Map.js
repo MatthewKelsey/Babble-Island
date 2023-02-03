@@ -12,7 +12,6 @@ class Map extends Phaser.Scene {
   create() {
 
 
-
     // game.world.setBounds(0,0,2000,2000)
     const map = this.make.tilemap({ key: "map" });
 
@@ -112,6 +111,7 @@ class Map extends Phaser.Scene {
     roof.setCollisionByProperty({ collisions: true });
 
 
+
     const debugGraphics = this.add.graphics().setAlpha(0.75);
 
     // layer.renderDebug(debugGraphics, {
@@ -140,10 +140,14 @@ class Map extends Phaser.Scene {
     // player.setScale(1);
 
     this.cursors = this.input.keyboard.createCursorKeys();
-    this.door = this.physics.add.sprite(1200, 450, 'bomb')
+    this.door = this.physics.add.sprite(600, 550, 'bomb')
+    this.door2 = this.physics.add.sprite(600,500,'bomb')
 
     this.physics.add.collider(this.player, this.door, ()=>{
       this.scene.start('MiniGame1', this.player)
+    })
+    this.physics.add.collider(this.player, this.door2, ()=>{
+      this.scene.start('MiniGame2', this.player)
     })
 
 
