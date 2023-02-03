@@ -8,8 +8,11 @@ class Map extends Phaser.Scene {
     });
     console.log('Im in map')
   }
-
+  
   create() {
+
+    
+    
     // game.world.setBounds(0,0,2000,2000)
     const map = this.make.tilemap({ key: "map" });
 
@@ -74,11 +77,9 @@ console.log(layer)
     door4.setCollisionByProperty({ collisions: true });
     // layer6.setCollisionByProperty({ collisions: true });
     roof.setCollisionByProperty({ collisions: true });
-    layer0.setCollisionByProperty({ collisions: false });
-    land.setCollisionByProperty({ collisions: false });
-    bridges.setCollisionByProperty({ collisions: false });
-    // layer0.setCollisionByProperty({collisions:false})
-    // const debugGraphics = this.add.graphics().setAlpha(0.75);
+
+
+    const debugGraphics = this.add.graphics().setAlpha(0.75);
 
     // layer.renderDebug(debugGraphics, {
     //     tileColor: null, // Color of non-colliding tiles
@@ -106,11 +107,13 @@ console.log(layer)
     // player.setScale(1);
 
     this.cursors = this.input.keyboard.createCursorKeys();
-    this.door = this.physics.add.sprite(1200, 450, "bomb");
+    this.door = this.physics.add.sprite(1200, 450, 'bomb')
 
-    this.physics.add.collider(this.player, this.door, () => {
-      this.scene.start("MiniGame1", this.player);
-    });
+    this.physics.add.collider(this.player, this.door, ()=>{
+      this.scene.start('MiniGame1', this.player)
+    })
+
+
 
     this.anims.create({
       key: "left",
@@ -190,9 +193,9 @@ console.log(layer)
     if (cursors.up.isDown && this.player.body.touching.down) {
       this.player.setVelocityY(-330);
     }
-
-    this.cameras.main.setBounds(0, 0);
+    this.game.scale.setZoom(1)
     this.cameras.main.startFollow(this.player);
+    this.cameras.main.setBounds(0, 0);
   }
 }
 

@@ -1,7 +1,6 @@
 // @ts-nocheck
 
-
-import Phaser from 'phaser'
+import Phaser from 'phaser';
 import Preloader from './preloader';
 import  Scene  from './Scene';
 import MiniGame1 from './MiniGame1';
@@ -25,6 +24,7 @@ const config = {
     width: window.innerWidth,
     height: window.innerHeight,
   },
-}
+};
 
 export default new Phaser.Game(config)
+
