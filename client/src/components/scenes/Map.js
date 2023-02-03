@@ -107,28 +107,29 @@ class Map extends Phaser.Scene {
         faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
         });
 
-        
+
         this.player = this.physics.add
         .sprite(500, 500, 'bunny')
         .setSize(10, 10)
         .setScale(1.5)
-        
-        
+
+
         this.physics.add.collider(this.player, layer);
         this.physics.add.collider(this.player, trees);
         this.physics.add.collider(this.player, objects);
-        // this.physics.add.collider(this.player, houses);
-        this.physics.add.collider(this.player, door1);
+        this.physics.add.collider(this.player, houses);
+        this.physics.add.collider(this.player, door1, ()=>{
+          this.scene.start('MiniGame1', this.player)
+        });
         this.physics.add.collider(this.player, door2);
         this.physics.add.collider(this.player, door3);
-        this.physics.add.collider(this.player, door4);
+        this.physics.add.collider(this.player, door4, ()=>{
+          this.scene.start('MiniGame2', this.player)
+        });
         // this.physics.add.collider(this.player, roof);
 
-        
-        this.physics.add.collider(this.player, door1, () => {
-          console.log('hello')
-          this.scene.start('Minigame1')
-        })
+
+
 
 
     // this.player.setCollideWorldBounds(true);
@@ -136,15 +137,14 @@ class Map extends Phaser.Scene {
     // player.setScale(1);
 
     this.cursors = this.input.keyboard.createCursorKeys();
-    this.door = this.physics.add.sprite(600, 550, 'bomb')
-    this.door2 = this.physics.add.sprite(600,500,'bomb')
 
-    this.physics.add.collider(this.player, this.door, ()=>{
-      this.scene.start('MiniGame1', this.player)
-    })
-    this.physics.add.collider(this.player, this.door2, ()=>{
-      this.scene.start('MiniGame2', this.player)
-    })
+
+    // this.physics.add.collider(this.player, this.door, ()=>{
+    //   this.scene.start('MiniGame1', this.player)
+    // })
+    // this.physics.add.collider(this.player, this.door2, ()=>{
+    //   this.scene.start('MiniGame2', this.player)
+    // })
 
 
 
