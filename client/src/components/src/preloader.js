@@ -56,6 +56,14 @@ export default class Preloader extends Phaser.Scene {
     this.load.image('strawberry', '/assets/mini_game1/strawberry.png');
     this.load.image('doors', '/assets/mini_game1/door_animation.png');
     this.load.tilemapTiledJSON('tilemap', '/assets/mini_game1/house.json');
+    this.load.spritesheet('doorsAnim', 'assets/mini_game1/doorsOpen.png', {
+      frameWidth: 48,
+      frameHeight: 16,
+    });
+     this.load.spritesheet('chest', 'assets/mini_game1/chestTest2.png', {
+      frameWidth: 16,
+      frameHeight: 32,
+    });
 
     this.load.spritesheet('bunny', '/assets/bunnyFinal.png', {
       frameWidth: 16,
