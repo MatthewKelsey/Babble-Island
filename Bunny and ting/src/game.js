@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import Phaser from "phaser";
 
 const boxContent = [
@@ -28,7 +26,7 @@ const wordBox = [
   ["j", "u"],
 ];
 
-class MiniGame2 extends Phaser.Scene {
+export default class Game extends Phaser.Scene {
   /** @type {Phaser.Types.Input.Keyboard.CursorKeys} */
   cursors;
   /**@type {{english: Phaser.Types.GameObjects.Text.TextStyle, spanish: Phaser.Types.GameObjects.Text.TextStyle}[]} */
@@ -49,9 +47,7 @@ class MiniGame2 extends Phaser.Scene {
   /** @type {Phaser.Physics.Arcade} */
 
   constructor() {
-    
-    super("MiniGame2");
-    console.log('help im stuck in the MiniGame2!!!')
+    super("game");
   }
   init() {
     this.cursors = this.input.keyboard.createCursorKeys();
@@ -61,12 +57,10 @@ class MiniGame2 extends Phaser.Scene {
     this.door = this.physics.add.sprite(width/2, 100, 'bomb')
     this.player = this.physics.add
       .sprite(width * 0.5, height * 0.5, "bunny")
-      .setScale(1)
-      .setSize(8, 8)
-      .setOffset(4,10);
+      .setScale(2)
+      .setSize(14, 12)
+      .setOffset(1, 6);
     this.player.setCollideWorldBounds(true);
-
-    console.log(this.player)
 
     this.boxGroup = this.physics.add.staticGroup();
 
@@ -85,7 +79,7 @@ class MiniGame2 extends Phaser.Scene {
 
 
     this.physics.add.collider(this.player, this.door, ()=>{
-      this.scene.start('MiniGame1', this.player)
+      this.scene.start('Scene2', this.player)
     })
   
   }
@@ -116,9 +110,9 @@ class MiniGame2 extends Phaser.Scene {
       for (let col = 0; col < boxContent[row].length; col++) {
         const box = this.boxGroup
           .get(width * x, y, "boxes")
-          .setScale(1)
-          .setSize(16, 7)
-          .setOffset(0, 8)
+          .setScale(2)
+          .setSize(30, 15)
+          .setOffset(-7, 4)
           .setData("words", boxContent[row][col])
           .setData('language', 'spanish');
         x += 0.2;
@@ -137,7 +131,7 @@ class MiniGame2 extends Phaser.Scene {
       for (let col = 0; col < boxContent[row].length; col++) {
         const box = this.boxGroup
           .get(width * x, y, "boxes")
-          .setScale(1)
+          .setScale(2)
           .setSize(30, 15)
           .setOffset(-7, 4)
           .setData("words", boxContent[row][col])
@@ -203,10 +197,10 @@ class MiniGame2 extends Phaser.Scene {
 
     wordy.scale = 0;
     wordy.alpha = 0;
-      const help = 'ya ya ya ya ya'
+      
     this.selectedBoxes.push({ box, wordy });
     this.tweens.add({
-      targets: help,
+      targets: wordy,
       y: "-= 50",
       alpha: 1,
       scale: 1,
@@ -224,12 +218,12 @@ class MiniGame2 extends Phaser.Scene {
   }
 
   checkForMatch() {
+    console.log('yo rude boy')
     const second = this.selectedBoxes.pop();
     const first = this.selectedBoxes.pop();
     console.log(second);
     if (first.box.getData("words") === second.box.getData("words")) {
-      console.log('Matt is the best')
-      console.log(first)
+     
       this.tweens.add({
         targets: [first.item, second.item],
         y: "+= 50",
@@ -288,5 +282,3 @@ class MiniGame2 extends Phaser.Scene {
     // this.createWordBox();
   }
 }
-
-export default MiniGame2 

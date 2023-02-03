@@ -2,17 +2,17 @@
 
 import Phaser from 'phaser';
 import Preloader from './preloader';
-import Scene from './Scene';
+import  Scene  from './Scene';
 import MiniGame1 from './MiniGame1';
 import MiniGame2 from './MiniGame2';
-import Map from './map';
+// import Map from './Map';
 
 const config = {
 	type: Phaser.AUTO,
 	physics: {
 		default: 'arcade',
 		arcade: {
-			debug:false,
+			debug:true,
 			gravity: { y: 0},
 		},
 
