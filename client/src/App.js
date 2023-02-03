@@ -4,10 +4,10 @@ import { BrowserRouter, Routes, Route} from "react-router-dom"
 // import Register from "./components/Register";
 import {useEffect} from 'react'
 import Phaser from 'phaser'
-import Preloader from './components/src/preloader'
-import Map from './components/src/Map'
-import MiniGame1 from './components/src/MiniGame1'
-import MiniGame2 from './components/src/MiniGame2'
+import Preloader from './components/scenes/preloader'
+import Map from './components/scenes/Map'
+import MiniGame1 from './components/scenes/MiniGame1'
+import MiniGame2 from './components/scenes/MiniGame2'
 
 function App() {
 
