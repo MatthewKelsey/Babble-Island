@@ -8,18 +8,36 @@ class Map extends Phaser.Scene {
     });
     console.log('Im in map')
   }
-  
+
   create() {
 
-    
-    
+
+
     // game.world.setBounds(0,0,2000,2000)
     const map = this.make.tilemap({ key: "map" });
 
     const tileset = map.addTilesetImage("Water", "water", 16, 16, 0, 0);
     const tileset2 = map.addTilesetImage(
-      "Darker_Tall_Grass",
-      "grass",
+
+      'Darker_Tall_Grass',
+      'grass',
+      16,
+      16,
+      0,
+      0
+    );
+    const tileset3 = map.addTilesetImage(
+      'Trees',
+      'trees',
+      16,
+      16,
+      0,
+      0
+    );
+    const tileset4 = map.addTilesetImage(
+      'Mushrooms',
+      'objects',
+
       16,
       16,
       0,
@@ -28,44 +46,60 @@ class Map extends Phaser.Scene {
     const tileset3 = map.addTilesetImage("Trees", "trees", 16, 16, 0, 0);
     const tileset4 = map.addTilesetImage("Mushrooms", "objects", 16, 16, 0, 0);
     const tileset5 = map.addTilesetImage(
-      "Wooden_House",
-      "houses",
+
+      'Wooden_House',
+      'houses',
+
       16,
       16,
       0,
       0
     );
     const tileset6 = map.addTilesetImage(
-      "door_animation",
-      "doors",
+
+      'door_animation',
+      'doors',
+
       16,
       16,
       0,
       0
     );
     const tileset7 = map.addTilesetImage(
-      "Wood_Bridge",
-      "bridges",
+
+      'WoodBridge',
+      'bridges',
+
       16,
       16,
       0,
       0
     );
-    const tileset8 = map.addTilesetImage("Water_4", "water", 16, 16, 0, 0);
 
-    const layer0 = map.createLayer("sea", tileset);
-    const layer = map.createLayer("water", tileset8);
-    const land = map.createLayer("land", tileset2);
-    const trees = map.createLayer("trees", tileset3);
-    const objects = map.createLayer("objects", tileset4);
-    const houses = map.createLayer("houses", tileset5);
-    const door1 = map.createLayer("door1", tileset6);
-    const door2 = map.createLayer("door2", tileset6);
-    const door3 = map.createLayer("door3", tileset6);
-    const door4 = map.createLayer("door4", tileset6);
-    const roof = map.createLayer("roof", tileset5);
-    const bridges = map.createLayer("bridges", tileset7);
-console.log(layer)
+    const tileset8 = map.addTilesetImage(
+      'Water_4',
+      'water',
+      16,
+      16,
+      0,
+      0
+    );
+
+    const layer0 = map.createLayer('sea', tileset);
+    const layer = map.createLayer('water', tileset8);
+
+
+    const land = map.createLayer('land', tileset2);
+    const trees = map.createLayer('trees', tileset3);
+    const objects = map.createLayer('objects', tileset4);
+    const houses = map.createLayer('houses', tileset5);
+    const door1 = map.createLayer('door1', tileset6);
+    const door2 = map.createLayer('door2', tileset6);
+    const door3 = map.createLayer('door3', tileset6);
+    const door4 = map.createLayer('door4', tileset6);
+    const roof = map.createLayer('roof', tileset5);
+    const bridges = map.createLayer('bridges', tileset7);
+
     // land.setCollisionByProperty({collisions:true});
     layer.setCollisionByProperty({ collisions: true });
     trees.setCollisionByProperty({ collisions: true });
@@ -75,7 +109,6 @@ console.log(layer)
     door2.setCollisionByProperty({ collisions: true });
     door3.setCollisionByProperty({ collisions: true });
     door4.setCollisionByProperty({ collisions: true });
-    // layer6.setCollisionByProperty({ collisions: true });
     roof.setCollisionByProperty({ collisions: true });
 
 
