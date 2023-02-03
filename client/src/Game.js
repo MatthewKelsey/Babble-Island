@@ -16,10 +16,11 @@ function Game() {
 
 
   useEffect(() => {
-    phaserGame
+    // phaserGame
   }, []);
 
   const [message, setMessage] = useState()
+  const [position, setPosition] = useState()
 
   
   function handleClick() {
@@ -30,17 +31,26 @@ function Game() {
 
   const reactListener = ({detail}) => {
     console.log('WORKING!!!')
-    setMessage('hello')
-    console.log(detail.reactCollision)
+    setMessage('LETS FUCKING GO!!!!')
+    setPosition(detail.reactCollision.x)
+    console.log(detail.reactCollision.x)
+    console.log(detail)
+    // console.log(detail.reactCollision)
   }
   window.addEventListener('react', reactListener)
 
+  useEffect(()=> {
+    console.log(position)
+  }, [])
+
+
+
   return (
     <>
-      <div >
+    
         <button onClick = {handleClick}></button>
-        {message && <DialogueBox message = {message}/>}
-        </div>;
+        {message && <DialogueBox message = {message} setMessage={setMessage}/>}
+      
     </>
   );
 }

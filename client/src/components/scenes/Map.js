@@ -177,7 +177,9 @@ class Map extends Phaser.Scene {
 
     this.physics.add.collider(this.player, this.door3, (reactCollision) => {
       const collisionTest= new CustomEvent('react', {
+        
         detail: {
+          position : this.player.x,
           reactCollision
         }
       })
