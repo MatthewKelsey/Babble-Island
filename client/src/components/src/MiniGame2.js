@@ -1,22 +1,21 @@
 // @ts-nocheck
 
-
 import Phaser from "phaser";
 
-// const boxContent = [
-//   [
-//     { spanish: "Green", english: "Verde" },
-//     { spanish: "Blue", english: "Azul" },
-//     { spanish: "Pink", english: "Rosada" },
-//     { spanish: "White", english: "Blanco" },
-//   ],
-//   [
-//     { spanish: "Black", english: "Negro" },
-//     { spanish: "Red", english: "Rojo" },
-//     { spanish: "Yellow", english: "Amarillo" },
-//     { spanish: "Purple", english: "Purpura" },
-//   ],
-// ];
+const boxContent = [
+  [
+    { spanish: "Green", english: "Verde" },
+    { spanish: "Blue", english: "Azul" },
+    { spanish: "Pink", english: "Rosada" },
+    { spanish: "White", english: "Blanco" },
+  ],
+  [
+    { spanish: "Black", english: "Negro" },
+    { spanish: "Red", english: "Rojo" },
+    { spanish: "Yellow", english: "Amarillo" },
+    { spanish: "Purple", english: "Purpura" },
+  ],
+];
 
 const wordBox = [
   ["green", "verde"],
@@ -62,9 +61,9 @@ class MiniGame2 extends Phaser.Scene {
     this.door = this.physics.add.sprite(width/2, 100, 'bomb')
     this.player = this.physics.add
       .sprite(width * 0.5, height * 0.5, "bunny")
-      .setScale(2)
-      .setSize(14, 12)
-      .setOffset(1, 6);
+      .setScale(1)
+      .setSize(8, 8)
+      .setOffset(4,10);
     this.player.setCollideWorldBounds(true);
 
     console.log(this.player)
@@ -108,47 +107,47 @@ class MiniGame2 extends Phaser.Scene {
   }
 
   
-  // createSpanishBoxes() {
-  //   const width = this.scale.width;
-  //   let x = 0.2;
-  //   let y = 280;
+  createSpanishBoxes() {
+    const width = this.scale.width;
+    let x = 0.2;
+    let y = 280;
 
-  //   for (let row = 0; row < boxContent.length; row++) {
-  //     for (let col = 0; col < boxContent[row].length; col++) {
-  //       const box = this.boxGroup
-  //         .get(width * x, y, "boxes")
-  //         .setScale(2)
-  //         .setSize(30, 15)
-  //         .setOffset(-7, 4)
-  //         .setData("words", boxContent[row][col])
-  //         .setData('language', 'spanish');
-  //       x += 0.2;
-  //     }
-  //     x = 0.2;
-  //     y += 80;
-  //   }
-  // }
+    for (let row = 0; row < boxContent.length; row++) {
+      for (let col = 0; col < boxContent[row].length; col++) {
+        const box = this.boxGroup
+          .get(width * x, y, "boxes")
+          .setScale(1)
+          .setSize(16, 7)
+          .setOffset(0, 8)
+          .setData("words", boxContent[row][col])
+          .setData('language', 'spanish');
+        x += 0.2;
+      }
+      x = 0.2;
+      y += 80;
+    }
+  }
 
-  // createEnglishBoxes() {
-  //   const width = this.scale.width;
-  //   let x = 0.2;
-  //   let y = 440;
+  createEnglishBoxes() {
+    const width = this.scale.width;
+    let x = 0.2;
+    let y = 440;
 
-  //   for (let row = 0; row < boxContent.length; row++) {
-  //     for (let col = 0; col < boxContent[row].length; col++) {
-  //       const box = this.boxGroup
-  //         .get(width * x, y, "boxes")
-  //         .setScale(2)
-  //         .setSize(30, 15)
-  //         .setOffset(-7, 4)
-  //         .setData("words", boxContent[row][col])
-  //         .setData('language' , 'english');
-  //       x += 0.2;
-  //     }
-  //     x = 0.2;
-  //     y += 80;
-  //   }
-  // }
+    for (let row = 0; row < boxContent.length; row++) {
+      for (let col = 0; col < boxContent[row].length; col++) {
+        const box = this.boxGroup
+          .get(width * x, y, "boxes")
+          .setScale(1)
+          .setSize(30, 15)
+          .setOffset(-7, 4)
+          .setData("words", boxContent[row][col])
+          .setData('language' , 'english');
+        x += 0.2;
+      }
+      x = 0.2;
+      y += 80;
+    }
+  }
 
   updatePlayer() {
     const speed = 200;
