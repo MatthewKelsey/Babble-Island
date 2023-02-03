@@ -43,8 +43,7 @@ class Map extends Phaser.Scene {
       0,
       0
     );
-    const tileset3 = map.addTilesetImage("Trees", "trees", 16, 16, 0, 0);
-    const tileset4 = map.addTilesetImage("Mushrooms", "objects", 16, 16, 0, 0);
+   
     const tileset5 = map.addTilesetImage(
 
       'Wooden_House',
