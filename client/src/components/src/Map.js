@@ -38,6 +38,7 @@ class Map extends Phaser.Scene {
       0,
       0
     );
+
     const tileset5 = map.addTilesetImage(
       'Wooden_House',
       'houses',
