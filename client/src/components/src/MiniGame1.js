@@ -43,15 +43,15 @@ class MiniGame1 extends Phaser.Scene {
     const tileset2 = map.addTilesetImage('doors', 'doors');
 
     // create layers ie ground or walls
-    const ground = map.createStaticLayer('ground', tileset);
-    const walls = map.createStaticLayer('walls', tileset);
-    const doors = map.createStaticLayer('doors', tileset2);
+    const ground = map.createLayer('ground', tileset);
+    const walls = map.createLayer('walls', tileset);
+    const doors = map.createLayer('doors', tileset2);
     const fruitsLayer = map.getObjectLayer('all_fruits')['objects'];
 
     // set collisions
     walls.setCollisionByProperty({ collides: true });
     doors.setCollisionByProperty({ collides: true });
-ground.setCollisionsByProperty({collides:false})
+    ground.setCollisionByProperty({collides:false})
     // create fruits on map according to name and position
 
     const fruits = this.physics.add.staticGroup();

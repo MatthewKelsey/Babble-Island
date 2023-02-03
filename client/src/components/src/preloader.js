@@ -69,8 +69,6 @@ export default class Preloader extends Phaser.Scene {
 
 
   create() {
-
-    console.log('help im stuck in the preloader!!!')
     this.anims.create({
       key: 'idle',
       frames: [{ key: 'bunny', frame: 0 }],
@@ -99,6 +97,6 @@ export default class Preloader extends Phaser.Scene {
       frameRate: 10,
       repeat: -1,
     });
-    this.scene.start('MiniGame1');
+    this.scene.start('Map');
   }
 }

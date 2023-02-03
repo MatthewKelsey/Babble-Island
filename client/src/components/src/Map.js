@@ -62,7 +62,7 @@ class Map extends Phaser.Scene {
     const door4 = map.createLayer("door4", tileset6);
     const roof = map.createLayer("roof", tileset5);
     const bridges = map.createLayer("bridges", tileset7);
-
+console.log(layer)
     // land.setCollisionByProperty({collisions:true});
     layer.setCollisionByProperty({ collisions: true });
     trees.setCollisionByProperty({ collisions: true });
