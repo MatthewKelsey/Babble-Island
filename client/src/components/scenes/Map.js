@@ -101,6 +101,7 @@ class Map extends Phaser.Scene {
 
     const debugGraphics = this.add.graphics().setAlpha(0.75);
 
+
     // door1.renderDebug(debugGraphics, {
     //     tileColor: null, // Color of non-colliding tiles
     //     collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
@@ -112,8 +113,8 @@ class Map extends Phaser.Scene {
     .sprite(500, 500, 'bunny')
         .setSize(10, 10)
         .setScale(1.5)
-        
-        
+
+
         this.physics.add.collider(this.player, layer);
         this.physics.add.collider(this.player, trees);
         this.physics.add.collider(this.player, objects);
@@ -134,6 +135,17 @@ class Map extends Phaser.Scene {
           console.log('hello')
           this.scene.start('Minigame1')
         })
+
+        this.physics.add.collider(this.player, door2);
+        this.physics.add.collider(this.player, door3);
+        this.physics.add.collider(this.player, door4, ()=>{
+          this.scene.start('MiniGame2', this.player)
+        });
+        // this.physics.add.collider(this.player, roof);
+
+
+
+
 
 
 
@@ -178,6 +190,16 @@ class Map extends Phaser.Scene {
     this.physics.add.collider(this.player, this.door2, ()=>{
       this.scene.start('MiniGame2', this.player)
     })
+
+
+
+    // this.physics.add.collider(this.player, this.door, ()=>{
+    //   this.scene.start('MiniGame1', this.player)
+    // })
+    // this.physics.add.collider(this.player, this.door2, ()=>{
+    //   this.scene.start('MiniGame2', this.player)
+    // })
+
 
     
 
