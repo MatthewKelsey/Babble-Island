@@ -14,7 +14,7 @@ class Map extends Phaser.Scene {
 
     const tileset = map.addTilesetImage('Water', 'water', 16, 16, 0, 0);
     const tileset2 = map.addTilesetImage(
-      'Darker Tall Grass hill tiles v.2',
+      'Darker_Tall_Grass',
       'grass',
       16,
       16,
@@ -22,7 +22,7 @@ class Map extends Phaser.Scene {
       0
     );
     const tileset3 = map.addTilesetImage(
-      'Trees, stumps and bushes',
+      'Trees',
       'trees',
       16,
       16,
@@ -30,7 +30,7 @@ class Map extends Phaser.Scene {
       0
     );
     const tileset4 = map.addTilesetImage(
-      'Mushrooms, Flowers, Stones',
+      'Mushrooms',
       'objects',
       16,
       16,
@@ -38,7 +38,7 @@ class Map extends Phaser.Scene {
       0
     );
     const tileset5 = map.addTilesetImage(
-      'Wooden House',
+      'Wooden_House',
       'houses',
       16,
       16,
@@ -46,7 +46,7 @@ class Map extends Phaser.Scene {
       0
     );
     const tileset6 = map.addTilesetImage(
-      'door animation sprites',
+      'door_animation',
       'doors',
       16,
       16,
@@ -54,7 +54,7 @@ class Map extends Phaser.Scene {
       0
     );
     const tileset7 = map.addTilesetImage(
-      'Wood Bridge v.2 ',
+      'WoodBridge',
       'bridges',
       16,
       16,
