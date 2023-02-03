@@ -90,39 +90,45 @@ class Map extends Phaser.Scene {
     layer.setCollisionByProperty({ collisions: true });
     trees.setCollisionByProperty({ collisions: true });
     objects.setCollisionByProperty({ collisions: true });
-    houses.setCollisionByProperty({ collisions: true });
+    // houses.setCollisionByProperty({ collisions: true });
     door1.setCollisionByProperty({ collisions: true });
     door2.setCollisionByProperty({ collisions: true });
     door3.setCollisionByProperty({ collisions: true });
     door4.setCollisionByProperty({ collisions: true });
-    roof.setCollisionByProperty({ collisions: true });
+    // roof.setCollisionByProperty({ collisions: true });
 
 
 
     const debugGraphics = this.add.graphics().setAlpha(0.75);
 
-    // layer.renderDebug(debugGraphics, {
-    //     tileColor: null, // Color of non-colliding tiles
-    //     collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
-    //     faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
-    //     });
+    door1.renderDebug(debugGraphics, {
+        tileColor: null, // Color of non-colliding tiles
+        collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
+        faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
+        });
 
-    this.player = this.physics.add
-      .sprite(500, 500, 'bunny')
-      .setSize(10, 10)
-      .setScale(1.5)
+        
+        this.player = this.physics.add
+        .sprite(500, 500, 'bunny')
+        .setSize(10, 10)
+        .setScale(1.5)
+        
+        
+        this.physics.add.collider(this.player, layer);
+        this.physics.add.collider(this.player, trees);
+        this.physics.add.collider(this.player, objects);
+        // this.physics.add.collider(this.player, houses);
+        this.physics.add.collider(this.player, door1);
+        this.physics.add.collider(this.player, door2);
+        this.physics.add.collider(this.player, door3);
+        this.physics.add.collider(this.player, door4);
+        // this.physics.add.collider(this.player, roof);
 
-
-    this.physics.add.collider(this.player, layer);
-    this.physics.add.collider(this.player, trees);
-    this.physics.add.collider(this.player, objects);
-    this.physics.add.collider(this.player, houses);
-    this.physics.add.collider(this.player, door1);
-    this.physics.add.collider(this.player, door2);
-    this.physics.add.collider(this.player, door3);
-    this.physics.add.collider(this.player, door4);
-    this.physics.add.collider(this.player, roof);
-
+        
+        this.physics.add.collider(this.player, door1, () => {
+          console.log('hello')
+          this.scene.start('Minigame1')
+        })
 
 
     // this.player.setCollideWorldBounds(true);

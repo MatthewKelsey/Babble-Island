@@ -65,17 +65,20 @@ export default class Preloader extends Phaser.Scene {
       frameHeight: 32,
     });
 
-    this.load.spritesheet('bunny', '/assets/bunnyFinal.png', {
+
+    // MINI GAME 2
+    
+    this.load.spritesheet('bunny', '/assets//mini_game2/bunnyFinal.png', {
       frameWidth: 16,
       frameHeight: 19,
     });
-    this.load.spritesheet('fruit', '/assets/fruit.png', {
+    this.load.spritesheet('fruit', '/assets//mini_game2/fruit.png', {
       frameWidth: 16,
     });
-    this.load.spritesheet('boxes', '/assets/boxes.png', {
+    this.load.spritesheet('boxes', '/assets//mini_game2/boxes.png', {
       frameWidth: 16,
     });
-    this.load.spritesheet('bomb', '/assets/bomb.png', { frameWidth: 16 });
+    this.load.spritesheet('bomb', '/assets/mini_game2/bomb.png', { frameWidth: 16 });
   }
 
 

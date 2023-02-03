@@ -35,12 +35,11 @@ console.log(game)
 },[])
  
   return (
+
+
 <div id="phaser-game">
   I'm a happy React App!!!
-   
-     
 
-      
     </div>
   );
 }
