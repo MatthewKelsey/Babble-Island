@@ -15,6 +15,8 @@ class MiniGame1 extends Phaser.Scene {
     this.cursors = this.input.keyboard.createCursorKeys();
   }
 
+  
+
   create() {
     // create music config and load audio files
     this.music = this.sound.add('mini_game_1_audio');
@@ -316,11 +318,21 @@ class MiniGame1 extends Phaser.Scene {
     // GO BACK TO MAP 
 
     this.physics.add.collider(this.player, this.doorSprite, ()=>{
-      this.scene.launch('Map')
-      // this.scene.start('Map')
+
+
+        const message =  this.createEmitter()
+        this.scene.start('Map')
+        return message
     })
 
+    this.physics.add.collider(this.player, this.doorSprite) 
+    
+
   }
+  
+  createEmitter() {
+     console.log('IM IN MINI MAP 2 LADS!')
+   }
 
   update() {
     const cursors = this.input.keyboard.createCursorKeys();
@@ -356,6 +368,7 @@ class MiniGame1 extends Phaser.Scene {
       this.player.setVelocityY(-330);
     }
   }
+
 }
 
 export default MiniGame1;

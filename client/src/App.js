@@ -9,6 +9,8 @@ import Map from './components/scenes/Map'
 import MiniGame1 from './components/scenes/MiniGame1'
 import MiniGame2 from './components/scenes/MiniGame2'
 import  Game  from "./Game";
+
+console.log(MiniGame1)
 function App() {
 
 

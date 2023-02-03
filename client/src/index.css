@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.message-box{
+  position: absolute;
+  background-color: bisque;
+  height: 200;
+  width: 200;
+  left:500;
+  bottom: 500;
+  z-index: 10000;
+  }
+  .container{
+    position: relative;
+  }
