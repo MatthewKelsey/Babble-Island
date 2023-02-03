@@ -36,3 +36,6 @@
     transform: rotate(360deg);
   }
 }
+
+.babble-island {
+background-image: url('/assets/images/login-background.png')}

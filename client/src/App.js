@@ -1,21 +1,22 @@
 
-import Login from "./components/Login";
+import Login from "./components/ReactComponents/Login";
 import { BrowserRouter, Routes, Route} from "react-router-dom"
 // import Register from "./components/Register";
-import {useEffect} from 'react'
-import Phaser from 'phaser'
-import Preloader from './components/scenes/preloader'
-import Map from './components/scenes/Map'
-import MiniGame1 from './components/scenes/MiniGame1'
-import MiniGame2 from './components/scenes/MiniGame2'
+
 import  Game  from "./Game";
+import Register from './components/ReactComponents/Register'
+import { useState } from "react";
+
 function App() {
 
+  const [user , setUser] = useState({})
 
   return (
 
 <BrowserRouter>
 <Routes>
+  <Route path = '/register' element = {<Register setUser = {setUser}/>} />
+  <Route path = '/login' element={<Login setUser ={setUser} />} />
 <Route path="/" element = {<Game />} /> 
 
 </Routes>

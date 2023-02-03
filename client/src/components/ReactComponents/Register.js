@@ -1,22 +1,22 @@
-// @ts-nocheck
+//@ts-ignore
 
-
-import React from "react";
+import React, { useState } from "react";
 // import auth from '../utils/auth';
-import { login } from "../ApiClient.js";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import  {register}  from "../ApiClient.js";
 
 
 const initialState = {
   userName: "",
   password: "",
+  nickName: "",
+  
 };
 
-function Login(props) {
-  let navigate = useNavigate();
+const Register = (props) => {
+  const navigate = useNavigate();
   const [state, setState] = useState(initialState);
-
+  const [exists, setExists] = useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setState((prevState) => ({
@@ -24,39 +24,43 @@ function Login(props) {
       [name]: value,
     }));
   };
-  const moveToRegister = () => {
-    navigate("/");
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { email, password } = state;
-    const user = { email: email, password: password };
-    const res = await login(user);
-    console.log(res);
-    if (res.status === 401 || res.status === 400) {
-      alert(`Error`);
+    const {userName, password, nickName} = state;
+    const user = { userName, password, nickName};
+    const res = await register(user);
+    console.log({ res });
+    if (res.status === 409) {
+      alert(`${res.message}`);
       setState(initialState);
+      setExists(true);
     } else {
       props.setCurrentUser(res);
       navigate("/profile");
     }
   };
 
+  const loginHandle = () => {
+    navigate("/login");
+  };
+
   const validateForm = () => {
-    return !state.userName || !state.password;
+    return (
+      !state.userName || !state.password || !state.nickName 
+    );
   };
 
   return (
+    <div className="babble-island">
 
-
+      <h1>Babble Island</h1>
     <section className="register">
-      
+     
       <br></br>
-      
-
-      <h2>Login</h2>
+ 
+      <h2>Register</h2>
       <form className="form" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -74,15 +78,30 @@ function Login(props) {
           onChange={handleChange}
         />
         <br></br>
+        <input
+          type="text"
+          placeholder="Nick Name"
+          name="nickName"
+          value={state.nickName}
+          onChange={handleChange}
+        />
+        <br></br>
+        
+        <br></br>
         <button className="form-submit" type="submit" disabled={validateForm()}>
-          &nbsp;Login&nbsp;
+          &nbsp;Register&nbsp;
         </button>
       </form>
-      <p>Don't have an account? Register here</p>
-      <button className="form-submit" onClick={moveToRegister}>
-        Register
+      <br></br>
+      {exists ? <p> User already exists. Please login</p> : "Already a user?"}
+      <br></br>
+      <br></br>
+      <button onClick={loginHandle} className="form-submit">
+        Login
       </button>
     </section>
+    </div>
   );
-}
-export default Login;
+};
+
+export default Register;
