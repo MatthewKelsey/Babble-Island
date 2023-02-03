@@ -128,7 +128,7 @@
         {
          "draworder":"topdown",
          "id":10,
-         "name":"all fruits",
+         "name":"all_fruits",
          "objects":[
                 {
                  "class":"",
@@ -326,11 +326,11 @@
         {
          "columns":6,
          "firstgid":1,
-         "image":"..\/..\/Babble-Island\/assets\/Sprout Lands - Sprites - premium pack\/tilesets\/Building parts\/Wooden House.png",
+         "image":"..\/..\/Babble-Island\/assets\/Sprout Lands - Sprites - premium pack\/tilesets\/Building parts\/Wooden_House.png",
          "imageheight":80,
          "imagewidth":96,
          "margin":0,
-         "name":"Wooden House",
+         "name":"Wooden_House",
          "spacing":0,
          "tilecount":30,
          "tileheight":16,

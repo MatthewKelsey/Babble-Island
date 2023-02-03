@@ -1,6 +1,5 @@
 // @ts-nocheck
 
-
 import Phaser from "phaser";
 
 const boxContent = [
@@ -50,7 +49,9 @@ class MiniGame2 extends Phaser.Scene {
   /** @type {Phaser.Physics.Arcade} */
 
   constructor() {
+    
     super("MiniGame2");
+    console.log('help im stuck in the MiniGame2!!!')
   }
   init() {
     this.cursors = this.input.keyboard.createCursorKeys();
@@ -60,10 +61,12 @@ class MiniGame2 extends Phaser.Scene {
     this.door = this.physics.add.sprite(width/2, 100, 'bomb')
     this.player = this.physics.add
       .sprite(width * 0.5, height * 0.5, "bunny")
-      .setScale(2)
-      .setSize(14, 12)
-      .setOffset(1, 6);
+      .setScale(1)
+      .setSize(8, 8)
+      .setOffset(4,10);
     this.player.setCollideWorldBounds(true);
+
+    console.log(this.player)
 
     this.boxGroup = this.physics.add.staticGroup();
 
@@ -113,9 +116,9 @@ class MiniGame2 extends Phaser.Scene {
       for (let col = 0; col < boxContent[row].length; col++) {
         const box = this.boxGroup
           .get(width * x, y, "boxes")
-          .setScale(2)
-          .setSize(30, 15)
-          .setOffset(-7, 4)
+          .setScale(1)
+          .setSize(16, 7)
+          .setOffset(0, 8)
           .setData("words", boxContent[row][col])
           .setData('language', 'spanish');
         x += 0.2;
@@ -134,7 +137,7 @@ class MiniGame2 extends Phaser.Scene {
       for (let col = 0; col < boxContent[row].length; col++) {
         const box = this.boxGroup
           .get(width * x, y, "boxes")
-          .setScale(2)
+          .setScale(1)
           .setSize(30, 15)
           .setOffset(-7, 4)
           .setData("words", boxContent[row][col])
