@@ -9,7 +9,9 @@ export default function DialogueBox({message , setMessage}) {
     <div className='message-box'>
 <div onClick={boxClose}> X </div>
 
-      <p>{message}</p>
-    </div>
+      {/* <p>{message}</p> */}
+        <p>{message}</p>
+      </div>
+
   )
 }
