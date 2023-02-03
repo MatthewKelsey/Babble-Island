@@ -1,6 +1,5 @@
 // @ts-nocheck
 
-import { getConfig } from '@testing-library/react';
 import Phaser from 'phaser';
 
 class MiniGame1 extends Phaser.Scene {
@@ -76,24 +75,17 @@ class MiniGame1 extends Phaser.Scene {
       }
     });
 
-    console.log(this.chest);
-
     // add main character
 
     this.player = this.physics.add.sprite(30, 30, 'bunny');
     this.player.setCollideWorldBounds(true);
     this.physics.add.collider(this.player, walls);
-    this.physics.add.collider(this.player, this.doorSprite, ()=>{
-      this.scene.start('Map', this.player)
-    })
+    this.physics.add.collider(this.player, doors);
+
     
     this.physics.add.overlap(this.player, fruits, collectFruits, null, this);
 
-    // SETTINGS
-
     // text content and score counters
-    this.settings = this.physics.add.image(700, 300, 'settings');
-
     let content = [
       'Frutas:',
       '',
@@ -133,31 +125,6 @@ class MiniGame1 extends Phaser.Scene {
     // actions on collect fruits callback
 
     let fruitScore = 0;
-
-    // CREATE CHEST
-
-    const generateChest = (x, y) => {
-      this.chestSprite = this.physics.add.sprite(x, y, 'chest').setSize(16, 32);
-      this.chestSprite.body.immovable = true;
-      this.physics.add.overlap(
-        this.player,
-        this.chestSprite,
-        openChest,
-        null,
-        this
-      );
-      this.physics.add.collider(this.player, this.chestSprite);
-      return this.chestSprite;
-    };
-
-    // OPEN CHEST
-
-    function openChest() {
-      this.input.keyboard.on('keydown-SPACE', () => {
-        this.physics.add.collider(this.player, this.chestSprite);
-        this.chestSprite.anims.play('openChest', true);
-      });
-    }
 
     function collectFruits(player, fruit) {
       fruit.destroy(fruit.x, fruit.y);
@@ -210,10 +177,8 @@ class MiniGame1 extends Phaser.Scene {
 
       const fruitsRemaining = fruitsLayer.slice(fruitScore);
 
-      if (!fruitsRemaining.length) {
-        generateChest(350, 180);
-        this.doorSprite.anims.play('openDoors')
-      }
+      if (!fruitsRemaining.length) console.log('hello');
+
       console.log(fruitsRemaining);
     }
 
@@ -268,62 +233,12 @@ class MiniGame1 extends Phaser.Scene {
       frameRate: 10,
       repeat: -1,
     });
-
-    // OPEN CHEST
-
-    // this.physics.add.collider(this.player, chestSprite, () => {
-    this.anims.create({
-      key: 'openChest',
-      frames: this.anims.generateFrameNumbers('chest', {
-        start: 0,
-        end: 4,
-      }),
-      frameRate: 30,
-      repeat: 0,
-    });
-    // });
-
-    // CLOSE CHEST
-
-    this.anims.create({
-      key: 'closeChest',
-      frames: this.anims.generateFrameNumbers('chest', {
-        start: 8,
-        end: 0,
-      }),
-      frameRate: 50,
-      repeat: 0,
-    });
-
-    // OPEN DOORS 
-
-    this.anims.create({
-      key: 'openDoors',
-      frames: this.anims.generateFrameNumbers('doorsAnim', {
-        start: 4,
-        end: 0,
-      }),
-      frameRate: 10,
-      repeat: 0,
-    });
-
-    // GO BACK TO MAP 
-
-    this.physics.add.collider(this.player, this.doorSprite, ()=>{
-      this.scene.launch('Map')
-      // this.scene.start('Map')
-    })
-
   }
+
+  // move player on map
 
   update() {
     const cursors = this.input.keyboard.createCursorKeys();
-
-    // const spacePressed = Phaser.Input.Keyboard.JustUp(this.cursors.space);
-    // if (spacePressed) {
-    //   this.chestSprite.play('animationKey');
-    //  console.log('hello')
-    // }
 
     if (cursors.left.isDown) {
       this.player.setVelocity(-160, 0);

@@ -68,7 +68,6 @@ class MiniGame2 extends Phaser.Scene {
     this.player.setCollideWorldBounds(true);
 
     console.log(this.player)
-    console.log(this.player)
 
     this.boxGroup = this.physics.add.staticGroup();
 
