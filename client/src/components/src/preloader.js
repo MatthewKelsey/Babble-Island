@@ -28,14 +28,14 @@ export default class Preloader extends Phaser.Scene {
     // MAP
 
     this.load.image('water', 'assets/map/Water.png');
-    this.load.image('grass', 'assets/map/Darker Tall Grass hill tiles v.2.png');
-    this.load.image('trees', 'assets/map/Trees, stumps and bushes.png');
-    this.load.image('objects', 'assets/map/Mushrooms, Flowers, Stones.png');
-    this.load.image('houses', 'assets/map/Wooden House.png');
-    this.load.image('doors', 'assets/map/door animation sprites.png');
-    this.load.image('bridges', 'assets/map/Wood Bridge v.2 .png');
+    this.load.image('grass', 'assets/map/Darker_Tall_Grass.png');
+    this.load.image('trees', 'assets/map/Trees.png');
+    this.load.image('objects', 'assets/map/Mushrooms.png');
+    this.load.image('houses', 'assets/map/Wooden_House.png');
+    this.load.image('doors', 'assets/map/door_animation.png');
+    this.load.image('bridges', 'assets/map/WoodBridge.png');
     this.load.image('water', 'assets/map/Water_4.png');
-    this.load.tilemapTiledJSON('map', 'assets/map/babble island.json');
+    this.load.tilemapTiledJSON('map', 'assets/map/babble_island.json');
     this.load.spritesheet('dude', 'assets/dude.png', {
       frameWidth: 32,
       frameHeight: 48,
