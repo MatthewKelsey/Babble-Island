@@ -9,6 +9,7 @@ class Map extends Phaser.Scene {
   }
 
   create() {
+
     // game.world.setBounds(0,0,2000,2000)
     const map = this.make.tilemap({ key: 'map' });
 
@@ -72,6 +73,8 @@ class Map extends Phaser.Scene {
 
     const layer0 = map.createLayer('sea', tileset);
     const layer = map.createLayer('water', tileset8);
+
+
     const land = map.createLayer('land', tileset2);
     const trees = map.createLayer('trees', tileset3);
     const objects = map.createLayer('objects', tileset4);
@@ -92,8 +95,8 @@ class Map extends Phaser.Scene {
     door2.setCollisionByProperty({ collisions: true });
     door3.setCollisionByProperty({ collisions: true });
     door4.setCollisionByProperty({ collisions: true });
-    // layer6.setCollisionByProperty({ collisions: true });
     roof.setCollisionByProperty({ collisions: true });
+
 
 
     const debugGraphics = this.add.graphics().setAlpha(0.75);
@@ -127,10 +130,14 @@ class Map extends Phaser.Scene {
     // player.setScale(1);
 
     this.cursors = this.input.keyboard.createCursorKeys();
-    this.door = this.physics.add.sprite(1200, 450, 'bomb')
+    this.door = this.physics.add.sprite(600, 550, 'bomb')
+    this.door2 = this.physics.add.sprite(600,500,'bomb')
 
     this.physics.add.collider(this.player, this.door, ()=>{
       this.scene.start('MiniGame1', this.player)
+    })
+    this.physics.add.collider(this.player, this.door2, ()=>{
+      this.scene.start('MiniGame2', this.player)
     })
 
 
@@ -214,9 +221,9 @@ class Map extends Phaser.Scene {
     if (cursors.up.isDown && this.player.body.touching.down) {
       this.player.setVelocityY(-330);
     }
-
-    this.cameras.main.setBounds(0, 0);
+    this.game.scale.setZoom(1)
     this.cameras.main.startFollow(this.player);
+    this.cameras.main.setBounds(0, 0);
   }
 }
 
