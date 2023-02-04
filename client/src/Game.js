@@ -16,6 +16,7 @@ function Game() {
   const [position, setPosition] = useState();
   const [dialogue, setDialogue] = useState({});
   const [message, setMessage] = useState();
+  const [stars, setStars] = useState({})
   
   console.log(dialogue.initial);
 
@@ -34,8 +35,10 @@ function Game() {
     scene.createEmitter();
   }
 
+  // LISTEN OUT FOR 
+  
 
-  const reactListener = ({ detail }) => {
+  const reactCharacterListener = ({ detail }) => {
     console.log('WORKING!!!');
     console.log(detail.character);
     const character = detail.character.data.list.character;
@@ -46,7 +49,15 @@ function Game() {
     console.log(detail.reactCollision.x)
     setPosition(detail.reactCollision.x);
   };
-  window.addEventListener('react', reactListener);
+  window.addEventListener('react', reactCharacterListener);
+
+  // LISTEN OUT FOR STARS COLLECTED 
+
+  const reactCollectStarsListener = ({detail}) => {
+    const stars = detail.stars.data.list.stars
+    console.log(stars)
+  }
+  window.addEventListener('starCollected', reactCollectStarsListener);
 
   useEffect(() => {
     console.log(position);
