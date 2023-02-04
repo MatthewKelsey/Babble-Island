@@ -28,10 +28,26 @@ z-index: 10000;
 
 .container{
   position: relative;
+
 }
 .menu-items{
   display:flex;
   flex-direction: row;
+
+}
+
+.message-box{
+  /* background-image: url('../public/assets/game/dialog\ box\ big.png'); */
+  position: absolute;
+  display: flex;
+  top: 800px;
+  left: 500px;
+  width: 600px;
+  height: 100px;
+  border-radius: 10px;
+  background-color: bisque;
+  z-index: 10000;
+
 }
 
 .menu-button{

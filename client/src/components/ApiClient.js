@@ -1,10 +1,11 @@
-const root = "http://localhost:4000/";
+const baseUrl = "http://localhost:4000/";
 
+// FOR LOGIN 
 
 export const login = async (user) => {
   try {
-    console.log(user)
-    const response = await fetch(root + "login", {
+    const response = await fetch(`${baseUrl}/login`, {
+
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
@@ -22,7 +23,7 @@ export const login = async (user) => {
 export const register = async (user) => {
   try {
     console.log('help Im stuck in the api service')
-    const response = await fetch(root + "register", {
+    const response = await fetch(`${baseUrl}/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
@@ -37,7 +38,7 @@ export const register = async (user) => {
 
 export const logout = async () => {
   try {
-    const response = await fetch(root + "logout", {
+    const response = await fetch(`${baseUrl}/logout`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(),
@@ -45,6 +46,39 @@ export const logout = async () => {
     });
     const data = await response.json;
     return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// FOR CHARACTER INTERACTION 
+
+export const startDialogue = async (character) => {
+  try {
+    const response = await fetch(`${baseUrl}/character`,{
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({character : character})
+    })
+    console.log('in startDialogue request')
+    return response.json();
+  }
+   catch (err) {
+  console.log(err)
+  return false
+}
+}
+
+export const createDialogue = async (dialogue) => {
+  try {
+    const res = await fetch(`${baseUrl}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(dialogue),
+    });
+    return res.json();
   } catch (error) {
     console.log(error);
   }
