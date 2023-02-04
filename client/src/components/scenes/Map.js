@@ -76,9 +76,6 @@ class Map extends Phaser.Scene {
       );
 
 
-
-
-
     const layer0 = map.createLayer('sea', tileset);
     const layer = map.createLayer('water', tileset8);
 
@@ -87,6 +84,7 @@ class Map extends Phaser.Scene {
     const objects = map.createLayer('objects', tileset4);
     const houses = map.createLayer('houses', tileset5);
     const door1 = map.createLayer('door1', tileset6);
+
     const door2 = map.createLayer('door2', tileset6);
     const door3 = map.createLayer('door3', tileset6);
     const door4 = map.createLayer('door4', tileset6);
@@ -122,18 +120,36 @@ class Map extends Phaser.Scene {
     this.dude = this.physics.add.sprite(500,600,'bunny').setScale(2)
     this.dude.body.immovable = true
 
-    this.physics.add.collider(this.player, layer);
-    this.physics.add.collider(this.player, trees);
-    this.physics.add.collider(this.player, objects);
-    this.physics.add.collider(this.player, houses);
-    this.physics.add.collider(this.player, door1, ()=>{
-      this.scene.start('MiniGame1', this.player)
-    });
-    this.physics.add.collider(this.player, door2);
-    this.physics.add.collider(this.player, door3);
-    this.physics.add.collider(this.player, door4, ()=>{
-      this.scene.start('MiniGame2', this.player)
-    });
+
+        this.physics.add.collider(this.player, layer);
+        this.physics.add.collider(this.player, trees);
+        this.physics.add.collider(this.player, objects);
+        this.physics.add.collider(this.player, houses);
+        this.physics.add.collider(this.player, door1);
+        this.physics.add.collider(this.player, door2);
+        this.physics.add.collider(this.player, door3);
+        this.physics.add.collider(this.player, door4);
+        this.physics.add.collider(this.player, roof);
+
+        // CHARACTER 1 
+        
+        this.dude = this.physics.add.sprite(500,600,'bunny').setScale(2).setData('character','character1')
+        this.dude.body.immovable = true
+        
+        
+        
+   
+        this.physics.add.collider(this.player, door1, () => {
+          console.log('hello')
+          this.scene.start('Minigame1')
+        })
+
+        this.physics.add.collider(this.player, door2);
+        this.physics.add.collider(this.player, door3);
+        this.physics.add.collider(this.player, door4, ()=>{
+          this.scene.start('MiniGame2', this.player)
+        });
+        // this.physics.add.collider(this.player, roof);
 
 
     // player.setScale(1);
@@ -147,12 +163,14 @@ class Map extends Phaser.Scene {
 
     // DISPATCHING CUSTOM EVENT!!!
 
-    this.physics.add.collider(this.player, this.dude, (reactCollision) => {
+    this.physics.add.collider(this.player, this.dude, (reactCollision, character) => {
+      // const characterName = this.dude.getData('character')
+
       this.input.keyboard.on('keydown-SPACE', () => {
         const collisionTest= new CustomEvent('react', {
           detail: {
-            reactCollision
-          }
+            reactCollision, character
+          }, 
         })
         console.log('talking to character!!!')
         window.dispatchEvent(collisionTest)
