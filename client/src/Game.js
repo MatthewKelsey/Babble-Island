@@ -18,14 +18,17 @@ function Game() {
   
   const [message, setMessage] = useState()
   const [position, setPosition] = useState()
+  const [dialogue, setDialogue] = useState({})
+  
+  console.log(dialogue.initial)
 
   
   
   const getCharacterDialogue = async (character) => {
     console.log(character)
     try {
-      const talk = await startDialogue(character);
-     
+      const dialogue = await startDialogue(character);
+      setDialogue(dialogue)
     } catch (e) {
       console.log(e);
     }
@@ -41,14 +44,12 @@ function Game() {
     console.log('WORKING!!!')
     console.log(detail.character)
     const character = detail.character.data.list.character
-    console.log(character)
-
+    
     getCharacterDialogue(character)
-    setMessage('LETS FUCKING GO!!!!')
+    console.log(character)
+    setMessage(dialogue.initial)
     setPosition(detail.reactCollision.x)
-    console.log(detail.reactCollision.x)
-    console.log(detail)
-    // console.log(detail.reactCollision)
+
   }
   window.addEventListener('react', reactListener)
 

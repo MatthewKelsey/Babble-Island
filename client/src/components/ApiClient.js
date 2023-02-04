@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:4000/";
+const baseUrl = "http://localhost:4000";
 
 // FOR LOGIN 
 
@@ -59,8 +59,7 @@ export const startDialogue = async (character) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({character : character})
     })
-    console.log('in startDialogue request')
-    return response.json();
+    return response.json()
   }
    catch (err) {
   console.log(err)
