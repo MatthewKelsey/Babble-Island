@@ -2,6 +2,8 @@
 import Login from "./components/ReactComponents/Login";
 import { BrowserRouter, Routes, Route} from "react-router-dom"
 // import Register from "./components/Register";
+import Frame from "./components/ReactComponents/Frame";
+
 
 import  Game  from "./Game";
 import Register from './components/ReactComponents/Register'
@@ -17,7 +19,8 @@ function App() {
 <Routes>
   <Route path = '/register' element = {<Register setUser = {setUser}/>} />
   <Route path = '/login' element={<Login setUser ={setUser} />} />
-<Route path="/" element = {<Game />} /> 
+  <Route path = '/frame' element = {<Frame user ={user}/>}  />
+<Route path="/" element = {<Game />} />
 
 </Routes>
 </BrowserRouter>
