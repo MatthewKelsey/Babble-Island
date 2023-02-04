@@ -44,6 +44,16 @@ code {
   position: relative;
 }
 
+
+.game {
+  border-width: 50px;
+    border-style: solid;
+  border-image: url('./pixel/border.png');
+  /* border-image-width: 50px; */
+  border-image-repeat: repeat;
+  /* height: 200; */
+  width: 100%;
+
 .menu-items{
 display: flex;
 justify-content: center;
@@ -69,4 +79,5 @@ align-items: center;
 
 h1{
   justify-self: center;
+
 }
