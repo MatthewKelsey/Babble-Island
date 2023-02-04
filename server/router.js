@@ -1,16 +1,18 @@
 const Router = require('express')
 const router = Router()
 const userCTRL = require('./Controllers/userController')
-const characterCTRL = require('./Controllers/characterController')
+
+const charCTRL = require('./Controllers/CharacterController')
 
 router.post('/register', userCTRL.registerUser )
-
-
 router.post('/login' ,userCTRL.login)
-
 router.get('/users' , userCTRL.getUsers)
 
-router.put('/character', characterCTRL.getCharacter)
+router.put('/character', charCTRL.getCharacter)
+
+router.post('/character', charCTRL.createCharacter)
+
+router.put('/character', charCTRL.getCharacter)
 
 
 module.exports= router

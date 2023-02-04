@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 // import Register from "./components/Register";
 import { useEffect, useState } from 'react';
 
@@ -33,6 +34,7 @@ function Game() {
     scene.createEmitter();
   }
 
+
   const reactListener = ({ detail }) => {
     console.log('WORKING!!!');
     console.log(detail.character);
@@ -52,8 +54,10 @@ function Game() {
 
   return (
     <>
+
       {/* <button onClick={handleClick}></button> */}
       {message && <DialogueBox message={message} setMessage={setMessage} />}
+
     </>
   );
 }
