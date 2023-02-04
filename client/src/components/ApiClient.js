@@ -5,6 +5,7 @@ const baseUrl = "http://localhost:4000";
 export const login = async (user) => {
   try {
     const response = await fetch(`${baseUrl}/login`, {
+
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),

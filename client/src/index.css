@@ -19,6 +19,11 @@ code {
 .container {
   position: relative;
 }
+.menu-items{
+  display:flex;
+  flex-direction: row;
+
+}
 
 .message-box {
   /* background-image: url('../public/assets/game/dialog\ box\ big.png'); */
@@ -32,7 +37,9 @@ code {
   border-radius: 10px;
   background-color: bisque;
   z-index: 10000;
+
 }
+
 
 .close-message-box {
   position: absolute;
@@ -43,3 +50,18 @@ code {
 .container {
   position: relative;
 }
+
+.menu-button{
+  margin:5px;
+cursor: pointer;
+ padding:10px;
+ margin: 10px;
+background-color: bisque;
+
+}
+.menu-button:hover{
+  border:2px;
+  border-style: double;
+  border-color: aquamarine;
+}
+
