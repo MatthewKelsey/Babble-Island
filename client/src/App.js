@@ -13,14 +13,18 @@ function App() {
 
   return (
 
-<BrowserRouter>
-<Routes>
-  <Route path = '/register' element = {<Register setUser = {setUser}/>} />
-  <Route path = '/login' element={<Login setUser ={setUser} />} />
-<Route path="/" element = {<Game />} /> 
+// {/* <BrowserRouter>
+// <Routes>
+//   <Route path = '/register' element = {<Register setUser = {setUser}/>} />
+//   <Route path = '/login' element={<Login setUser ={setUser} />} />
+// <Route path="/" element = {<Game />} /> 
 
-</Routes>
-</BrowserRouter>
+// </Routes>
+// </BrowserRouter> */}
+
+<>
+<Game />
+</>
 
   );
 }
