@@ -145,8 +145,12 @@ class MiniGame1 extends Phaser.Scene {
 
     // CREATE CHEST
 
+    let starCounter = 0 
+
     const generateChest = (x, y) => {
-      this.chestSprite = this.physics.add.sprite(x, y, 'chest').setSize(16, 32).setData('stars','star');
+      starCounter++ 
+      
+      this.chestSprite = this.physics.add.sprite(x, y, 'chest').setSize(16, 32).setData('stars',starCounter);
       this.chestSprite.body.immovable = true;
       this.physics.add.overlap(
         this.player,
@@ -154,13 +158,13 @@ class MiniGame1 extends Phaser.Scene {
         openChest,
         null,
         this
-      );
-      this.physics.add.collider(this.player, this.chestSprite, (reactCollision, stars) => {
+        );
+        this.physics.add.collider(this.player, this.chestSprite, (reactCollision, stars) => {
 
         this.input.keyboard.on('keydown-SPACE', () => {
           const collectStar = new CustomEvent('starCollected', {
             detail: {
-              reactCollision, stars
+              reactCollision, stars 
             }, 
           })
           window.dispatchEvent(collectStar)

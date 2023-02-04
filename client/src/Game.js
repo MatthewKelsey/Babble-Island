@@ -16,10 +16,8 @@ function Game() {
   const [position, setPosition] = useState();
   const [dialogue, setDialogue] = useState({});
   const [message, setMessage] = useState();
-  const [stars, setStars] = useState({})
+  const [stars, setStars] = useState()
   
-  console.log(dialogue.initial);
-
   const getCharacterDialogue = async (character) => {
     console.log(character);
     try {
@@ -30,12 +28,14 @@ function Game() {
     }
   };
 
+  const updateUserStars = async(id)
+
   function handleClick() {
     const scene = phaserGame.scene.keys.Map;
     scene.createEmitter();
   }
 
-  // LISTEN OUT FOR 
+  // LISTEN OUT FOR CHARACTER DIALOG 
   
 
   const reactCharacterListener = ({ detail }) => {
@@ -56,8 +56,11 @@ function Game() {
   const reactCollectStarsListener = ({detail}) => {
     const stars = detail.stars.data.list.stars
     console.log(stars)
+    setStars(stars)
   }
   window.addEventListener('starCollected', reactCollectStarsListener);
+
+  console.log(stars)
 
   useEffect(() => {
     console.log(position);

@@ -82,12 +82,12 @@ export const createDialogue = async (dialogue) => {
   }
 };
 
-export const updateStars = async (id, content) => {
+export const updateStars = async (id) => {
   try {
-    const response = await fetch(`${baseUrl}/character/${id}`,{
+    const response = await fetch(`${baseUrl}/user/${id}`,{
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({itemId : id ,updates :content})
+      body: JSON.stringify({_id : id})
     })
     return response.json();
   }
