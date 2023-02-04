@@ -3,6 +3,7 @@ const baseUrl = "http://localhost:4000";
 // FOR LOGIN 
 
 export const login = async (user) => {
+ 
   try {
     const response = await fetch(`${baseUrl}/login`, {
       method: "POST",

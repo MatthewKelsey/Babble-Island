@@ -37,8 +37,8 @@ const Register = (props) => {
       setState(initialState);
       setExists(true);
     } else {
-      props.setCurrentUser(res);
-      navigate("/profile");
+      props.setUser(res);
+      navigate("/landing")
     }
   };
 

@@ -27,17 +27,16 @@ exports.registerUser = async (req, res) => {
   exports.login = async (req, res) => {
     console.log("logging in");
     try {
-      const { userName } = req.body;
+      
   
-      const user = await User.findOne({ userName: userName })
+      const user = await User.findOne({ userName: req.body.userName})
+      console.log(user)
         const valid = await bcrypt.compare(req.body.password, user.password);
 
         if (valid) {
           // req.session.uid = user._id;
-  
-          res.status(200).send(user);
-        }
-      
+ 
+          res.send(user);}
     } catch (error) {
       console.log(error);
       res
