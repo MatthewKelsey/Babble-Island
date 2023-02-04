@@ -11,7 +11,7 @@ class MiniGame1 extends Phaser.Scene {
   }
 
   init() {
-    this.game.scale.setZoom(2);
+    this.game.scale.setZoom(1.2);
     this.cursors = this.input.keyboard.createCursorKeys();
   }
 
@@ -92,6 +92,7 @@ class MiniGame1 extends Phaser.Scene {
     this.player.setCollideWorldBounds(true);
     this.physics.add.collider(this.player, walls);
     this.physics.add.collider(this.player, this.doorSprite, ()=>{
+      this.music.stop(musicConfig)
       this.scene.start('Map', this.player)
     })
     
@@ -286,7 +287,7 @@ class MiniGame1 extends Phaser.Scene {
         start: 0,
         end: 4,
       }),
-      frameRate: 30,
+      frameRate: 10,
       repeat: 0,
     });
     // });
@@ -311,7 +312,7 @@ class MiniGame1 extends Phaser.Scene {
         start: 4,
         end: 0,
       }),
-      frameRate: 10,
+      frameRate: 5,
       repeat: 0,
     });
 

@@ -29,19 +29,18 @@ z-index: 10000;
 .container{
   position: relative;
 
-  width: 640px;
-  height: 480px;
 }
 
 .message-box{
   /* background-image: url('../public/assets/game/dialog\ box\ big.png'); */
   position: absolute;
+  display: flex;
   top: 800px;
   left: 500px;
-  width: 500px;
+  width: 600px;
+  height: 100px;
   border-radius: 10px;
   background-color: bisque;
-  margin-left: 200;
   z-index: 10000;
 }
 
