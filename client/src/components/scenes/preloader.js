@@ -4,7 +4,7 @@ import Phaser from 'phaser';
 
 export default class Preloader extends Phaser.Scene {
   constructor() {
-  
+
     super('preloader');
     console.log('help im stuck in the preloader!!!')
   }
@@ -70,7 +70,7 @@ export default class Preloader extends Phaser.Scene {
 
 
     // MINI GAME 2
-    
+
     this.load.spritesheet('bunny', '/assets//mini_game2/bunnyFinal.png', {
       frameWidth: 16,
       frameHeight: 19,
