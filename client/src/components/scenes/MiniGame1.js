@@ -219,7 +219,7 @@ class MiniGame1 extends Phaser.Scene {
 
       const fruitsRemaining = fruitsLayer.slice(fruitScore);
 
-      if (!fruitsRemaining.length) {
+      if (fruitsRemaining.length) {
         generateChest(350, 180);
         this.doorSprite.anims.play('openDoors')
       }

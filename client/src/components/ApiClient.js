@@ -82,3 +82,18 @@ export const createDialogue = async (dialogue) => {
   }
 };
 
+export const updateStars = async (id, content) => {
+  try {
+    const response = await fetch(`${baseUrl}/character/${id}`,{
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({itemId : id ,updates :content})
+    })
+    return response.json();
+  }
+   catch (err) {
+  console.log(err)
+  return false
+}
+}
+
