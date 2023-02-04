@@ -25,10 +25,11 @@ function Login(props) {
     }));
   };
   const moveToRegister = () => {
-    navigate("/");
+    navigate("/register");
   };
 
   const handleSubmit = async (e) => {
+    
     e.preventDefault();
 
     const { userName, password } = state;
@@ -39,6 +40,7 @@ function Login(props) {
       alert(`Error`);
       setState(initialState);
     } else {
+      console.log(res)
       props.setUser(res);
       navigate("/landing");
     }
