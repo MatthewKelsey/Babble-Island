@@ -108,16 +108,19 @@ class Map extends Phaser.Scene {
     door2.setCollisionByProperty({ collisions: true });
     door3.setCollisionByProperty({ collisions: true });
     door4.setCollisionByProperty({ collisions: true });
-
+    
     roof.setCollisionByProperty({ collisions: true });
     const debugGraphics = this.add.graphics().setAlpha(0.75);
-
+    
     // door1.renderDebug(debugGraphics, {
-    //     tileColor: null, // Color of non-colliding tiles
-    //     collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
-    //     faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
-    //     });
-
+      //     tileColor: null, // Color of non-colliding tiles
+      //     collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
+      //     faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
+      //     });
+      
+      
+          this.player = new Player(this, 500, 500, 'bunny')
+          .setSize(10, 10).setScale(1.5);
 
         // CHARACTER 1 
         
@@ -181,9 +184,6 @@ class Map extends Phaser.Scene {
 
 
 
-    this.player = new Player(this, 500, 500, 'bunny')
-    .setSize(10, 10).setScale(1.5);
-
     console.log(this.player)
 
     this.physics.add.collider(this.player, layer);
@@ -207,12 +207,12 @@ class Map extends Phaser.Scene {
 
 
 
-    this.createEmitter()
+    // this.createEmitter()
   }
 
-  createEmitter() {
-    console.log('I AM HERE INSIDE THE MAP FUCK YESSS!!!')
-  }
+  // createEmitter() {
+  //   console.log('I AM HERE INSIDE THE MAP FUCK YESSS!!!')
+  // }
 
 
 
