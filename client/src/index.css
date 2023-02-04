@@ -43,3 +43,30 @@ code {
 .container {
   position: relative;
 }
+
+.menu-items{
+display: flex;
+justify-content: center;
+flex-direction: row;
+align-items: center;
+}
+
+.menu-button{
+  margin: 5px;
+  background-color: bisque;
+  width: 10%;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  
+}
+
+.menu-button:hover{
+  border: 5px;
+  border-style:double;
+  border-color: aqua;
+}
+
+h1{
+  justify-self: center;
+}

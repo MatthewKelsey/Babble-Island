@@ -26,6 +26,7 @@ const userSchema = new Schema({
   stars: {
     type: Number, 
     required: true,
+    default:0
   }
 
 });

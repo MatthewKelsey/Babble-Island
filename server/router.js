@@ -13,4 +13,5 @@ router.put('/character', characterCTRL.getCharacter);
 
 router.put('/user/:id', userCTRL.updateUserStar)
 
+
 module.exports = router;

@@ -32,10 +32,31 @@ exports.login = async (req, res) => {
     const user = await User.findOne({ userName: userName });
     const valid = await bcrypt.compare(req.body.password, user.password);
 
+
     if (valid) {
       // req.session.uid = user._id;
 
       res.status(200).send(user);
+
+  exports.login = async (req, res) => {
+    console.log("logging in");
+    try {
+      
+  
+      const user = await User.findOne({ userName: req.body.userName})
+      console.log(user)
+        const valid = await bcrypt.compare(req.body.password, user.password);
+
+        if (valid) {
+          // req.session.uid = user._id;
+ 
+          res.send(user);}
+    } catch (error) {
+      console.log(error);
+      res
+        .status(401)
+        .send({ error: error, message: "Email and/or password incorrect" });
+
     }
   } catch (error) {
     console.log(error);

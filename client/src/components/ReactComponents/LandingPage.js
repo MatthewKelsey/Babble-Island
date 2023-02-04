@@ -18,7 +18,8 @@ navigate('/game')
 
             <div class ='menu-items' >
                 <div class = 'menu-button' onClick={startGame}>
-                    <h2>Start</h2>
+                    <div>
+                    <h2>Start</h2></div>
                 </div>
                 <div class = 'menu-button' onClick={returnToLogin}>
                     <h2>Exit</h2>
