@@ -77,15 +77,7 @@ class Map extends Phaser.Scene {
                 );
 
                 const layer0 = map.createLayer('sea', tileset);
-                const layer = map.createLayer('water', tileset8);
-
-                map.createDynamicLayer(layer, tileset8, 0,0)
-
-Phaser.Tilemaps.Dynamic
-
-                // let layer = map.createDynamicLayer("test", tileset, 0, 0);
-                // this.animatedTiles.init(map);
-               
+                const layer = map.createLayer('water', tileset8);               
 
                 const land = map.createLayer('land', tileset2);
                 const trees = map.createLayer('trees', tileset3);
@@ -138,8 +130,10 @@ Phaser.Tilemaps.Dynamic
         this.physics.add.collider(this.player, door3);
         this.physics.add.collider(this.player, door4);
         this.physics.add.collider(this.player, roof);
+
+        // CHARACTER 1 
         
-        this.dude = this.physics.add.sprite(500,600,'bunny').setScale(2)
+        this.dude = this.physics.add.sprite(500,600,'bunny').setScale(2).setData('character','character1')
         this.dude.body.immovable = true
         
         
@@ -175,12 +169,14 @@ Phaser.Tilemaps.Dynamic
 
     // DISPATCHING CUSTOM EVENT!!! 
 
-    this.physics.add.collider(this.player, this.dude, (reactCollision) => {
+    this.physics.add.collider(this.player, this.dude, (reactCollision, character) => {
+      // const characterName = this.dude.getData('character')
+
       this.input.keyboard.on('keydown-SPACE', () => {
         const collisionTest= new CustomEvent('react', {
           detail: {
-            reactCollision
-          }
+            reactCollision, character
+          }, 
         })
         console.log('talking to character!!!')
         window.dispatchEvent(collisionTest)
