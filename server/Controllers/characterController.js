@@ -1,3 +1,4 @@
+
 const Character = require("../Models/CharacterSchema");
 
 exports.getCharacter = async (req, res) => {
@@ -23,3 +24,4 @@ exports.createCharacter = async (req, res) => {
     res.sendStatus(401);
   }
 };
+
