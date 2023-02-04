@@ -3,6 +3,7 @@ const root = "http://localhost:4000/";
 
 export const login = async (user) => {
   try {
+    console.log(user)
     const response = await fetch(root + "login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
