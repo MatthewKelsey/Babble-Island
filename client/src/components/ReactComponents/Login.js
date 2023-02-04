@@ -25,22 +25,24 @@ function Login(props) {
     }));
   };
   const moveToRegister = () => {
-    navigate("/");
+    navigate("/register");
   };
 
   const handleSubmit = async (e) => {
+    
     e.preventDefault();
 
-    const { email, password } = state;
-    const user = { email: email, password: password };
+    const { userName, password } = state;
+    const user = { userName: userName, password: password };
     const res = await login(user);
     console.log(res);
     if (res.status === 401 || res.status === 400) {
       alert(`Error`);
       setState(initialState);
     } else {
-      // props.setCurrentUser(res);
-      // navigate("/profile");
+      console.log(res)
+      props.setUser(res);
+      navigate("/landing");
     }
   };
 

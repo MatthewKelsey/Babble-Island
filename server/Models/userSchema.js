@@ -22,6 +22,11 @@ const userSchema = new Schema({
   level:{
     type: Number,
     default: 0
+  },
+  stars: {
+    type: Number, 
+    required: true,
+    default:0
   }
 
 });
