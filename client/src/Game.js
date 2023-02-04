@@ -1,5 +1,6 @@
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 // import Register from "./components/Register";
 import { useEffect, useState } from 'react';
 
@@ -36,6 +37,7 @@ function Game() {
     scene.createEmitter()
     
   }
+
   
   const reactListener = ({detail}) => { 
     console.log('WORKING!!!')
@@ -44,23 +46,23 @@ function Game() {
     console.log(character)
 
     getCharacterDialogue(character)
+
     setMessage('LETS FUCKING GO!!!!')
     setPosition(detail.reactCollision.x)
-    console.log(detail.reactCollision.x)
-    console.log(detail)
-    // console.log(detail.reactCollision)
+    
+  
   }
   window.addEventListener('react', reactListener)
 
   useEffect(()=> {
-    console.log(position)
+  
   }, [])
 
 
 
   return (
     <>
-    
+    <div id="phaser-game"></div>
         <button onClick = {handleClick}></button>
         {message && <DialogueBox message = {message} setMessage={setMessage}/>}
         {/* <form onSubmit={handleSubmit}>

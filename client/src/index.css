@@ -30,6 +30,11 @@ z-index: 10000;
   position: relative;
 
 }
+.menu-items{
+  display:flex;
+  flex-direction: row;
+
+}
 
 .message-box{
   /* background-image: url('../public/assets/game/dialog\ box\ big.png'); */
@@ -42,9 +47,19 @@ z-index: 10000;
   border-radius: 10px;
   background-color: bisque;
   z-index: 10000;
+
 }
 
+.menu-button{
+  margin:5px;
+cursor: pointer;
+ padding:10px;
+ margin: 10px;
+background-color: bisque;
 
-.container{
-  position: relative;
+}
+.menu-button:hover{
+  border:2px;
+  border-style: double;
+  border-color: aquamarine;
 }
