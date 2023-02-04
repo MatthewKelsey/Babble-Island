@@ -29,16 +29,15 @@ exports.registerUser = async (req, res) => {
     try {
       const { userName } = req.body;
   
-      const user = await User.findOne({ userName: userName }).populate("Languages",
-      );
-      if (user) {
+      const user = await User.findOne({ userName: userName })
         const valid = await bcrypt.compare(req.body.password, user.password);
+
         if (valid) {
-          req.session.uid = user._id;
+          // req.session.uid = user._id;
   
           res.status(200).send(user);
         }
-      }
+      
     } catch (error) {
       console.log(error);
       res
@@ -58,3 +57,13 @@ exports.registerUser = async (req, res) => {
       }
     });
   };
+
+  exports.getUsers = async (req,res)=>{
+    try {
+      const users = await User.find()
+    res.send(users)
+    } catch (error) {
+      
+    }
+    
+  }

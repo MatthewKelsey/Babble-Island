@@ -80,14 +80,16 @@ class MiniGame2 extends Phaser.Scene {
       //@ts-ignore
       this.activeBox = box;
 
-     
+      
+      
     });
 
-
+    
     this.physics.add.collider(this.player, this.door, ()=>{
       this.scene.start('MiniGame1', this.player)
     })
-  
+    
+    this.createEmitter()
   }
 
   createWordBox() {
@@ -287,6 +289,14 @@ class MiniGame2 extends Phaser.Scene {
     this.updatePlayer();
     // this.createWordBox();
   }
+
+
+
+  createEmitter() {
+    console.log('IM IN MINIGAME 2 FUCK YEAH')
+  }
+
 }
+
 
 export default MiniGame2 

@@ -1,46 +1,60 @@
-
-import Login from "./components/Login";
-import { BrowserRouter, Routes, Route} from "react-router-dom"
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import Register from "./components/Register";
-import {useEffect} from 'react'
-import Phaser from 'phaser'
-import Preloader from './components/scenes/preloader'
-import Map from './components/scenes/Map'
-import MiniGame1 from './components/scenes/MiniGame1'
-import MiniGame2 from './components/scenes/MiniGame2'
+import { useEffect, useState } from 'react';
+
+import phaserGame from './gameConfig';
+import DialogueBox from './DialogueBox';
+
+import { startDialogue } from './components/ApiClient';
 
 function Game() {
+  useEffect(() => {
+    // phaserGame
+  }, []);
 
-useEffect(()=>{
-  const config = {
-    type: Phaser.AUTO,
-    physics: {
-      default: 'arcade',
-      arcade: {
-        debug:true,
-        gravity: { y: 0},
-      },
+  const [position, setPosition] = useState();
+  const [dialogue, setDialogue] = useState({});
+  const [message, setMessage] = useState();
   
-    },
-    scene: [Preloader ,MiniGame1, MiniGame2,  Map],
-    scale: {
-      zoom: 1.5,
-      parent: 'phaser-game',
-      width: window.innerWidth,
-      height: window.innerHeight,
-    },
+  console.log(dialogue.initial);
+
+  const getCharacterDialogue = async (character) => {
+    console.log(character);
+    try {
+      const dialogue = await startDialogue(character);
+      setDialogue(dialogue);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  function handleClick() {
+    const scene = phaserGame.scene.keys.Map;
+    scene.createEmitter();
   }
-  const game = new Phaser.Game(config)
-console.log(game)
-},[])
- 
+
+  const reactListener = ({ detail }) => {
+    console.log('WORKING!!!');
+    console.log(detail.character);
+    const character = detail.character.data.list.character;
+
+    getCharacterDialogue(character);
+
+    setMessage(dialogue.initial);
+    console.log(detail.reactCollision.x)
+    setPosition(detail.reactCollision.x);
+  };
+  window.addEventListener('react', reactListener);
+
+  useEffect(() => {
+    console.log(position);
+  }, []);
+
   return (
-
-
-<div id="phaser-game">
-  I'm a happy React App!!!
-
-    </div>
+    <>
+      {/* <button onClick={handleClick}></button> */}
+      {message && <DialogueBox message={message} setMessage={setMessage} />}
+    </>
   );
 }
 

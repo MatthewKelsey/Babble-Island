@@ -10,10 +10,12 @@ class Map extends Phaser.Scene {
     console.log('in map')
   }
 
+
   create() {
 
     // game.world.setBounds(0,0,2000,2000)
     const map = this.make.tilemap({ key: 'map' });
+
 
     const tileset = map.addTilesetImage(
       'Water',
@@ -23,6 +25,7 @@ class Map extends Phaser.Scene {
       0,
       0
     );
+
     const tileset2 = map.addTilesetImage(
       'Darker_Tall_Grass',
       'grass',
@@ -30,14 +33,14 @@ class Map extends Phaser.Scene {
       16,
       0,
       0
-    );
+      );
     const tileset3 = map.addTilesetImage(
       'Trees',
       'trees',
-      16,
-      16,
-      0,
-      0
+    16,
+    16,
+    0,
+    0
     );
     const tileset4 = map.addTilesetImage(
       'Mushrooms',
@@ -46,8 +49,7 @@ class Map extends Phaser.Scene {
       16,
       0,
       0
-    );
-
+      );
     const tileset5 = map.addTilesetImage(
       'Wooden_House',
       'houses',
@@ -55,7 +57,7 @@ class Map extends Phaser.Scene {
       16,
       0,
       0
-    );
+      );
     const tileset6 = map.addTilesetImage(
       'door_animation',
       'doors',
@@ -63,7 +65,7 @@ class Map extends Phaser.Scene {
       16,
       0,
       0
-    );
+      );
     const tileset7 = map.addTilesetImage(
       'WoodBridge',
       'bridges',
@@ -71,7 +73,7 @@ class Map extends Phaser.Scene {
       16,
       0,
       0
-    );
+      );
     const tileset8 = map.addTilesetImage(
       'Water_4',
       'water',
@@ -79,7 +81,8 @@ class Map extends Phaser.Scene {
       16,
       0,
       0
-    );
+      );
+
 
     const layer0 = map.createLayer('sea', tileset);
     const layer = map.createLayer('water', tileset8);
@@ -89,6 +92,7 @@ class Map extends Phaser.Scene {
     const objects = map.createLayer('objects', tileset4);
     const houses = map.createLayer('houses', tileset5);
     const door1 = map.createLayer('door1', tileset6);
+
     const door2 = map.createLayer('door2', tileset6);
     const door3 = map.createLayer('door3', tileset6);
     const door4 = map.createLayer('door4', tileset6);
@@ -99,13 +103,13 @@ class Map extends Phaser.Scene {
     layer.setCollisionByProperty({ collisions: true });
     trees.setCollisionByProperty({ collisions: true });
     objects.setCollisionByProperty({ collisions: true });
-    // houses.setCollisionByProperty({ collisions: true });
+    houses.setCollisionByProperty({ collisions: true });
     door1.setCollisionByProperty({ collisions: true });
     door2.setCollisionByProperty({ collisions: true });
     door3.setCollisionByProperty({ collisions: true });
     door4.setCollisionByProperty({ collisions: true });
-    roof.setCollisionByProperty({ collisions: true });
 
+    roof.setCollisionByProperty({ collisions: true });
     const debugGraphics = this.add.graphics().setAlpha(0.75);
 
     // door1.renderDebug(debugGraphics, {
@@ -113,6 +117,69 @@ class Map extends Phaser.Scene {
     //     collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
     //     faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
     //     });
+
+
+        // CHARACTER 1 
+        
+        this.character1 = this.physics.add.sprite(500,600,'bunny').setScale(2).setData('character','character1')
+        this.character1.body.immovable = true
+
+        // CHARACTER 2 
+
+        this.character2 = this.physics.add.sprite(900,1595,'bunny').setScale(1.5).setData('character','character2')
+        this.character2.body.immovable = true
+
+        // CHARACTER 3 
+
+        this.character3 = this.physics.add.sprite(1680,720,'bunny').setScale(1.5).setData('character','character3')
+        this.character3.body.immovable = true
+        
+       
+    // DISPATCHING CUSTOM EVENT!!!
+
+    // CHARACTER 1 
+
+    this.physics.add.collider(this.player, this.character1, (reactCollision, character) => {
+
+      this.input.keyboard.on('keydown-SPACE', () => {
+        const collisionTest= new CustomEvent('react', {
+          detail: {
+            reactCollision, character
+          }, 
+        })
+        window.dispatchEvent(collisionTest)
+      });
+    })
+
+    // CHARACTER 2 
+
+    this.physics.add.collider(this.player, this.character2, (reactCollision, character) => {
+
+      this.input.keyboard.on('keydown-SPACE', () => {
+        const collisionTest= new CustomEvent('react', {
+          detail: {
+            reactCollision, character
+          }, 
+        })
+        window.dispatchEvent(collisionTest)
+      });
+    })
+
+    // CHARACTER 3 
+
+    this.physics.add.collider(this.player, this.character3, (reactCollision, character) => {
+
+      this.input.keyboard.on('keydown-SPACE', () => {
+        const collisionTest= new CustomEvent('react', {
+          detail: {
+            reactCollision, character
+          }, 
+        })
+        window.dispatchEvent(collisionTest)
+      });
+    })
+
+
 
     this.player = new Player(this, 500, 500, 'bunny')
     .setSize(10, 10).setScale(1.5);
@@ -138,7 +205,15 @@ class Map extends Phaser.Scene {
 
     // player.setScale(1);
 
+
+
+    this.createEmitter()
   }
+
+  createEmitter() {
+    console.log('I AM HERE INSIDE THE MAP FUCK YESSS!!!')
+  }
+
 
 
   update() {
