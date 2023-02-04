@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import phaserGame from './gameConfig';
 import DialogueBox from './DialogueBox';
 
-import { startDialogue } from './components/ApiClient';
+import { startDialogue, updateStars } from './components/ApiClient';
 
 function Game() {
   useEffect(() => {
@@ -16,8 +16,7 @@ function Game() {
   const [position, setPosition] = useState();
   const [dialogue, setDialogue] = useState({});
   const [message, setMessage] = useState();
-  
-  console.log(dialogue.initial);
+  const [stars, setStars] = useState();
 
   const getCharacterDialogue = async (character) => {
     console.log(character);
@@ -29,13 +28,23 @@ function Game() {
     }
   };
 
+  const addOneStar = async (id) => {
+    try {
+      const star = await updateStars();
+      setStars(star);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   function handleClick() {
     const scene = phaserGame.scene.keys.Map;
     scene.createEmitter();
   }
 
+  // LISTEN OUT FOR CHARACTER DIALOG
 
-  const reactListener = ({ detail }) => {
+  const reactCharacterListener = ({ detail }) => {
     console.log('WORKING!!!');
     console.log(detail.character);
     const character = detail.character.data.list.character;
@@ -43,10 +52,21 @@ function Game() {
     getCharacterDialogue(character);
 
     setMessage(dialogue.initial);
-    console.log(detail.reactCollision.x)
+    console.log(detail.reactCollision.x);
     setPosition(detail.reactCollision.x);
   };
-  window.addEventListener('react', reactListener);
+  window.addEventListener('react', reactCharacterListener);
+
+  // LISTEN OUT FOR STARS COLLECTED
+
+  const reactCollectStarsListener = ({ detail }) => {
+    const stars = detail.stars.data.list.stars;
+    console.log(stars);
+    setStars(stars);
+  };
+  window.addEventListener('starCollected', reactCollectStarsListener);
+
+  console.log(stars);
 
   useEffect(() => {
     console.log(position);
@@ -54,10 +74,8 @@ function Game() {
 
   return (
     <>
-
       {/* <button onClick={handleClick}></button> */}
       {message && <DialogueBox message={message} setMessage={setMessage} />}
-
     </>
   );
 }

@@ -145,8 +145,12 @@ class MiniGame1 extends Phaser.Scene {
 
     // CREATE CHEST
 
+    let starCounter = 0 
+
     const generateChest = (x, y) => {
-      this.chestSprite = this.physics.add.sprite(x, y, 'chest').setSize(16, 32);
+      starCounter++ 
+      
+      this.chestSprite = this.physics.add.sprite(x, y, 'chest').setSize(16, 32).setData('stars',starCounter);
       this.chestSprite.body.immovable = true;
       this.physics.add.overlap(
         this.player,
@@ -154,8 +158,18 @@ class MiniGame1 extends Phaser.Scene {
         openChest,
         null,
         this
-      );
-      this.physics.add.collider(this.player, this.chestSprite);
+        );
+        this.physics.add.collider(this.player, this.chestSprite, (reactCollision, stars) => {
+
+        this.input.keyboard.on('keydown-SPACE', () => {
+          const collectStar = new CustomEvent('starCollected', {
+            detail: {
+              reactCollision, stars 
+            }, 
+          })
+          window.dispatchEvent(collectStar)
+        });
+      })
       return this.chestSprite;
     };
 
@@ -163,10 +177,27 @@ class MiniGame1 extends Phaser.Scene {
 
     function openChest() {
       this.input.keyboard.on('keydown-SPACE', () => {
-        this.physics.add.collider(this.player, this.chestSprite);
+        // this.physics.add.collider(this.player, this.chestSprite);
         this.chestSprite.anims.play('openChest', true);
       });
     }
+
+    // function openChest() {
+
+    // }
+
+
+    this.physics.add.collider(this.player, this.chestSprite, (reactCollision, stars) => {
+
+      this.input.keyboard.on('keydown-SPACE', () => {
+        const collisionTest= new CustomEvent('react', {
+          detail: {
+            reactCollision, stars
+          }, 
+        })
+        window.dispatchEvent(collisionTest)
+      });
+    })
 
     function collectFruits(player, fruit) {
       fruit.destroy(fruit.x, fruit.y);
@@ -219,7 +250,7 @@ class MiniGame1 extends Phaser.Scene {
 
       const fruitsRemaining = fruitsLayer.slice(fruitScore);
 
-      if (!fruitsRemaining.length) {
+      if (fruitsRemaining.length) {
         generateChest(350, 180);
         this.doorSprite.anims.play('openDoors')
       }

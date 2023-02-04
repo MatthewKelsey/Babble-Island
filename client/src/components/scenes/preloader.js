@@ -114,6 +114,8 @@ export default class Preloader extends Phaser.Scene {
       frameRate: 10,
       repeat: -1,
     });
+
     this.scene.start('Map');
+
   }
 }
