@@ -9,10 +9,7 @@ export default function DialogueBox({message , setMessage}) {
   console.log(message)
   return (
     <div className='message-box'>
-<div onClick={boxClose}> X </div>
-
-      {/* <p>{message}</p> */}
-      <img></img>
+<div className='close-message-box' onClick={boxClose}> X </div>
         <p>{message}</p>
       </div>
 

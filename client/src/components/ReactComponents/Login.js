@@ -31,16 +31,16 @@ function Login(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { userName, password } = state;
-    const user = { userName: userName, password: password };
+    const { email, password } = state;
+    const user = { email: email, password: password };
     const res = await login(user);
     console.log(res);
     if (res.status === 401 || res.status === 400) {
       alert(`Error`);
       setState(initialState);
     } else {
-      props.setUser(res);
-      navigate("/landing");
+      // props.setCurrentUser(res);
+      // navigate("/profile");
     }
   };
 
