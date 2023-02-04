@@ -11,29 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.babble-island{
+.babble-island {
   background-image: url('/public/assets/images/login-background.png');
-  height: 100vh
+  height: 100vh;
 }
 
-.message-box{
-position: absolute;
-background-color: bisque;
-height: 200px;
-width: 500px;
-left:300px;
-bottom: 0px;
-z-index: 10000;
-}
-
-.container{
+.container {
   position: relative;
-
 }
 
-.message-box{
+.message-box {
   /* background-image: url('../public/assets/game/dialog\ box\ big.png'); */
   position: absolute;
+  justify-content: center;
   display: flex;
   top: 800px;
   left: 500px;
@@ -44,7 +34,12 @@ z-index: 10000;
   z-index: 10000;
 }
 
+.close-message-box {
+  position: absolute;
+  top: 10px;
+  right: 20px
+}
 
-.container{
+.container {
   position: relative;
 }

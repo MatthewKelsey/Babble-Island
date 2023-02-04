@@ -133,8 +133,18 @@ class Map extends Phaser.Scene {
 
         // CHARACTER 1 
         
-        this.dude = this.physics.add.sprite(500,600,'bunny').setScale(2).setData('character','character1')
-        this.dude.body.immovable = true
+        this.character1 = this.physics.add.sprite(500,600,'bunny').setScale(2).setData('character','character1')
+        this.character1.body.immovable = true
+
+        // CHARACTER 2 
+
+        this.character2 = this.physics.add.sprite(900,1595,'bunny').setScale(1.5).setData('character','character2')
+        this.character2.body.immovable = true
+
+        // CHARACTER 3 
+
+        this.character3 = this.physics.add.sprite(1680,720,'bunny').setScale(1.5).setData('character','character3')
+        this.character3.body.immovable = true
         
         
         
@@ -149,22 +159,16 @@ class Map extends Phaser.Scene {
         this.physics.add.collider(this.player, door4, ()=>{
           this.scene.start('MiniGame2', this.player)
         });
-        // this.physics.add.collider(this.player, roof);
 
-
-    // player.setScale(1);
 
     this.cursors = this.input.keyboard.createCursorKeys();
-    // this.door = this.physics.add.sprite(600, 550, 'bomb')
-    // this.door = this.physics.add.sprite(600,500,'bomb')
-
-    // this.door3 = this.physics.add.sprite(800,500,'bomb')
 
 
     // DISPATCHING CUSTOM EVENT!!!
 
-    this.physics.add.collider(this.player, this.dude, (reactCollision, character) => {
-      // const characterName = this.dude.getData('character')
+    // CHARACTER 1 
+
+    this.physics.add.collider(this.player, this.character1, (reactCollision, character) => {
 
       this.input.keyboard.on('keydown-SPACE', () => {
         const collisionTest= new CustomEvent('react', {
@@ -172,11 +176,37 @@ class Map extends Phaser.Scene {
             reactCollision, character
           }, 
         })
-        console.log('talking to character!!!')
         window.dispatchEvent(collisionTest)
       });
     })
 
+    // CHARACTER 2 
+
+    this.physics.add.collider(this.player, this.character2, (reactCollision, character) => {
+
+      this.input.keyboard.on('keydown-SPACE', () => {
+        const collisionTest= new CustomEvent('react', {
+          detail: {
+            reactCollision, character
+          }, 
+        })
+        window.dispatchEvent(collisionTest)
+      });
+    })
+
+    // CHARACTER 3 
+
+    this.physics.add.collider(this.player, this.character3, (reactCollision, character) => {
+
+      this.input.keyboard.on('keydown-SPACE', () => {
+        const collisionTest= new CustomEvent('react', {
+          detail: {
+            reactCollision, character
+          }, 
+        })
+        window.dispatchEvent(collisionTest)
+      });
+    })
 
 
     this.physics.add.collider(this.player, this.door3, (reactCollision) => {
