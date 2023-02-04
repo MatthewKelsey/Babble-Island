@@ -15,12 +15,21 @@ function Game() {
   const [position, setPosition] = useState();
   const [dialogue, setDialogue] = useState({});
   const [message, setMessage] = useState();
+
+  const [position, setPosition] = useState();
+  const [dialogue, setDialogue] = useState({});
+  const [message, setMessage] = useState();
   
+  console.log(dialogue.initial);
+
   console.log(dialogue.initial);
 
   const getCharacterDialogue = async (character) => {
     console.log(character);
+    console.log(character);
     try {
+      const dialogue = await startDialogue(character);
+      setDialogue(dialogue);
       const dialogue = await startDialogue(character);
       setDialogue(dialogue);
     } catch (e) {
@@ -28,7 +37,10 @@ function Game() {
     }
   };
 
+
   function handleClick() {
+    const scene = phaserGame.scene.keys.Map;
+    scene.createEmitter();
     const scene = phaserGame.scene.keys.Map;
     scene.createEmitter();
   }
