@@ -10,7 +10,7 @@ router.post('/login' ,userCTRL.login)
 
 router.get('/users' , userCTRL.getUsers)
 
-router.put('/character', characterCTRL.getCharacter)
+// router.put('/character', characterCTRL.getCharacter)
 
 
 module.exports= router

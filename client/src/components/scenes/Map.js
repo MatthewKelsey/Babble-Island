@@ -12,7 +12,7 @@ class Map extends Phaser.Scene {
 
 
   create() {
-
+  
     // game.world.setBounds(0,0,2000,2000)
     const map = this.make.tilemap({ key: 'map' });
 

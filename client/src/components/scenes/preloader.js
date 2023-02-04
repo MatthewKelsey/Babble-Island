@@ -6,7 +6,7 @@ export default class Preloader extends Phaser.Scene {
   constructor() {
 
     super('preloader');
-    console.log('help im stuck in the preloader!!!')
+    
   }
 
 
@@ -114,6 +114,6 @@ export default class Preloader extends Phaser.Scene {
       frameRate: 10,
       repeat: -1,
     });
-    this.scene.start('Map');
+    this.scene.start('MiniGame2');
   }
 }
