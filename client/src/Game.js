@@ -8,7 +8,7 @@ import DialogueBox from './DialogueBox';
 
 import { startDialogue, updateStars } from './components/ApiClient';
 
-function Game() {
+function Game({user}) {
   useEffect(() => {
     // phaserGame
   }, []);
@@ -30,7 +30,7 @@ function Game() {
 
   const addOneStar = async (id) => {
     try {
-      const star = await updateStars();
+      const star = await updateStars(id);
       setStars(star);
     } catch (error) {
       console.log(error);
@@ -61,8 +61,9 @@ function Game() {
 
   const reactCollectStarsListener = ({ detail }) => {
     const stars = detail.stars.data.list.stars;
-    console.log(stars);
-    setStars(stars);
+    console.log(user._id)
+    addOneStar(user._id)
+    // setStars(stars);
   };
   window.addEventListener('starCollected', reactCollectStarsListener);
 

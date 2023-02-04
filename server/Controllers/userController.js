@@ -27,36 +27,11 @@ exports.registerUser = async (req, res) => {
 exports.login = async (req, res) => {
   console.log('logging in');
   try {
-    const { userName } = req.body;
-
-    const user = await User.findOne({ userName: userName });
+    const user = await User.findOne({ userName: req.body.userName });
+    console.log(user);
     const valid = await bcrypt.compare(req.body.password, user.password);
-
-
     if (valid) {
-      // req.session.uid = user._id;
-
-      res.status(200).send(user);
-
-  exports.login = async (req, res) => {
-    console.log("logging in");
-    try {
-      
-  
-      const user = await User.findOne({ userName: req.body.userName})
-      console.log(user)
-        const valid = await bcrypt.compare(req.body.password, user.password);
-
-        if (valid) {
-          // req.session.uid = user._id;
- 
-          res.send(user);}
-    } catch (error) {
-      console.log(error);
-      res
-        .status(401)
-        .send({ error: error, message: "Email and/or password incorrect" });
-
+      res.send(user);
     }
   } catch (error) {
     console.log(error);
@@ -87,13 +62,13 @@ exports.getUsers = async (req, res) => {
 
 exports.updateUserStar = async (req, res) => {
   const id = req.params.id;
-  console.log(req.params)
+  console.log(req.params);
   try {
     let user = await User.findOne({ _id: id });
     user.stars++;
-    console.log(user.stars)
-    user.save()
-    res.status(202).send(user)
+    console.log(user.stars);
+    user.save();
+    res.status(202).send(user);
     // res.json(user)
   } catch (error) {
     console.log(error);
