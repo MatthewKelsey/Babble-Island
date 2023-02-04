@@ -7,7 +7,7 @@ class Map extends Phaser.Scene {
       key: 'Map',
     });
   }
-  
+
 
   create() {
 
@@ -26,79 +26,72 @@ class Map extends Phaser.Scene {
       0,
       0
       );
-      const tileset3 = map.addTilesetImage(
-        'Trees',
-        'trees',
+    const tileset3 = map.addTilesetImage(
+      'Trees',
+      'trees',
+    16,
+    16,
+    0,
+    0
+    );
+    const tileset4 = map.addTilesetImage(
+      'Mushrooms',
+      'objects',
       16,
       16,
       0,
       0
       );
-      const tileset4 = map.addTilesetImage(
-        'Mushrooms',
-        'objects',
-        16,
-        16,
-        0,
-        0
-        );
-        
-        const tileset5 = map.addTilesetImage(
-          'Wooden_House',
-          'houses',
-          16,
-          16,
-          0,
-          0
-          );
-          const tileset6 = map.addTilesetImage(
-            'door_animation',
-            'doors',
-            16,
-            16,
-            0,
-            0
-            );
-            const tileset7 = map.addTilesetImage(
-              'WoodBridge',
-              'bridges',
-              16,
-              16,
-              0,
-              0
-              );
-              const tileset8 = map.addTilesetImage(
-                'Water_4',
-                'water',
-                16,
-                16,
-                0,
-                0
-                );
+    const tileset5 = map.addTilesetImage(
+      'Wooden_House',
+      'houses',
+      16,
+      16,
+      0,
+      0
+      );
+    const tileset6 = map.addTilesetImage(
+      'door_animation',
+      'doors',
+      16,
+      16,
+      0,
+      0
+      );
+    const tileset7 = map.addTilesetImage(
+      'WoodBridge',
+      'bridges',
+      16,
+      16,
+      0,
+      0
+      );
+    const tileset8 = map.addTilesetImage(
+      'Water_4',
+      'water',
+      16,
+      16,
+      0,
+      0
+      );
 
-                const layer0 = map.createLayer('sea', tileset);
-                const layer = map.createLayer('water', tileset8);
 
-                map.createDynamicLayer(layer, tileset8, 0,0)
 
-Phaser.Tilemaps.Dynamic
 
-                // let layer = map.createDynamicLayer("test", tileset, 0, 0);
-                // this.animatedTiles.init(map);
-               
 
-                const land = map.createLayer('land', tileset2);
-                const trees = map.createLayer('trees', tileset3);
-                const objects = map.createLayer('objects', tileset4);
-                const houses = map.createLayer('houses', tileset5);
-                const door1 = map.createLayer('door1', tileset6);
+    const layer0 = map.createLayer('sea', tileset);
+    const layer = map.createLayer('water', tileset8);
+
+    const land = map.createLayer('land', tileset2);
+    const trees = map.createLayer('trees', tileset3);
+    const objects = map.createLayer('objects', tileset4);
+    const houses = map.createLayer('houses', tileset5);
+    const door1 = map.createLayer('door1', tileset6);
     const door2 = map.createLayer('door2', tileset6);
     const door3 = map.createLayer('door3', tileset6);
     const door4 = map.createLayer('door4', tileset6);
     const roof = map.createLayer('roof', tileset5);
     const bridges = map.createLayer('bridges', tileset7);
-
-
 
     // land.setCollisionByProperty({collisions:true});
     layer.setCollisionByProperty({ collisions: true });
@@ -109,71 +102,50 @@ Phaser.Tilemaps.Dynamic
     door2.setCollisionByProperty({ collisions: true });
     door3.setCollisionByProperty({ collisions: true });
     door4.setCollisionByProperty({ collisions: true });
-    roof.setCollisionByProperty({ collisions: true });
-
+    
 
 
     const debugGraphics = this.add.graphics().setAlpha(0.75);
-
 
     // door1.renderDebug(debugGraphics, {
     //     tileColor: null, // Color of non-colliding tiles
     //     collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
     //     faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
     //     });
-  
-    
+
+
     this.player = this.physics.add
     .sprite(500, 500, 'bunny')
         .setSize(10, 10)
         .setScale(1.5)
 
+    this.dude = this.physics.add.sprite(500,600,'bunny').setScale(2)
+    this.dude.body.immovable = true
 
-        this.physics.add.collider(this.player, layer);
-        this.physics.add.collider(this.player, trees);
-        this.physics.add.collider(this.player, objects);
-        this.physics.add.collider(this.player, houses);
-        this.physics.add.collider(this.player, door1);
-        this.physics.add.collider(this.player, door2);
-        this.physics.add.collider(this.player, door3);
-        this.physics.add.collider(this.player, door4);
-        this.physics.add.collider(this.player, roof);
-        
-        this.dude = this.physics.add.sprite(500,600,'bunny').setScale(2)
-        this.dude.body.immovable = true
-        
-        
-        
-   
-        this.physics.add.collider(this.player, door1, () => {
-          console.log('hello')
-          this.scene.start('Minigame1')
-        })
-
-        this.physics.add.collider(this.player, door2);
-        this.physics.add.collider(this.player, door3);
-        this.physics.add.collider(this.player, door4, ()=>{
-          this.scene.start('MiniGame2', this.player)
-        });
-        // this.physics.add.collider(this.player, roof);
-
-
-
-
-
-
+    this.physics.add.collider(this.player, layer);
+    this.physics.add.collider(this.player, trees);
+    this.physics.add.collider(this.player, objects);
+    this.physics.add.collider(this.player, houses);
+    this.physics.add.collider(this.player, door1, ()=>{
+      this.scene.start('MiniGame1', this.player)
+    });
+    this.physics.add.collider(this.player, door2);
+    this.physics.add.collider(this.player, door3);
+    this.physics.add.collider(this.player, door4, ()=>{
+      this.scene.start('MiniGame2', this.player)
+    });
 
 
     // player.setScale(1);
 
     this.cursors = this.input.keyboard.createCursorKeys();
-    this.door = this.physics.add.sprite(600, 550, 'bomb')
-    this.door = this.physics.add.sprite(600,500,'bomb')
+    // this.door = this.physics.add.sprite(600, 550, 'bomb')
+    // this.door = this.physics.add.sprite(600,500,'bomb')
 
-    this.door3 = this.physics.add.sprite(800,500,'bomb') 
-    
+    // this.door3 = this.physics.add.sprite(800,500,'bomb')
 
-    // DISPATCHING CUSTOM EVENT!!! 
+
+    // DISPATCHING CUSTOM EVENT!!!
 
     this.physics.add.collider(this.player, this.dude, (reactCollision) => {
       this.input.keyboard.on('keydown-SPACE', () => {
@@ -191,7 +163,7 @@ Phaser.Tilemaps.Dynamic
 
     this.physics.add.collider(this.player, this.door3, (reactCollision) => {
       const collisionTest= new CustomEvent('react', {
-        
+
         detail: {
           position : this.player.x,
           reactCollision
@@ -208,17 +180,6 @@ Phaser.Tilemaps.Dynamic
     })
 
 
-
-    // this.physics.add.collider(this.player, this.door, ()=>{
-    //   this.scene.start('MiniGame1', this.player)
-    // })
-    // this.physics.add.collider(this.player, this.door2, ()=>{
-    //   this.scene.start('MiniGame2', this.player)
-    // })
-
-
-    
-
     this.anims.create({
       key: 'left',
 
@@ -229,10 +190,10 @@ Phaser.Tilemaps.Dynamic
       frameRate: 10,
       repeat: -1,
     });
-    
+
     this.anims.create({
       key: 'up',
-      
+
       frames: this.anims.generateFrameNumbers('bunny', {
         start: 8,
         end: 15,
