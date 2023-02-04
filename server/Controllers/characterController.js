@@ -1,23 +1,27 @@
-const Character = require('../Models/CharacterSchema')
 
+const Character = require("../Models/CharacterSchema");
 
-exports.findDialog = async (req, res) => {
-  
-    const user = await Character.findOne({ userName: userName });
-    if (user)
-      return res
-        .status(409)
-        .send({ message: "User name already exists", status: 409 });
-    try {
-      console.log('in the try')
-      if (password === "") throw new Error();
-      const hashedPassword = await bcrypt.hash(password, saltRounds);
-      const newUser = new User({ ...req.body, password: hashedPassword });
-      const user = await newUser.save();
-      
-      res.status(201).send(user);
-    } catch (error) {
-      console.log(error);
-      res.status(400).send({ message: "Could not create user", status: 400 });
-    }
-  };
+exports.getCharacter = async (req, res) => {
+  try {
+    const character = await Character.findOne({
+      character: req.body.character,
+    });
+
+    res.status(201).send(character);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(400);
+  }
+};
+
+exports.createCharacter = async (req, res) => {
+  try {
+    const newCharacter = await Character.create(req.body);
+
+    res.status(200).send(newCharacter);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(401);
+  }
+};
+

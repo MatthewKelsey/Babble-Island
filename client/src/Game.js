@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 // import Register from "./components/Register";
 import { useEffect, useState } from 'react';
 
@@ -12,22 +13,15 @@ function Game() {
     // phaserGame
   }, []);
 
-  
+  const [position, setPosition] = useState();
   const [dialogue, setDialogue] = useState({});
   const [message, setMessage] = useState();
-
   
-  
-  
-  console.log(dialogue.initial);
-
   console.log(dialogue.initial);
 
   const getCharacterDialogue = async (character) => {
     console.log(character);
-    console.log(character);
     try {
-     
       const dialogue = await startDialogue(character);
       setDialogue(dialogue);
     } catch (e) {
@@ -35,12 +29,11 @@ function Game() {
     }
   };
 
-
   function handleClick() {
-  
     const scene = phaserGame.scene.keys.Map;
     scene.createEmitter();
   }
+
 
   const reactListener = ({ detail }) => {
     console.log('WORKING!!!');
@@ -50,7 +43,8 @@ function Game() {
     getCharacterDialogue(character);
 
     setMessage(dialogue.initial);
-    
+    console.log(detail.reactCollision.x)
+    setPosition(detail.reactCollision.x);
   };
   window.addEventListener('react', reactListener);
 
@@ -60,8 +54,10 @@ function Game() {
 
   return (
     <>
+
       {/* <button onClick={handleClick}></button> */}
       {message && <DialogueBox message={message} setMessage={setMessage} />}
+
     </>
   );
 }
