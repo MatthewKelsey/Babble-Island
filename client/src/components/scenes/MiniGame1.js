@@ -11,7 +11,7 @@ class MiniGame1 extends Phaser.Scene {
   }
 
   init() {
-    this.game.scale.setZoom(1.2);
+    this.game.scale.setZoom(1.5);
     this.cursors = this.input.keyboard.createCursorKeys();
   }
 
@@ -177,7 +177,7 @@ class MiniGame1 extends Phaser.Scene {
 
     function openChest() {
       this.input.keyboard.on('keydown-SPACE', () => {
-        // this.physics.add.collider(this.player, this.chestSprite);
+        this.physics.add.collider(this.player, this.chestSprite);
         this.chestSprite.anims.play('openChest', true);
       });
     }

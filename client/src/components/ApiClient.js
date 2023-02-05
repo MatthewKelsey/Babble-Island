@@ -53,6 +53,15 @@ export const logout = async () => {
 
 // FOR CHARACTER INTERACTION 
 
+export const fetchCharacters = async () => {
+  try {
+    const res = await fetch(`${baseUrl}/character`);
+    return res.json();
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export const startDialogue = async (character) => {
   try {
     const response = await fetch(`${baseUrl}/character`,{
@@ -83,8 +92,18 @@ export const createDialogue = async (dialogue) => {
   }
 };
 
+// USER  STARS 
+
+
+export const fetchUserStars = async () => {
+  try {
+    const res = await fetch(`${baseUrl}/user`);
+    return res.json();
+  } catch (err) {
+    console.log(err);
+  }
+};
 export const updateStars = async (id) => {
-  console.log(id)
   try {
     const response = await fetch(`${baseUrl}/user/${id}`,{
       method: 'PUT',

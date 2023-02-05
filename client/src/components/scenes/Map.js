@@ -140,18 +140,24 @@ class Map extends Phaser.Scene {
        
     // DISPATCHING CUSTOM EVENT!!!
 
+    let isCharacterActive 
     // CHARACTER 1 
 
     this.physics.add.collider(this.player, this.character1, (reactCollision, character) => {
 
-      this.input.keyboard.on('keydown-SPACE', () => {
-        const collisionTest= new CustomEvent('react', {
-          detail: {
-            reactCollision, character
-          }, 
+      let isCharacterActive = true 
+    
+        this.input.keyboard.on('keydown-SPACE', () => {
+          const collisionTest= new CustomEvent('react', {
+            detail: {
+              reactCollision, character
+            }, 
+          })
+          if (isCharacterActive) {
+            window.dispatchEvent(collisionTest)
+          }
+          isCharacterActive = false
         })
-        window.dispatchEvent(collisionTest)
-      });
     })
 
     // CHARACTER 2 
