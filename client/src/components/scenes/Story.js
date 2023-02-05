@@ -10,9 +10,6 @@ function Story(props) {
     return objectArray;
   }
 
- 
-
-
   return <div></div>;
 }
 
