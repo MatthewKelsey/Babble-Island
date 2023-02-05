@@ -3,6 +3,7 @@
 import { getConfig } from '@testing-library/react';
 import Phaser from 'phaser';
 
+
 class MiniGame1 extends Phaser.Scene {
   constructor() {
     super({
@@ -11,7 +12,7 @@ class MiniGame1 extends Phaser.Scene {
   }
 
   init() {
-    this.game.scale.setZoom(1.5);
+    this.game.scale.setZoom(2);
     this.cursors = this.input.keyboard.createCursorKeys();
   }
 
@@ -161,7 +162,7 @@ class MiniGame1 extends Phaser.Scene {
         );
         this.physics.add.collider(this.player, this.chestSprite, (reactCollision, stars) => {
 
-        this.input.keyboard.on('keydown-SPACE', () => {
+        this.input.keyboard.on('keyup-SPACE', () => {
           const collectStar = new CustomEvent('starCollected', {
             detail: {
               reactCollision, stars 
@@ -176,7 +177,7 @@ class MiniGame1 extends Phaser.Scene {
     // OPEN CHEST
 
     function openChest() {
-      this.input.keyboard.on('keydown-SPACE', () => {
+      this.input.keyboard.on('keyup-SPACE', () => {
         this.physics.add.collider(this.player, this.chestSprite);
         this.chestSprite.anims.play('openChest', true);
       });
@@ -189,7 +190,7 @@ class MiniGame1 extends Phaser.Scene {
 
     this.physics.add.collider(this.player, this.chestSprite, (reactCollision, stars) => {
 
-      this.input.keyboard.on('keydown-SPACE', () => {
+      this.input.keyboard.on('keyup-SPACE', () => {
         const collisionTest= new CustomEvent('react', {
           detail: {
             reactCollision, stars
