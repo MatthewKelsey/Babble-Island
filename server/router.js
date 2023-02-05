@@ -10,7 +10,7 @@ router.post('/login', userCTRL.login);
 router.get('/users', userCTRL.getUsers);
 
 router.put('/character', characterCTRL.getCharacter);
-
+router.post('/character', characterCTRL.createCharacter)
 router.put('/user/:id', userCTRL.updateUserStar)
 
 
