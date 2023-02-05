@@ -25,9 +25,6 @@ function Frame({user, setUser}) {
     setUser(user)
   },[])
 
-  console.log(user)
-  console.log(stars)
-
   return (
     <>
       {/* <div className='test'>Frame</div> */}

@@ -48,10 +48,18 @@ function Game({user, setUser, characterList}) {
     console.log('WORKING!!!');
     console.log(detail.character);
     const character = detail.character.data.list.character;
+    console.log(detail.character)
+    
+    // switch(character) {
+      //   case 'character1': setMessage
+    // }
+    if(character === 'character1') setMessage(characterList[0]);
+    console.log(message)
+    if (character === 'character2') setMessage(characterList[1])
+    if (character === 'character3') setMessage(characterList[2])
 
-    getCharacterDialogue(character);
 
-    setMessage(dialogue.initial);
+    // setMessage(characterList[0].initial);
     setPosition(detail.reactCollision.x);
   };
   window.addEventListener('react', reactCharacterListener);
@@ -74,6 +82,8 @@ function Game({user, setUser, characterList}) {
     <>
       {/* <button onClick={handleClick}></button> */}
       {message && <DialogueBox message={message} setMessage={setMessage} />}
+      
+      {/* <DialogueBox message={message} setMessage={setMessage} /> */}
       <Frame user={user} setUser={setUser} stars={stars} setStars={setStars} />
     </>
   );
