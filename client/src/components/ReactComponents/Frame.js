@@ -19,8 +19,9 @@ function Frame({user}) {
     for (let i = 0 ; i < user.stars; i++ ) {
       array.push(i)
     }
+    console.log(user, 'im a FISH!!!!!')
     setStars(array)
-  },[stars])
+  },[])
 
   return (
     <>

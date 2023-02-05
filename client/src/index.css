@@ -53,6 +53,7 @@ code {
   border-image-repeat: repeat;
   /* height: 200; */
   width: 100%;
+}
 
 .menu-items{
 display: flex;

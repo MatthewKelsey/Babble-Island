@@ -23,7 +23,7 @@ function App() {
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path= "/game" element={<Game user= {user} setUser ={setUser} />} />
         <Route path= "/landing" element={<LandingPage user = {user}/>} />
-        <Route path = '/frame' element = {<Frame user ={user}/>}  />
+        <Route path = '/game' element = {<Frame  user ={user}/>} />
       </Routes>
     </BrowserRouter>
 
