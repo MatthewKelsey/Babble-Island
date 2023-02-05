@@ -1,24 +1,22 @@
 // @ts-nocheck
 import Phaser from 'phaser';
+import Player from './Player.js';
 
 class Map extends Phaser.Scene {
   constructor() {
     super({
       key: 'Map',
     });
+    console.log('in map');
   }
 
-
   create() {
-
     // game.world.setBounds(0,0,2000,2000)
     const map = this.make.tilemap({ key: 'map' });
     // map.setScrollFactor(0)
 
     const tileset = map.addTilesetImage('Water', 'water', 16, 16, 0, 0);
-    console.log(tileset)
 
-    tileset.image.frames
     const tileset2 = map.addTilesetImage(
       'Darker_Tall_Grass',
       'grass',
@@ -26,23 +24,9 @@ class Map extends Phaser.Scene {
       16,
       0,
       0
-      );
-    const tileset3 = map.addTilesetImage(
-      'Trees',
-      'trees',
-    16,
-    16,
-    0,
-    0
     );
-    const tileset4 = map.addTilesetImage(
-      'Mushrooms',
-      'objects',
-      16,
-      16,
-      0,
-      0
-      );
+    const tileset3 = map.addTilesetImage('Trees', 'trees', 16, 16, 0, 0);
+    const tileset4 = map.addTilesetImage('Mushrooms', 'objects', 16, 16, 0, 0);
     const tileset5 = map.addTilesetImage(
       'Wooden_House',
       'houses',
@@ -50,7 +34,7 @@ class Map extends Phaser.Scene {
       16,
       0,
       0
-      );
+    );
     const tileset6 = map.addTilesetImage(
       'door_animation',
       'doors',
@@ -58,27 +42,9 @@ class Map extends Phaser.Scene {
       16,
       0,
       0
-      );
-    const tileset7 = map.addTilesetImage(
-      'WoodBridge',
-      'bridges',
-      16,
-      16,
-      0,
-      0
-      );
-    const tileset8 = map.addTilesetImage(
-      'Water_4',
-      'water',
-      16,
-      16,
-      0,
-      0
-      );
-
-
-
-
+    );
+    const tileset7 = map.addTilesetImage('WoodBridge', 'bridges', 16, 16, 0, 0);
+    const tileset8 = map.addTilesetImage('Water_4', 'water', 16, 16, 0, 0);
 
     const layer0 = map.createLayer('sea', tileset);
     const layer = map.createLayer('water', tileset8);
@@ -88,6 +54,7 @@ class Map extends Phaser.Scene {
     const objects = map.createLayer('objects', tileset4);
     const houses = map.createLayer('houses', tileset5);
     const door1 = map.createLayer('door1', tileset6);
+
     const door2 = map.createLayer('door2', tileset6);
     const door3 = map.createLayer('door3', tileset6);
     const door4 = map.createLayer('door4', tileset6);
@@ -105,7 +72,7 @@ class Map extends Phaser.Scene {
     door4.setCollisionByProperty({ collisions: true });
 
 
-
+    roof.setCollisionByProperty({ collisions: true });
     const debugGraphics = this.add.graphics().setAlpha(0.75);
 
     // door1.renderDebug(debugGraphics, {
@@ -114,160 +81,140 @@ class Map extends Phaser.Scene {
     //     faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
     //     });
 
+    this.player = new Player(this, 500, 500, 'bunny')
+      .setSize(10, 10)
+      .setScale(1.5);
 
-    this.player = this.physics.add
-    .sprite(500, 500, 'bunny')
-        .setSize(10, 10)
-        .setScale(1.5)
+    // CHARACTER 1
 
-    this.dude = this.physics.add.sprite(500,600,'bunny').setScale(2)
-    this.dude.body.immovable = true
+    this.character1 = this.physics.add
+      .sprite(500, 600, 'bunny')
+      .setScale(2)
+      .setData('character', 'character1')
+      .setActive(false);
+    this.character1.body.immovable = true;
+
+    // CHARACTER 2
+
+    this.character2 = this.physics.add
+      .sprite(900, 1595, 'bunny')
+      .setScale(1.5)
+      .setData('character', 'character2')
+      .setActive(false);
+    this.character2.body.immovable = true;
+
+    // CHARACTER 3
+
+    this.character3 = this.physics.add
+      .sprite(1680, 720, 'bunny')
+      .setScale(1.5)
+      .setData('character', 'character3')
+      .setActive(false);
+    this.character3.body.immovable = true;
+
+    // DISPATCHING CUSTOM EVENT!!!
+
+    let isCharacterActive = false;
+    // CHARACTER 1
+
+    console.log(this.character1);
+
+    console.log(Phaser.Math.Distance)
+    
+    this.physics.add.collider(
+      this.player,
+      this.character1,
+      (reactCollision, character) => {
+        this.character1.setActive(true)
+        this.input.keyboard.on('keyup-SPACE', () => {
+          const collisionTest = new CustomEvent('react', {
+            detail: {
+              reactCollision,
+              character,
+            },
+          });
+          if(this.character1.active) {
+            window.dispatchEvent(collisionTest);
+          }
+          this.character1.setActive(false)
+        });
+      }
+    );
+
+    // CHARACTER 2
+
+    this.physics.add.collider(
+      this.player,
+      this.character2,
+      (reactCollision, character) => {
+        this.character2.setActive(true);
+        this.input.keyboard.on('keydown-SPACE', () => {
+          const collisionTest = new CustomEvent('react', {
+            detail: {
+              reactCollision,
+              character,
+            },
+          });
+          if (this.character2.active) {
+            window.dispatchEvent(collisionTest);
+          }
+          this.character2.setActive(false);
+        });
+      }
+    );
+
+    // CHARACTER 3
+
+    this.physics.add.collider(
+      this.player,
+      this.character3,
+      (reactCollision, character) => {
+        this.character3.setActive(true);
+        this.input.keyboard.on('keydown-SPACE', () => {
+          const collisionTest = new CustomEvent('react', {
+            detail: {
+              reactCollision,
+              character,
+            },
+          });
+          if (this.character3.active) {
+            window.dispatchEvent(collisionTest);
+          }
+          this.character3.setActive(false);
+        });
+        // this.character3.setActive(false)
+      }
+    );
 
     this.physics.add.collider(this.player, layer);
     this.physics.add.collider(this.player, trees);
     this.physics.add.collider(this.player, objects);
     this.physics.add.collider(this.player, houses);
-    this.physics.add.collider(this.player, door1, ()=>{
-      this.scene.start('MiniGame1', this.player)
+    this.physics.add.collider(this.player, door1, () => {
+      this.scene.start('MiniGame1', this.player);
     });
     this.physics.add.collider(this.player, door2);
     this.physics.add.collider(this.player, door3);
-    this.physics.add.collider(this.player, door4, ()=>{
-      this.scene.start('MiniGame2', this.player)
+    this.physics.add.collider(this.player, door4, () => {
+      this.scene.start('MiniGame2', this.player);
     });
+    this.physics.add.collider(this.player, roof);
 
+    // this.player.setCollideWorldBounds(true);
 
     // player.setScale(1);
 
-    this.cursors = this.input.keyboard.createCursorKeys();
-    // this.door = this.physics.add.sprite(600, 550, 'bomb')
-    // this.door = this.physics.add.sprite(600,500,'bomb')
-
-    // this.door3 = this.physics.add.sprite(800,500,'bomb')
-
-
-    // DISPATCHING CUSTOM EVENT!!!
-
-    this.physics.add.collider(this.player, this.dude, (reactCollision) => {
-      this.input.keyboard.on('keydown-SPACE', () => {
-        const collisionTest= new CustomEvent('react', {
-          detail: {
-            reactCollision
-          }
-        })
-        console.log('talking to character!!!')
-        window.dispatchEvent(collisionTest)
-      });
-    })
-
-
-
-    this.physics.add.collider(this.player, this.door3, (reactCollision) => {
-      const collisionTest= new CustomEvent('react', {
-
-        detail: {
-          position : this.player.x,
-          reactCollision
-        }
-      })
-      window.dispatchEvent(collisionTest)
-    })
-
-    this.physics.add.collider(this.player, this.door, ()=>{
-      this.scene.start('MiniGame1', this.player)
-    })
-    this.physics.add.collider(this.player, this.door2, ()=>{
-      this.scene.start('MiniGame2', this.player)
-    })
-
-
-    this.anims.create({
-      key: 'left',
-
-      frames: this.anims.generateFrameNumbers('bunny', {
-        start: 24,
-        end: 31,
-      }),
-      frameRate: 10,
-      repeat: -1,
-    });
-
-    this.anims.create({
-      key: 'up',
-
-      frames: this.anims.generateFrameNumbers('bunny', {
-        start: 8,
-        end: 15,
-      }),
-      frameRate: 10,
-      repeat: -1,
-    });
-
-    this.anims.create({
-      key: 'turn',
-      frames: [{ key: 'bunny', frame: 4 }],
-      frameRate: 20,
-    });
-
-    this.anims.create({
-      key: 'right',
-
-      frames: this.anims.generateFrameNumbers('bunny', {
-        start: 17,
-        end: 23,
-      }),
-      frameRate: 10,
-      repeat: -1,
-    });
-
-    this.anims.create({
-      key: 'down',
-
-      frames: this.anims.generateFrameNumbers('bunny', {
-        start: 0,
-        end: 7,
-      }),
-      frameRate: 10,
-      repeat: -1,
-    });
-
-    this.createEmitter()
+    // this.createEmitter()
   }
 
-  createEmitter() {
-    console.log('I AM HERE INSIDE THE MAP FUCK YESSS!!!')
-  }
-
-
+  // createEmitter() {
+  //   console.log('I AM HERE INSIDE THE MAP FUCK YESSS!!!')
+  // }
 
   update() {
-    const cursors = this.input.keyboard.createCursorKeys();
+    this.player.updatePlayer();
 
-    if (cursors.left.isDown) {
-      this.player.setVelocity(-160, 0);
-
-      this.player.anims.play('left', true);
-    } else if (cursors.right.isDown) {
-      this.player.setVelocity(160, 0);
-
-      this.player.anims.play('right', true);
-    } else if (cursors.up.isDown) {
-      this.player.setVelocity(0, -160);
-
-      this.player.anims.play('up', true);
-    } else if (cursors.down.isDown) {
-      this.player.setVelocity(0, 160);
-
-      this.player.anims.play('down', true);
-    } else {
-      this.player.setVelocity(0);
-      this.player.anims.play('turn');
-    }
-
-    if (cursors.up.isDown && this.player.body.touching.down) {
-      this.player.setVelocityY(-330);
-    }
-    this.game.scale.setZoom(1)
+    this.game.scale.setZoom(1);
     this.cameras.main.startFollow(this.player);
     this.cameras.main.zoomTo(2,2)
     this.cameras.main.setBounds(0, 0, 2000, 2000, true);

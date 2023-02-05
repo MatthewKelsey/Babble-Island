@@ -13,7 +13,7 @@ import quit from '../../pixel/quit.png';
 // import HeartImg from '../../../public/assets/pixel/heart';
 
 
-function Frame({user}) {
+function Frame({user, setUser}) {
 
   const [stars, setStars] = useState([4,6]);
   const [hearts, setHearts] = useState([1,2]);
@@ -25,8 +25,11 @@ function Frame({user}) {
     for (let i = 0 ; i < user.stars; i++ ) {
       array.push(i)
     }
+    console.log(array)
+    console.log(user, 'im a FISH!!!!!')
     setStars(array)
-  },[stars])
+    setUser(user)
+  },[])
 
   return (
     <>
