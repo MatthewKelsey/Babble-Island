@@ -18,6 +18,8 @@ router.put('/user/:id', userCTRL.updateUserStar)
 router.get('/character', characterCTRL.getAllCharacters)
 router.put('/character', characterCTRL.getCharacter);
 
+router.post('/character', characterCTRL.createCharacter)
+router.put('/user/:id', userCTRL.updateUserStar)
 
 
 
