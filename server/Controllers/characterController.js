@@ -14,6 +14,15 @@ exports.getCharacter = async (req, res) => {
   }
 };
 
+exports.getAllCharacters = async (req,res) => {
+  try {
+    const characters = await Character.find()
+    res.send(characters )
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 exports.createCharacter = async (req, res) => {
   try {
     const newCharacter = await Character.create(req.body);

@@ -9,7 +9,7 @@ import mapContainer from '../../pixel/map_container.png'
 // import HeartImg from '../../../public/assets/pixel/heart';
 
 
-function Frame({user}) {
+function Frame({user, setUser}) {
 
   const [stars, setStars] = useState([]);
   const [hearts, setHearts] = useState([1,2]);
@@ -19,9 +19,14 @@ function Frame({user}) {
     for (let i = 0 ; i < user.stars; i++ ) {
       array.push(i)
     }
+    console.log(array)
     console.log(user, 'im a FISH!!!!!')
     setStars(array)
+    setUser(user)
   },[])
+
+  console.log(user)
+  console.log(stars)
 
   return (
     <>

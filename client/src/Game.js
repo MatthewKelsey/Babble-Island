@@ -2,21 +2,20 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // import Register from "./components/Register";
 import { useEffect, useState } from 'react';
-
 import phaserGame from './gameConfig';
 import DialogueBox from './DialogueBox';
-
 import { startDialogue, updateStars } from './components/ApiClient';
+import Frame from './components/ReactComponents/Frame';
 
-function Game({user}) {
-  useEffect(() => {
-    // phaserGame
-  }, []);
+
+function Game({user, setUser, characterList}) {
 
   const [position, setPosition] = useState();
   const [dialogue, setDialogue] = useState({});
   const [message, setMessage] = useState();
   const [stars, setStars] = useState();
+
+  console.log(characterList)
 
   const getCharacterDialogue = async (character) => {
     console.log(character);
@@ -32,15 +31,16 @@ function Game({user}) {
     try {
       const star = await updateStars(id);
       setStars(star);
+      console.log(stars)
     } catch (error) {
       console.log(error);
     }
   };
 
-  function handleClick() {
-    const scene = phaserGame.scene.keys.Map;
-    scene.createEmitter();
-  }
+  // function handleClick() {
+  //   const scene = phaserGame.scene.keys.Map;
+  //   scene.createEmitter();
+  // }
 
   // LISTEN OUT FOR CHARACTER DIALOG
 
@@ -52,7 +52,6 @@ function Game({user}) {
     getCharacterDialogue(character);
 
     setMessage(dialogue.initial);
-    console.log(detail.reactCollision.x);
     setPosition(detail.reactCollision.x);
   };
   window.addEventListener('react', reactCharacterListener);
@@ -61,22 +60,21 @@ function Game({user}) {
 
   const reactCollectStarsListener = ({ detail }) => {
     const stars = detail.stars.data.list.stars;
-    console.log(user._id)
+    console.log(user.stars, 'before ')
+    let userUpdate = user
+    userUpdate.stars++ 
+    console.log(userUpdate.stars,'after')
+    setUser(userUpdate)
     addOneStar(user._id)
     // setStars(stars);
   };
   window.addEventListener('starCollected', reactCollectStarsListener);
 
-  console.log(stars);
-
-  useEffect(() => {
-    console.log(position);
-  }, []);
-
   return (
     <>
       {/* <button onClick={handleClick}></button> */}
       {message && <DialogueBox message={message} setMessage={setMessage} />}
+      <Frame user={user} setUser={setUser} stars={stars} setStars={setStars} />
     </>
   );
 }
