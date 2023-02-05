@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 .nav {
   position: absolute;
   top: 0;
@@ -34,28 +36,66 @@
   object-fit: cover;
 }
 
-.map-container {
+.map-container{
   width: 330px;
   height: 330px;
   position: absolute;
-  top: 50px;
-  right: 350px;
-
+  top: 30px;
+  right: 30px;
 }
 
-.map {
-  max-width: 250px;
-  min-width: 250px;
+.map{
+  width: 330px;
+  height: 330px;
   position: absolute;
-  top: 90px;
-  right: 390px;
-  border-radius: 10px;
-
-
 }
+
  .top {
   display: flex;
   flex-direction: row;
   width: 100wh;
  }
 
+.icon {
+  width: 100px;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
+.x {
+  width: 70px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.menu {
+  width: 200px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.menu-open {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-family: ;
+}
+
+.stars-number {
+  font-family: 'Press Start 2P';
+  color: white;
+  font-size: 30px;
+  
+
+}
+
+.stars-container {
+  display: flex;
+  align-items: center;
+}

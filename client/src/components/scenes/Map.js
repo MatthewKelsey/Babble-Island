@@ -13,6 +13,7 @@ class Map extends Phaser.Scene {
   create() {
     // game.world.setBounds(0,0,2000,2000)
     const map = this.make.tilemap({ key: 'map' });
+    // map.setScrollFactor(0)
 
     const tileset = map.addTilesetImage('Water', 'water', 16, 16, 0, 0);
 
@@ -69,6 +70,7 @@ class Map extends Phaser.Scene {
     door2.setCollisionByProperty({ collisions: true });
     door3.setCollisionByProperty({ collisions: true });
     door4.setCollisionByProperty({ collisions: true });
+
 
     roof.setCollisionByProperty({ collisions: true });
     const debugGraphics = this.add.graphics().setAlpha(0.75);
@@ -214,7 +216,11 @@ class Map extends Phaser.Scene {
 
     this.game.scale.setZoom(1);
     this.cameras.main.startFollow(this.player);
-    this.cameras.main.setBounds(0, 0);
+    this.cameras.main.zoomTo(2,2)
+    this.cameras.main.setBounds(0, 0, 2000, 2000, true);
+    
+
+
   }
 }
 
