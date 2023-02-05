@@ -32,7 +32,7 @@ code {
   width: 600px;
   /* height: 100px; */
   border-radius: 10px;
-  background-color: bisque;
+  background-color: #efc182;
   z-index: 10000;
 }
 
@@ -72,7 +72,7 @@ code {
 
 
 
-.game {
+/* .game {
 
   border-width: 50px;
     border-style: solid;
@@ -82,7 +82,7 @@ code {
 
   width: 100%;
 
-}
+} */
 
 .menu-items{
 display: flex;
