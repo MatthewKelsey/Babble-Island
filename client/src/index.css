@@ -11,10 +11,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.babble-island {
-  background-image: url('/public/assets/images/login-background.png');
-  height: 100vh;
-}
 
 .container {
   position: relative;
@@ -103,7 +99,8 @@ code {
   align-items: center;
   height: 80%;
 
-}
+
+
 
 .menu-button:hover {
   border: 5px;
@@ -114,6 +111,7 @@ code {
 h1 {
   justify-self: center;
 }
+
 
 .story-box{
   display: flex;
@@ -127,4 +125,5 @@ h1 {
 .individual-word:hover{
   background-color: #efc182;
 }
+
 
