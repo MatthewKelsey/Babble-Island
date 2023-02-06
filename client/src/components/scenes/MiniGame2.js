@@ -1,22 +1,35 @@
 // @ts-nocheck
 
 import Phaser from "phaser";
+const words = [1, 2, 3, 4, 5, 6, 7, 8];
 
-const boxContent = [
-  [0, 1, 2, 3],
-  [4, 5, 6, 7],
-];
+function addToBox(arr) {
+  let newBox = [[], []];
+  const shuffledArray = arr.sort((a, b) => 0.5 - Math.random());
+  for (let i = 0; i < arr.length; i++) {
+    if (newBox[0].length < 4) {
+      newBox[0].push(shuffledArray[i]);
+    } else {
+      newBox[1].push(shuffledArray[i]);
+    }
+  }
+  return newBox;
+}
+function addToSpanishBox(arr) {
+  let newBox = [[], []];
+  const shuffledArray = arr.sort((a, b) => 0.5 - Math.random());
+  for (let i = 0; i < arr.length; i++) {
+    if (newBox[0].length < 4) {
+      newBox[0].push(shuffledArray[i] + 8);
+    } else {
+      newBox[1].push(shuffledArray[i] + 8);
+    }
+  }
+  return newBox;
+}
 
-const wordBox = [
-  ["green", "verde"],
-  ["blue", "azul"],
-  ["white", "blanco"],
-  ["black", "negro"],
-  ["red", "rojo"],
-  ["brown", "moron"],
-  ["a", "g"],
-  ["j", "u"],
-];
+const englishBoxContent = addToBox(words);
+const spanishBoxContent = addToSpanishBox(words);
 
 class MiniGame2 extends Phaser.Scene {
   /** @type {Phaser.Types.Input.Keyboard.CursorKeys} */
@@ -34,9 +47,11 @@ class MiniGame2 extends Phaser.Scene {
 
   /**@type {Phaser.GameObjects.Group} */
   itemsGroup;
-  /** @type {{box: Phaser.Physics.Arcade.Sprite, item: object}[]} */
+  /** @type {{box: Phaser.Physics.Arcade.Sprite, item: Phaser.GameObjects.Sprite}[]} */
   selectedBoxes = [];
   /** @type {Phaser.Physics.Arcade} */
+
+  matchesCount = 0;
 
   constructor() {
     super("MiniGame2");
@@ -102,14 +117,14 @@ class MiniGame2 extends Phaser.Scene {
     let x = 0.2;
     let y = 0.2;
 
-    for (let row = 0; row < boxContent.length; row++) {
-      for (let col = 0; col < boxContent[row].length; col++) {
+    for (let row = 0; row < spanishBoxContent.length; row++) {
+      for (let col = 0; col < spanishBoxContent[row].length; col++) {
         const box = this.boxGroup
           .get(width * x, height * y, "boxes")
           .setScale(3)
           .setSize(46, 32)
           .setOffset(-14, 0)
-          .setData("item", boxContent[row][col])
+          .setData("item", spanishBoxContent[row][col])
           .setData("language", "spanish");
         x += 0.2;
       }
@@ -124,14 +139,14 @@ class MiniGame2 extends Phaser.Scene {
     let x = 0.2;
     let y = 0.6;
 
-    for (let row = 0; row < boxContent.length; row++) {
-      for (let col = 0; col < boxContent[row].length; col++) {
+    for (let row = 0; row < englishBoxContent.length; row++) {
+      for (let col = 0; col < englishBoxContent[row].length; col++) {
         const box = this.boxGroup
           .get(width * x, height * y, "boxes")
           .setScale(3)
           .setSize(46, 32)
           .setOffset(-14, 0)
-          .setData("item", boxContent[row][col])
+          .setData("item", englishBoxContent[row][col])
           .setData("language", "english");
         x += 0.2;
       }
@@ -175,47 +190,82 @@ class MiniGame2 extends Phaser.Scene {
       return;
     }
     const item = box.getData("item");
-    // const language = box.getData("language");
+    const language = box.getData("language");
     /**@type {Phaser.GameObjects.Sprite} */
     let itemPic;
+    console.log(itemPic);
     switch (item) {
-      case 0:
-        itemPic = this.itemsGroup.get(box.x, box.y);
-        itemPic.setTexture("pear");
-        break;
-
       case 1:
         itemPic = this.itemsGroup.get(box.x, box.y);
-        itemPic.setTexture("apple");
+        itemPic.setTexture("red");
         break;
       case 2:
         itemPic = this.itemsGroup.get(box.x, box.y);
-        itemPic.setTexture("apple");
+        itemPic.setTexture("green");
         break;
       case 3:
         itemPic = this.itemsGroup.get(box.x, box.y);
-        itemPic.setTexture("apple");
+        itemPic.setTexture("blue");
         break;
       case 4:
         itemPic = this.itemsGroup.get(box.x, box.y);
-        itemPic.setTexture("apple");
+        itemPic.setTexture("pink");
         break;
       case 5:
         itemPic = this.itemsGroup.get(box.x, box.y);
-        itemPic.setTexture("pear");
+        itemPic.setTexture("white");
         break;
-
       case 6:
         itemPic = this.itemsGroup.get(box.x, box.y);
-        itemPic.setTexture("apple");
+        itemPic.setTexture("black");
         break;
       case 7:
         itemPic = this.itemsGroup.get(box.x, box.y);
-        itemPic.setTexture("apple");
+        itemPic.setTexture("yellow");
         break;
       case 8:
+        itemPic = this.itemsGroup.get(box.x, box.y).setScale(0.1);
+        itemPic.setTexture("orange");
+        break;
+      case 9:
+        itemPic = this.itemsGroup.get(box.x, box.y).setScale(0.1);
+        itemPic.setTexture("rojo");
+break
+      case 10:
         itemPic = this.itemsGroup.get(box.x, box.y);
-        itemPic.setTexture("apple");
+        itemPic.setTexture("verde");
+
+        break;
+      case 11:
+        itemPic = this.itemsGroup.get(box.x, box.y);
+        itemPic.setTexture("azul");
+
+        break;
+      case 12:
+        itemPic = this.itemsGroup.get(box.x, box.y).setScale(0.1);
+        itemPic.setTexture("rosa");
+
+        break;
+      case 13:
+        itemPic = this.itemsGroup.get(box.x, box.y).setScale(0.1);
+        itemPic.setTexture("blanco").setSize(0.1);
+
+        break;
+      case 14:
+        itemPic = this.itemsGroup.get(box.x, box.y).setScale(0.1);
+        itemPic.setTexture("negro");
+
+        break;
+      case 15:
+        itemPic = this.itemsGroup.get(box.x, box.y).setScale(0.1);
+        itemPic.setTexture("amarillo");
+
+        break;
+      case 16:
+        itemPic = this.itemsGroup.get(box.x, box.y).setScale(0.1);
+        itemPic.setTexture("naranja");
+        break;
+  
     }
 
     box.setData("opened", true);
@@ -230,7 +280,7 @@ class MiniGame2 extends Phaser.Scene {
       targets: itemPic,
       y: "-= 50",
       alpha: 1,
-      scale: 1,
+      scale: 0.1,
       duration: 500,
       onComplete: () => {
         console.log(this.selectedBoxes);
@@ -248,8 +298,10 @@ class MiniGame2 extends Phaser.Scene {
     const second = this.selectedBoxes.pop();
     const first = this.selectedBoxes.pop();
     console.log(second);
-    if (first.box.getData("item") !== second.box.getData("item")) {
-      console.log("Matt is the best");
+    if (
+      first.box.getData("item") !== second.box.getData("item") - 8 &&
+      first.box.getData("item") - 8 !== second.box.getData("item")
+    ) {
       this.tweens.add({
         targets: [first.itemPic, second.itemPic],
         y: "+= 50",
@@ -262,6 +314,13 @@ class MiniGame2 extends Phaser.Scene {
           second.box.setData("opened", false);
         },
       });
+      return;
+    }
+    this.matchesCount++;
+    console.log(this.matchesCount);
+    if (this.matchesCount === 8) {
+      this.add.text(this.scale.width / 2, this.scale.height / 2, "Well Done");
+      //Render chest etc
     }
   }
   updateActiveBox() {
