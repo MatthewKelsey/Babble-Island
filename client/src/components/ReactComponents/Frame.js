@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import React, { startTransition, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Frame.css';
 import HeartImg from '../../pixel/heart.png';
 import StarImg from '../../pixel/star.png';

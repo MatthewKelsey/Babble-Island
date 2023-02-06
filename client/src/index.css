@@ -115,10 +115,6 @@ h1 {
   justify-self: center;
 }
 
-.story-box{
-  display: flex;
-  flex-wrap: wrap;
-}
 
 .individual-word{
   margin : 5px;
