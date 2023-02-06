@@ -63,8 +63,6 @@ class MiniGame2 extends Phaser.Scene {
       .setOffset(2, 10);
     this.player.setCollideWorldBounds(true);
 
-    console.log(this.player);
-
     this.boxGroup = this.physics.add.staticGroup();
 
     this.createSpanishBoxes();
@@ -173,6 +171,9 @@ class MiniGame2 extends Phaser.Scene {
     if (!box) {
       return;
     }
+    if (box.getData("opened")) {
+      return;
+    }
     const item = box.getData("item");
     // const language = box.getData("language");
     /**@type {Phaser.GameObjects.Sprite} */
@@ -219,7 +220,6 @@ class MiniGame2 extends Phaser.Scene {
 
     box.setData("opened", true);
     itemPic.setData("sorted", true);
-
     itemPic.setDepth(3000);
 
     itemPic.scale = 0;
@@ -248,11 +248,10 @@ class MiniGame2 extends Phaser.Scene {
     const second = this.selectedBoxes.pop();
     const first = this.selectedBoxes.pop();
     console.log(second);
-    if (first.box.getData("words") === second.box.getData("words")) {
+    if (first.box.getData("item") !== second.box.getData("item")) {
       console.log("Matt is the best");
-      console.log(first);
       this.tweens.add({
-        targets: [first.item, second.item],
+        targets: [first.itemPic, second.itemPic],
         y: "+= 50",
         alpha: 0,
         scale: 0,
@@ -266,6 +265,9 @@ class MiniGame2 extends Phaser.Scene {
     }
   }
   updateActiveBox() {
+    // if(box.getData('opened')){
+    // return}
+
     if (!this.activeBox) {
       return;
     }
@@ -307,10 +309,6 @@ class MiniGame2 extends Phaser.Scene {
     this.updateActiveBox();
     this.updatePlayer();
     // this.createWordBox();
-  }
-
-  createEmitter() {
-    console.log("IM IN MINIGAME 2 FUCK YEAH");
   }
 }
 
