@@ -1,16 +1,28 @@
 import React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import {getBooks} from '../../ApiClient.js'
+import Book from './Book.js';
+import './library.css';
 
 function Reader(props) {
+    const [stories, setStories] = useState([])
+
+    useEffect(() => {
+        getBooks().then(data => {
+
+          if (data) setStories([...data])
+        });
+      }, []);
+
+    console.log(stories)
 
 
-    useEffect(()=>{
-        
-    })
 
     return (
-        <div>
-            
+        <div className='stories-container'>
+            {stories.map((book) => {
+                return <Book book={book} />
+            })}
         </div>
     );
 }

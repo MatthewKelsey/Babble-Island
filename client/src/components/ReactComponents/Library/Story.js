@@ -1,9 +1,9 @@
 import React from "react";
 import Words from './Words.js'
 
-function Story({selectedBook}) {
+function Story({book}) {
 
-const story = selectedBook.story
+const story = "Hola, me llamo Marci"
   function objectify(story) {
     let arrayOne = story.split(" ");
     let objectArray = [];
@@ -14,10 +14,16 @@ const story = selectedBook.story
   }
 const storyArray = objectify(story)
 console.log(storyArray)
-  return <div className="story-box">
+
+
+
+  return (
+  <div className="story-box">
     {storyArray.map((word) =>  { return <Words word ={word} />})}
-   
-  </div>;
+
+  </div>
+
+  );
 }
 
 export default Story;

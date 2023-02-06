@@ -22,14 +22,14 @@ function App() {
     })
   } , [])
 
-  useEffect(()=>{
- getBookCollection().then((data) =>{
-  if (data) setBooks(data)
-  console.log(data)
-  console.log(books ,'books array')
- })
+//   useEffect(()=>{
+//  getBookCollection().then((data) =>{
+//   if (data) setBooks(data)
+//   console.log(data)
+//   console.log(books ,'books array')
+//  })
 
-  },[])
+//   },[])
 
   return (
 
@@ -40,7 +40,13 @@ function App() {
         <Route path= "/game" element={<Game user= {user} setUser ={setUser} characterList ={characterList} setCharacterList={characterList}/>} />
         <Route path= "/landing" element={<LandingPage user = {user}/>} />
         <Route path= "/story" element={<Story user = {user} selectedBook={selectedBook}/> } />
-        <Route path= '/library' element= {<Reader books = {books} setSelectedBook = {setSelectedBook}/>}/>
+        <Route path= '/library' element= {<Reader
+        // books = {books} setSelectedBook = {setSelectedBook}
+        />}/>
+
+
+
+
         {/* <Route path = '/game' element = {<Frame  user ={user} setUser={setUser}/>} /> */}
       </Routes>
     </BrowserRouter>
