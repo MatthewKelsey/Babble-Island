@@ -98,7 +98,7 @@ align-items: center;
   justify-content: center;
   align-items: center;
   height: 80%;
-  
+
 }
 
 .menu-button:hover{
@@ -112,3 +112,15 @@ h1{
 
 }
 
+.story-box{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.individual-word{
+  margin : 5px;
+
+}
+.individual-word:hover{
+  background-color: #efc182;
+}
