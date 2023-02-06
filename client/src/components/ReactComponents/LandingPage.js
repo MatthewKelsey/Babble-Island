@@ -1,6 +1,8 @@
-
 import React from 'react';
 import { useNavigate } from "react-router-dom";
+import './LandingPage.css';
+import start from '../../pixel/start.png';
+import exit from '../../pixel/exit.png';
 
 function LandingPage(props) {
     const navigate = useNavigate()
@@ -14,17 +16,18 @@ navigate('/game')
     }
     return (
         <div className='babble-island'>
-            <h1>Welcome {props.user.nickName} </h1>
+
+            <h1 className='welcome'>Welcome {props.user.nickName || 'stranger'} </h1>
 
             <div class ='menu-items' >
+
                 <div class = 'menu-button' onClick={startGame}>
-                    <div>
-                    <h2>Start</h2></div>
-                </div>
-                <div class = 'menu-button' onClick={returnToLogin}>
-                    <h2>Exit</h2>
+                  <img  src={start}/>
                 </div>
 
+                <div class = 'menu-button' onClick={returnToLogin}>
+                  <img  src={exit}/>
+                </div>
 
             </div>
 

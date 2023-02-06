@@ -13,7 +13,7 @@ code {
     monospace;
 }
 .babble-island {
-  background-image: url('/public/assets/images/login-background.png');
+  background-image: url('/public/assets/images/babble_island_big.png');
   height: 100vh;
 }
 
@@ -84,22 +84,9 @@ code {
 
 } */
 
-.menu-items{
-display: flex;
-justify-content: center;
-flex-direction: row;
-align-items: center;
-}
 
-.menu-button{
-  margin: 5px;
-  background-color: bisque;
-  width: 10%;
-  justify-content: center;
-  align-items: center;
-  height: 80%;
 
-}
+
 
 .menu-button:hover{
   border: 5px;
@@ -110,17 +97,4 @@ align-items: center;
 h1{
   justify-self: center;
 
-}
-
-.story-box{
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.individual-word{
-  margin : 5px;
-
-}
-.individual-word:hover{
-  background-color: #efc182;
 }

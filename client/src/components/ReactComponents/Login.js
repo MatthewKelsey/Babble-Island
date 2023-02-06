@@ -6,6 +6,7 @@ import React from "react";
 import { login } from "../ApiClient.js";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import './Login.css';
 
 
 const initialState = {
@@ -29,7 +30,7 @@ function Login(props) {
   };
 
   const handleSubmit = async (e) => {
-    
+
     e.preventDefault();
 
     const { userName, password } = state;
@@ -55,8 +56,8 @@ function Login(props) {
     <div className="babble-island">
     <section className="register">
       <h1>Babble Island</h1>
-      
-     
+
+
 {/* <img src='/assets/images/login-background.png'></img> */}
       <h2>Login</h2>
       <form className="form" onSubmit={handleSubmit}>
@@ -84,7 +85,7 @@ function Login(props) {
       <button className="form-submit" onClick={moveToRegister}>
         Register
       </button>
-      
+
     </section>
     </div>
   );
