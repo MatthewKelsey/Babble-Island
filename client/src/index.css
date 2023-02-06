@@ -39,13 +39,12 @@ code {
   display: flex;
   justify-content: space-evenly;
   color: white;
-  padding: 5px
+  padding: 5px;
 }
 .option-1 {
   /* line-height: 0.1px; */
   border: 1px solid rgb(255, 255, 255);
   padding: 5px;
-
 }
 .option-2 {
   /* line-height: 0.1px; */
@@ -67,6 +66,7 @@ code {
 }
 
 .close-message-box {
+  cursor: pointer;
   position: absolute;
   top: 10px;
   right: 20px;
@@ -76,15 +76,14 @@ code {
   position: relative;
 }
 
-.game {
+/* .game {
 
   /* border-width: 50px;
     border-style: solid;
   border-image: url('./pixel/border.png');
   border-image-repeat: repeat;
   width: 100%; */
-  display: flex;
-}
+/* display: flex; */
 
 .menu-items {
   display: flex;
@@ -112,18 +111,14 @@ h1 {
   justify-self: center;
 }
 
-
-.story-box{
+.story-box {
   display: flex;
   flex-wrap: wrap;
 }
 
-.individual-word{
-  margin : 5px;
-
+.individual-word {
+  margin: 5px;
 }
-.individual-word:hover{
+.individual-word:hover {
   background-color: #efc182;
 }
-
-

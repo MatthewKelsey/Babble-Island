@@ -18,6 +18,11 @@ class MiniGame1 extends Phaser.Scene {
   }
 
   create() {
+
+    // FADE IN SCENE 
+
+    this.cameras.main.fadeIn(1000, 0, 0, 0)
+
     // create music config and load audio files
     this.music = this.sound.add('mini_game_1_audio');
     this.pear = this.sound.add('pears');
@@ -93,10 +98,20 @@ class MiniGame1 extends Phaser.Scene {
     this.player = this.physics.add.sprite(30, 30, 'bunny');
     this.player.setCollideWorldBounds(true);
     this.physics.add.collider(this.player, walls);
+   
+   // FADE OUT OF MINI GAME 1 
+
     this.physics.add.collider(this.player, this.doorSprite, () => {
       this.music.stop(musicConfig);
-      this.scene.start('Map', this.player);
+      this.cameras.main.fadeOut(1000, 0, 0, 0)
     });
+    this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
+      this.scene.start('Map')
+    })
+
+
+
+
 
     this.physics.add.overlap(this.player, fruits, collectFruits, null, this);
 

@@ -14,6 +14,10 @@ class Map extends Phaser.Scene {
   }
 
   create() {
+    // FADE IN SCENE 
+
+    this.cameras.main.fadeIn(1000, 0, 0, 0)
+    
     // game.world.setBounds(0,0,2000,2000)
     const map = this.make.tilemap({ key: 'map' });
     // map.setScrollFactor(0)
@@ -189,14 +193,15 @@ class Map extends Phaser.Scene {
     this.physics.add.collider(this.player, objects);
     this.physics.add.collider(this.player, houses);
 
+  // FADE OUT OF MAP 
 
     this.physics.add.collider(this.player, door1, () => {
       this.cameras.main.fadeOut(1000, 0, 0, 0)
-      // this.scene.start('MiniGame1', this.player);
     });
     this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
       this.scene.start('MiniGame1')
     })
+
     this.physics.add.collider(this.player, door2);
     this.physics.add.collider(this.player, door3);
     this.physics.add.collider(this.player, door4, () => {
