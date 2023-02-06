@@ -12,10 +12,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.babble-island {
-  background-image: url('/public/assets/images/babble_island_big.png');
-  height: 100vh;
-}
 
 .container {
   position: relative;

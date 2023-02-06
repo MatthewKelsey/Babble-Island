@@ -7,7 +7,8 @@ import { login } from "../ApiClient.js";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import './Login.css';
-
+// import loginButton from '../../pixel/login.png';
+// import registerButton from '../../pixel/register.png';
 
 const initialState = {
   userName: "",
@@ -54,11 +55,11 @@ function Login(props) {
   return (
 
     <div className="babble-island">
-    <section className="register">
-      <h1>Babble Island</h1>
+    <section className="login">
+      <h1 className="title">Babble Island</h1>
 
+       <br></br>
 
-{/* <img src='/assets/images/login-background.png'></img> */}
       <h2>Login</h2>
       <form className="form" onSubmit={handleSubmit}>
         <input
