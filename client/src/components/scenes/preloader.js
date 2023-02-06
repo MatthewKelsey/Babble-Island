@@ -68,7 +68,6 @@ export default class Preloader extends Phaser.Scene {
       frameHeight: 32,
     });
 
-
     // MINI GAME 2
 
     this.load.spritesheet('bunny', '/assets//mini_game2/bunnyFinal.png', {
@@ -82,7 +81,25 @@ export default class Preloader extends Phaser.Scene {
       frameWidth: 16,
     });
     this.load.spritesheet('bomb', '/assets/mini_game2/bomb.png', { frameWidth: 16 });
+
+    this.load.image('red' ,'/assets/mini_game2/colours/red.png')
+    this.load.image('rojo' ,'/assets/mini_game2/colours/rojo.png')
+    this.load.image('amarillo' ,'/assets/mini_game2/colours/amarillo.png')
+    this.load.image('black' ,'/assets/mini_game2/colours/black.png')
+    this.load.image('azul' ,'/assets/mini_game2/colours/azul.png')
+    this.load.image('blanco' ,'/assets/mini_game2/colours/blanco.png')
+    this.load.image('blue' ,'/assets/mini_game2/colours/blue.png')
+    this.load.image('green' ,'/assets/mini_game2/colours/green.png')
+    this.load.image('naranja' ,'/assets/mini_game2/colours/naranja.png')
+    this.load.image('negro' ,'/assets/mini_game2/colours/negro.png')
+    this.load.image('orange' ,'/assets/mini_game2/colours/orange.png')
+    this.load.image('pink' ,'/assets/mini_game2/colours/pink.png')
+    this.load.image('rosa' ,'/assets/mini_game2/colours/rosa.png')
+    this.load.image('verde' ,'/assets/mini_game2/colours/verde.png')
+    this.load.image('white' ,'/assets/mini_game2/colours/white.png')
+    this.load.image('yellow' ,'/assets/mini_game2/colours/yellow.png')
   }
+
 
 
   create() {
