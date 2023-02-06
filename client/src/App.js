@@ -1,6 +1,7 @@
 import Login from "./components/ReactComponents/Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import Register from "./components/Register";
+import Story from './components/ReactComponents/Library/Story';
 
 import Frame from "./components/ReactComponents/Frame";
 import  Game  from "./Game";
@@ -27,6 +28,7 @@ function App() {
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path= "/game" element={<Game user= {user} setUser ={setUser} characterList ={characterList} setCharacterList={characterList}/>} />
         <Route path= "/landing" element={<LandingPage user = {user}/>} />
+        <Route path= "/story" element={<Story user = {user}/>} />
         {/* <Route path = '/game' element = {<Frame  user ={user} setUser={setUser}/>} /> */}
       </Routes>
     </BrowserRouter>

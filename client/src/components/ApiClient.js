@@ -1,15 +1,15 @@
 const baseUrl = "http://localhost:4000";
 
-// FOR LOGIN 
+// FOR LOGIN
 
 export const login = async (user) => {
- 
+
   try {
     const response = await fetch(`${baseUrl}/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
-     
+
     });
     const loggedUser = await response.json();
 
@@ -51,7 +51,7 @@ export const logout = async () => {
   }
 };
 
-// FOR CHARACTER INTERACTION 
+// FOR CHARACTER INTERACTION
 
 export const fetchCharacters = async () => {
   try {
@@ -92,7 +92,7 @@ export const createDialogue = async (dialogue) => {
   }
 };
 
-// USER  STARS 
+// USER  STARS
 
 
 export const fetchUserStars = async () => {
@@ -117,4 +117,38 @@ export const updateStars = async (id) => {
   return false
 }
 }
+
+export const translateWord = async(word) =>{
+  try {
+    const response = await fetch(`https://translation.googleapis.com/language/translate/v2?q=${word}&target=en&source=es&format=text&key=AIzaSyD56Mw8C84FywZbeclWpYNzjNopb1rjqgc`, {
+      method: 'POST'
+    })
+    return response.json()
+  }catch(error) {
+    console.log(error)
+  }
+  }
+
+  export const defineWord = async(word) =>{
+    try {
+      const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/es/${word}`,{
+        method: 'GET'
+      })
+      return response.json()
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  export const getBooks = async() =>{
+    try {
+      const response = await fetch(`${baseUrl}/stories`,{
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      })
+      return response
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
