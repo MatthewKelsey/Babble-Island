@@ -3,18 +3,8 @@
 import Phaser from "phaser";
 
 const boxContent = [
-  [
-    { spanish: "Green", english: "Verde" },
-    { spanish: "Blue", english: "Azul" },
-    { spanish: "Pink", english: "Rosada" },
-    { spanish: "White", english: "Blanco" },
-  ],
-  [
-    { spanish: "Black", english: "Negro" },
-    { spanish: "Red", english: "Rojo" },
-    { spanish: "Yellow", english: "Amarillo" },
-    { spanish: "Purple", english: "Purpura" },
-  ],
+  [0, 1, 2, 3],
+  [4, 5, 6, 7],
 ];
 
 const wordBox = [
@@ -49,24 +39,31 @@ class MiniGame2 extends Phaser.Scene {
   /** @type {Phaser.Physics.Arcade} */
 
   constructor() {
-    
     super("MiniGame2");
-    console.log('help im stuck in the MiniGame2!!!')
   }
+  preload() {
+    this.load.image("pear", "/assets/mini_game1/pear.png");
+    this.load.image("apple", "/assets/mini_game1/apple.png");
+    this.load.image("orange", "/assets/mini_game1/orange.png");
+    this.load.image("grape", "/assets/mini_game1/grapes.png");
+    this.load.image("strawberry", "/assets/mini_game1/strawberry.png");
+  }
+
   init() {
+    this.game.scale.setZoom(1);
     this.cursors = this.input.keyboard.createCursorKeys();
   }
   create() {
     const { width, height } = this.scale;
-    this.door = this.physics.add.sprite(width/2, 100, 'bomb')
+    this.door = this.physics.add.sprite(width / 2, 100, "bomb");
     this.player = this.physics.add
       .sprite(width * 0.5, height * 0.5, "bunny")
-      .setScale(1)
-      .setSize(8, 8)
-      .setOffset(4,10);
+      .setScale(3)
+      .setSize(12, 8)
+      .setOffset(2, 10);
     this.player.setCollideWorldBounds(true);
 
-    console.log(this.player)
+    console.log(this.player);
 
     this.boxGroup = this.physics.add.staticGroup();
 
@@ -79,17 +76,10 @@ class MiniGame2 extends Phaser.Scene {
       }
       //@ts-ignore
       this.activeBox = box;
-
-      
-      
     });
-
-    
-    this.physics.add.collider(this.player, this.door, ()=>{
-      this.scene.start('MiniGame1', this.player)
-    })
-    
-    this.createEmitter()
+    this.physics.add.collider(this.player, this.door, () => {
+      this.scene.start("MiniGame1", this.player);
+    });
   }
 
   createWordBox() {
@@ -108,46 +98,47 @@ class MiniGame2 extends Phaser.Scene {
     }
   }
 
-  
   createSpanishBoxes() {
     const width = this.scale.width;
+    const height = this.scale.height;
     let x = 0.2;
-    let y = 280;
+    let y = 0.2;
 
     for (let row = 0; row < boxContent.length; row++) {
       for (let col = 0; col < boxContent[row].length; col++) {
         const box = this.boxGroup
-          .get(width * x, y, "boxes")
-          .setScale(1)
-          .setSize(16, 7)
-          .setOffset(0, 8)
-          .setData("words", boxContent[row][col])
-          .setData('language', 'spanish');
+          .get(width * x, height * y, "boxes")
+          .setScale(3)
+          .setSize(46, 32)
+          .setOffset(-14, 0)
+          .setData("item", boxContent[row][col])
+          .setData("language", "spanish");
         x += 0.2;
       }
       x = 0.2;
-      y += 80;
+      y += 0.2;
     }
   }
 
   createEnglishBoxes() {
     const width = this.scale.width;
+    const height = this.scale.height;
     let x = 0.2;
-    let y = 440;
+    let y = 0.6;
 
     for (let row = 0; row < boxContent.length; row++) {
       for (let col = 0; col < boxContent[row].length; col++) {
         const box = this.boxGroup
-          .get(width * x, y, "boxes")
-          .setScale(1)
-          .setSize(30, 15)
-          .setOffset(-7, 4)
-          .setData("words", boxContent[row][col])
-          .setData('language' , 'english');
+          .get(width * x, height * y, "boxes")
+          .setScale(3)
+          .setSize(46, 32)
+          .setOffset(-14, 0)
+          .setData("item", boxContent[row][col])
+          .setData("language", "english");
         x += 0.2;
       }
       x = 0.2;
-      y += 80;
+      y += 0.2;
     }
   }
 
@@ -175,40 +166,68 @@ class MiniGame2 extends Phaser.Scene {
       this.openBox(this.activeBox);
     }
   }
+
   /** @param {Phaser.Physics.Arcade.Sprite}  box*/
 
   openBox(box) {
     if (!box) {
       return;
     }
-    const word = box.getData("words");
-    const language = box.getData('language')
-    /**{Phaser.GameObjects.Sprite} */
-    let wordy;
+    const item = box.getData("item");
+    // const language = box.getData("language");
+    /**@type {Phaser.GameObjects.Sprite} */
+    let itemPic;
+    switch (item) {
+      case 0:
+        itemPic = this.itemsGroup.get(box.x, box.y);
+        itemPic.setTexture("pear");
+        break;
 
-    console.log(word)
-  
-    wordy = this.itemsGroup.get(box.x, box.y);
-    wordy.setData('words',word[language])
-    if (!wordy) {
-      return;
+      case 1:
+        itemPic = this.itemsGroup.get(box.x, box.y);
+        itemPic.setTexture("apple");
+        break;
+      case 2:
+        itemPic = this.itemsGroup.get(box.x, box.y);
+        itemPic.setTexture("apple");
+        break;
+      case 3:
+        itemPic = this.itemsGroup.get(box.x, box.y);
+        itemPic.setTexture("apple");
+        break;
+      case 4:
+        itemPic = this.itemsGroup.get(box.x, box.y);
+        itemPic.setTexture("apple");
+        break;
+      case 5:
+        itemPic = this.itemsGroup.get(box.x, box.y);
+        itemPic.setTexture("pear");
+        break;
+
+      case 6:
+        itemPic = this.itemsGroup.get(box.x, box.y);
+        itemPic.setTexture("apple");
+        break;
+      case 7:
+        itemPic = this.itemsGroup.get(box.x, box.y);
+        itemPic.setTexture("apple");
+        break;
+      case 8:
+        itemPic = this.itemsGroup.get(box.x, box.y);
+        itemPic.setTexture("apple");
     }
-    box.setData("opened", true);
-    wordy.setData("sorted", true);
-    this.add.text(
-      box.x - 15,
-      box.y- 35,
-      word[language],
-      { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif' }
-    )
-    wordy.setDepth(3000);
 
-    wordy.scale = 0;
-    wordy.alpha = 0;
-      const help = 'ya ya ya ya ya'
-    this.selectedBoxes.push({ box, wordy });
+    box.setData("opened", true);
+    itemPic.setData("sorted", true);
+
+    itemPic.setDepth(3000);
+
+    itemPic.scale = 0;
+    itemPic.alpha = 0;
+
+    this.selectedBoxes.push({ box, itemPic });
     this.tweens.add({
-      targets: help,
+      targets: itemPic,
       y: "-= 50",
       alpha: 1,
       scale: 1,
@@ -230,8 +249,8 @@ class MiniGame2 extends Phaser.Scene {
     const first = this.selectedBoxes.pop();
     console.log(second);
     if (first.box.getData("words") === second.box.getData("words")) {
-      console.log('Matt is the best')
-      console.log(first)
+      console.log("Matt is the best");
+      console.log(first);
       this.tweens.add({
         targets: [first.item, second.item],
         y: "+= 50",
@@ -290,13 +309,9 @@ class MiniGame2 extends Phaser.Scene {
     // this.createWordBox();
   }
 
-
-
   createEmitter() {
-    console.log('IM IN MINIGAME 2 FUCK YEAH')
+    console.log("IM IN MINIGAME 2 FUCK YEAH");
   }
-
 }
 
-
-export default MiniGame2 
+export default MiniGame2;
