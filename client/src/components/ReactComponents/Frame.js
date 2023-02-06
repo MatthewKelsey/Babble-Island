@@ -15,13 +15,15 @@ import quit from '../../pixel/quit.png';
 
 function Frame({user, setUser}) {
 
-  const [stars, setStars] = useState([4,6]);
+  const [stars, setStars] = useState([]);
   const [hearts, setHearts] = useState([1,2]);
   const [popupActive, setPopupActive] = useState(false);
   const [menuActive, setMenuActive] = useState(false);
 
+  console.log(user.stars)
+
   useEffect(()=>{
-    const array =[1,2,1,1,1,1,1,1,1,1]
+    const array =[]
     for (let i = 0 ; i < user.stars; i++ ) {
       array.push(i)
     }

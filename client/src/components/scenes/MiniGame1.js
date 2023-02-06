@@ -168,26 +168,30 @@ class MiniGame1 extends Phaser.Scene {
         this.player,
         this.chestSprite,
         (reactCollision, stars) => {
-          this.input.keyboard.on('keyup-SPACE', () => {
+          this.input.keyboard.on('keyup-SPACE', (e) => {
+            e.preventDefault()
             const collectStar = new CustomEvent('starCollected', {
               detail: {
                 reactCollision,
                 stars,
               },
             });
-            if (chestOpened) {
+            if (!chestOpened) {
               window.dispatchEvent(collectStar);
             }
+            chestOpened = true;
           });
         }
       );
       return this.chestSprite;
     };
+ 
 
     // OPEN CHEST
-
+ 
     function openChest() {
-      this.input.keyboard.on('keyup-SPACE', () => {
+      this.input.keyboard.on('keyup-SPACE', (e) => {
+        e.preventDefault()
         if (!chestOpened) {
           this.chestSprite.anims.play('openChest', true);
           const star = this.add.sprite(350, 180, 'star')
@@ -202,7 +206,6 @@ class MiniGame1 extends Phaser.Scene {
             ease: 'Power2'
           });
         }
-        chestOpened = true;
       });
     }
 
@@ -364,18 +367,6 @@ class MiniGame1 extends Phaser.Scene {
     });
     // });
 
-    // CLOSE CHEST
-
-    this.anims.create({
-      key: 'closeChest',
-      frames: this.anims.generateFrameNumbers('chest', {
-        start: 8,
-        end: 0,
-      }),
-      frameRate: 50,
-      repeat: 0,
-    });
-
     // OPEN DOORS
 
     this.anims.create({
@@ -409,13 +400,14 @@ class MiniGame1 extends Phaser.Scene {
   }
 
   update() {
+
     this.updateActiveChest();
     const cursors = this.input.keyboard.createCursorKeys();
 
-    // const spacePressed = Phaser.Input.Keyboard.JustUp(this.cursors.space);
+    // const spacePressed = Phaser.Input.Keyboard.JustUp(this.cursors.space)
     // if (spacePressed) {
-    //   this.chestSprite.play('animationKey');
-    //  console.log('hello')
+    //   console.log('hello')
+     
     // }
 
     if (cursors.left.isDown) {

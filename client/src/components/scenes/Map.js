@@ -188,9 +188,15 @@ class Map extends Phaser.Scene {
     this.physics.add.collider(this.player, trees);
     this.physics.add.collider(this.player, objects);
     this.physics.add.collider(this.player, houses);
+
+
     this.physics.add.collider(this.player, door1, () => {
-      this.scene.start('MiniGame1', this.player);
+      this.cameras.main.fadeOut(1000, 0, 0, 0)
+      // this.scene.start('MiniGame1', this.player);
     });
+    this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
+      this.scene.start('MiniGame1')
+    })
     this.physics.add.collider(this.player, door2);
     this.physics.add.collider(this.player, door3);
     this.physics.add.collider(this.player, door4, () => {
@@ -198,6 +204,7 @@ class Map extends Phaser.Scene {
     });
     this.physics.add.collider(this.player, roof);
   }
+
 
   updateActiveCharacter() {
     if (!this.activeCharacter) {

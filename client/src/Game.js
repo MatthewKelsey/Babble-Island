@@ -14,15 +14,16 @@ function Game({ user, setUser, characterList }) {
   const [stars, setStars] = useState();
   const [isCharacterActiveOrNot, setisCharacterActiveOrNot] = useState();
 
-  useEffect(() => {
-    setStars(user.stars)
-  }, [user.stars])
+  console.log(user)
 
+  // useEffect(() => {
+  //   setStars(user.stars)
+  // }, [user.stars])
+
+  
   const addOneStar = async (id) => {
     try {
       const star = await updateStars(id);
-      setStars(star);
-      console.log(stars);
     } catch (error) {
       console.log(error);
     }
@@ -56,14 +57,11 @@ function Game({ user, setUser, characterList }) {
   const reactCollectStarsListener = ({ detail }) => {
     console.log(detail)
     const stars = detail.stars.data.list.stars;
-    console.log(stars)
 
-    // let userUpdate = user;
-    // userUpdate.stars++;
-
-    // setUser(userUpdate);
+    setStars(user.stars++)
+    console.log('hello')
     addOneStar(user._id);
-    // setStars(stars);
+
   };
   window.addEventListener('starCollected', reactCollectStarsListener);
 

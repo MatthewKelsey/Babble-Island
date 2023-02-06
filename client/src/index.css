@@ -32,26 +32,28 @@ code {
   background-color: #efc182;
   z-index: 10000;
   padding: 5px;
+  /* line-height: 3px; */
 }
 
 .multiple-choice {
-  line-height: 0.5px;
   display: flex;
   justify-content: space-evenly;
   color: white;
   padding: 5px
 }
 .option-1 {
-  line-height: 0.1px;
+  /* line-height: 0.1px; */
   border: 1px solid rgb(255, 255, 255);
   padding: 5px;
 
 }
 .option-2 {
-  line-height: 0.1px;
+  /* line-height: 0.1px; */
   border: 1px solid rgb(255, 255, 255);
   padding: 5px;
-
+}
+.hide {
+  display: none;
 }
 
 .option-1:hover {
@@ -81,7 +83,7 @@ code {
   border-image: url('./pixel/border.png');
   border-image-repeat: repeat;
   width: 100%; */
-  /* display: flex; */
+  display: flex;
 }
 
 .menu-items {
