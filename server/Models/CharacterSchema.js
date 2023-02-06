@@ -11,6 +11,14 @@ const characterSchema = new Schema({
     type: String,
     required: true,
   },
+  responseGood:{
+    type: String,
+    required: false
+  },
+  responseBad:{
+    type:String,
+    required: false
+  },
   good: {
     type: Array,
     required: true,

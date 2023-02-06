@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import React, { startTransition, useEffect, useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import './Frame.css';
 import HeartImg from '../../pixel/heart.png';
 import StarImg from '../../pixel/star.png';
@@ -38,15 +38,15 @@ function Frame({user, setUser}) {
         <div className='nav'>
           <div className='in-nav'>
             <img className='heart' src={HeartImg} />
-            {hearts.length>0 && hearts.map(hearts => {
-              return <img className='heart' src={HeartImg} />
+            {hearts.length>0 && hearts.map((hearts,index) => {
+              return <img className='heart' key={index} src={HeartImg} />
             })}
 
           </div>
           <div className='in-nav'>
             {/* <img className='star' src={StarImg} /> */}
             {(stars.length>=0 && stars.length<5) ?
-              stars.map(star => <img className='star' src={StarImg}/>)
+              stars.map((star, index) => <img className='star' key={index} src={StarImg}/>)
               :
               <div className='stars-container'>
                 <img className='star' src={StarImg}/>

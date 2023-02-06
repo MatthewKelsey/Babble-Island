@@ -7,15 +7,12 @@ import DialogueBox from './DialogueBox';
 import { startDialogue, updateStars } from './components/ApiClient';
 import Frame from './components/ReactComponents/Frame';
 
-
-function Game({user, setUser, characterList}) {
-
+function Game({ user, setUser, characterList }) {
   const [position, setPosition] = useState();
-  const [dialogue, setDialogue] = useState({});
+  const [dialogue, setDialogue] = useState();
   const [message, setMessage] = useState();
   const [stars, setStars] = useState();
-
-  console.log(characterList)
+  const [isCharacterActiveOrNot, setisCharacterActiveOrNot] = useState();
 
   const getCharacterDialogue = async (character) => {
     console.log(character);
@@ -31,7 +28,7 @@ function Game({user, setUser, characterList}) {
     try {
       const star = await updateStars(id);
       setStars(star);
-      console.log(stars)
+      console.log(stars);
     } catch (error) {
       console.log(error);
     }
@@ -45,35 +42,48 @@ function Game({user, setUser, characterList}) {
   // LISTEN OUT FOR CHARACTER DIALOG
 
   const reactCharacterListener = ({ detail }) => {
-    console.log('WORKING!!!');
-    console.log(detail.character);
     const character = detail.character.data.list.character;
-    console.log(detail.character)
-    
-    // switch(character) {
-      //   case 'character1': setMessage
-    // }
-    if(character === 'character1') setMessage(characterList[0]);
-    console.log(message)
-    if (character === 'character2') setMessage(characterList[1])
-    if (character === 'character3') setMessage(characterList[2])
+    const isActive = detail.character.active;
 
-
-    // setMessage(characterList[0].initial);
-    setPosition(detail.reactCollision.x);
+    if (character === 'character1' && isCharacterActiveOrNot) {
+      setMessage(characterList[0]);
+    } else if (character === 'character2') {
+      setMessage(characterList[1]);
+    } else if (character === 'character3') {
+      setMessage(characterList[2]);
+    } else {
+      // setisCharacterActiveOrNot(!isActive);
+    }
   };
   window.addEventListener('react', reactCharacterListener);
+
+  useEffect(() => {
+    const isCharacterActiveListener = ({ detail }) => {
+      if (!detail.characterActiveOrNot) setMessage('');
+      setisCharacterActiveOrNot(detail.characterActiveOrNot);
+    };
+    window.addEventListener('isActiveOrNot', isCharacterActiveListener);
+  }, [isCharacterActiveOrNot]);
+
+  // useEffect(() => {
+  //   const handleKeyDown = (event) => {
+  //     if (event.key === ' ') {
+  //       console.log('I AM THE ACTIVATED CHARACTER INDICATOR', isCharacterActiveOrNot);
+  //     }
+  //   };
+  //   document.addEventListener('keydown', handleKeyDown);
+  // }, []);
 
   // LISTEN OUT FOR STARS COLLECTED
 
   const reactCollectStarsListener = ({ detail }) => {
     const stars = detail.stars.data.list.stars;
-    console.log(user.stars, 'before ')
-    let userUpdate = user
-    userUpdate.stars++ 
-    console.log(userUpdate.stars,'after')
-    setUser(userUpdate)
-    addOneStar(user._id)
+    console.log(user.stars, 'before ');
+    let userUpdate = user;
+    userUpdate.stars++;
+    console.log(userUpdate.stars, 'after');
+    setUser(userUpdate);
+    addOneStar(user._id);
     // setStars(stars);
   };
   window.addEventListener('starCollected', reactCollectStarsListener);
@@ -81,8 +91,13 @@ function Game({user, setUser, characterList}) {
   return (
     <>
       {/* <button onClick={handleClick}></button> */}
-      {message && <DialogueBox message={message} setMessage={setMessage} />}
-      
+      {message && (
+        <DialogueBox
+          message={message}
+          setMessage={setMessage}
+        />
+      )}
+
       {/* <DialogueBox message={message} setMessage={setMessage} /> */}
       <Frame user={user} setUser={setUser} stars={stars} setStars={setStars} />
     </>

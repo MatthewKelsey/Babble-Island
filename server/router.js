@@ -2,7 +2,7 @@ const Router = require('express');
 const router = Router();
 const userCTRL = require('./Controllers/userController');
 const characterCTRL = require('./Controllers/characterController');
-
+const storyCTRl = require('./Controllers/storyController')
 // USERS 
 
 router.post('/register', userCTRL.registerUser);
@@ -21,6 +21,8 @@ router.put('/character', characterCTRL.getCharacter);
 router.post('/character', characterCTRL.createCharacter)
 router.put('/user/:id', userCTRL.updateUserStar)
 
+// STORIES
 
+router.get('/stories', storyCTRl.getStories)
 
 module.exports = router;
