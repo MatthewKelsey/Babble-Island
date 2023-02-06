@@ -195,73 +195,73 @@ class MiniGame2 extends Phaser.Scene {
     let itemPic;
     console.log(itemPic);
     switch (item) {
-      case 0:
+      case 1:
         itemPic = this.itemsGroup.get(box.x, box.y);
         itemPic.setTexture("red");
         break;
-      case 1:
+      case 2:
         itemPic = this.itemsGroup.get(box.x, box.y);
         itemPic.setTexture("green");
         break;
-      case 2:
+      case 3:
         itemPic = this.itemsGroup.get(box.x, box.y);
         itemPic.setTexture("blue");
         break;
-      case 3:
+      case 4:
         itemPic = this.itemsGroup.get(box.x, box.y);
         itemPic.setTexture("pink");
         break;
-      case 4:
+      case 5:
         itemPic = this.itemsGroup.get(box.x, box.y);
         itemPic.setTexture("white");
         break;
-      case 5:
+      case 6:
         itemPic = this.itemsGroup.get(box.x, box.y);
         itemPic.setTexture("black");
         break;
-      case 6:
+      case 7:
         itemPic = this.itemsGroup.get(box.x, box.y);
         itemPic.setTexture("yellow");
         break;
-      case 7:
+      case 8:
         itemPic = this.itemsGroup.get(box.x, box.y).setScale(0.1);
         itemPic.setTexture("orange");
         break;
-      case 8:
+      case 9:
         itemPic = this.itemsGroup.get(box.x, box.y).setScale(0.1);
         itemPic.setTexture("rojo");
 break
-      case 9:
+      case 10:
         itemPic = this.itemsGroup.get(box.x, box.y);
         itemPic.setTexture("verde");
 
         break;
-      case 10:
+      case 11:
         itemPic = this.itemsGroup.get(box.x, box.y);
         itemPic.setTexture("azul");
 
         break;
-      case 11:
+      case 12:
         itemPic = this.itemsGroup.get(box.x, box.y).setScale(0.1);
         itemPic.setTexture("rosa");
 
         break;
-      case 12:
+      case 13:
         itemPic = this.itemsGroup.get(box.x, box.y).setScale(0.1);
         itemPic.setTexture("blanco").setSize(0.1);
 
         break;
-      case 13:
+      case 14:
         itemPic = this.itemsGroup.get(box.x, box.y).setScale(0.1);
         itemPic.setTexture("negro");
 
         break;
-      case 14:
+      case 15:
         itemPic = this.itemsGroup.get(box.x, box.y).setScale(0.1);
         itemPic.setTexture("amarillo");
 
         break;
-      case 15:
+      case 16:
         itemPic = this.itemsGroup.get(box.x, box.y).setScale(0.1);
         itemPic.setTexture("naranja");
         break;
