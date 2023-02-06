@@ -49,16 +49,19 @@ export default class Preloader extends Phaser.Scene {
     });
 
     // MINI GAME 1
-    this.load.image("mini_game_1", "/assets/mini_game1/Wooden_House.png");
-    this.load.image("pear", "/assets/mini_game1/pear.png");
-    this.load.image("apple", "/assets/mini_game1/apple.png");
-    this.load.image("orange", "/assets/mini_game1/orange.png");
-    this.load.image("grape", "/assets/mini_game1/grapes.png");
-    this.load.image("strawberry", "/assets/mini_game1/strawberry.png");
-    this.load.image("doors", "/assets/mini_game1/door_animation.png");
-    this.load.tilemapTiledJSON("tilemap", "/assets/mini_game1/house.json");
+
+    this.load.image('mini_game_1', '/assets/mini_game1/Wooden_House.png');
+    this.load.image('pear', '/assets/mini_game1/pear.png');
+    this.load.image('apple', '/assets/mini_game1/apple.png');
+    this.load.image('orange', '/assets/mini_game1/orange.png');
+    this.load.image('grape', '/assets/mini_game1/grapes.png');
+    this.load.image('strawberry', '/assets/mini_game1/strawberry.png');
+    this.load.image('doors', '/assets/mini_game1/door_animation.png');
+    this.load.image('star', '/assets/mini_game1/star.png')
+    this.load.tilemapTiledJSON('tilemap', '/assets/mini_game1/house.json');
 
     this.load.spritesheet("doorsAnim", "assets/mini_game1/doorsOpen.png", {
+
       frameWidth: 48,
       frameHeight: 16,
     });
@@ -128,6 +131,7 @@ export default class Preloader extends Phaser.Scene {
       repeat: -1,
     });
 
-    this.scene.start("MiniGame2");
+    this.scene.start('Map');
+
   }
 }

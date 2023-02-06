@@ -16,11 +16,15 @@ function App() {
   const [user, setUser] = useState({});
   const [characterList, setCharacterList] = useState([])
 
+  console.log(user)
+
    useEffect(() => {
     fetchCharacters().then((data) => {
       if (data) setCharacterList(data)
     })
   } , [])
+
+
 
   useEffect(()=>{
  getBookCollection().then((data) =>{
