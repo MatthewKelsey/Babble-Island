@@ -3,8 +3,9 @@
 import { getConfig } from '@testing-library/react';
 import Phaser from 'phaser';
 
-
 class MiniGame1 extends Phaser.Scene {
+  /** @type {Phaser.Physics.Arcade.Sprite} */
+  activeChest;
   constructor() {
     super({
       key: 'MiniGame1',
@@ -15,8 +16,6 @@ class MiniGame1 extends Phaser.Scene {
     this.game.scale.setZoom(2);
     this.cursors = this.input.keyboard.createCursorKeys();
   }
-
-  
 
   create() {
     // create music config and load audio files
@@ -57,9 +56,11 @@ class MiniGame1 extends Phaser.Scene {
     // set collisions
     walls.setCollisionByProperty({ collides: true });
 
-    // create doors Sprite 
+    // create doors Sprite
 
-    this.doorSprite = this.physics.add.sprite(440,472, 'doorsAnim').setFrame(4)
+    this.doorSprite = this.physics.add
+      .sprite(440, 472, 'doorsAnim')
+      .setFrame(4);
     this.doorSprite.body.immovable = true;
 
     // create fruits on map according to name and position
@@ -92,11 +93,11 @@ class MiniGame1 extends Phaser.Scene {
     this.player = this.physics.add.sprite(30, 30, 'bunny');
     this.player.setCollideWorldBounds(true);
     this.physics.add.collider(this.player, walls);
-    this.physics.add.collider(this.player, this.doorSprite, ()=>{
-      this.music.stop(musicConfig)
-      this.scene.start('Map', this.player)
-    })
-    
+    this.physics.add.collider(this.player, this.doorSprite, () => {
+      this.music.stop(musicConfig);
+      this.scene.start('Map', this.player);
+    });
+
     this.physics.add.overlap(this.player, fruits, collectFruits, null, this);
 
     // SETTINGS
@@ -146,12 +147,15 @@ class MiniGame1 extends Phaser.Scene {
 
     // CREATE CHEST
 
-    let starCounter = 0 
+    let starCounter = 0;
+
+    let chestOpened = false;
 
     const generateChest = (x, y) => {
-      starCounter++ 
-      
-      this.chestSprite = this.physics.add.sprite(x, y, 'chest').setSize(16, 32).setData('stars',starCounter);
+      this.chestSprite = this.physics.add
+        .sprite(x, y, 'chest')
+        .setSize(16, 32)
+        .setData('stars', starCounter);
       this.chestSprite.body.immovable = true;
       this.physics.add.overlap(
         this.player,
@@ -159,18 +163,24 @@ class MiniGame1 extends Phaser.Scene {
         openChest,
         null,
         this
-        );
-        this.physics.add.collider(this.player, this.chestSprite, (reactCollision, stars) => {
-
-        this.input.keyboard.on('keyup-SPACE', () => {
-          const collectStar = new CustomEvent('starCollected', {
-            detail: {
-              reactCollision, stars 
-            }, 
-          })
-          window.dispatchEvent(collectStar)
-        });
-      })
+      );
+      this.physics.add.collider(
+        this.player,
+        this.chestSprite,
+        (reactCollision, stars) => {
+          this.input.keyboard.on('keyup-SPACE', () => {
+            const collectStar = new CustomEvent('starCollected', {
+              detail: {
+                reactCollision,
+                stars,
+              },
+            });
+            if (chestOpened) {
+              window.dispatchEvent(collectStar);
+            }
+          });
+        }
+      );
       return this.chestSprite;
     };
 
@@ -178,27 +188,57 @@ class MiniGame1 extends Phaser.Scene {
 
     function openChest() {
       this.input.keyboard.on('keyup-SPACE', () => {
-        this.physics.add.collider(this.player, this.chestSprite);
-        this.chestSprite.anims.play('openChest', true);
+        if (!chestOpened) {
+          this.chestSprite.anims.play('openChest', true);
+          const star = this.add.sprite(350, 180, 'star')
+          star.scale = 0 
+          // star.alpha = 0
+          this.tweens.add({
+            targets: star,
+            y: "-= 20",
+            scaleX: 1,
+            scaleY: 1,
+            duration: 500,
+            ease: 'Power2'
+          });
+        }
+        chestOpened = true;
       });
     }
 
+    // OPEN CHEST
+
     // function openChest() {
 
+    //   this.input.keyboard.on('keyup-SPACE', (reactCollision, stars) => {
+    //     // if (!chestOpened) {
+    //       const collectStar = new CustomEvent('starCollected', {
+    //         detail: {
+    //           reactCollision,
+    //           stars,
+    //         },
+    //       });
+    //      window.dispatchEvent(collectStar);
+    //       console.log(collectStar)
+    //       this.chestSprite.anims.play('openChest');
+    //       chestOpened = true
+    //     // }
+    //   });
     // }
 
+    // SE
 
-    this.physics.add.collider(this.player, this.chestSprite, (reactCollision, stars) => {
+    // this.physics.add.collider(this.player, this.chestSprite, (reactCollision, stars) => {
 
-      this.input.keyboard.on('keyup-SPACE', () => {
-        const collisionTest= new CustomEvent('react', {
-          detail: {
-            reactCollision, stars
-          }, 
-        })
-        window.dispatchEvent(collisionTest)
-      });
-    })
+    //   this.input.keyboard.on('keyup-SPACE', () => {
+    //     const collisionTest= new CustomEvent('react', {
+    //       detail: {
+    //         reactCollision, stars
+    //       },
+    //     })
+    //     window.dispatchEvent(collisionTest)
+    //   });
+    // })
 
     function collectFruits(player, fruit) {
       fruit.destroy(fruit.x, fruit.y);
@@ -253,7 +293,7 @@ class MiniGame1 extends Phaser.Scene {
 
       if (fruitsRemaining.length) {
         generateChest(350, 180);
-        this.doorSprite.anims.play('openDoors')
+        this.doorSprite.anims.play('openDoors');
       }
       console.log(fruitsRemaining);
     }
@@ -336,7 +376,7 @@ class MiniGame1 extends Phaser.Scene {
       repeat: 0,
     });
 
-    // OPEN DOORS 
+    // OPEN DOORS
 
     this.anims.create({
       key: 'openDoors',
@@ -348,26 +388,28 @@ class MiniGame1 extends Phaser.Scene {
       repeat: 0,
     });
 
-    // GO BACK TO MAP 
+    // GO BACK TO MAP
 
-    this.physics.add.collider(this.player, this.doorSprite, ()=>{
+    this.physics.add.collider(this.player, this.doorSprite, () => {
+      const message = this.createEmitter();
+      this.scene.start('Map');
+      return message;
+    });
 
-
-        const message =  this.createEmitter()
-        this.scene.start('Map')
-        return message
-    })
-
-    this.physics.add.collider(this.player, this.doorSprite) 
-    
-
+    this.physics.add.collider(this.player, this.doorSprite);
   }
-  
-  createEmitter() {
-     console.log('IM IN MINI MAP 2 LADS!')
-   }
+
+  updateActiveChest() {
+    if (!this.chestSprite) {
+      return;
+    }
+    if (!this.chestSprite.active) {
+      this.chestSprite.setActive(false);
+    }
+  }
 
   update() {
+    this.updateActiveChest();
     const cursors = this.input.keyboard.createCursorKeys();
 
     // const spacePressed = Phaser.Input.Keyboard.JustUp(this.cursors.space);
@@ -401,7 +443,6 @@ class MiniGame1 extends Phaser.Scene {
       this.player.setVelocityY(-330);
     }
   }
-
 }
 
 export default MiniGame1;

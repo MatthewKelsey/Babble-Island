@@ -29,7 +29,7 @@ function Frame({user, setUser}) {
     console.log(user, 'im a FISH!!!!!')
     setStars(array)
     setUser(user)
-  },[])
+  },[user.stars])
 
   return (
     <>

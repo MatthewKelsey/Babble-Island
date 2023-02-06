@@ -26,7 +26,6 @@ export default function chatGPT() {
             stop: null,
             temperature: 0.5,
             model: 'text-davinci-002'
-  
           })
         });
         const json = await response.json();

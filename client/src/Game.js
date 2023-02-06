@@ -14,15 +14,9 @@ function Game({ user, setUser, characterList }) {
   const [stars, setStars] = useState();
   const [isCharacterActiveOrNot, setisCharacterActiveOrNot] = useState();
 
-  const getCharacterDialogue = async (character) => {
-    console.log(character);
-    try {
-      const dialogue = await startDialogue(character);
-      setDialogue(dialogue);
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  useEffect(() => {
+    setStars(user.stars)
+  }, [user.stars])
 
   const addOneStar = async (id) => {
     try {
@@ -34,16 +28,10 @@ function Game({ user, setUser, characterList }) {
     }
   };
 
-  // function handleClick() {
-  //   const scene = phaserGame.scene.keys.Map;
-  //   scene.createEmitter();
-  // }
-
   // LISTEN OUT FOR CHARACTER DIALOG
 
   const reactCharacterListener = ({ detail }) => {
     const character = detail.character.data.list.character;
-    const isActive = detail.character.active;
 
     if (character === 'character1' ) {
       setMessage(characterList[0]);
@@ -62,25 +50,18 @@ function Game({ user, setUser, characterList }) {
     };
     window.addEventListener('isActiveOrNot', isCharacterActiveListener);
   }, [isCharacterActiveOrNot]);
-
-  // useEffect(() => {
-  //   const handleKeyDown = (event) => {
-  //     if (event.key === ' ') {
-  //       console.log('I AM THE ACTIVATED CHARACTER INDICATOR', isCharacterActiveOrNot);
-  //     }
-  //   };
-  //   document.addEventListener('keydown', handleKeyDown);
-  // }, []);
-
+  
   // LISTEN OUT FOR STARS COLLECTED
 
   const reactCollectStarsListener = ({ detail }) => {
+    console.log(detail)
     const stars = detail.stars.data.list.stars;
-    console.log(user.stars, 'before ');
-    let userUpdate = user;
-    userUpdate.stars++;
-    console.log(userUpdate.stars, 'after');
-    setUser(userUpdate);
+    console.log(stars)
+
+    // let userUpdate = user;
+    // userUpdate.stars++;
+
+    // setUser(userUpdate);
     addOneStar(user._id);
     // setStars(stars);
   };

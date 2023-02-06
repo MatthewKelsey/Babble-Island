@@ -3,9 +3,8 @@ import Phaser from 'phaser';
 import Player from './Player.js';
 
 class Map extends Phaser.Scene {
-
-    /** @type {Phaser.Physics.Arcade.Sprite} */
-    activeCharacter;
+  /** @type {Phaser.Physics.Arcade.Sprite} */
+  activeCharacter;
 
   constructor() {
     super({
@@ -15,8 +14,6 @@ class Map extends Phaser.Scene {
   }
 
   create() {
-
-
     // game.world.setBounds(0,0,2000,2000)
     const map = this.make.tilemap({ key: 'map' });
     // map.setScrollFactor(0)
@@ -77,7 +74,6 @@ class Map extends Phaser.Scene {
     door3.setCollisionByProperty({ collisions: true });
     door4.setCollisionByProperty({ collisions: true });
 
-
     roof.setCollisionByProperty({ collisions: true });
     const debugGraphics = this.add.graphics().setAlpha(0.75);
 
@@ -90,10 +86,6 @@ class Map extends Phaser.Scene {
     this.player = new Player(this, 500, 500, 'bunny')
       .setSize(10, 10)
       .setScale(1.5);
-
-  
-
-  
 
     // CHARACTER 1
 
@@ -126,16 +118,14 @@ class Map extends Phaser.Scene {
 
     let isCharacterActive = false;
 
-  
     // CHARACTER 1
-    
+
     this.physics.add.collider(
       this.player,
       this.character1,
       (reactCollision, character) => {
-        this.activeCharacter = character
-        console.log(this.activeCharacter)
-        this.activeCharacter.setActive(true)
+        this.activeCharacter = character;
+        this.activeCharacter.setActive(true);
         this.input.keyboard.on('keyup-SPACE', () => {
           const collisionTest = new CustomEvent('react', {
             detail: {
@@ -143,10 +133,9 @@ class Map extends Phaser.Scene {
               character,
             },
           });
-          if(this.character1.active) {
+          if (this.character1.active) {
             window.dispatchEvent(collisionTest);
           }
-          // this.character1.setActive(false)
         });
       }
     );
@@ -157,8 +146,7 @@ class Map extends Phaser.Scene {
       this.player,
       this.character2,
       (reactCollision, character) => {
-        this.activeCharacter = character
-        console.log(this.activeCharacter)
+        this.activeCharacter = character;
         this.character2.setActive(true);
         this.input.keyboard.on('keyup-SPACE', () => {
           const collisionTest = new CustomEvent('react', {
@@ -170,7 +158,6 @@ class Map extends Phaser.Scene {
           if (this.character2.active) {
             window.dispatchEvent(collisionTest);
           }
-          // this.character2.setActive(false);
         });
       }
     );
@@ -181,8 +168,7 @@ class Map extends Phaser.Scene {
       this.player,
       this.character3,
       (reactCollision, character) => {
-        this.activeCharacter = character
-        console.log(this.activeCharacter)
+        this.activeCharacter = character;
         this.character3.setActive(true);
         this.input.keyboard.on('keyup-SPACE', () => {
           const collisionTest = new CustomEvent('react', {
@@ -194,9 +180,7 @@ class Map extends Phaser.Scene {
           if (this.character3.active) {
             window.dispatchEvent(collisionTest);
           }
-          // this.character3.setActive(false);
         });
-
       }
     );
 
@@ -213,24 +197,11 @@ class Map extends Phaser.Scene {
       this.scene.start('MiniGame2', this.player);
     });
     this.physics.add.collider(this.player, roof);
-
-    // this.player.setCollideWorldBounds(true);
-
-    // player.setScale(1);
-
-    // this.createEmitter()
-    
   }
 
-  // createEmitter() {
-  //   console.log('I AM HERE INSIDE THE MAP FUCK YESSS!!!')
-  // }
-
-  updateActiveCharacter () {
-    
+  updateActiveCharacter() {
     if (!this.activeCharacter) {
       return;
-
     }
     const distance = Phaser.Math.Distance.Between(
       this.player.x,
@@ -239,41 +210,40 @@ class Map extends Phaser.Scene {
       this.activeCharacter.y
     );
 
-    const characterActiveOrNot = this.activeCharacter.active
+    const characterActiveOrNot = this.activeCharacter.active;
 
-      const collisionTest = new CustomEvent('isActiveOrNot', {
-        detail: {
-          characterActiveOrNot
-        },
-      });
-        window.dispatchEvent(collisionTest);
+    const collisionTest = new CustomEvent('isActiveOrNot', {
+      detail: {
+        characterActiveOrNot,
+      },
+    });
+    window.dispatchEvent(collisionTest);
 
-    
-    if (distance < 100) {
-      this.activeCharacter.setActive(true)
+    if (distance < 80) {
+      this.activeCharacter.setActive(true);
       return;
     } else {
-      this.activeCharacter.setActive(false)
-      return ;
+      this.activeCharacter.setActive(false);
+      return;
     }
     // this.activeCharacter = undefined;
-
-    
   }
 
   update() {
     this.player.updatePlayer();
     this.updateActiveCharacter();
 
-  const spacePressed = Phaser.Input.Keyboard.JustUp(this.player.cursors.space)
-  
-  if (spacePressed) {
-    console.log('SPACE PRESSED') 
-  }
+    const spacePressed = Phaser.Input.Keyboard.JustUp(
+      this.player.cursors.space
+    );
+
+    if (spacePressed) {
+      console.log('SPACE PRESSED');
+    }
 
     this.game.scale.setZoom(1);
     this.cameras.main.startFollow(this.player);
-    this.cameras.main.zoomTo(2,2)
+    this.cameras.main.zoomTo(2, 2);
     this.cameras.main.setBounds(0, 0, 2000, 2000, true);
   }
 }
