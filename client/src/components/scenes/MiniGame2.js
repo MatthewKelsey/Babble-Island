@@ -34,7 +34,7 @@ class MiniGame2 extends Phaser.Scene {
 
   /**@type {Phaser.GameObjects.Group} */
   itemsGroup;
-  /** @type {{box: Phaser.Physics.Arcade.Sprite, item: object}[]} */
+  /** @type {{box: Phaser.Physics.Arcade.Sprite, item: Phaser.GameObjects.Sprite}[]} */
   selectedBoxes = [];
   /** @type {Phaser.Physics.Arcade} */
 
