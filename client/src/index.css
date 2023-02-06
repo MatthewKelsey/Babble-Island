@@ -81,7 +81,7 @@ code {
   border-image: url('./pixel/border.png');
   border-image-repeat: repeat;
   width: 100%; */
-  display: flex;
+  /* display: flex; */
 }
 
 .menu-items {
@@ -98,9 +98,7 @@ code {
   justify-content: center;
   align-items: center;
   height: 80%;
-
-
-
+}
 
 .menu-button:hover {
   border: 5px;

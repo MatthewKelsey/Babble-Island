@@ -45,15 +45,13 @@ function Game({ user, setUser, characterList }) {
     const character = detail.character.data.list.character;
     const isActive = detail.character.active;
 
-    if (character === 'character1' && isCharacterActiveOrNot) {
+    if (character === 'character1' ) {
       setMessage(characterList[0]);
-    } else if (character === 'character2') {
+    } if (character === 'character2' ) {
       setMessage(characterList[1]);
-    } else if (character === 'character3') {
+    } if (character === 'character3' ) {
       setMessage(characterList[2]);
-    } else {
-      // setisCharacterActiveOrNot(!isActive);
-    }
+    } 
   };
   window.addEventListener('react', reactCharacterListener);
 
@@ -90,7 +88,6 @@ function Game({ user, setUser, characterList }) {
 
   return (
     <>
-      {/* <button onClick={handleClick}></button> */}
       {message && (
         <DialogueBox
           message={message}
@@ -98,7 +95,6 @@ function Game({ user, setUser, characterList }) {
         />
       )}
 
-      {/* <DialogueBox message={message} setMessage={setMessage} /> */}
       <Frame user={user} setUser={setUser} stars={stars} setStars={setStars} />
     </>
   );

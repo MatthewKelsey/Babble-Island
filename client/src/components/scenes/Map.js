@@ -194,7 +194,7 @@ class Map extends Phaser.Scene {
           if (this.character3.active) {
             window.dispatchEvent(collisionTest);
           }
-          this.character3.setActive(false);
+          // this.character3.setActive(false);
         });
 
       }
@@ -240,7 +240,6 @@ class Map extends Phaser.Scene {
     );
 
     const characterActiveOrNot = this.activeCharacter.active
-    console.log(characterActiveOrNot)
 
       const collisionTest = new CustomEvent('isActiveOrNot', {
         detail: {
@@ -250,7 +249,7 @@ class Map extends Phaser.Scene {
         window.dispatchEvent(collisionTest);
 
     
-    if (distance < 64) {
+    if (distance < 100) {
       this.activeCharacter.setActive(true)
       return;
     } else {

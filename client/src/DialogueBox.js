@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 export default function DialogueBox({message, setMessage }) {
 
+  console.log(message)
+
   function boxClose() {
     console.log('hello, boxClose called')
     setMessage('');
@@ -10,6 +12,7 @@ export default function DialogueBox({message, setMessage }) {
   const [text, setText] = useState(message.initial);
   const [currentText, setCurrentText] = useState("");
   const [index, setIndex] = useState(0);
+  console.log(text)
 
 
   useEffect(() => {
