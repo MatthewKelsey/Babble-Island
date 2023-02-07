@@ -16,7 +16,7 @@ export default class Preloader extends Phaser.Scene {
     // Load all audio files
 
 
-    // MINI GAME 1 AUDIO 
+    // MINI GAME 1 AUDIO
 
     this.load.audio("mini_game_1_audio", "/assets/audio/mini_game1.mp3");
     this.load.audio("pears", "/assets/audio/peras.mp3");
@@ -29,19 +29,27 @@ export default class Preloader extends Phaser.Scene {
       frameHeight: 19,
     });
 
-    // MAP AUDIO 
+
+    // MAP AUDIO
 
     this.load.audio('discover', '/assets/audio/Soundtrack/Discover.mp3')
     this.load.audio('curious', '/assets/audio/Soundtrack/Curious.mp3')
     this.load.audio('gentle', '/assets/audio/Soundtrack/Gentle.mp3')
     this.load.audio('field', '/assets/audio/Soundtrack/Field.mp3')
     this.load.audio('valley','/assets/audio/Soundtrack/Valley.mp3' )
+    this.load.audio('glow','/assets/audio/Soundtrack/Glow.mp3' )
+    this.load.audio('walk', 'assets/audio/SFX/Footstep/Generic/SFX_Movement_Footstep_Generic_3.wav')
 
-    // SFX 
+    // SFX
 
     this.load.audio('chestOpened', 'assets/audio/SFX/Chest_Open/SFX_Chest_Open_Rich_1.wav')
     this.load.audio('fruitCollected', 'assets/audio/SFX/Collect/Pop/SFX_Player_Collect_Pop_1.wav')
     this.load.audio('chestFound', 'assets/audio/SFX/Collect/Bright/SFX_Player_Collect_Bright_1.wav')
+    this.load.audio('noMatch', 'assets/audio/SFX/UI/Error/SFX_UI_Error.wav')
+    this.load.audio('yesMatch', 'assets/audio/SFX/Match/Bright/SFX_Match_Bright_1.wav')
+    this.load.audio('chestFound', 'assets/audio/SFX/Collect/Bright/SFX_Player_Collect_Bright_1.wav')
+    this.load.audio('checkBox', 'assets/audio/SFX/Match/Boxy/SFX_Match_Boxy_1.wav')
+
 
     // Load all image /assets
 
@@ -75,6 +83,9 @@ export default class Preloader extends Phaser.Scene {
 
     this.load.atlas('boat_anchored', 'assets/map/boat_anchored.png', 'assets/map/boat_anchored_atlas.json');
     this.load.animation('boat_anchored_anim', 'assets/map/boat_anchored_anim.json');
+
+    this.load.atlas('baby_cow_pink', 'assets/map/baby_cow_pink.png', 'assets/map/baby_cow_pink_atlas.json');
+    this.load.animation('baby_cow_pink_anim', 'assets/map/baby_cow_pink_anim.json');
 
     // MINI GAME 1
 
@@ -133,6 +144,7 @@ export default class Preloader extends Phaser.Scene {
   }
 
   create() {
+    let soundPlayed = false
     this.anims.create({
       key: "idle",
       frames: [{ key: "bunny", frame: 0 }],

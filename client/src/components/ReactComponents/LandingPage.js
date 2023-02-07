@@ -12,7 +12,7 @@ navigate('/game')
     }
 
     function returnToLogin(){
-        navigate('/login')
+        navigate('/')
     }
     return (
         <div className='babble-island'>

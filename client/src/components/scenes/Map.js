@@ -13,9 +13,17 @@ class Map extends Phaser.Scene {
     console.log('in map');
   }
 
-  create() {
-    this.music = this.sound.add('discover');
 
+  create() {
+
+
+    this.music = this.sound.add('gentle');
+    this.walk = this.sound.add('walk')
+
+
+    const walkConfig = {
+      loop:false
+    }
     // MUSIC CONFIG
 
     const musicConfig = {
@@ -47,7 +55,7 @@ class Map extends Phaser.Scene {
       16,
       0,
       0
-    );
+      );
     const tileset3 = map.addTilesetImage('Trees', 'trees', 16, 16, 0, 0);
     const tileset4 = map.addTilesetImage('Mushrooms', 'objects', 16, 16, 0, 0);
     const tileset5 = map.addTilesetImage(
@@ -57,61 +65,61 @@ class Map extends Phaser.Scene {
       16,
       0,
       0
-    );
-    const tileset6 = map.addTilesetImage(
-      'door_animation',
-      'doors',
-      16,
-      16,
-      0,
-      0
-    );
-    const tileset7 = map.addTilesetImage('WoodBridge', 'bridges', 16, 16, 0, 0);
-    const tileset8 = map.addTilesetImage('Water_4', 'water', 16, 16, 0, 0);
+      );
+      const tileset6 = map.addTilesetImage(
+        'door_animation',
+        'doors',
+        16,
+        16,
+        0,
+        0
+        );
+        const tileset7 = map.addTilesetImage('WoodBridge', 'bridges', 16, 16, 0, 0);
+        const tileset8 = map.addTilesetImage('Water_4', 'water', 16, 16, 0, 0);
 
-    const layer0 = map.createLayer('sea', tileset);
-    const layer = map.createLayer('water', tileset8);
+        const layer0 = map.createLayer('sea', tileset);
+        const layer = map.createLayer('water', tileset8);
 
-    const land = map.createLayer('land', tileset2);
-    const trees = map.createLayer('trees', tileset3);
-    const objects = map.createLayer('objects', tileset4);
-    const houses = map.createLayer('houses', tileset5);
-    const door1 = map.createLayer('door1', tileset6);
+        const land = map.createLayer('land', tileset2);
+        const trees = map.createLayer('trees', tileset3);
+        const objects = map.createLayer('objects', tileset4);
+        const houses = map.createLayer('houses', tileset5);
+        const door1 = map.createLayer('door1', tileset6);
 
-    const door2 = map.createLayer('door2', tileset6);
-    const door3 = map.createLayer('door3', tileset6);
-    const door4 = map.createLayer('door4', tileset6);
-    const roof = map.createLayer('roof', tileset5);
-    const bridges = map.createLayer('bridges', tileset7);
+        const door2 = map.createLayer('door2', tileset6);
+        const door3 = map.createLayer('door3', tileset6);
+        const door4 = map.createLayer('door4', tileset6);
+        const roof = map.createLayer('roof', tileset5);
+        const bridges = map.createLayer('bridges', tileset7);
 
-    // land.setCollisionByProperty({collisions:true});
-    layer.setCollisionByProperty({ collisions: true });
-    trees.setCollisionByProperty({ collisions: true });
-    objects.setCollisionByProperty({ collisions: true });
-    houses.setCollisionByProperty({ collisions: true });
-    door1.setCollisionByProperty({ collisions: true });
-    door2.setCollisionByProperty({ collisions: true });
-    door3.setCollisionByProperty({ collisions: true });
-    door4.setCollisionByProperty({ collisions: true });
+        // land.setCollisionByProperty({collisions:true});
+        layer.setCollisionByProperty({ collisions: true });
+        trees.setCollisionByProperty({ collisions: true });
+        objects.setCollisionByProperty({ collisions: true });
+        houses.setCollisionByProperty({ collisions: true });
+        door1.setCollisionByProperty({ collisions: true });
+        door2.setCollisionByProperty({ collisions: true });
+        door3.setCollisionByProperty({ collisions: true });
+        door4.setCollisionByProperty({ collisions: true });
 
-    // roof.setCollisionByProperty({ collisions: true });
-    const debugGraphics = this.add.graphics().setAlpha(0.75);
+        // roof.setCollisionByProperty({ collisions: true });
+        const debugGraphics = this.add.graphics().setAlpha(0.75);
 
-    door1.renderDebug(debugGraphics, {
-        tileColor: null, // Color of non-colliding tiles
-        collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
-        faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
-        });
+        // layer.renderDebug(debugGraphics, {
+          //     tileColor: null, // Color of non-colliding tiles
+          //     collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
+          //     faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
+          //     });
 
-    this.player = new Player(this, 500, 500, 'bunny')
-      .setSize(10, 10)
-      .setScale(1.5);
+          this.player = new Player(this, 500, 500, 'bunny')
+          .setSize(10, 10)
+          .setScale(1.5)
 
-    //test atlas
-    this.bunny2 = this.add.sprite(440, 360, 'bunny_digging', 'bunny_digging1');
+          //test atlas
+          this.bunny2 = this.add.sprite(440, 360, 'bunny_digging', 'bunny_digging1');
 
-    this.anims.create({
-      key: 'dig',
+          this.anims.create({
+            key: 'dig',
       frames: this.anims.generateFrameNames('bunny_digging', {prefix: 'bunny_digging', start: 1, end: 32}),
       frameRate: 10,
       repeat: -1
@@ -123,10 +131,20 @@ class Map extends Phaser.Scene {
       this.anims.create({
         key: 'boat',
         frames: this.anims.generateFrameNames('boat_anchored', {prefix: 'boat_anchored', start: 1, end: 2}),
-        frameRate: 5,
+        frameRate: 2,
         repeat: -1
     });
     this.boat.anims.play('boat');
+
+    this.cow = this.add.sprite(440, 600, 'baby_cow_pink', 'baby_cow_pink1');
+
+      this.anims.create({
+        key: 'baby',
+        frames: this.anims.generateFrameNames('baby_cow_pink', {prefix: 'baby_cow_pink', start: 1, end: 37}),
+        frameRate: 2,
+        repeat: -1
+    });
+    this.cow.anims.play('baby');
 
 
     // CHARACTER 1
@@ -240,6 +258,7 @@ class Map extends Phaser.Scene {
 
     // MINI GAME 1
     this.physics.add.collider(this.player, door1, () => {
+      this.music.stop()
       this.cameras.main.fadeOut(1000, 0, 0, 0);
     });
     this.cameras.main.once(
@@ -252,69 +271,71 @@ class Map extends Phaser.Scene {
 
     // MINI GAME 2
     this.physics.add.collider(this.player, door4, () => {
+      this.music.stop()
       this.cameras.main.fadeOut(1000, 0, 0, 0);
       this.scene.start('MiniGame2');
     });
-    // this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
-    //   this.scene.start('MiniGame2')
-    // })
 
     this.physics.add.collider(this.player, door2, ()=>{
       console.log('door 2 collision')
-      
-      // const libraryEntrance = new CustomEvent('library', {detail: {
-      //   libraryDoor
-      // }})
-      // window.dispatchEvent(libraryEntrance);
-    });
- 
-      
-    
-    this.physics.add.collider(this.player, door3 , (libraryDoor)=>{
-  
-      const libraryEntrance = new CustomEvent('library', {detail: {
-        libraryDoor
-      }})
-      window.dispatchEvent(libraryEntrance);
-    }
-      );
-    // this.physics.add.collider(this.player, door4, () => {
-    //   this.scene.start('MiniGame2', this.player);
-    // });
-    // this.physics.add.collider(this.player, roof);
-  }
 
-  updateActiveCharacter() {
-    if (!this.activeCharacter) {
-      return;
+      // const libraryEntrance = new CustomEvent('library', {detail: {
+        //   libraryDoor
+        // }})
+        // window.dispatchEvent(libraryEntrance);
+      });
+
+
+
+      this.physics.add.collider(this.player, door3 , (libraryDoor)=>{
+
+        const libraryEntrance = new CustomEvent('library', {detail: {
+          libraryDoor
+        }})
+        window.dispatchEvent(libraryEntrance);
+      }
+      );
+      // this.physics.add.collider(this.player, door4, () => {
+        //   this.scene.start('MiniGame2', this.player);
+        // });
+        // this.physics.add.collider(this.player, roof);
+
+
+      }
+
+      updateActiveCharacter() {
+        if (!this.activeCharacter) {
+          return;
     }
     const distance = Phaser.Math.Distance.Between(
       this.player.x,
       this.player.y,
       this.activeCharacter.x,
       this.activeCharacter.y
-    );
+      );
 
-    const characterActiveOrNot = this.activeCharacter.active;
+      const characterActiveOrNot = this.activeCharacter.active;
 
-    const collisionTest = new CustomEvent('isActiveOrNot', {
-      detail: {
-        characterActiveOrNot,
-      },
-    });
-    window.dispatchEvent(collisionTest);
+      const collisionTest = new CustomEvent('isActiveOrNot', {
+        detail: {
+          characterActiveOrNot,
+        },
+      });
+      window.dispatchEvent(collisionTest);
 
-    if (distance < 80) {
-      this.activeCharacter.setActive(true);
-      return;
-    } else {
-      this.activeCharacter.setActive(false);
-      return;
+      if (distance < 80) {
+        this.activeCharacter.setActive(true);
+        return;
+      } else {
+        this.activeCharacter.setActive(false);
+        return;
+      }
+      // this.activeCharacter = undefined;
+
     }
-    // this.activeCharacter = undefined;
-  }
 
-  update() {
+    update() {
+
     this.player.updatePlayer();
     this.updateActiveCharacter();
 

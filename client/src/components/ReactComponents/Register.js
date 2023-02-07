@@ -45,7 +45,7 @@ const Register = (props) => {
   };
 
   const loginHandle = () => {
-    navigate("/login");
+    navigate("/");
   };
 
   const validateForm = () => {

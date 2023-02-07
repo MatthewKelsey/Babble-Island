@@ -9,7 +9,6 @@ body {
 
 .babble-island {
   background-image: url('/public/assets/images/babble_island_big.png');
-
   background-repeat: no-repeat;
   background-size: cover;
   /* background-position-y: -200px; */
@@ -17,7 +16,7 @@ body {
 }
 
 .title {
-  padding-top: 600px;
+  padding-top: 450px;
   font-size: 50px;
 }
 

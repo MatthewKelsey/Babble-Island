@@ -33,6 +33,7 @@ class MiniGame1 extends Phaser.Scene {
     this.openChest = this.sound.add('chestOpened')
     this.collectFruit = this.sound.add('fruitCollected')
     this.chestFound = this.sound.add('chestFound')
+    this.checkBox = this.sound.add('checkBox')
 
     const musicConfig = {
       mute: false,
@@ -42,6 +43,7 @@ class MiniGame1 extends Phaser.Scene {
       seek: 0,
       loop: true,
       delay: 0,
+      
     };
 
     this.music.play(musicConfig);

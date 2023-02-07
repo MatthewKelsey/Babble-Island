@@ -1,5 +1,6 @@
 import React, { useEffect} from 'react';
 import './library.css';
+import item from '../../../pixel/book.png';
 
 function Book({book, setCurrentBook }) {
  useEffect(() => {
@@ -10,9 +11,7 @@ function Book({book, setCurrentBook }) {
   return (
 
     <div className='book' onClick={() => setCurrentBook(book)}>
-
-
-      <img className='cover' src={book.cover} />
+      <img className='cover' src={item} />
       <div className='book-title'>{book.title}</div>
     </div>
 

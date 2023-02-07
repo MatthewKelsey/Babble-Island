@@ -1,0 +1,160 @@
+{
+    "anims": [
+        {
+            "key": "baby_cow_pink",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink1"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink2"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink3"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink4"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink5"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink6"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink7"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink8"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink9"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink10"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink11"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink12"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink13"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink14"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink15"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink16"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink17"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink18"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink19"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink20"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink21"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink22"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink23"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink24"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink25"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink26"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink27"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink28"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink29"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink30"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink31"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink32"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink33"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink34"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink35"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink36"
+                },
+                {
+                    "key": "baby_cow_pink",
+                    "frame": "baby_cow_pink37"
+                }
+            ]
+        }
+    ]
+}

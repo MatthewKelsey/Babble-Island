@@ -1,19 +1,27 @@
-import React, { useEffect } from "react";
-import Words from './Words.js'
+
+import React from 'react';
+import Words from './Words.js';
 import './library.css';
+import { useState, useEffect } from 'react';
 import {textToSpeech} from '../../../ApiClient.js'
+
 function Story({ currentBook }) {
+  const [text, setText] = useState('');
+  const [currentText, setCurrentText] = useState('');
+  const [index, setIndex] = useState(0);
+  const story = currentBook.story;
 
-  const story = currentBook.story
- 
+  useEffect(() => {
+    setIndex(0);
+    setText(story);
+    console.log(currentText);
+  }, [story]);
 
-useEffect(()=>{
-textToSpeech(story)
-})
+  const storyArray = objectify(currentText);
 
   function objectify(story) {
     if (story) {
-      let arrayOne = story.split(" ");
+      let arrayOne = story.split(' ');
       let objectArray = [];
       arrayOne.forEach((element) => {
         objectArray.push({ word: element });
@@ -21,17 +29,34 @@ textToSpeech(story)
       return objectArray;
     }
   }
-const storyArray = objectify(story)
 
 
+  useEffect(() => {
+    setIndex(0);
+    setCurrentText('');
+    console.log(text);
+  }, [text]);
 
+  useEffect(() => {
+    if (story && index < text.length) {
+      setTimeout(() => {
+        setCurrentText(currentText + text[index]);
+        setIndex(index + 1);
+      }, 40);
+    }
+  }, [index, text, currentText]);
 
   return (
-  <div className="story-box">
-    {currentBook.story && storyArray.map((word) =>  { return <Words word ={word} />})}
+    <div className='current'>
+      <div className='story-box'>
+        {currentText &&
+          storyArray.map((word) => {
+            return <Words word={word} />;
+          })}
+      </div>
 
-  </div>
-
+      <img className='cover-book' src={currentBook.cover} />
+    </div>
   );
 }
 
