@@ -222,15 +222,12 @@ class Map extends Phaser.Scene {
   // FADE OUT OF MAP 
 
     // MINI GAME 1 
-    this.physics.add.collider(this.player, door1, (libraryDoor) => {
-      const libraryEntrance = new CustomEvent('library', {detail: {
-        libraryDoor
-      }})
-      window.dispatchEvent(libraryEntrance);
-    //   this.cameras.main.fadeOut(1000, 0, 0, 0)
-    // });
-    // this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
-    //   this.scene.start('MiniGame1')
+    this.physics.add.collider(this.player, door1, () => {
+     
+      this.cameras.main.fadeOut(1000, 0, 0, 0)
+    });
+    this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
+      this.scene.start('MiniGame1')
     })
 
     // MINI GAME 2 
@@ -253,12 +250,12 @@ class Map extends Phaser.Scene {
  
       
     
-    this.physics.add.collider(this.player, door3 , ()=>{
-      console.log('door 3 collision')
-      // const libraryEntrance = new CustomEvent('library', {detail: {
-      //   libraryDoor
-      // }})
-      // window.dispatchEvent(libraryEntrance);
+    this.physics.add.collider(this.player, door3 , (libraryDoor)=>{
+  
+      const libraryEntrance = new CustomEvent('library', {detail: {
+        libraryDoor
+      }})
+      window.dispatchEvent(libraryEntrance);
     }
       );
     // this.physics.add.collider(this.player, door4, () => {
