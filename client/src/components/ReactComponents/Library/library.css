@@ -88,7 +88,7 @@
 .story-box {
   width: 60%;
   font-size: 20px;
-  word-spacing: 100px;
+  /* word-spacing: 100px; */
   display: flex;
   flex-wrap: wrap;
   overflow-y: scroll;
@@ -103,12 +103,15 @@
   border-radius: 20px;
   margin-left: 100px;
 }
-
+.word-render {
+  max-height: 5%;
+}
 
 .individual-word {
   margin: 5px;
 }
 .individual-word:hover {
+  cursor: pointer;
   background-color: #efc182;
 }
 
