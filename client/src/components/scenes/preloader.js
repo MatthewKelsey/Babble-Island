@@ -4,7 +4,12 @@ import Phaser from "phaser";
 
 export default class Preloader extends Phaser.Scene {
   constructor() {
-    super("preloader");
+
+
+    super('preloader');
+
+
+
   }
 
   preload() {
@@ -44,26 +49,32 @@ export default class Preloader extends Phaser.Scene {
 
     // MAP
 
-    this.load.image("water", "assets/map/Water.png");
-    this.load.image("grass", "assets/map/Darker_Tall_Grass.png");
-    this.load.image("trees", "assets/map/Trees.png");
-    this.load.image("objects", "assets/map/Mushrooms.png");
-    this.load.image("houses", "assets/map/Wooden_House.png");
-    this.load.image("doors", "assets/map/door_animation.png");
-    this.load.image("bridges", "assets/map/WoodBridge.png");
-    this.load.image("water", "assets/map/Water_4.png");
-    this.load.tilemapTiledJSON("map", "assets/map/babble_island.json");
-    this.load.scenePlugin(
-      "AnimatedTiles",
-      "https://raw.githubusercontent.com/nkholski/phaser-animated-tiles/master/dist/AnimatedTiles.js",
-      "animatedTiles",
-      "animatedTiles"
-    );
 
-    this.load.spritesheet("dude", "assets/dude.png", {
+
+    this.load.image('water', 'assets/map/Water.png');
+    this.load.image('grass', 'assets/map/Darker_Tall_Grass.png');
+    this.load.image('trees', 'assets/map/Trees.png');
+    this.load.image('objects', 'assets/map/Mushrooms.png');
+    this.load.image('houses', 'assets/map/Wooden_House.png');
+    this.load.image('doors', 'assets/map/door_animation.png');
+    this.load.image('bridges', 'assets/map/WoodBridge.png');
+    this.load.image('water', 'assets/map/Water_4.png');
+    this.load.tilemapTiledJSON('map', 'assets/map/babble_island.json');
+    this.load.scenePlugin('AnimatedTiles', 'https://raw.githubusercontent.com/nkholski/phaser-animated-tiles/master/dist/AnimatedTiles.js', 'animatedTiles', 'animatedTiles');
+
+    this.load.spritesheet('dude', 'assets/dude.png', {
+
+
       frameWidth: 32,
       frameHeight: 48,
     });
+
+    //new character
+    this.load.atlas('bunny_digging', 'assets/map/bunny_digging.png', 'assets/map/bunny_digging_atlas.json');
+    this.load.animation('bunny_digging_anim', 'assets/map/bunny_digging_anim.json');
+
+    this.load.atlas('boat_anchored', 'assets/map/boat_anchored.png', 'assets/map/boat_anchored_atlas.json');
+    this.load.animation('boat_anchored_anim', 'assets/map/boat_anchored_anim.json');
 
     // MINI GAME 1
 
@@ -77,7 +88,8 @@ export default class Preloader extends Phaser.Scene {
     this.load.image('star', '/assets/mini_game1/star.png')
     this.load.tilemapTiledJSON('tilemap', '/assets/mini_game1/house.json');
 
-    this.load.spritesheet("doorsAnim", "assets/mini_game1/doorsOpen.png", {
+
+    this.load.spritesheet('doorsAnim', 'assets/mini_game1/doorsOpen.png', {
 
       frameWidth: 48,
       frameHeight: 16,
@@ -116,6 +128,8 @@ export default class Preloader extends Phaser.Scene {
     this.load.image("white", "/assets/mini_game2/colours/white.png");
     this.load.image("yellow", "/assets/mini_game2/colours/yellow.png");
     this.load.image("orange_colour", "/assets/mini_game2/colours/orange.png");
+    this.load.image('mini_game_2', '/assets/mini_game2/Wooden_House.png');
+    this.load.tilemapTiledJSON('tilemap2', '/assets/mini_game2/floor.json');
   }
 
   create() {

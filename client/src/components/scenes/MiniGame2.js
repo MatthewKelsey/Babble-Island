@@ -31,6 +31,8 @@ function addToSpanishBox(arr) {
 const englishBoxContent = addToBox(words);
 const spanishBoxContent = addToSpanishBox(words);
 
+
+
 class MiniGame2 extends Phaser.Scene {
   /** @type {Phaser.Types.Input.Keyboard.CursorKeys} */
   cursors;
@@ -56,7 +58,7 @@ class MiniGame2 extends Phaser.Scene {
   constructor() {
     super("MiniGame2");
   }
- 
+
 
   init() {
     this.game.scale.setZoom(1);
@@ -65,6 +67,18 @@ class MiniGame2 extends Phaser.Scene {
   create() {
     this.cameras.main.fadeIn(1000, 0, 0, 0)
     const { width, height } = this.scale;
+
+    const map = this.make.tilemap({ key: 'tilemap2' });
+
+    // first id is the name on the JSON, second id refers the id used for the image
+    const tileset = map.addTilesetImage('Wooden_House', 'mini_game_2');
+
+    // create layers ie ground or walls
+    const floor = map.createLayer('floor', tileset);
+    floor.setScale(2)
+
+
+
     this.door = this.physics.add.sprite(width / 2, 100, "bomb");
     this.player = this.physics.add
       .sprite(width * 0.5, height * 0.5, "bunny")
@@ -260,7 +274,7 @@ break
         itemPic = this.itemsGroup.get(box.x, box.y).setScale(0.1);
         itemPic.setTexture("naranja");
         break;
-  
+
     }
 
     box.setData("opened", true);
@@ -313,10 +327,13 @@ break
     }
     this.matchesCount++;
     console.log(this.matchesCount);
-    if (this.matchesCount === 8) {
-      
+    if (this.matchesCount === 1) {
+
       this.add.text(this.scale.width / 2, this.scale.height / 2, "Well Done");
       // this.generateChest(this.scale.width/2, this.scale.height/2)
+      this.chestSprite = this.physics.add
+      .sprite(this.scale.width / 2, this.scale.height / 2, 'chest')
+      .setSize(16, 32)
     }
   }
   updateActiveBox() {
