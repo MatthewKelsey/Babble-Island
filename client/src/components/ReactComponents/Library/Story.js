@@ -24,8 +24,16 @@ console.log(storyArray)
 
 
   return (
-  <div className="story-box">
-    {currentBook.story && storyArray.map((word) =>  { return <Words word ={word} />})}
+  <div className="current">
+
+    <div className="story-box">
+      {currentBook.story && storyArray.map((word) =>  { return <Words word ={word} />})}
+    </div>
+
+
+    <img className="cover-book"
+      src={currentBook.cover}
+    />
 
   </div>
 
