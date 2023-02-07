@@ -56,19 +56,14 @@ class MiniGame2 extends Phaser.Scene {
   constructor() {
     super("MiniGame2");
   }
-  preload() {
-    this.load.image("pear", "/assets/mini_game1/pear.png");
-    this.load.image("apple", "/assets/mini_game1/apple.png");
-    this.load.image("orange", "/assets/mini_game1/orange.png");
-    this.load.image("grape", "/assets/mini_game1/grapes.png");
-    this.load.image("strawberry", "/assets/mini_game1/strawberry.png");
-  }
+ 
 
   init() {
     this.game.scale.setZoom(1);
     this.cursors = this.input.keyboard.createCursorKeys();
   }
   create() {
+    this.cameras.main.fadeIn(1000, 0, 0, 0)
     const { width, height } = this.scale;
     this.door = this.physics.add.sprite(width / 2, 100, "bomb");
     this.player = this.physics.add
@@ -225,7 +220,7 @@ class MiniGame2 extends Phaser.Scene {
         break;
       case 8:
         itemPic = this.itemsGroup.get(box.x, box.y).setScale(0.1);
-        itemPic.setTexture("orange");
+        itemPic.setTexture("orange_colour");
         break;
       case 9:
         itemPic = this.itemsGroup.get(box.x, box.y).setScale(0.1);
@@ -319,8 +314,9 @@ break
     this.matchesCount++;
     console.log(this.matchesCount);
     if (this.matchesCount === 8) {
+      
       this.add.text(this.scale.width / 2, this.scale.height / 2, "Well Done");
-      //Render chest etc
+      // this.generateChest(this.scale.width/2, this.scale.height/2)
     }
   }
   updateActiveBox() {
@@ -341,19 +337,43 @@ break
     }
     this.activeBox = undefined;
   }
-  checkForComplete() {
-    if (wordBox.length !== 8) {
-      return;
-    }
-    if (wordBox.length === 8) {
-      this.add.text(
-        this.scale.width / 4,
-        400,
-        "Well Done! You matched all the pairs!",
-        { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif' }
-      );
-    }
-  }
+
+
+  generateChest = (x, y) => {
+    this.chestSprite = this.physics.add
+      .sprite(x, y, 'chest')
+      .setSize(16, 32)
+      .setData('stars', starCounter);
+    this.chestSprite.body.immovable = true;
+    this.physics.add.overlap(
+      this.player,
+      this.chestSprite,
+      openChest,
+      null,
+      this
+    );
+    this.physics.add.collider(
+      this.player,
+      this.chestSprite,
+      (reactCollision, stars) => {
+        this.input.keyboard.on('keyup-SPACE', (e) => {
+          e.preventDefault()
+          const collectStar = new CustomEvent('starCollected', {
+            detail: {
+              reactCollision,
+              stars,
+            },
+          });
+          if (!chestOpened) {
+            window.dispatchEvent(collectStar);
+          }
+          chestOpened = true;
+        });
+      }
+    );
+    return this.chestSprite;
+  };
+
   update() {
     this.children.each((c) => {
       /**@type {Phaser.Physics.Arcade.Sprite} */
