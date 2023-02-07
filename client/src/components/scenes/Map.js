@@ -95,15 +95,19 @@ class Map extends Phaser.Scene {
 
     this.character1 = this.physics.add
       .sprite(500, 600, 'bunny')
+      .setSize(15, 15)
       .setData('character', 'character1')
-      .setActive(false);
+      .setActive(false)
+      .setScale(1.5)
     this.character1.body.immovable = true;
 
     // CHARACTER 2
 
     this.character2 = this.physics.add
-      .sprite(900, 1595, 'bunny')
+      .sprite(900, 1590, 'bunny')
+      .setSize(15, 15)
       .setData('character', 'character2')
+      .setScale(1.5)
       .setActive(false);
     this.character2.body.immovable = true;
 
@@ -111,7 +115,9 @@ class Map extends Phaser.Scene {
 
     this.character3 = this.physics.add
       .sprite(1680, 720, 'bunny')
+      .setSize(15, 15)
       .setData('character', 'character3')
+      .setScale(1.5)
       .setActive(false);
     this.character3.body.immovable = true;
 
