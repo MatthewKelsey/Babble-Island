@@ -102,13 +102,15 @@ class MiniGame1 extends Phaser.Scene {
    // FADE OUT OF MINI GAME 1 
 
     this.physics.add.collider(this.player, this.doorSprite, () => {
-      this.music.stop(musicConfig);
       this.cameras.main.fadeOut(1000, 0, 0, 0)
     });
+    
     this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
+      this.music.stop(musicConfig);
+      // this.scene.stop('MiniGame1')
+      this.scene.pause('MiniGame1');
       this.scene.start('Map')
     })
-
 
 
 

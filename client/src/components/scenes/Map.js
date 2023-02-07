@@ -195,18 +195,29 @@ class Map extends Phaser.Scene {
 
   // FADE OUT OF MAP 
 
+    // MINI GAME 1 
     this.physics.add.collider(this.player, door1, () => {
       this.cameras.main.fadeOut(1000, 0, 0, 0)
+      this.scene.start('MiniGame1')
     });
     this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
       this.scene.start('MiniGame1')
     })
 
+    // MINI GAME 2 
+    this.physics.add.collider(this.player, door4, () => {
+      this.cameras.main.fadeOut(1000, 0, 0, 0)
+      this.scene.start('MiniGame2')
+    });
+    // this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
+    //   this.scene.start('MiniGame2')
+    // })
+
     this.physics.add.collider(this.player, door2);
     this.physics.add.collider(this.player, door3);
-    this.physics.add.collider(this.player, door4, () => {
-      this.scene.start('MiniGame2', this.player);
-    });
+    // this.physics.add.collider(this.player, door4, () => {
+    //   this.scene.start('MiniGame2', this.player);
+    // });
     this.physics.add.collider(this.player, roof);
   }
 
