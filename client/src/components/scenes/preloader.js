@@ -29,6 +29,7 @@ export default class Preloader extends Phaser.Scene {
       frameHeight: 19,
     });
 
+
     // MAP AUDIO 
 
     this.load.audio('discover', '/assets/audio/Soundtrack/Discover.mp3')
@@ -36,12 +37,19 @@ export default class Preloader extends Phaser.Scene {
     this.load.audio('gentle', '/assets/audio/Soundtrack/Gentle.mp3')
     this.load.audio('field', '/assets/audio/Soundtrack/Field.mp3')
     this.load.audio('valley','/assets/audio/Soundtrack/Valley.mp3' )
+    this.load.audio('glow','/assets/audio/Soundtrack/Glow.mp3' )
+    this.load.audio('walk', 'assets/audio/SFX/Footstep/Generic/SFX_Movement_Footstep_Generic_3.wav')
 
     // SFX 
 
     this.load.audio('chestOpened', 'assets/audio/SFX/Chest_Open/SFX_Chest_Open_Rich_1.wav')
     this.load.audio('fruitCollected', 'assets/audio/SFX/Collect/Pop/SFX_Player_Collect_Pop_1.wav')
     this.load.audio('chestFound', 'assets/audio/SFX/Collect/Bright/SFX_Player_Collect_Bright_1.wav')
+    this.load.audio('noMatch', 'assets/audio/SFX/UI/Error/SFX_UI_Error.wav')
+    this.load.audio('yesMatch', 'assets/audio/SFX/Match/Bright/SFX_Match_Bright_1.wav')
+    this.load.audio('chestFound', 'assets/audio/SFX/Collect/Bright/SFX_Player_Collect_Bright_1.wav')
+    this.load.audio('checkBox', 'assets/audio/SFX/Match/Boxy/SFX_Match_Boxy_1.wav')
+
 
     // Load all image /assets
 
@@ -133,6 +141,7 @@ export default class Preloader extends Phaser.Scene {
   }
 
   create() {
+    let soundPlayed = false
     this.anims.create({
       key: "idle",
       frames: [{ key: "bunny", frame: 0 }],
@@ -162,7 +171,7 @@ export default class Preloader extends Phaser.Scene {
       repeat: -1,
     });
 
-    this.scene.start('MiniGame1');
+    this.scene.start('MiniGame2');
 
   }
 }
