@@ -1,6 +1,7 @@
 import React, {useState}  from 'react';
 import { defineWord, translateWord } from '../../ApiClient.js';
 import TranslationBox from './TranslationBox.js';
+import './library.css';
 
 function Words({word}) {
 
@@ -26,7 +27,7 @@ console.log(definition)
         {displayTranslation && <div className='translation-box'><TranslationBox translation={translatedWord} definition = {definition}/></div>}
 
 
-        
+
         </div>
     );
 }
