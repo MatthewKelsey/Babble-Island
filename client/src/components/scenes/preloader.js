@@ -99,6 +99,8 @@ export default class Preloader extends Phaser.Scene {
     this.load.image("white", "/assets/mini_game2/colours/white.png");
     this.load.image("yellow", "/assets/mini_game2/colours/yellow.png");
     this.load.image("orange_colour", "/assets/mini_game2/colours/orange.png");
+    this.load.image('mini_game_2', '/assets/mini_game2/Wooden_House.png');
+    this.load.tilemapTiledJSON('tilemap2', '/assets/mini_game2/floor.json');
   }
 
   create() {
