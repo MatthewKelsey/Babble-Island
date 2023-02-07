@@ -30,6 +30,9 @@ class MiniGame1 extends Phaser.Scene {
     this.apple = this.sound.add('apples');
     this.grape = this.sound.add('grapes');
     this.strawberry = this.sound.add('strawberries');
+    this.openChest = this.sound.add('chestOpened')
+    this.collectFruit = this.sound.add('fruitCollected')
+    this.chestFound = this.sound.add('chestFound')
 
     const musicConfig = {
       mute: false,
@@ -194,6 +197,7 @@ class MiniGame1 extends Phaser.Scene {
               },
             });
             if (!chestOpened) {
+              this.openChest.play()
               window.dispatchEvent(collectStar);
             }
             chestOpened = true;
@@ -226,44 +230,11 @@ class MiniGame1 extends Phaser.Scene {
       });
     }
 
-    // OPEN CHEST
-
-    // function openChest() {
-
-    //   this.input.keyboard.on('keyup-SPACE', (reactCollision, stars) => {
-    //     // if (!chestOpened) {
-    //       const collectStar = new CustomEvent('starCollected', {
-    //         detail: {
-    //           reactCollision,
-    //           stars,
-    //         },
-    //       });
-    //      window.dispatchEvent(collectStar);
-    //       console.log(collectStar)
-    //       this.chestSprite.anims.play('openChest');
-    //       chestOpened = true
-    //     // }
-    //   });
-    // }
-
-    // SE
-
-    // this.physics.add.collider(this.player, this.chestSprite, (reactCollision, stars) => {
-
-    //   this.input.keyboard.on('keyup-SPACE', () => {
-    //     const collisionTest= new CustomEvent('react', {
-    //       detail: {
-    //         reactCollision, stars
-    //       },
-    //     })
-    //     window.dispatchEvent(collisionTest)
-    //   });
-    // })
-
     function collectFruits(player, fruit) {
       fruit.destroy(fruit.x, fruit.y);
       switch (fruit.texture.key) {
         case 'apple':
+          this.collectFruit.play()
           this.apple.play();
           this.appleImage = this.physics.add.image(appleX, appleY, 'apple');
           this.appleImage = this.physics.add.image(fruitsX, fruitsY, 'apple');
@@ -271,6 +242,7 @@ class MiniGame1 extends Phaser.Scene {
           fruitsX += 20;
           break;
         case 'pear':
+          this.collectFruit.play()
           this.pear.play();
           this.pearImage = this.physics.add.image(pearX, pearY, 'pear');
           this.pearImage = this.physics.add.image(fruitsX, fruitsY, 'pear');
@@ -278,6 +250,7 @@ class MiniGame1 extends Phaser.Scene {
           fruitsX += 20;
           break;
         case 'strawberry':
+          this.collectFruit.play()
           this.strawberry.play();
           this.strawberryImage = this.physics.add.image(
             strawberryX,
@@ -293,6 +266,7 @@ class MiniGame1 extends Phaser.Scene {
           fruitsX += 20;
           break;
         case 'grape':
+          this.collectFruit.play()
           this.grape.play();
           this.grapeImage = this.physics.add.image(grapeX, grapeY, 'grape');
           this.grapeImage = this.physics.add.image(fruitsX, fruitsY, 'grape');
@@ -300,6 +274,7 @@ class MiniGame1 extends Phaser.Scene {
           fruitsX += 20;
           break;
         default:
+          this.collectFruit.play()
           this.orange.play();
           this.orangeImage = this.physics.add.image(orangeX, orangeY, 'orange');
           this.orangeImage = this.physics.add.image(fruitsX, fruitsY, 'orange');
@@ -313,6 +288,7 @@ class MiniGame1 extends Phaser.Scene {
 
       if (fruitsRemaining.length) {
         generateChest(350, 180);
+        this.chestFound.play()
         this.doorSprite.anims.play('openDoors');
       }
       console.log(fruitsRemaining);
