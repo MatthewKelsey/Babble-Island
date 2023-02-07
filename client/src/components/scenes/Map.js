@@ -78,14 +78,14 @@ class Map extends Phaser.Scene {
     door3.setCollisionByProperty({ collisions: true });
     door4.setCollisionByProperty({ collisions: true });
 
-    roof.setCollisionByProperty({ collisions: true });
+    // roof.setCollisionByProperty({ collisions: true });
     const debugGraphics = this.add.graphics().setAlpha(0.75);
 
-    // door1.renderDebug(debugGraphics, {
-    //     tileColor: null, // Color of non-colliding tiles
-    //     collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
-    //     faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
-    //     });
+    door1.renderDebug(debugGraphics, {
+        tileColor: null, // Color of non-colliding tiles
+        collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
+        faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
+        });
 
     this.player = new Player(this, 500, 500, 'bunny')
       .setSize(10, 10)
@@ -222,11 +222,15 @@ class Map extends Phaser.Scene {
   // FADE OUT OF MAP 
 
     // MINI GAME 1 
-    this.physics.add.collider(this.player, door1, () => {
-      this.cameras.main.fadeOut(1000, 0, 0, 0)
-    });
-    this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
-      this.scene.start('MiniGame1')
+    this.physics.add.collider(this.player, door1, (libraryDoor) => {
+      const libraryEntrance = new CustomEvent('library', {detail: {
+        libraryDoor
+      }})
+      window.dispatchEvent(libraryEntrance);
+    //   this.cameras.main.fadeOut(1000, 0, 0, 0)
+    // });
+    // this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
+    //   this.scene.start('MiniGame1')
     })
 
     // MINI GAME 2 
@@ -238,12 +242,29 @@ class Map extends Phaser.Scene {
     //   this.scene.start('MiniGame2')
     // })
 
-    this.physics.add.collider(this.player, door2);
-    this.physics.add.collider(this.player, door3);
+    this.physics.add.collider(this.player, door2, ()=>{
+      console.log('door 2 collision')
+      
+      // const libraryEntrance = new CustomEvent('library', {detail: {
+      //   libraryDoor
+      // }})
+      // window.dispatchEvent(libraryEntrance);
+    });
+ 
+      
+    
+    this.physics.add.collider(this.player, door3 , ()=>{
+      console.log('door 3 collision')
+      // const libraryEntrance = new CustomEvent('library', {detail: {
+      //   libraryDoor
+      // }})
+      // window.dispatchEvent(libraryEntrance);
+    }
+      );
     // this.physics.add.collider(this.player, door4, () => {
     //   this.scene.start('MiniGame2', this.player);
     // });
-    this.physics.add.collider(this.player, roof);
+    // this.physics.add.collider(this.player, roof);
   }
 
 
