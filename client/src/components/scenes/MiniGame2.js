@@ -327,10 +327,13 @@ break
     }
     this.matchesCount++;
     console.log(this.matchesCount);
-    if (this.matchesCount === 8) {
+    if (this.matchesCount === 1) {
 
       this.add.text(this.scale.width / 2, this.scale.height / 2, "Well Done");
       // this.generateChest(this.scale.width/2, this.scale.height/2)
+      this.chestSprite = this.physics.add
+      .sprite(this.scale.width / 2, this.scale.height / 2, 'chest')
+      .setSize(16, 32)
     }
   }
   updateActiveBox() {
