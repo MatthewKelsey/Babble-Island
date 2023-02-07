@@ -1,29 +1,29 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Phaser from 'phaser'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Phaser from "phaser";
 // import Register from "./components/Register";
-import { useEffect, useState } from 'react';
-import phaserGame from './gameConfig';
-import DialogueBox from './DialogueBox';
-import { startDialogue, updateStars } from './components/ApiClient';
-import Frame from './components/ReactComponents/Frame';
+import { useEffect, useState } from "react";
+import phaserGame from "./gameConfig";
+import DialogueBox from "./DialogueBox";
+import { startDialogue, updateStars } from "./components/ApiClient";
+import Frame from "./components/ReactComponents/Frame";
 import Preloader from "./components/scenes/preloader";
 import MiniGame1 from "./components/scenes/MiniGame1";
 import MiniGame2 from "./components/scenes/MiniGame2";
 import Map from "./components/scenes/Map";
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate } from "react-router-dom";
+import { refreshUser } from "./ApiClient";
 function Game({ user, setUser, characterList }) {
   const [message, setMessage] = useState();
   const [stars, setStars] = useState();
   const [isCharacterActiveOrNot, setisCharacterActiveOrNot] = useState();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  useEffect(()=>{
-    console.log('in the useEffect')
+  useEffect(() => {
+    console.log("in the useEffect");
     new Phaser.Game({
       type: Phaser.AUTO,
       physics: {
-        default: 'arcade',
+        default: "arcade",
         arcade: {
           debug: true,
           gravity: { y: 0 },
@@ -32,13 +32,20 @@ function Game({ user, setUser, characterList }) {
       scene: [Preloader, MiniGame1, MiniGame2, Map],
       scale: {
         zoom: 1.5,
-        parent: 'phaser-game',
+        parent: "phaser-game",
         width: window.innerWidth,
         height: window.innerHeight,
       },
     });
-  // new Phaser.Game(config)
-  },[])
+
+   refreshUser().then((data) => {
+      if (data) {
+        setUser(data);
+      }
+    });
+    ;
+    // new Phaser.Game(config)
+  }, []);
   const addOneStar = async (id) => {
     try {
       const star = await updateStars(id);
@@ -52,14 +59,17 @@ function Game({ user, setUser, characterList }) {
   const reactCharacterListener = ({ detail }) => {
     const character = detail.character.data.list.character;
 
-    switch(character) {
-      case 'character1': setMessage(characterList[0]);
-      break;
-      case 'character2': setMessage(characterList[1]);
-      break; 
-      case 'character3' : setMessage(characterList[2]);
-      break;
-    } 
+    switch (character) {
+      case "character1":
+        setMessage(characterList[0]);
+        break;
+      case "character2":
+        setMessage(characterList[1]);
+        break;
+      case "character3":
+        setMessage(characterList[2]);
+        break;
+    }
 
     // if (character === 'character1' ) {
     //   setMessage(characterList[0]);
@@ -67,42 +77,35 @@ function Game({ user, setUser, characterList }) {
     //   setMessage(characterList[1]);
     // } if (character === 'character3' ) {
     //   setMessage(characterList[2]);
-    // } 
+    // }
   };
-  window.addEventListener('react', reactCharacterListener);
+  window.addEventListener("react", reactCharacterListener);
 
   useEffect(() => {
     const isCharacterActiveListener = ({ detail }) => {
-      if (!detail.characterActiveOrNot) setMessage('');
+      if (!detail.characterActiveOrNot) setMessage("");
       setisCharacterActiveOrNot(detail.characterActiveOrNot);
     };
-    window.addEventListener('isActiveOrNot', isCharacterActiveListener);
+    window.addEventListener("isActiveOrNot", isCharacterActiveListener);
   }, [isCharacterActiveOrNot]);
-  
+
   // LISTEN OUT FOR STARS COLLECTED
 
   const reactCollectStarsListener = () => {
-
-    setStars(user.stars++)
+    setStars(user.stars++);
     addOneStar(user._id);
-
   };
-  window.addEventListener('starCollected', reactCollectStarsListener);
+  window.addEventListener("starCollected", reactCollectStarsListener);
 
-  const navigateToLibrary = () =>{
-navigate('/library')
-  }
-    window.addEventListener('library', navigateToLibrary)
+  const navigateToLibrary = () => {
+    navigate("/library");
+  };
+  window.addEventListener("library", navigateToLibrary);
 
   return (
     <>
-      {message && (
-        <DialogueBox
-          message={message}
-          setMessage={setMessage}
-        />
-      )}
-<div id='phaser-game'></div>
+      {message && <DialogueBox message={message} setMessage={setMessage} />}
+      <div id="phaser-game"></div>
       <Frame user={user} setUser={setUser} stars={stars} setStars={setStars} />
     </>
   );

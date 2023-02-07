@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Words from './Words.js'
 import './library.css';
-
+import {textToSpeech} from '../../../ApiClient.js'
 function Story({ currentBook }) {
 
   const story = currentBook.story
-  console.log(currentBook)
+ 
 
+useEffect(()=>{
+textToSpeech(story)
+})
 
   function objectify(story) {
     if (story) {
@@ -19,7 +22,7 @@ function Story({ currentBook }) {
     }
   }
 const storyArray = objectify(story)
-console.log(storyArray)
+
 
 
 

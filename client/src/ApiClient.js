@@ -151,3 +151,41 @@ export const getBookCollection = async () => {
     console.log(error);
   }
 };
+
+export const textToSpeech = async (text) => {
+  try {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer AIzaSyD56Mw8C84FywZbeclWpYNzjNopb1rjqgc`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        input: { "text" : text },
+        voice: { "languageCode": 'es-ES', "ssmlGender": 'FEMALE' },
+        audioConfig: { "audioEncoding": 'MP3' },
+      })
+    };
+
+    const response = await fetch('https://texttospeech.googleapis.com/v1/text:synthesize', requestOptions);
+    const { audioContent } = await response.json();
+    
+    const audioElement = new Audio(`data:audio/mp3;base64,${audioContent}`);
+    audioElement.play();
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export const refreshUser = async() =>{
+try {
+  const response = await fetch(`${baseUrl}/refresh`, {
+    credentials: "include"
+  })
+  return response.json()
+} catch (error) {
+  console.log(error)
+}
+
+
+}

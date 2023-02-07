@@ -9,6 +9,8 @@ export const login = async (user) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
+      credentials: 'include',
+      mode:'cors'
 
     });
     const loggedUser = await response.json();
