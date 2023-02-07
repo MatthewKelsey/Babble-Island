@@ -392,10 +392,10 @@ break
   };
 
   update() {
-    this.children.each((c) => {
+    this.children.each((child) => {
       /**@type {Phaser.Physics.Arcade.Sprite} */
       //@ts-ignore
-      const child = c;
+      // const child = c;
       if (child.getData("sorted")) {
         return;
       }

@@ -270,12 +270,12 @@ class Map extends Phaser.Scene {
  
       
     
-    this.physics.add.collider(this.player, door3 , ()=>{
-      console.log('door 3 collision')
-      // const libraryEntrance = new CustomEvent('library', {detail: {
-      //   libraryDoor
-      // }})
-      // window.dispatchEvent(libraryEntrance);
+    this.physics.add.collider(this.player, door3 , (libraryDoor)=>{
+  
+      const libraryEntrance = new CustomEvent('library', {detail: {
+        libraryDoor
+      }})
+      window.dispatchEvent(libraryEntrance);
     }
       );
     // this.physics.add.collider(this.player, door4, () => {

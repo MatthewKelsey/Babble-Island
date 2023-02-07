@@ -7,7 +7,7 @@ function Story({ currentBook }) {
   const story = currentBook.story
   console.log(currentBook)
 
-// const story = "Hola, me llamo Marci"
+
   function objectify(story) {
     if (story) {
       let arrayOne = story.split(" ");
