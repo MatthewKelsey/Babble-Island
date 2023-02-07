@@ -26,7 +26,6 @@
   margin-right: 10px;
 }
 
-
 .heart, .star {
   max-width: 50px;
   min-width: 50px;
@@ -40,34 +39,37 @@
   width: 330px;
   height: 330px;
   position: absolute;
-  top: 30px;
-  right: 30px;
+  top: 40px;
+  right: 40px;
 }
 
 .map{
   width: 330px;
   height: 330px;
   position: absolute;
+  top: 0;
+  left: 0;
 }
 
  .top {
   display: flex;
   flex-direction: row;
-  width: 100wh;
+  width: 100vw;
  }
 
 .icon {
   width: 100px;
+  height: 130px;
   position: absolute;
-  top: 30px;
-  right: 30px;
+  top: 40px;
+  right: 40px;
 }
 
 .x {
   width: 70px;
   position: absolute;
-  top: 10px;
   right: 10px;
+  top: 10px;
 }
 
 .menu {
@@ -91,7 +93,7 @@
   font-family: 'Press Start 2P';
   color: white;
   font-size: 30px;
-  
+
 
 }
 
