@@ -85,6 +85,18 @@ class Map extends Phaser.Scene {
       .setSize(10, 10)
       .setScale(1.5);
 
+      //test atlas
+      this.bunny2 = this.add.sprite(700, 700, 'bunny_digging', 'bunny_digging1');
+
+      this.anims.create({
+        key: 'dig',
+        frames: this.anims.generateFrameNames('bunny_digging', {prefix: 'bunny_digging', start: 1, end: 32}),
+        frameRate: 10,
+        repeat: -1
+    });
+    this.bunny2.anims.play('dig');
+
+
     // CHARACTER 1
 
     this.character1 = this.physics.add
@@ -120,7 +132,7 @@ class Map extends Phaser.Scene {
     console.log(this.character1);
 
     console.log(Phaser.Math.Distance)
-    
+
     this.physics.add.collider(
       this.player,
       this.character1,
@@ -218,7 +230,7 @@ class Map extends Phaser.Scene {
     this.cameras.main.startFollow(this.player);
     this.cameras.main.zoomTo(2,2)
     this.cameras.main.setBounds(0, 0, 2000, 2000, true);
-    
+
 
 
   }
