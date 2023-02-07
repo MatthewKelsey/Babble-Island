@@ -95,7 +95,6 @@ class Map extends Phaser.Scene {
 
     this.character1 = this.physics.add
       .sprite(500, 600, 'bunny')
-      .setScale(2)
       .setData('character', 'character1')
       .setActive(false);
     this.character1.body.immovable = true;
@@ -104,7 +103,6 @@ class Map extends Phaser.Scene {
 
     this.character2 = this.physics.add
       .sprite(900, 1595, 'bunny')
-      .setScale(1.5)
       .setData('character', 'character2')
       .setActive(false);
     this.character2.body.immovable = true;
@@ -113,7 +111,6 @@ class Map extends Phaser.Scene {
 
     this.character3 = this.physics.add
       .sprite(1680, 720, 'bunny')
-      .setScale(1.5)
       .setData('character', 'character3')
       .setActive(false);
     this.character3.body.immovable = true;
@@ -198,7 +195,6 @@ class Map extends Phaser.Scene {
     // MINI GAME 1 
     this.physics.add.collider(this.player, door1, () => {
       this.cameras.main.fadeOut(1000, 0, 0, 0)
-      this.scene.start('MiniGame1')
     });
     this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
       this.scene.start('MiniGame1')
