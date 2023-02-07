@@ -14,10 +14,26 @@ class Map extends Phaser.Scene {
   }
 
   create() {
-    // FADE IN SCENE 
+    this.music = this.sound.add('discover');
 
-    this.cameras.main.fadeIn(1000, 0, 0, 0)
-    
+    // MUSIC CONFIG
+
+    const musicConfig = {
+      mute: false,
+      volume: 0.6,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: true,
+      delay: 0,
+    };
+
+    this.music.play(musicConfig);
+
+    // FADE IN SCENE
+
+    this.cameras.main.fadeIn(1000, 0, 0, 0);
+
     // game.world.setBounds(0,0,2000,2000)
     const map = this.make.tilemap({ key: 'map' });
     // map.setScrollFactor(0)
@@ -120,7 +136,7 @@ class Map extends Phaser.Scene {
       .setSize(15, 15)
       .setData('character', 'character1')
       .setActive(false)
-      .setScale(1.5)
+      .setScale(1.5);
     this.character1.body.immovable = true;
 
     // CHARACTER 2
@@ -219,24 +235,25 @@ class Map extends Phaser.Scene {
     this.physics.add.collider(this.player, objects);
     this.physics.add.collider(this.player, houses);
 
-  // FADE OUT OF MAP 
+    // FADE OUT OF MAP
 
-    // MINI GAME 1 
-    this.physics.add.collider(this.player, door1, (libraryDoor) => {
-      const libraryEntrance = new CustomEvent('library', {detail: {
-        libraryDoor
-      }})
-      window.dispatchEvent(libraryEntrance);
-    //   this.cameras.main.fadeOut(1000, 0, 0, 0)
-    // });
-    // this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
-    //   this.scene.start('MiniGame1')
-    })
 
-    // MINI GAME 2 
+    // MINI GAME 1
+    this.physics.add.collider(this.player, door1, () => {
+      this.cameras.main.fadeOut(1000, 0, 0, 0);
+    });
+    this.cameras.main.once(
+      Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE,
+      (cam, effect) => {
+        this.scene.start('MiniGame1');
+      }
+    );
+
+
+    // MINI GAME 2
     this.physics.add.collider(this.player, door4, () => {
-      this.cameras.main.fadeOut(1000, 0, 0, 0)
-      this.scene.start('MiniGame2')
+      this.cameras.main.fadeOut(1000, 0, 0, 0);
+      this.scene.start('MiniGame2');
     });
     // this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
     //   this.scene.start('MiniGame2')
@@ -266,7 +283,6 @@ class Map extends Phaser.Scene {
     // });
     // this.physics.add.collider(this.player, roof);
   }
-
 
   updateActiveCharacter() {
     if (!this.activeCharacter) {

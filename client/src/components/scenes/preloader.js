@@ -15,6 +15,9 @@ export default class Preloader extends Phaser.Scene {
   preload() {
     // Load all audio files
 
+
+    // MINI GAME 1 AUDIO 
+
     this.load.audio("mini_game_1_audio", "/assets/audio/mini_game1.mp3");
     this.load.audio("pears", "/assets/audio/peras.mp3");
     this.load.audio("apples", "/assets/audio/manzanas.mp3");
@@ -25,6 +28,20 @@ export default class Preloader extends Phaser.Scene {
       frameWidth: 16,
       frameHeight: 19,
     });
+
+    // MAP AUDIO 
+
+    this.load.audio('discover', '/assets/audio/Soundtrack/Discover.mp3')
+    this.load.audio('curious', '/assets/audio/Soundtrack/Curious.mp3')
+    this.load.audio('gentle', '/assets/audio/Soundtrack/Gentle.mp3')
+    this.load.audio('field', '/assets/audio/Soundtrack/Field.mp3')
+    this.load.audio('valley','/assets/audio/Soundtrack/Valley.mp3' )
+
+    // SFX 
+
+    this.load.audio('chestOpened', 'assets/audio/SFX/Chest_Open/SFX_Chest_Open_Rich_1.wav')
+    this.load.audio('fruitCollected', 'assets/audio/SFX/Collect/Pop/SFX_Player_Collect_Pop_1.wav')
+    this.load.audio('chestFound', 'assets/audio/SFX/Collect/Bright/SFX_Player_Collect_Bright_1.wav')
 
     // Load all image /assets
 
@@ -145,7 +162,7 @@ export default class Preloader extends Phaser.Scene {
       repeat: -1,
     });
 
-    this.scene.start('Map');
+    this.scene.start('MiniGame1');
 
   }
 }
