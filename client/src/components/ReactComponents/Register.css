@@ -9,12 +9,12 @@ body {
 
 .babble-island {
   background-image: url('/public/assets/images/babble_island_big.png');
-  height: 100vh;
-  /* background-position-y: -200px; */
+
   background-repeat: no-repeat;
   background-size: cover;
+  /* background-position-y: -200px; */
+  height: 100vh;
 }
-
 
 .title {
   padding-top: 600px;
@@ -32,4 +32,3 @@ input {
   border: none;
   width: 200px;
 }
-

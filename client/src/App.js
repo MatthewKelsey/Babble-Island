@@ -16,6 +16,8 @@ function App() {
   const [user, setUser] = useState({});
   const [characterList, setCharacterList] = useState([])
 
+  console.log(user)
+
    useEffect(() => {
     fetchCharacters().then((data) => {
       if (data) setCharacterList(data)
@@ -29,6 +31,7 @@ function App() {
 //   console.log(books ,'books array')
 //  })
 
+
 //   },[])
 
   return (
@@ -36,7 +39,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/register" element={<Register setUser={setUser} />} />
-        <Route path="/login" element={<Login setUser={setUser} />} />
+        <Route path="/" element={<Login setUser={setUser} />} />
         <Route path= "/game" element={<Game user= {user} setUser ={setUser} characterList ={characterList} setCharacterList={characterList}/>} />
         <Route path= "/landing" element={<LandingPage user = {user}/>} />
         <Route path= "/story" element={<Story user = {user}

@@ -4,13 +4,15 @@ import React, { useState } from "react";
 // import auth from '../utils/auth';
 import { useNavigate } from "react-router-dom";
 import  {register}  from "../ApiClient.js";
+import './Register.css';
+// import registerButton from '../../pixel/register.png';
 
 
 const initialState = {
   userName: "",
   password: "",
   nickName: "",
-  
+
 };
 
 const Register = (props) => {
@@ -48,18 +50,17 @@ const Register = (props) => {
 
   const validateForm = () => {
     return (
-      !state.userName || !state.password || !state.nickName 
+      !state.userName || !state.password || !state.nickName
     );
   };
 
   return (
     <div className="babble-island">
-
-      <h1>Babble Island</h1>
     <section className="register">
-     
+      <h1 className="title">Babble Island</h1>
+
       <br></br>
- 
+
       <h2>Register</h2>
       <form className="form" onSubmit={handleSubmit}>
         <input
@@ -86,7 +87,7 @@ const Register = (props) => {
           onChange={handleChange}
         />
         <br></br>
-        
+
         <br></br>
         <button className="form-submit" type="submit" disabled={validateForm()}>
           &nbsp;Register&nbsp;
