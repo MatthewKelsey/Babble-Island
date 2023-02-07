@@ -93,12 +93,12 @@ export default class Preloader extends Phaser.Scene {
     this.load.image("green", "/assets/mini_game2/colours/green.png");
     this.load.image("naranja", "/assets/mini_game2/colours/naranja.png");
     this.load.image("negro", "/assets/mini_game2/colours/negro.png");
-    this.load.image("orange", "/assets/mini_game2/colours/o.png");
     this.load.image("pink", "/assets/mini_game2/colours/pink.png");
     this.load.image("rosa", "/assets/mini_game2/colours/rosa.png");
     this.load.image("verde", "/assets/mini_game2/colours/verde.png");
     this.load.image("white", "/assets/mini_game2/colours/white.png");
     this.load.image("yellow", "/assets/mini_game2/colours/yellow.png");
+    this.load.image("orange_colour", "/assets/mini_game2/colours/orange.png");
   }
 
   create() {

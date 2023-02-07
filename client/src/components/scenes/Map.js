@@ -105,7 +105,7 @@ class Map extends Phaser.Scene {
 
     this.character2 = this.physics.add
       .sprite(900, 1590, 'bunny')
-      .setSize(15, 15)
+      .setSize(12, 12)
       .setData('character', 'character2')
       .setScale(1.5)
       .setActive(false);
