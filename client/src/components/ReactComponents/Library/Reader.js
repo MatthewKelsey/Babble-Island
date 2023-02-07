@@ -29,7 +29,9 @@ function Reader(props) {
         <>
           <div className='reader'>
 
-            <img className='sky' src={sky}/>
+            <div className='antiquewhite'>
+              <img className='sky' src={sky}/>
+            </div>
 
             <img  className = 'exit' onClick={backToGame} src={exit}/>
 
@@ -44,8 +46,10 @@ function Reader(props) {
                 })}
             </div>
 
+            <div className='index'>
             <Story
             currentBook={currentBook}/>
+            </div>
 
           </div>
         </>
