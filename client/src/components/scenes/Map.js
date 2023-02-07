@@ -85,26 +85,26 @@ class Map extends Phaser.Scene {
       .setSize(10, 10)
       .setScale(1.5);
 
-      //test atlas
-      this.bunny2 = this.add.sprite(440, 360, 'bunny_digging', 'bunny_digging1');
+    //test atlas
+    this.bunny2 = this.add.sprite(440, 360, 'bunny_digging', 'bunny_digging1');
 
-      this.anims.create({
-        key: 'dig',
-        frames: this.anims.generateFrameNames('bunny_digging', {prefix: 'bunny_digging', start: 1, end: 32}),
-        frameRate: 10,
-        repeat: -1
+    this.anims.create({
+      key: 'dig',
+      frames: this.anims.generateFrameNames('bunny_digging', {prefix: 'bunny_digging', start: 1, end: 32}),
+      frameRate: 10,
+      repeat: -1
     });
     this.bunny2.anims.play('dig');
 
-    this.boat = this.add.sprite(440, 360, 'boat', 'boat_anchored1');
+    this.boat = this.add.sprite(255, 1400, 'boat_anchored', 'boat_anchored1');
 
       this.anims.create({
         key: 'boat',
-        frames: this.anims.generateFrameNames('boat_anchored', {prefix: 'boat_anchored, start: 1, end: 2}),
-        frameRate: 10,
+        frames: this.anims.generateFrameNames('boat_anchored', {prefix: 'boat_anchored', start: 1, end: 2}),
+        frameRate: 5,
         repeat: -1
     });
-    this.bunny2.anims.play('boat');
+    this.boat.anims.play('boat');
 
 
     // CHARACTER 1
