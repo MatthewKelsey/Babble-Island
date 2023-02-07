@@ -65,7 +65,7 @@ exports.updateUserStar = async (req, res) => {
   console.log(req.params);
   try {
     let user = await User.findOne({ _id: id });
-    user.stars = 0 
+    user.stars++
     console.log(user.stars);
     user.save();
     res.status(202).send(user);

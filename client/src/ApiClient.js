@@ -1,15 +1,13 @@
 const baseUrl = "http://localhost:4000";
 
-// FOR LOGIN 
+// FOR LOGIN
 
 export const login = async (user) => {
- 
   try {
     const response = await fetch(`${baseUrl}/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
-     
     });
     const loggedUser = await response.json();
 
@@ -19,10 +17,9 @@ export const login = async (user) => {
   }
 };
 
-
 export const register = async (user) => {
   try {
-    console.log('help Im stuck in the api service')
+    console.log("help Im stuck in the api service");
     const response = await fetch(`${baseUrl}/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -51,7 +48,7 @@ export const logout = async () => {
   }
 };
 
-// FOR CHARACTER INTERACTION 
+// FOR CHARACTER INTERACTION
 
 export const fetchCharacters = async () => {
   try {
@@ -64,18 +61,17 @@ export const fetchCharacters = async () => {
 
 export const startDialogue = async (character) => {
   try {
-    const response = await fetch(`${baseUrl}/character`,{
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({character : character})
-    })
-    return response.json()
+    const response = await fetch(`${baseUrl}/character`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ character: character }),
+    });
+    return response.json();
+  } catch (err) {
+    console.log(err);
+    return false;
   }
-   catch (err) {
-  console.log(err)
-  return false
-}
-}
+};
 
 export const createDialogue = async (dialogue) => {
   try {
@@ -92,8 +88,7 @@ export const createDialogue = async (dialogue) => {
   }
 };
 
-// USER  STARS 
-
+// USER  STARS
 
 export const fetchUserStars = async () => {
   try {
@@ -105,53 +100,54 @@ export const fetchUserStars = async () => {
 };
 export const updateStars = async (id) => {
   try {
-    const response = await fetch(`${baseUrl}/user/${id}`,{
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({id:id})
-    })
+    const response = await fetch(`${baseUrl}/user/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: id }),
+    });
     return response.json();
+  } catch (err) {
+    console.log(err);
+    return false;
   }
-   catch (err) {
-  console.log(err)
-  return false
-}
-}
+};
 
-export const translateWord = async(word) =>{
-try {
-  const response = await fetch(`https://translation.googleapis.com/language/translate/v2?q=${word}&target=en&source=es&format=text&key=AIzaSyD56Mw8C84FywZbeclWpYNzjNopb1rjqgc`, {
-    method: 'POST'
-  })
-
-  return response.json()
-
-}catch(error) {
-  console.log(error)
-}
-}
-
-export const defineWord = async(word) =>{
-
+export const translateWord = async (word) => {
   try {
-    const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/es/${word}`,{
-      method: 'GET'
-    })
+    const response = await fetch(
+      `https://translation.googleapis.com/language/translate/v2?q=${word}&target=en&source=es&format=text&key=AIzaSyD56Mw8C84FywZbeclWpYNzjNopb1rjqgc`,
+      {
+        method: "POST",
+      }
+    );
 
-    return response.json()
+    return response.json();
   } catch (error) {
-    
+    console.log(error);
   }
-}
+};
 
-export const getBooks = async() =>{
+export const defineWord = async (word) => {
   try {
-    const response = await fetch(`${baseUrl}/stories`,{
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-    })
-    return response
+    const response = await fetch(
+      `https://api.dictionaryapi.dev/api/v2/entries/es/${word}`,
+      {
+        method: "GET",
+      }
+    );
+    return response.json();
+  } catch (error) {}
+};
+
+export const getBookCollection = async () => {
+  try {
+    console.log("Im in get book");
+    const response = await fetch(`${baseUrl}/stories`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+    return response.json();
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-} 
+};
