@@ -12,7 +12,7 @@ router.post('/login', userCTRL.login);
 router.get('/users', userCTRL.getUsers);
 router.put('/user/:id', userCTRL.updateUserStar)
 
-
+router.get('/refresh', userCTRL.refreshUser)
 // CHARACTERS 
 
 router.get('/character', characterCTRL.getAllCharacters)

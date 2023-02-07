@@ -1,7 +1,9 @@
+
 import React from 'react';
 import Words from './Words.js';
 import './library.css';
 import { useState, useEffect } from 'react';
+import {textToSpeech} from '../../../ApiClient.js'
 
 function Story({ currentBook }) {
   const [text, setText] = useState('');
@@ -16,6 +18,7 @@ function Story({ currentBook }) {
   }, [story]);
 
   const storyArray = objectify(currentText);
+
   function objectify(story) {
     if (story) {
       let arrayOne = story.split(' ');
@@ -26,6 +29,7 @@ function Story({ currentBook }) {
       return objectArray;
     }
   }
+
 
   useEffect(() => {
     setIndex(0);
