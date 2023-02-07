@@ -11,7 +11,6 @@ class MiniGame1 extends Phaser.Scene {
       key: 'MiniGame1',
     });
   }
-
   init() {
     this.game.scale.setZoom(2);
     this.cursors = this.input.keyboard.createCursorKeys();
@@ -426,7 +425,7 @@ class MiniGame1 extends Phaser.Scene {
     //   console.log('hello')
      
     // }
-
+  
     if (cursors.left.isDown) {
       this.player.setVelocity(-160, 0);
 

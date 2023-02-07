@@ -1,5 +1,5 @@
 // @ts-nocheck
-
+import Player from "./Player.js";
 import Phaser from "phaser";
 const words = [1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -56,14 +56,13 @@ class MiniGame2 extends Phaser.Scene {
   constructor() {
     super("MiniGame2");
   }
- 
 
   init() {
     this.game.scale.setZoom(1);
     this.cursors = this.input.keyboard.createCursorKeys();
   }
   create() {
-    this.cameras.main.fadeIn(1000, 0, 0, 0)
+    this.cameras.main.fadeIn(1000, 0, 0, 0);
     const { width, height } = this.scale;
     this.door = this.physics.add.sprite(width / 2, 100, "bomb");
     this.player = this.physics.add
@@ -225,7 +224,7 @@ class MiniGame2 extends Phaser.Scene {
       case 9:
         itemPic = this.itemsGroup.get(box.x, box.y).setScale(0.1);
         itemPic.setTexture("rojo");
-break
+        break;
       case 10:
         itemPic = this.itemsGroup.get(box.x, box.y);
         itemPic.setTexture("verde");
@@ -260,7 +259,6 @@ break
         itemPic = this.itemsGroup.get(box.x, box.y).setScale(0.1);
         itemPic.setTexture("naranja");
         break;
-  
     }
 
     box.setData("opened", true);
@@ -314,9 +312,8 @@ break
     this.matchesCount++;
     console.log(this.matchesCount);
     if (this.matchesCount === 8) {
-      
-      this.add.text(this.scale.width / 2, this.scale.height / 2, "Well Done");
-      // this.generateChest(this.scale.width/2, this.scale.height/2)
+      // this.add.text(this.scale.width / 2, this.scale.height / 2, "Well Done");
+    this.add.image(this.scale.width/2, this.scale.height/2, 'chest')
     }
   }
   updateActiveBox() {
@@ -337,42 +334,6 @@ break
     }
     this.activeBox = undefined;
   }
-
-
-  generateChest = (x, y) => {
-    this.chestSprite = this.physics.add
-      .sprite(x, y, 'chest')
-      .setSize(16, 32)
-      .setData('stars', starCounter);
-    this.chestSprite.body.immovable = true;
-    this.physics.add.overlap(
-      this.player,
-      this.chestSprite,
-      openChest,
-      null,
-      this
-    );
-    this.physics.add.collider(
-      this.player,
-      this.chestSprite,
-      (reactCollision, stars) => {
-        this.input.keyboard.on('keyup-SPACE', (e) => {
-          e.preventDefault()
-          const collectStar = new CustomEvent('starCollected', {
-            detail: {
-              reactCollision,
-              stars,
-            },
-          });
-          if (!chestOpened) {
-            window.dispatchEvent(collectStar);
-          }
-          chestOpened = true;
-        });
-      }
-    );
-    return this.chestSprite;
-  };
 
   update() {
     this.children.each((c) => {

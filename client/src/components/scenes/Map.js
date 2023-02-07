@@ -12,7 +12,6 @@ class Map extends Phaser.Scene {
     });
     console.log('in map');
   }
-
   create() {
     // FADE IN SCENE 
 
