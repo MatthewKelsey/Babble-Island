@@ -36,6 +36,7 @@
 }
 
 .map-container{
+  cursor: pointer;
   width: 330px;
   height: 330px;
   position: absolute;
@@ -44,6 +45,7 @@
 }
 
 .map{
+  cursor: pointer;
   width: 330px;
   height: 330px;
   position: absolute;

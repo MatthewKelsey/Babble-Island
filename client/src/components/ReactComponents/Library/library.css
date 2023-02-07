@@ -42,6 +42,7 @@
 }
 
 .exit{
+  cursor: pointer;
   position: absolute;
   right: 150px;
   scale: 0.7;

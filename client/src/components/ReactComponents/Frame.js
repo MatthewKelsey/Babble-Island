@@ -10,7 +10,7 @@ import x from '../../pixel/x.png';
 import menuIcon from '../../pixel/menuIcon.png';
 import settings from '../../pixel/settings.png';
 import quit from '../../pixel/quit.png';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 // import HeartImg from '../../../public/assets/pixel/heart';
 
 function Frame({ user, setUser }) {
@@ -19,7 +19,7 @@ function Frame({ user, setUser }) {
   const [popupActive, setPopupActive] = useState(false);
   const [menuActive, setMenuActive] = useState(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     const array = [];
@@ -30,9 +30,9 @@ function Frame({ user, setUser }) {
     setUser(user);
   }, [user.stars]);
 
-  function exit(){
-    navigate('/')
-}
+  function exit() {
+    navigate('/');
+  }
 
   return (
     <>
@@ -47,7 +47,6 @@ function Frame({ user, setUser }) {
               })}
           </div>
           <div className='in-nav'>
-            
             {stars.length >= 0 && stars.length < 5 ? (
               stars.map((star, index) => (
                 <img className='star' key={index} src={StarImg} />
@@ -74,11 +73,9 @@ function Frame({ user, setUser }) {
         <img className='menu' src={menuIcon} />
       </div>
       {menuActive && (
-        <div className='menu-open'
-        onClick={() => setMenuActive(false)}
-        >
+        <div className='menu-open' onClick={() => setMenuActive(false)}>
           <img className='setting' src={settings} />
-          <img className='quit' src={quit} onClick={exit}/>
+          <img className='quit' src={quit} onClick={exit} />
         </div>
       )}
     </>
