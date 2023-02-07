@@ -1,0 +1,140 @@
+{
+    "anims": [
+        {
+            "key": "digging",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging1"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging2"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging3"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging4"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging5"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging6"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging7"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging8"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging9"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging10"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging11"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging12"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging13"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging14"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging15"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging16"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging17"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging18"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging19"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging20"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging21"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging22"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging23"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging24"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging25"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging26"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging27"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging28"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging29"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging30"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging31"
+                },
+                {
+                    "key": "bunny_digging",
+                    "frame": "bunny_digging32"
+                }
+            ]
+        }
+    ]
+}
