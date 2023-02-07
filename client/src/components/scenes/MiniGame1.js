@@ -169,7 +169,6 @@ class MiniGame1 extends Phaser.Scene {
 
     // CREATE CHEST
 
-    let starCounter = 0;
 
     let chestOpened = false;
 
@@ -177,7 +176,7 @@ class MiniGame1 extends Phaser.Scene {
       this.chestSprite = this.physics.add
         .sprite(x, y, 'chest')
         .setSize(16, 32)
-        .setData('stars', starCounter);
+        .setData('stars');
       this.chestSprite.body.immovable = true;
       this.physics.add.overlap(
         this.player,

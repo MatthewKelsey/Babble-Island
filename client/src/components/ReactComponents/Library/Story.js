@@ -38,7 +38,7 @@ function Story({ currentBook }) {
       setTimeout(() => {
         setCurrentText(currentText + text[index]);
         setIndex(index + 1);
-      }, 40);
+      }, 50);
     }
   }, [index, text, currentText]);
 
@@ -50,7 +50,6 @@ function Story({ currentBook }) {
             return <Words word={word} />;
           })}
       </div>
-
       <img className='cover-book' src={currentBook.cover} />
     </div>
   );

@@ -8,7 +8,7 @@ import MiniGame1 from "./components/scenes/MiniGame1";
 import MiniGame2 from "./components/scenes/MiniGame2";
 import Map from "./components/scenes/Map";
 import { useNavigate } from "react-router-dom";
-import { refreshUser } from "./ApiClient";
+import { refreshUser,updateStars  } from "./ApiClient";
 
 function Game({ user, setUser, characterList }) {
   const [message, setMessage] = useState();
@@ -43,10 +43,12 @@ function Game({ user, setUser, characterList }) {
     });
     ;
   }, []);
+
+  console.log(user)
   const addOneStar = async (id) => {
     try {
       const star = await updateStars(id);
-      setStars(user.stars++)
+      // setStars(user.stars++)
     } catch (error) {
       console.log(error);
     }
@@ -80,11 +82,15 @@ function Game({ user, setUser, characterList }) {
   }, [isCharacterActiveOrNot]);
 
   // LISTEN OUT FOR STARS COLLECTED
-
+useEffect(() => {
   const reactCollectStarsListener = () => {
+    console.log('I AM IN THE LISTENER')
+    setStars(user.stars++)
     addOneStar(user._id);
   };
   window.addEventListener("starCollected", reactCollectStarsListener);
+
+}, [user.stars])
 
   const navigateToLibrary = () => {
     navigate("/library");

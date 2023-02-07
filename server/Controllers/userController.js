@@ -77,11 +77,9 @@ exports.getUsers = async (req, res) => {
 
 exports.updateUserStar = async (req, res) => {
   const id = req.params.id;
-  console.log(req.params);
   try {
     let user = await User.findOne({ _id: id });
     user.stars++;
-    console.log(user.stars);
     user.save();
     res.status(202).send(user);
     // res.json(user)
