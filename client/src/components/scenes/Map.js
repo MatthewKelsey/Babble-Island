@@ -75,6 +75,8 @@ class Map extends Phaser.Scene {
     const tileset10 = map.addTilesetImage('Fence_gates', 'gates', 16, 16, 0, 0);
     const tileset11 = map.addTilesetImage('Fences', 'fences', 16, 16, 0, 0);
     const tileset13 = map.addTilesetImage('Tilled_Dirt', 'soil', 16, 16, 0, 0);
+    const tileset14 = map.addTilesetImage('Water_tray', 'tray', 16, 16, 0, 0);
+    const tileset15 = map.addTilesetImage('Barn_structures', 'barn', 16, 16, 0, 0);
 
     //LAYERS
     this.layer0 = map.createLayer('sea', tileset);
@@ -95,6 +97,13 @@ class Map extends Phaser.Scene {
     const items = map.createLayer('items', tileset9);
     const gates = map.createLayer('gates', tileset10);
     const fences = map.createLayer('fences', tileset11);
+    const signs = map.createLayer('signs', tileset12);
+    const tray = map.createLayer('tray', tileset14);
+    const barn = map.createLayer('barn', tileset15);
+
+
+
+    // land.setCollisionByProperty({collisions:true});
 
     layer.setCollisionByProperty({ collisions: true });
     trees.setCollisionByProperty({ collisions: true });
@@ -108,6 +117,12 @@ class Map extends Phaser.Scene {
     items.setCollisionByProperty({ collisions: true });
     gates.setCollisionByProperty({ collisions: true });
     fences.setCollisionByProperty({ collisions: true });
+
+
+    signs.setCollisionByProperty({ collisions: true });
+    tray.setCollisionByProperty({ collisions: true });
+    barn.setCollisionByProperty({ collisions: true });
+
 
     // roof.setCollisionByProperty({ collisions: true });
 
@@ -257,6 +272,32 @@ class Map extends Phaser.Scene {
     });
     this.cow3.anims.play('baby3');
     this.cow3.body.immovable = true;
+
+    this.brownCow = this.physics.add.sprite(720, 1200, 'brown_cow', 'brown_cow1');
+    this.brownCow.body.immovable = true;
+
+    this.anims.create({
+      key: 'brown',
+      frames: this.anims.generateFrameNames('brown_cow', {prefix: 'brown_cow', start: 20, end: 42}),
+      frameRate: 2,
+      repeat: -1
+    });
+    this.brownCow.anims.play('brown');
+
+    this.physics.add.collider(this.player, this.brownCow);
+
+    this.brownCow2 = this.physics.add.sprite(225, 985, 'brown_cow', 'brown_cow1');
+    this.brownCow2.body.immovable = true;
+
+    this.anims.create({
+      key: 'brown2',
+      frames: this.anims.generateFrameNames('brown_cow', {prefix: 'brown_cow', start: 20, end: 25}),
+      frameRate: 2,
+      repeat: -1
+    });
+    this.brownCow2.anims.play('brown2');
+
+    this.physics.add.collider(this.player, this.brownCow2);
 
     // CHARACTER 1
 
@@ -491,6 +532,12 @@ class Map extends Phaser.Scene {
     this.physics.add.collider(this.player, items);
     this.physics.add.collider(this.player, gates);
     this.physics.add.collider(this.player, fences);
+
+
+    this.physics.add.collider(this.player, signs);
+    this.physics.add.collider(this.player, tray);
+    this.physics.add.collider(this.player, barn);
+
 
     this.physics.add.collider(this.player, this.cow);
     this.physics.add.collider(this.player, this.cow2);
