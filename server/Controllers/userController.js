@@ -46,7 +46,7 @@ exports.login = async (req, res) => {
 exports.logout = async (req, res) => {
   req.session.destroy((error) => {
     if (error) {
-      res.status(500).send(error + "Could not log out please try again");
+      res.status(500).send({error :error, message: "Could not log out please try again"});
     } else {
       res.clearCookie("sid");
       console.log("cookie cleared");

@@ -12,7 +12,7 @@ import settings from '../../pixel/settings.png';
 import quit from '../../pixel/quit.png';
 import { useNavigate } from 'react-router-dom';
 // import HeartImg from '../../../public/assets/pixel/heart';
-
+import { logout } from '../ApiClient.js';
 function Frame({ user, setUser }) {
   const [stars, setStars] = useState([]);
   const [hearts, setHearts] = useState([1, 2]);
@@ -30,8 +30,11 @@ function Frame({ user, setUser }) {
     setUser(user);
   }, [user.stars]);
 
-  function exit() {
+async  function exit() {
+  const response = await logout()
+
     navigate('/');
+
   }
 
   return (
