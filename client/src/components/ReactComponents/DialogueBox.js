@@ -11,11 +11,27 @@ export default function DialogueBox({ message, setMessage }) {
   const [index, setIndex] = useState(0);
   const [isClicked, setIsClicked] = useState(false);
 
+  const [instantText, setInstantText] = useState('')
+
+  useEffect(()=>{
+		
+    if (!message.responseGood || message.responseGood === undefined) {
+      setInstantText(message.initial)
+    }
+	}, [])
+
+  console.log(instantText)
+
+  console.log(message.res)
+
+  if (message.responseGood && message.responseBad) {
+  
   useEffect(() => {
     setIndex(0);
-    setCurrentText('');
-  }, [text]);
 
+    setCurrentText('')
+  }, [text]);
+  
   useEffect(() => {
     if (index < text.length) {
       setTimeout(() => {
@@ -24,6 +40,8 @@ export default function DialogueBox({ message, setMessage }) {
       }, 40);
     }
   }, [index, text, currentText]);
+
+}
 
   const handleClickGood = () => {
     setText(message.good[0]);
@@ -41,16 +59,18 @@ export default function DialogueBox({ message, setMessage }) {
         X{' '}
       </div>
 
-      <h4>{currentText}</h4>
+      {currentText && <h4>{currentText}</h4>}
+      {instantText && <h4>{instantText}</h4>}
 
       {!isClicked ? (
         <div className='multiple-choice'>
-          <div className='option-1' onClick={handleClickGood}>
+
+          {message.responseGood && <div className='option-1' onClick={handleClickGood}>
             <p> {message.responseGood}</p>
-          </div>
-          <div className='option-2' onClick={handleClickBad}>
+          </div>}
+          {message.responseBad && <div className='option-2' onClick={handleClickBad}>
             <p> {message.responseBad}</p>
-          </div>
+          </div>}
         </div>
       ) : (
         ''
