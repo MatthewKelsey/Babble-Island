@@ -21,7 +21,7 @@ code {
 
 .message-box {
   position: absolute;
-  bottom: 10px;
+  bottom: 25px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -41,6 +41,7 @@ code {
     padding: 10px;
     font-size: 12px;
     margin: 10px;
+    bottom: 5px
   }
   .option-1 {
     padding: none;

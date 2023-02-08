@@ -6,8 +6,8 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  /* background-color: black; */
-  padding: 30px;
+
+  padding: 50px;
 }
 
 .test {
@@ -22,7 +22,7 @@
 }
 .heart {
   scale: 1.5;
-  /* margin-right: 10px; */
+  margin-right: 10px;
 }
 
 .heart,
@@ -66,7 +66,7 @@
   width: 100px;
   height: 130px;
   position: absolute;
-  top: 40px;
+  top: 0px;
   right: 40px; 
   padding: 30px;
 }
@@ -81,11 +81,11 @@
 
 .menu {
   cursor: pointer;
-  width: 200px;
-  position: absolute;
-  margin: 30px;
-  bottom: 20px;
-  right: 20px; 
+    width: 200px;
+    position: absolute;
+    bottom: 20px;
+    right: -10px;
+    padding:20px
 }
 
 .menu-open {
@@ -115,6 +115,10 @@
     top: 0px;
     right: 5px;
   }
+  .nav {
+    padding:0px;
+    margin: 30px
+  }
   .map {
     width: 120px;
   height: 120px;
@@ -134,5 +138,6 @@
   }
   .heart {
     scale: 1;
+    margin-right: 0px;
   }
 }
