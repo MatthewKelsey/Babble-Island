@@ -105,6 +105,7 @@ export default class Preloader extends Phaser.Scene {
     this.load.image('strawberry', '/assets/mini_game1/strawberry.png');
     this.load.image('doors', '/assets/mini_game1/door_animation.png');
     this.load.image('star', '/assets/mini_game1/star.png')
+
     this.load.tilemapTiledJSON('tilemap', '/assets/mini_game1/house.json');
 
 
@@ -148,6 +149,12 @@ export default class Preloader extends Phaser.Scene {
     this.load.image("yellow", "/assets/mini_game2/colours/yellow.png");
     this.load.image("orange_colour", "/assets/mini_game2/colours/orange.png");
     this.load.image('mini_game_2', '/assets/mini_game2/Wooden_House.png');
+
+    this.load.image('wall', '/assets/mini_game2/wall.png');
+    this.load.image('longWall', '/assets/mini_game2/longWall.png');
+    this.load.image('longVerticalWall', '/assets/mini_game2/longVerticalWall.png');
+    this.load.image('verticalWall', '/assets/mini_game2/verticalWall.png')
+
     this.load.tilemapTiledJSON('tilemap2', '/assets/mini_game2/floor.json');
   }
 
