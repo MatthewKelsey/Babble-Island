@@ -40,41 +40,27 @@ class Map extends Phaser.Scene {
 
     const map = this.make.tilemap({ key: 'map' });
 
+     //TILSET
     const tileset = map.addTilesetImage('Water', 'water', 16, 16, 0, 0);
 
-    const tileset2 = map.addTilesetImage(
-      'Darker_Tall_Grass',
-      'grass',
-      16,
-      16,
-      0,
-      0
-    );
+    const tileset2 = map.addTilesetImage('Darker_Tall_Grass','grass', 16, 16, 0, 0);
     const tileset3 = map.addTilesetImage('Trees', 'trees', 16, 16, 0, 0);
     const tileset4 = map.addTilesetImage('Mushrooms', 'objects', 16, 16, 0, 0);
-    const tileset5 = map.addTilesetImage(
-      'Wooden_House',
-      'houses',
-      16,
-      16,
-      0,
-      0
-    );
-    const tileset6 = map.addTilesetImage(
-      'door_animation',
-      'doors',
-      16,
-      16,
-      0,
-      0
-    );
+    const tileset5 = map.addTilesetImage('Wooden_House','houses', 16, 16, 0, 0);
+    const tileset6 = map.addTilesetImage('door_animation','doors', 16, 16, 0, 0);
     const tileset7 = map.addTilesetImage('WoodBridge', 'bridges', 16, 16, 0, 0);
     const tileset8 = map.addTilesetImage('Water_4', 'water', 16, 16, 0, 0);
+    const tileset9 = map.addTilesetImage('All_items', 'items', 16, 16, 0, 0);
+    const tileset10 = map.addTilesetImage('Fence_gates', 'gates', 16, 16, 0, 0);
+    const tileset11 = map.addTilesetImage('Fences', 'fences', 16, 16, 0, 0);
+    const tileset12 = map.addTilesetImage('signs', 'signs', 16, 16, 0, 0);
+    const tileset13 = map.addTilesetImage('Tilled_Dirt', 'soil', 16, 16, 0, 0);
 
-    const layer0 = map.createLayer('sea', tileset);
+    //LAYERS
+    this.layer0 = map.createLayer('sea', tileset);
     const layer = map.createLayer('water', tileset8);
+    this.land = map.createLayer('land', tileset2);
 
-    const land = map.createLayer('land', tileset2);
     const trees = map.createLayer('trees', tileset3);
     const objects = map.createLayer('objects', tileset4);
     const houses = map.createLayer('houses', tileset5);
@@ -83,8 +69,17 @@ class Map extends Phaser.Scene {
     const door2 = map.createLayer('door2', tileset6);
     const door3 = map.createLayer('door3', tileset6);
     const door4 = map.createLayer('door4', tileset6);
-    const roof = map.createLayer('roof', tileset5);
-    const bridges = map.createLayer('bridges', tileset7);
+    this.roof= map.createLayer('roof', tileset5);
+    this.bridges = map.createLayer('bridges', tileset7);
+    this.soil = map.createLayer('soil', tileset13);
+    const items = map.createLayer('items', tileset9);
+    const gates = map.createLayer('gates', tileset10);
+    const fences = map.createLayer('fences', tileset11);
+    const signs = map.createLayer('signs', tileset12);
+
+
+
+    // land.setCollisionByProperty({collisions:true});
 
     layer.setCollisionByProperty({ collisions: true });
     trees.setCollisionByProperty({ collisions: true });
@@ -95,28 +90,64 @@ class Map extends Phaser.Scene {
     door3.setCollisionByProperty({ collisions: true });
     door4.setCollisionByProperty({ collisions: true });
 
-    const debugGraphics = this.add.graphics().setAlpha(0.75);
+
+    items.setCollisionByProperty({ collisions: true });
+    gates.setCollisionByProperty({ collisions: true });
+    fences.setCollisionByProperty({ collisions: true });
+    signs.setCollisionByProperty({ collisions: true });
+
+    // roof.setCollisionByProperty({ collisions: true });
+
+    // const debugGraphics = this.add.graphics().setAlpha(0.75);
+
+    // layer.renderDebug(debugGraphics, {
+      //     tileColor: null, // Color of non-colliding tiles
+      //     collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
+      //     faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
+      //     });
 
     this.player = new Player(this, 500, 500, 'bunny')
-      .setSize(10, 10)
-      .setScale(1.5);
+    .setSize(10, 10)
+    .setScale(1.5)
+
 
     //test atlas
-    this.bunny2 = this.add.sprite(440, 360, 'bunny_digging', 'bunny_digging1');
+    this.bunny2 = this.physics.add
+    .sprite(1205, 865, 'bunny_digging', 'bunny_digging1');
 
     this.anims.create({
       key: 'dig',
-      frames: this.anims.generateFrameNames('bunny_digging', {
-        prefix: 'bunny_digging',
-        start: 1,
-        end: 32,
-      }),
+      frames: this.anims.generateFrameNames('bunny_digging', {prefix: 'bunny_digging', start: 17, end: 24}),
+
       frameRate: 10,
       repeat: -1,
     });
     this.bunny2.anims.play('dig');
 
-    this.boat = this.add.sprite(255, 1400, 'boat_anchored', 'boat_anchored1');
+    this.bunny3 = this.physics.add
+    .sprite(1020, 855, 'bunny_digging', 'bunny_digging1');
+
+    this.anims.create({
+      key: 'dig3',
+      frames: this.anims.generateFrameNames('bunny_digging', {prefix: 'bunny_digging', start: 25, end: 32}),
+      frameRate: 10,
+      repeat: -1
+    });
+    this.bunny3.anims.play('dig3');
+
+    this.bunny4 = this.physics.add
+    .sprite(1110, 815, 'bunny_digging', 'bunny_digging1');
+
+    this.anims.create({
+      key: 'dig4',
+      frames: this.anims.generateFrameNames('bunny_digging', {prefix: 'bunny_digging', start: 1, end: 8}),
+      frameRate: 10,
+      repeat: -1
+    });
+    this.bunny4.anims.play('dig4');
+
+    this.boat = this.physics.add
+    .sprite(255, 1400, 'boat_anchored', 'boat_anchored1');
 
     this.anims.create({
       key: 'boat',
@@ -130,19 +161,40 @@ class Map extends Phaser.Scene {
     });
     this.boat.anims.play('boat');
 
-    this.cow = this.add.sprite(440, 600, 'baby_cow_pink', 'baby_cow_pink1');
 
+    this.cow = this.physics.add
+    .sprite(760, 605, 'baby_cow_pink', 'baby_cow_pink1');
     this.anims.create({
       key: 'baby',
-      frames: this.anims.generateFrameNames('baby_cow_pink', {
-        prefix: 'baby_cow_pink',
-        start: 1,
-        end: 37,
-      }),
+      frames: this.anims.generateFrameNames('baby_cow_pink', {prefix: 'baby_cow_pink', start: 1, end: 12}),
       frameRate: 2,
-      repeat: -1,
+      repeat: -1
+
     });
     this.cow.anims.play('baby');
+    this.cow.body.immovable = true;
+
+    this.cow2 = this.physics.add
+    .sprite(740, 585, 'baby_cow_pink', 'baby_cow_pink1');
+    this.anims.create({
+      key: 'baby2',
+      frames: this.anims.generateFrameNames('baby_cow_pink', {prefix: 'baby_cow_pink', start: 13, end: 26}),
+      frameRate: 2,
+      repeat: -1
+    });
+    this.cow2.anims.play('baby2');
+    this.cow2.body.immovable = true;
+
+    this.cow3 = this.physics.add
+    .sprite(780, 565, 'baby_cow_pink', 'baby_cow_pink1');
+    this.anims.create({
+      key: 'baby3',
+      frames: this.anims.generateFrameNames('baby_cow_pink', {prefix: 'baby_cow_pink', start: 27, end: 37}),
+      frameRate: 2,
+      repeat: -1
+    });
+    this.cow3.anims.play('baby3');
+    this.cow3.body.immovable = true;
 
     // CHARACTER 1
 
@@ -249,6 +301,14 @@ class Map extends Phaser.Scene {
     this.physics.add.collider(this.player, objects);
     this.physics.add.collider(this.player, houses);
 
+    this.physics.add.collider(this.player, items);
+    this.physics.add.collider(this.player, gates);
+    this.physics.add.collider(this.player, fences);
+    this.physics.add.collider(this.player, signs);
+
+    this.physics.add.collider(this.player, this.cow);
+    this.physics.add.collider(this.player, this.cow2);
+    this.physics.add.collider(this.player, this.cow3);
     // FADE OUT OF MAP
 
     // MINI GAME 1

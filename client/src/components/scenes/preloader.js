@@ -67,7 +67,15 @@ export default class Preloader extends Phaser.Scene {
     this.load.image('doors', 'assets/map/door_animation.png');
     this.load.image('bridges', 'assets/map/WoodBridge.png');
     this.load.image('water', 'assets/map/Water_4.png');
-    this.load.tilemapTiledJSON('map', 'assets/map/babble_island.json');
+
+    this.load.image('items', 'assets/map/All_items.png');
+    this.load.image('gates', 'assets/map/Fence_gates.png');
+    this.load.image('fences', 'assets/map/Fences.png');
+    this.load.image('signs', 'assets/map/signs.png');
+    this.load.image('soil', 'assets/map/Tilled_Dirt.png');
+
+
+    this.load.tilemapTiledJSON('map', 'assets/map/babble_island3.json');
     this.load.scenePlugin('AnimatedTiles', 'https://raw.githubusercontent.com/nkholski/phaser-animated-tiles/master/dist/AnimatedTiles.js', 'animatedTiles', 'animatedTiles');
 
     this.load.spritesheet('dude', 'assets/dude.png', {
@@ -97,6 +105,7 @@ export default class Preloader extends Phaser.Scene {
     this.load.image('strawberry', '/assets/mini_game1/strawberry.png');
     this.load.image('doors', '/assets/mini_game1/door_animation.png');
     this.load.image('star', '/assets/mini_game1/star.png')
+
     this.load.tilemapTiledJSON('tilemap', '/assets/mini_game1/house.json');
 
 
@@ -140,6 +149,12 @@ export default class Preloader extends Phaser.Scene {
     this.load.image("yellow", "/assets/mini_game2/colours/yellow.png");
     this.load.image("orange_colour", "/assets/mini_game2/colours/orange.png");
     this.load.image('mini_game_2', '/assets/mini_game2/Wooden_House.png');
+
+    this.load.image('wall', '/assets/mini_game2/wall.png');
+    this.load.image('longWall', '/assets/mini_game2/longWall.png');
+    this.load.image('longVerticalWall', '/assets/mini_game2/longVerticalWall.png');
+    this.load.image('verticalWall', '/assets/mini_game2/verticalWall.png')
+
     this.load.tilemapTiledJSON('tilemap2', '/assets/mini_game2/floor.json');
   }
 

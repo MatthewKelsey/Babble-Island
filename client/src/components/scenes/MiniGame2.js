@@ -107,7 +107,17 @@ class MiniGame2 extends Phaser.Scene {
 
     this.doorSprite.body.immovable = true;
 
-    // this.door = this.physics.add.sprite(width / 2, 100, 'bomb');
+
+    const walls = this.physics.add.staticGroup();
+
+        walls.create(0, 0, 'longWall').setScale(this.scale.width,2).refreshBody();
+        walls.create(0, 0, 'longVerticalWall').setScale(4,this.scale.width).refreshBody();
+        walls.create(0, this.scale.height, 'longWall').setScale(this.scale.width,2).refreshBody();
+        walls.create(this.scale.width, 0, 'longVerticalWall').setScale(4,this.scale.width).refreshBody();
+
+
+    this.door = this.physics.add.sprite(width / 2, 100, 'bomb');
+
     this.player = this.physics.add
       .sprite(width * 0.5, height * 0.5, "bunny")
       .setScale(3)
