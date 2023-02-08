@@ -67,7 +67,15 @@ export default class Preloader extends Phaser.Scene {
     this.load.image('doors', 'assets/map/door_animation.png');
     this.load.image('bridges', 'assets/map/WoodBridge.png');
     this.load.image('water', 'assets/map/Water_4.png');
-    this.load.tilemapTiledJSON('map', 'assets/map/babble_island.json');
+
+    this.load.image('items', 'assets/map/All_items.png');
+    this.load.image('gates', 'assets/map/Fence_gates.png');
+    this.load.image('fences', 'assets/map/Fences.png');
+    this.load.image('signs', 'assets/map/signs.png');
+    this.load.image('soil', 'assets/map/Tilled_Dirt.png');
+
+
+    this.load.tilemapTiledJSON('map', 'assets/map/babble_island3.json');
     this.load.scenePlugin('AnimatedTiles', 'https://raw.githubusercontent.com/nkholski/phaser-animated-tiles/master/dist/AnimatedTiles.js', 'animatedTiles', 'animatedTiles');
 
     this.load.spritesheet('dude', 'assets/dude.png', {
