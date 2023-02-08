@@ -189,7 +189,7 @@ export default class Preloader extends Phaser.Scene {
       repeat: -1,
     });
 
-    this.scene.start('MiniGame2');
+    this.scene.start('Map');
 
   }
 }
