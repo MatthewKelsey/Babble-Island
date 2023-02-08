@@ -14,16 +14,18 @@ router.get('/users', userCTRL.getUsers);
 
 router.put('/user/:id',authMiddleware, userCTRL.updateUserStar)
 router.get('/refresh', userCTRL.refreshUser)
+router.post('/logout',authMiddleware, userCTRL.logout)
 // CHARACTERS 
 
 router.get('/character', characterCTRL.getAllCharacters)
 router.put('/character', characterCTRL.getCharacter);
 
 router.post('/character', characterCTRL.createCharacter)
-
+router.post('/update', characterCTRL.updateCharacter)
 
 // STORIES
 
 router.get('/stories', storyCTRl.getStories)
+
 
 module.exports = router;

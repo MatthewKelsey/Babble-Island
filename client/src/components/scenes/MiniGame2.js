@@ -369,7 +369,6 @@ class MiniGame2 extends Phaser.Scene {
 
       this.chestFound.play();
 
-      this.add.text(this.scale.width / 2, this.scale.height / 2, 'Well Done');
     }
   }
   updateActiveBox() {
