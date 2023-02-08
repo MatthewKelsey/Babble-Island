@@ -19,6 +19,10 @@ code {
   flex-direction: column;
 }
 
+#phaser-game {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1000px;
+}
 .message-box {
   position: absolute;
   bottom: 25px;
@@ -27,28 +31,27 @@ code {
   flex-direction: column;
   align-self: center;
   /* justify-self: center; */
-  min-width: 750px;
+  min-width: 775px;
   border-radius: 10px;
   border: 2px solid white;
   color: white;
   background-color: #efc182;
-   padding: 20px;
-  padding-top: 5px;
+  padding: 20px;
 }
 
 .multiple-choice {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   color: white;
 }
 .option-1 {
   /* line-height: 0.1px; */
-  border: 1px solid rgb(255, 255, 255);
+  border: 0.5px solid rgb(234, 232, 232);
   padding: 5px;
 }
 .option-2 {
   /* line-height: 0.1px; */
-  border: 1px solid rgb(255, 255, 255);
+  border: 0.5px solid rgb(255, 255, 255);
   padding: 5px;
 }
 .hide {

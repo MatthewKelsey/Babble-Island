@@ -97,7 +97,6 @@ class Map extends Phaser.Scene {
     const items = map.createLayer('items', tileset9);
     const gates = map.createLayer('gates', tileset10);
     const fences = map.createLayer('fences', tileset11);
-    const signs = map.createLayer('signs', tileset12);
     const tray = map.createLayer('tray', tileset14);
     const barn = map.createLayer('barn', tileset15);
 
@@ -117,9 +116,6 @@ class Map extends Phaser.Scene {
     items.setCollisionByProperty({ collisions: true });
     gates.setCollisionByProperty({ collisions: true });
     fences.setCollisionByProperty({ collisions: true });
-
-
-    signs.setCollisionByProperty({ collisions: true });
     tray.setCollisionByProperty({ collisions: true });
     barn.setCollisionByProperty({ collisions: true });
 
@@ -528,17 +524,11 @@ class Map extends Phaser.Scene {
     this.physics.add.collider(this.player, trees);
     this.physics.add.collider(this.player, objects);
     this.physics.add.collider(this.player, houses);
-
     this.physics.add.collider(this.player, items);
     this.physics.add.collider(this.player, gates);
     this.physics.add.collider(this.player, fences);
-
-
-    this.physics.add.collider(this.player, signs);
     this.physics.add.collider(this.player, tray);
     this.physics.add.collider(this.player, barn);
-
-
     this.physics.add.collider(this.player, this.cow);
     this.physics.add.collider(this.player, this.cow2);
     this.physics.add.collider(this.player, this.cow3);
@@ -569,6 +559,8 @@ class Map extends Phaser.Scene {
     this.physics.add.collider(this.player, door2, () => {
       console.log('door 2 collision');
     });
+
+    // LIBRARY
 
     this.physics.add.collider(this.player, door3, (libraryDoor) => {
       const libraryEntrance = new CustomEvent('library', {

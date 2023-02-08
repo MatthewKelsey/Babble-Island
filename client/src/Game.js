@@ -5,6 +5,7 @@ import DialogueBox from "./components/ReactComponents/DialogueBox";
 import Frame from "./components/ReactComponents/Frame";
 import Preloader from "./components/scenes/preloader";
 import MiniGame1 from "./components/scenes/MiniGame1";
+import MiniGame1Content from "./components/ReactComponents/MiniGame1Content"
 import MiniGame2 from "./components/scenes/MiniGame2";
 import Map from "./components/scenes/Map";
 import { useNavigate } from "react-router-dom";
@@ -112,6 +113,11 @@ useEffect(() => {
     navigate("/library");
   };
   window.addEventListener("library", navigateToLibrary);
+
+  const navigateToMiniGame1 = () => {
+    navigate('/miniGame1')
+  }
+  window.addEventListener("miniGame1", navigateToMiniGame1);
 
   return (
     <>
