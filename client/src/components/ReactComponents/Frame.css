@@ -66,9 +66,46 @@
   width: 100px;
   height: 130px;
   position: absolute;
-  /* top: 40px;
-  right: 40px; */
+  top: 40px;
+  right: 40px; 
   padding: 30px;
+}
+
+
+.x {
+  width: 70px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.menu {
+  cursor: pointer;
+  width: 200px;
+  position: absolute;
+  margin: 30px;
+  bottom: 20px;
+  right: 20px; 
+}
+
+.menu-open {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.stars-number {
+  font-family: 'Press Start 2P';
+  color: white;
+  font-size: 30px;
+}
+
+.stars-container {
+  display: flex;
+  align-items: center;
 }
 
 @media only screen and (max-width: 767px) {
@@ -98,39 +135,4 @@
   .heart {
     scale: 1;
   }
-}
-
-.x {
-  width: 70px;
-  position: absolute;
-  right: 10px;
-  top: 10px;
-}
-
-.menu {
-  width: 200px;
-  position: absolute;
-  margin: 30px;
-  /* bottom: 20px;
-  right: 20px; */
-}
-
-.menu-open {
-  display: flex;
-  flex-direction: column;
-  width: 200px;
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-}
-
-.stars-number {
-  font-family: 'Press Start 2P';
-  color: white;
-  font-size: 30px;
-}
-
-.stars-container {
-  display: flex;
-  align-items: center;
 }
