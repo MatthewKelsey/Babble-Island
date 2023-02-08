@@ -3,6 +3,7 @@
 .babble-island {
   background-image: url('/public/assets/images/babble_island_big.png');
   height: 100vh;
+
 }
 
 .welcome {
@@ -41,4 +42,17 @@
 
 img {
   height: 60px;
+}
+
+@media only screen and (max-width: 767px) {
+  .menu-button {
+    scale: 0.7;
+  }
+
+  .welcome {
+
+    padding-top: 400px;
+    padding-bottom: 100px;
+  }
+
 }

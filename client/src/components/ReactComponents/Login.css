@@ -33,3 +33,22 @@ input {
   width: 200px;
 }
 
+
+@media only screen and (max-width: 767px) {
+  .title {
+    padding-top: 200px;
+    font-size: 40px;
+  }
+
+  .form-submit {
+    margin-top: 0px;
+  }
+
+  input {
+    margin-bottom: 5px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+}
