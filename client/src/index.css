@@ -2,6 +2,7 @@
 
 body {
   margin: 0;
+  box-sizing: border-box;
   font-family: 'Press Start 2P', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -13,28 +14,43 @@ code {
 }
 
 .container {
+  display: flex;
   position: relative;
+  flex-direction: column;
 }
 
 .message-box {
-  /* background-image: url('../public/assets/game/dialog\ box\ big.png'); */
   position: absolute;
+  bottom: 10px;
   text-align: center;
   display: flex;
   flex-direction: column;
-  top: 800px;
-  left: 500px;
-  width: 600px;
-  /* height: 150px; */
+  align-self: center;
+  min-width: 700px;
   border-radius: 10px;
   border: 2px solid white;
   color: white;
   background-color: #efc182;
   z-index: 10000;
   padding: 5px;
-  /* line-height: 3px; */
 }
 
+@media only screen and (max-width: 767px) {
+  .message-box {
+    min-width: 80%;
+    padding: 10px;
+    font-size: 12px;
+    margin: 10px;
+  }
+  .option-1 {
+    padding: none;
+    margin-right: 10px;
+  }
+  .option-2 {
+    padding: none;
+    margin-right: 10px;
+  }
+}
 .multiple-choice {
   display: flex;
   justify-content: space-evenly;
@@ -71,23 +87,6 @@ code {
   top: 10px;
   right: 20px;
 }
-
-.container {
-  position: relative;
-}
-
-/* .game {
-
-  /* border-width: 50px;
-    border-style: solid;
-  border-image: url('./pixel/border.png');
-  border-image-repeat: repeat;
-  width: 100%; */
-/* display: flex; */
-
-
 h1 {
   justify-self: center;
 }
-
-

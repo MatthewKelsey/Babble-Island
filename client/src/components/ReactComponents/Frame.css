@@ -7,7 +7,7 @@
   flex-direction: column;
   width: 100%;
   /* background-color: black; */
-  padding: 70px;
+  padding: 30px;
 }
 
 .test {
@@ -19,14 +19,14 @@
   display: flex;
   flex-direction: row;
   margin-bottom: 20px;
-
 }
 .heart {
   scale: 1.5;
-  margin-right: 10px;
+  /* margin-right: 10px; */
 }
 
-.heart, .star {
+.heart,
+.star {
   max-width: 50px;
   min-width: 50px;
   max-height: 50px;
@@ -35,7 +35,7 @@
   object-fit: cover;
 }
 
-.map-container{
+.map-container {
   cursor: pointer;
   width: 330px;
   height: 330px;
@@ -44,7 +44,7 @@
   right: 40px;
 }
 
-.map{
+.map {
   cursor: pointer;
   width: 330px;
   height: 330px;
@@ -53,18 +53,51 @@
   left: 0;
 }
 
- .top {
+
+
+.top {
   display: flex;
   flex-direction: row;
   width: 100vw;
- }
+}
 
 .icon {
+  cursor: pointer;
   width: 100px;
   height: 130px;
   position: absolute;
-  top: 40px;
-  right: 40px;
+  /* top: 40px;
+  right: 40px; */
+  padding: 30px;
+}
+
+@media only screen and (max-width: 767px) {
+  .icon {
+    width: 80px;
+    height: 110px;
+    top: 0px;
+    right: 5px;
+  }
+  .map {
+    width: 120px;
+  height: 120px;
+  }
+  .map-container {
+    width: 120px;
+  height: 120px;
+  }
+  .x {
+    left: 60px;
+    top: 30px;
+    right:none; 
+  }
+  .in-nav {
+    margin-bottom: 5px;
+    margin-right:5px;
+  }
+  .heart {
+    scale: 1;
+  }
 }
 
 .x {
@@ -77,8 +110,9 @@
 .menu {
   width: 200px;
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  margin: 30px;
+  /* bottom: 20px;
+  right: 20px; */
 }
 
 .menu-open {
@@ -88,15 +122,12 @@
   position: absolute;
   bottom: 20px;
   right: 20px;
-
 }
 
 .stars-number {
   font-family: 'Press Start 2P';
   color: white;
   font-size: 30px;
-
-
 }
 
 .stars-container {
