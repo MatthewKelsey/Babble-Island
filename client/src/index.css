@@ -22,41 +22,24 @@ code {
 .message-box {
   position: absolute;
   bottom: 25px;
-  text-align: center;
+  /* text-align: center; */
   display: flex;
   flex-direction: column;
   align-self: center;
-  min-width: 700px;
+  /* justify-self: center; */
+  min-width: 750px;
   border-radius: 10px;
   border: 2px solid white;
   color: white;
   background-color: #efc182;
-  z-index: 10000;
-  padding: 5px;
+   padding: 20px;
+  padding-top: 5px;
 }
 
-@media only screen and (max-width: 767px) {
-  .message-box {
-    min-width: 80%;
-    padding: 10px;
-    font-size: 12px;
-    margin: 10px;
-    bottom: 5px
-  }
-  .option-1 {
-    padding: none;
-    margin-right: 10px;
-  }
-  .option-2 {
-    padding: none;
-    margin-right: 10px;
-  }
-}
 .multiple-choice {
   display: flex;
   justify-content: space-evenly;
   color: white;
-  padding: 5px;
 }
 .option-1 {
   /* line-height: 0.1px; */
@@ -88,6 +71,24 @@ code {
   top: 10px;
   right: 20px;
 }
+
 h1 {
   justify-self: center;
+}
+@media only screen and (max-width: 767px) {
+  .message-box {
+    min-width: 80%;
+    padding: 10px;
+    font-size: 12px;
+    margin: 10px;
+    bottom: 5px
+  }
+  .option-1 {
+    padding: none;
+    margin-right: 10px;
+  }
+  .option-2 {
+    padding: none;
+    margin-right: 10px;
+  }
 }

@@ -16,6 +16,8 @@ function Game({ user, setUser, characterList }) {
   const [isCharacterActiveOrNot, setisCharacterActiveOrNot] = useState();
   const navigate = useNavigate();
 
+  console.log(characterList)
+
   useEffect(() => {
     console.log("in the useEffect");
     new Phaser.Game({
@@ -69,7 +71,21 @@ function Game({ user, setUser, characterList }) {
       case "character3":
         setMessage(characterList[2]);
         break;
+        case "sign1":
+        setMessage(characterList[5]);
+        break;
+        case "sign2":
+        setMessage(characterList[6]);
+        break;
+        case "sign3":
+        setMessage(characterList[7]);
+        break;
+        case "sign4":
+        setMessage(characterList[8]);
+        break;
     }
+
+   console.log(character)
   };
   window.addEventListener("react", reactCharacterListener);
 
