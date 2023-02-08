@@ -73,6 +73,8 @@ export default class Preloader extends Phaser.Scene {
     this.load.image('fences', 'assets/map/Fences.png');
     this.load.image('signs', 'assets/map/signs.png');
     this.load.image('soil', 'assets/map/Tilled_Dirt.png');
+    this.load.image('tray', 'assets/map/Water_tray.png');
+    this.load.image('barn', 'assets/map/Barn_structures.png');
 
 
     this.load.tilemapTiledJSON('map', 'assets/map/babble_island3.json');
