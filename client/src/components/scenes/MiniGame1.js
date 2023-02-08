@@ -12,7 +12,7 @@ class MiniGame1 extends Phaser.Scene {
   }
 
   init() {
-    this.game.scale.setZoom(2);
+    this.game.scale.setZoom(2.04);
     this.cursors = this.input.keyboard.createCursorKeys();
   }
 
@@ -21,6 +21,7 @@ class MiniGame1 extends Phaser.Scene {
     // FADE IN SCENE 
 
     this.cameras.main.fadeIn(1000, 0, 0, 0)
+    this.cameras.main.setBackgroundColor('#aed499')
 
     // create music config and load audio files
     this.music = this.sound.add('mini_game_1_audio');
@@ -65,6 +66,8 @@ class MiniGame1 extends Phaser.Scene {
     // set collisions
     walls.setCollisionByProperty({ collides: true });
 
+    
+
     // create doors Sprite
 
     this.doorSprite = this.physics.add
@@ -95,7 +98,6 @@ class MiniGame1 extends Phaser.Scene {
       }
     });
 
-    console.log(this.chest);
 
     // add main character
 
@@ -116,16 +118,9 @@ class MiniGame1 extends Phaser.Scene {
       this.scene.start('Map')
     })
 
-
-
-
     this.physics.add.overlap(this.player, fruits, collectFruits, null, this);
 
-    // SETTINGS
-
-    // text content and score counters
-    this.settings = this.physics.add.image(700, 300, 'settings');
-
+  
     let content = [
       'Frutas:',
       '',
@@ -142,7 +137,8 @@ class MiniGame1 extends Phaser.Scene {
 
     let text = this.add.text(500, 70, content, {
       fontSize: '30px',
-      fill: '#ffffff',
+      fill: '#fffdd0',
+      // fontFamily:'Press Start 2P'
     });
     text.setScrollFactor(0);
 
