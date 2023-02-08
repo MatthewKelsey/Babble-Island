@@ -196,6 +196,19 @@ class Map extends Phaser.Scene {
     this.cow3.anims.play('baby3');
     this.cow3.body.immovable = true;
 
+    this.brownCow = this.physics.add.sprite(720, 1200, 'brown_cow', 'brown_cow1');
+    this.brownCow.body.immovable = true;
+
+    this.anims.create({
+      key: 'brown',
+      frames: this.anims.generateFrameNames('brown_cow', {prefix: 'brown_cow', start: 20, end: 42}),
+      frameRate: 2,
+      repeat: -1
+    });
+    this.brownCow.anims.play('brown');
+
+    this.physics.add.collider(this.player, this.brownCow);
+
     // CHARACTER 1
 
     this.character1 = this.physics.add

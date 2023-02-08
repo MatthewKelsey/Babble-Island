@@ -1,0 +1,180 @@
+{
+    "anims": [
+        {
+            "key": "brown_cow",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow1"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow2"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow3"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow4"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow5"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow6"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow7"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow8"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow9"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow10"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow11"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow12"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow13"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow14"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow15"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow16"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow17"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow18"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow19"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow20"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow21"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow22"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow23"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow24"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow25"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow26"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow27"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow28"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow29"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow30"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow31"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow32"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow33"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow34"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow35"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow36"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow37"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow38"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow39"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow40"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow41"
+                },
+                {
+                    "key": "brown_cow",
+                    "frame": "brown_cow42"
+                }
+            ]
+        }
+    ]
+}

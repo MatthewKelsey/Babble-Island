@@ -95,6 +95,9 @@ export default class Preloader extends Phaser.Scene {
     this.load.atlas('baby_cow_pink', 'assets/map/baby_cow_pink.png', 'assets/map/baby_cow_pink_atlas.json');
     this.load.animation('baby_cow_pink_anim', 'assets/map/baby_cow_pink_anim.json');
 
+    this.load.atlas('brown_cow', 'assets/map/brown_cow.png', 'assets/map/brown_cow_atlas.json');
+    this.load.animation('brown_cow_anim', 'assets/map/brown_cow_anim.json');
+
     // MINI GAME 1
 
     this.load.image('mini_game_1', '/assets/mini_game1/Wooden_House.png');
