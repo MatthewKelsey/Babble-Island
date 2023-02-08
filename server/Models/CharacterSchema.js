@@ -21,12 +21,12 @@ const characterSchema = new Schema({
   },
   good: {
     type: Array,
-    required: true,
+    required: false,
   },
 
   bad: {
     type: Array,
-    required:true 
+    required:false
   },
   
 });

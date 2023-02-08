@@ -1,6 +1,5 @@
 // @ts-nocheck
 
-import { getConfig } from '@testing-library/react';
 import Phaser from 'phaser';
 
 class MiniGame1 extends Phaser.Scene {
