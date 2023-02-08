@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 export default function DialogueBox({ message, setMessage }) {
-
+  
   function boxClose() {
-    console.log('hello, boxClose called');
     setMessage('');
   }
 
@@ -35,8 +34,6 @@ export default function DialogueBox({ message, setMessage }) {
     setIsClicked(!isClicked);
   };
 
- 
-
   return (
     <div className='message-box'>
       <div className='close-message-box' onClick={boxClose}>
@@ -56,7 +53,7 @@ export default function DialogueBox({ message, setMessage }) {
           </div>
         </div>
       ) : (
-       ''
+        ''
       )}
     </div>
   );

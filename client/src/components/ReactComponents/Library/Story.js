@@ -1,9 +1,7 @@
-
 import React from 'react';
 import Words from './Words.js';
 import './library.css';
 import { useState, useEffect } from 'react';
-import {textToSpeech} from '../../../ApiClient.js'
 
 function Story({ currentBook }) {
   const [text, setText] = useState('');
@@ -18,7 +16,6 @@ function Story({ currentBook }) {
   }, [story]);
 
   const storyArray = objectify(currentText);
-
   function objectify(story) {
     if (story) {
       let arrayOne = story.split(' ');
@@ -29,7 +26,6 @@ function Story({ currentBook }) {
       return objectArray;
     }
   }
-
 
   useEffect(() => {
     setIndex(0);
@@ -42,7 +38,7 @@ function Story({ currentBook }) {
       setTimeout(() => {
         setCurrentText(currentText + text[index]);
         setIndex(index + 1);
-      }, 40);
+      }, 50);
     }
   }, [index, text, currentText]);
 
@@ -54,7 +50,6 @@ function Story({ currentBook }) {
             return <Words word={word} />;
           })}
       </div>
-
       <img className='cover-book' src={currentBook.cover} />
     </div>
   );

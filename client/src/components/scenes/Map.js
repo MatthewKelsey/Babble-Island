@@ -13,17 +13,13 @@ class Map extends Phaser.Scene {
     console.log('in map');
   }
 
-
   create() {
-
-
     this.music = this.sound.add('gentle');
-    this.walk = this.sound.add('walk')
-
+    this.walk = this.sound.add('walk');
 
     const walkConfig = {
-      loop:false
-    }
+      loop: false,
+    };
     // MUSIC CONFIG
 
     const musicConfig = {
@@ -42,12 +38,11 @@ class Map extends Phaser.Scene {
 
     this.cameras.main.fadeIn(1000, 0, 0, 0);
 
-    // game.world.setBounds(0,0,2000,2000)
     const map = this.make.tilemap({ key: 'map' });
-    // map.setScrollFactor(0)
 
      //TILSET
     const tileset = map.addTilesetImage('Water', 'water', 16, 16, 0, 0);
+
     const tileset2 = map.addTilesetImage('Darker_Tall_Grass','grass', 16, 16, 0, 0);
     const tileset3 = map.addTilesetImage('Trees', 'trees', 16, 16, 0, 0);
     const tileset4 = map.addTilesetImage('Mushrooms', 'objects', 16, 16, 0, 0);
@@ -65,10 +60,12 @@ class Map extends Phaser.Scene {
     this.layer0 = map.createLayer('sea', tileset);
     const layer = map.createLayer('water', tileset8);
     this.land = map.createLayer('land', tileset2);
+
     const trees = map.createLayer('trees', tileset3);
     const objects = map.createLayer('objects', tileset4);
     const houses = map.createLayer('houses', tileset5);
     const door1 = map.createLayer('door1', tileset6);
+
     const door2 = map.createLayer('door2', tileset6);
     const door3 = map.createLayer('door3', tileset6);
     const door4 = map.createLayer('door4', tileset6);
@@ -83,6 +80,7 @@ class Map extends Phaser.Scene {
 
 
     // land.setCollisionByProperty({collisions:true});
+
     layer.setCollisionByProperty({ collisions: true });
     trees.setCollisionByProperty({ collisions: true });
     objects.setCollisionByProperty({ collisions: true });
@@ -91,6 +89,7 @@ class Map extends Phaser.Scene {
     door2.setCollisionByProperty({ collisions: true });
     door3.setCollisionByProperty({ collisions: true });
     door4.setCollisionByProperty({ collisions: true });
+
 
     items.setCollisionByProperty({ collisions: true });
     gates.setCollisionByProperty({ collisions: true });
@@ -119,8 +118,9 @@ class Map extends Phaser.Scene {
     this.anims.create({
       key: 'dig',
       frames: this.anims.generateFrameNames('bunny_digging', {prefix: 'bunny_digging', start: 17, end: 24}),
+
       frameRate: 10,
-      repeat: -1
+      repeat: -1,
     });
     this.bunny2.anims.play('dig');
 
@@ -149,13 +149,18 @@ class Map extends Phaser.Scene {
     this.boat = this.physics.add
     .sprite(255, 1400, 'boat_anchored', 'boat_anchored1');
 
-      this.anims.create({
-        key: 'boat',
-        frames: this.anims.generateFrameNames('boat_anchored', {prefix: 'boat_anchored', start: 1, end: 2}),
-        frameRate: 2,
-        repeat: -1
+    this.anims.create({
+      key: 'boat',
+      frames: this.anims.generateFrameNames('boat_anchored', {
+        prefix: 'boat_anchored',
+        start: 1,
+        end: 2,
+      }),
+      frameRate: 2,
+      repeat: -1,
     });
     this.boat.anims.play('boat');
+
 
     this.cow = this.physics.add
     .sprite(760, 605, 'baby_cow_pink', 'baby_cow_pink1');
@@ -164,6 +169,7 @@ class Map extends Phaser.Scene {
       frames: this.anims.generateFrameNames('baby_cow_pink', {prefix: 'baby_cow_pink', start: 1, end: 12}),
       frameRate: 2,
       repeat: -1
+
     });
     this.cow.anims.play('baby');
     this.cow.body.immovable = true;
@@ -189,7 +195,6 @@ class Map extends Phaser.Scene {
     });
     this.cow3.anims.play('baby3');
     this.cow3.body.immovable = true;
-
 
     // CHARACTER 1
 
@@ -226,7 +231,6 @@ class Map extends Phaser.Scene {
     let isCharacterActive = false;
 
     // CHARACTER 1
-
 
     this.physics.add.collider(
       this.player,
@@ -307,10 +311,9 @@ class Map extends Phaser.Scene {
     this.physics.add.collider(this.player, this.cow3);
     // FADE OUT OF MAP
 
-
     // MINI GAME 1
     this.physics.add.collider(this.player, door1, () => {
-      this.music.stop()
+      this.music.stop();
       this.cameras.main.fadeOut(1000, 0, 0, 0);
     });
     this.cameras.main.once(
@@ -320,74 +323,57 @@ class Map extends Phaser.Scene {
       }
     );
 
-
     // MINI GAME 2
     this.physics.add.collider(this.player, door4, () => {
-      this.music.stop()
+      this.music.stop();
       this.cameras.main.fadeOut(1000, 0, 0, 0);
       this.scene.start('MiniGame2');
     });
 
-    this.physics.add.collider(this.player, door2, ()=>{
-      console.log('door 2 collision')
+    this.physics.add.collider(this.player, door2, () => {
+      console.log('door 2 collision');
+    });
 
-      // const libraryEntrance = new CustomEvent('library', {detail: {
-        //   libraryDoor
-        // }})
-        // window.dispatchEvent(libraryEntrance);
+    this.physics.add.collider(this.player, door3, (libraryDoor) => {
+      const libraryEntrance = new CustomEvent('library', {
+        detail: {
+          libraryDoor,
+        },
       });
+      window.dispatchEvent(libraryEntrance);
+    });
+  }
 
-
-
-      this.physics.add.collider(this.player, door3 , (libraryDoor)=>{
-
-        const libraryEntrance = new CustomEvent('library', {detail: {
-          libraryDoor
-        }})
-        window.dispatchEvent(libraryEntrance);
-      }
-      );
-      // this.physics.add.collider(this.player, door4, () => {
-        //   this.scene.start('MiniGame2', this.player);
-        // });
-        // this.physics.add.collider(this.player, roof);
-
-
-      }
-
-      updateActiveCharacter() {
-        if (!this.activeCharacter) {
-          return;
+  updateActiveCharacter() {
+    if (!this.activeCharacter) {
+      return;
     }
     const distance = Phaser.Math.Distance.Between(
       this.player.x,
       this.player.y,
       this.activeCharacter.x,
       this.activeCharacter.y
-      );
+    );
 
-      const characterActiveOrNot = this.activeCharacter.active;
+    const characterActiveOrNot = this.activeCharacter.active;
 
-      const collisionTest = new CustomEvent('isActiveOrNot', {
-        detail: {
-          characterActiveOrNot,
-        },
-      });
-      window.dispatchEvent(collisionTest);
+    const collisionTest = new CustomEvent('isActiveOrNot', {
+      detail: {
+        characterActiveOrNot,
+      },
+    });
+    window.dispatchEvent(collisionTest);
 
-      if (distance < 80) {
-        this.activeCharacter.setActive(true);
-        return;
-      } else {
-        this.activeCharacter.setActive(false);
-        return;
-      }
-      // this.activeCharacter = undefined;
-
+    if (distance < 80) {
+      this.activeCharacter.setActive(true);
+      return;
+    } else {
+      this.activeCharacter.setActive(false);
+      return;
     }
+  }
 
-    update() {
-
+  update() {
     this.player.updatePlayer();
     this.updateActiveCharacter();
 
@@ -403,7 +389,6 @@ class Map extends Phaser.Scene {
     this.cameras.main.startFollow(this.player);
     this.cameras.main.zoomTo(2, 2);
     this.cameras.main.setBounds(0, 0, 2000, 2000, true);
-
   }
 }
 

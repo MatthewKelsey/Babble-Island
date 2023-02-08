@@ -46,7 +46,7 @@ exports.login = async (req, res) => {
 exports.logout = async (req, res) => {
   req.session.destroy((error) => {
     if (error) {
-      res.status(500).send(error + "Could not log out please try again");
+      res.status(500).send({error :error, message: "Could not log out please try again"});
     } else {
       res.clearCookie("sid");
       console.log("cookie cleared");
@@ -77,11 +77,9 @@ exports.getUsers = async (req, res) => {
 
 exports.updateUserStar = async (req, res) => {
   const id = req.params.id;
-  console.log(req.params);
   try {
     let user = await User.findOne({ _id: id });
     user.stars++;
-    console.log(user.stars);
     user.save();
     res.status(202).send(user);
     // res.json(user)

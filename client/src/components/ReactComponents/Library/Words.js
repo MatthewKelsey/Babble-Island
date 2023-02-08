@@ -17,7 +17,7 @@ function Words({ word }) {
   }
 
   return (
-    <>
+    <div>
       <div className='individual-word' onClick={translate}>
         <p> {word.word} </p>
       </div>
@@ -29,7 +29,7 @@ function Words({ word }) {
           />
         </div>
       )}
-    </>
+    </div>
   );
 }
 

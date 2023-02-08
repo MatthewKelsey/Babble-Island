@@ -34,3 +34,11 @@ exports.createCharacter = async (req, res) => {
   }
 };
 
+exports.updateCharacter = async (req,res) =>{
+  try {
+    const newCharacter = await Character.findOneAndUpdate({_id:req.body.id,},req.updates)
+    res.send(newCharacter)
+  } catch (error) {
+    console.log(error)
+    res.sendStatus(401)
+  }}

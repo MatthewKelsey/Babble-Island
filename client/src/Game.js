@@ -1,17 +1,15 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Phaser from "phaser";
-// import Register from "./components/Register";
 import { useEffect, useState } from "react";
-import phaserGame from "./gameConfig";
-import DialogueBox from "./DialogueBox";
-import { startDialogue, updateStars } from "./components/ApiClient";
+import DialogueBox from "./components/ReactComponents/DialogueBox";
 import Frame from "./components/ReactComponents/Frame";
 import Preloader from "./components/scenes/preloader";
 import MiniGame1 from "./components/scenes/MiniGame1";
 import MiniGame2 from "./components/scenes/MiniGame2";
 import Map from "./components/scenes/Map";
 import { useNavigate } from "react-router-dom";
-import { refreshUser } from "./ApiClient";
+import { refreshUser,updateStars  } from "./ApiClient";
+
 function Game({ user, setUser, characterList }) {
   const [message, setMessage] = useState();
   const [stars, setStars] = useState();
@@ -44,11 +42,13 @@ function Game({ user, setUser, characterList }) {
       }
     });
     ;
-    // new Phaser.Game(config)
   }, []);
+
+  console.log(user)
   const addOneStar = async (id) => {
     try {
       const star = await updateStars(id);
+      // setStars(user.stars++)
     } catch (error) {
       console.log(error);
     }
@@ -70,14 +70,6 @@ function Game({ user, setUser, characterList }) {
         setMessage(characterList[2]);
         break;
     }
-
-    // if (character === 'character1' ) {
-    //   setMessage(characterList[0]);
-    // } if (character === 'character2' ) {
-    //   setMessage(characterList[1]);
-    // } if (character === 'character3' ) {
-    //   setMessage(characterList[2]);
-    // }
   };
   window.addEventListener("react", reactCharacterListener);
 
@@ -90,12 +82,15 @@ function Game({ user, setUser, characterList }) {
   }, [isCharacterActiveOrNot]);
 
   // LISTEN OUT FOR STARS COLLECTED
-
+useEffect(() => {
   const reactCollectStarsListener = () => {
-    setStars(user.stars++);
+    console.log('I AM IN THE LISTENER')
+    setStars(user.stars++)
     addOneStar(user._id);
   };
   window.addEventListener("starCollected", reactCollectStarsListener);
+
+}, [user.stars])
 
   const navigateToLibrary = () => {
     navigate("/library");
