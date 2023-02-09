@@ -48,7 +48,6 @@ export default function ChatGPT({chatGptResponse, setChatGptResponse}) {
     return (
       <>
       <div className='chatGPT'>
-HELLO I AM CHAT GPT 
           {/* {message && <DialogueBox message = {message} setMessage={setMessage}/>} */}
           <form onSubmit={handleSubmit}>
           <input type="text" value={input} onChange={handleInput} />

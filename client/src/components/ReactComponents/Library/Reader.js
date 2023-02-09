@@ -26,10 +26,12 @@ function Reader({user, setUser}) {
   console.log(chatGptResponse)
 
   useEffect(() => {
-    getBooks().then((data) => {
+    getBooks()
+    
+    .then((data) => {
       console.log(data);
       if (data) setStories([...data]);
-    });
+    }).catch((e) => console.log(e))
   }, []);
 
   function backToGame() {
@@ -58,8 +60,14 @@ function Reader({user, setUser}) {
         </div>
 
         <img className='exit' onClick={backToGame} src={exit} />
-        
-        <h1 onClick={checkForAuthorisedOrNot}>CLICK ME </h1>
+        <div>
+
+        <h1 onClick={checkForAuthorisedOrNot}>Tell Me A Story About</h1>
+            {isClicked && 
+            <div>
+              <ChatGPT chatGptResponse={chatGptResponse} setChatGptResponse={setChatGptResponse}/>
+            </div>}
+        </div>
 
         <div className='stories-container'>
           {stories.map((book) => {
@@ -74,10 +82,6 @@ function Reader({user, setUser}) {
         <div className='index'>
           <Story currentBook={currentBook} chatGptResponse={chatGptResponse} user={user} setUser={setUser} chatGptNotAuthorisedMessage={chatGptNotAuthorisedMessage}/>
         </div>
-        {isClicked && 
-        <div className='chatGPT'>
-          <ChatGPT chatGptResponse={chatGptResponse} setChatGptResponse={setChatGptResponse}/>
-        </div>}
       </div>
     </>
   );

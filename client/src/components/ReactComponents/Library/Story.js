@@ -17,15 +17,19 @@ function Story({ currentBook, user, setUser , chatGptResponse}) {
 
   // if (user.stars > 1) setAuthorised(true);
 
-  useEffect(() => {
-    setUser(user);
-  }, []);
+  // useEffect(() => {
+  //   setUser(user);
+  // }, []);
 
 
   useEffect(() => {
     setIndex(0);
+    if(chatGptResponse.story) {
       setText(chatGptResponse.story);
-      // setText(story); 
+    }
+    if(story) {
+      setText(story); 
+    }
 
   }, [story, chatGptResponse.story]);
   
