@@ -22,7 +22,7 @@ function Story({currentBook, chatGptResponse, user, setUser}) {
 
   useEffect(() => {
     setIndex(0);
-    if(user.stars > 26) {
+    if(user.stars) {
       setText(chatGptResponse);
     } else {
       setText(story)
@@ -50,7 +50,7 @@ function Story({currentBook, chatGptResponse, user, setUser}) {
   }, [text]);
 
   useEffect(() => {
-    if (chatGptResponse && index < text.length) {
+    if ((chatGptResponse || story ) && index < text.length) {
       setTimeout(() => {
         setCurrentText(currentText + text[index]);
         setIndex(index + 1);
