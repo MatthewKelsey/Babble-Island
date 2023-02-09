@@ -93,7 +93,7 @@ export default class Preloader extends Phaser.Scene {
     this.load.image('heart_sign', 'assets/map/heart_sign.png');
 
     this.load.tilemapTiledJSON('map', 'assets/map/babble_island3.json');
-  
+
     this.load.spritesheet('dude', 'assets/dude.png', {
       frameWidth: 32,
       frameHeight: 48,
@@ -132,6 +132,9 @@ export default class Preloader extends Phaser.Scene {
 
     this.load.atlas('brown_cow', 'assets/map/brown_cow.png', 'assets/map/brown_cow_atlas.json');
     this.load.animation('brown_cow_anim', 'assets/map/brown_cow_anim.json');
+
+    this.load.atlas('bunny_watering', 'assets/map/bunny_watering.png', 'assets/map/bunny_watering_atlas.json');
+    this.load.animation('bunny_watering_anim', 'assets/map/bunny_watering_anim.json');
 
     // MINI GAME 1
 

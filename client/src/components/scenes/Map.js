@@ -295,6 +295,20 @@ class Map extends Phaser.Scene {
 
     this.physics.add.collider(this.player, this.brownCow2);
 
+
+    this.lastBunny = this.physics.add.sprite(1295, 710, 'bunny_watering', 'bunny_watering1');
+    this.lastBunny.body.immovable = true;
+
+    this.anims.create({
+      key: 'bunny7',
+      frames: this.anims.generateFrameNames('bunny_watering', {prefix: 'bunny_watering', start: 1, end: 8}),
+      frameRate: 2,
+      repeat: -1
+    });
+    this.lastBunny.anims.play('bunny7');
+
+    this.physics.add.collider(this.player, this.lastBunny);
+
     // CHARACTER 1
 
     this.character1 = this.physics.add
@@ -338,9 +352,9 @@ class Map extends Phaser.Scene {
       .sprite(1730, 1580, 'carrot_sign')
       .setData('character', 'sign2');
       this.sign2.body.immovable = true;
-      
+
       // SIGN 3
-      
+
       this.sign3 = this.physics.add
         .sprite(860, 1180, 'heart_sign')
         .setData('character', 'sign3');
