@@ -130,7 +130,7 @@ class Map extends Phaser.Scene {
     //     faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
     //     });
 
-    this.player = new Player(this, 500, 500, 'bunny')
+    this.player = new Player(this, 845, 1590, 'bunny')
       .setSize(10, 10)
       .setScale(1.5);
 

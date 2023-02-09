@@ -27,7 +27,7 @@ code {
   flex-direction: column;
   align-self: center;
   /* justify-self: center; */
-  min-width: 775px;
+  min-width: 800px;
   border-radius: 10px;
   border: 2px solid white;
   color: white;
