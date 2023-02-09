@@ -73,8 +73,8 @@ function Story({ currentBook, user, setUser , chatGptResponse, soundUrl}) {
             return <Words word={word} key={index} />;
           })}
       </div>
-      
-      <img className='cover-book' src={currentBook.cover} />
+      <div className='right'>
+        <img className='cover-book' src={currentBook.cover} />
       {soundUrl && (
         <audio
         autoPlay
@@ -84,6 +84,7 @@ function Story({ currentBook, user, setUser , chatGptResponse, soundUrl}) {
           type="audio/mpeg"
         ></audio>
       )}
+      </div>
     </>
   );
 }
