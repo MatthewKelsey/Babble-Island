@@ -1,6 +1,23 @@
 const baseUrl = 'http://localhost:4000';
+// const texToSpeech = require('@google-cloud/text-to-speech')
+// const fs = require('fs')
+// const util = require('util')
+// const client = new textToSpeech.TextToSpeechClient()
+// const text = 'hello world'
+// const outputFile = './'
 
-// FOR LOGIN
+
+// const request = {
+//   input:{text: text},
+//   voice:{languageCode: 'en-US', ssmlGender: 'FEMALE'},
+//   audioConfig: {audioEncoding: 'MP3'},
+// };
+// export async function reader(){
+// const [response]= await client.synthesizeZpeech(request)
+// const writeFile= util.promisify(fs.writeFile);
+// await writeFile(outputFile, response.audioContent, 'binary')
+// console.log('Audio content written to file')}
+// // FOR LOGIN
 
 export const login = async (user) => {
   try {

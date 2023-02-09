@@ -15,7 +15,6 @@ function Reader(props) {
 
   useEffect(() => {
     getBooks().then((data) => {
-      console.log(data);
       if (data) setStories([...data]);
     });
   }, []);
@@ -23,6 +22,8 @@ function Reader(props) {
   function backToGame() {
     navigate('/game');
   }
+
+
 
   return (
     <>

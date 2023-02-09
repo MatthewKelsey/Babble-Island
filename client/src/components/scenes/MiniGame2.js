@@ -101,7 +101,7 @@ class MiniGame2 extends Phaser.Scene {
     const floor = map.createLayer("floor", tileset);
     floor.setScale(2);
     this.doorSprite = this.physics.add
-      .sprite(36, 5, "doorsAnim")
+      .sprite(36, 2, "doorsAnim")
       .setFrame(4)
       .setScale(2);
 
@@ -110,7 +110,7 @@ class MiniGame2 extends Phaser.Scene {
 
     const walls = this.physics.add.staticGroup();
 
-        walls.create(0, 0, 'longWall').setScale(this.scale.width,2).refreshBody();
+        walls.create(this.scale.width/1.75 , 0, 'longWall').setScale(this.scale.width /150,2);
         walls.create(0, 0, 'longVerticalWall').setScale(4,this.scale.width).refreshBody();
         walls.create(0, this.scale.height, 'longWall').setScale(this.scale.width,2).refreshBody();
         walls.create(this.scale.width, 0, 'longVerticalWall').setScale(4,this.scale.width).refreshBody();
