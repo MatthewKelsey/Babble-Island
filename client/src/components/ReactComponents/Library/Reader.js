@@ -13,10 +13,14 @@ function Reader({user, setUser}) {
   console.log('READER')
   const [stories, setStories] = useState([]);
   const [currentBook, setCurrentBook] = useState({});
-  console.log({currentBook})
+
+
   const [chatGptResponse, setChatGptResponse] = useState({});
-  console.log({chatGptResponse})
+
   const [isClicked, setIsClicked] = useState(false)
+
+  const [soundUrl, setSoundUrl] = useState();
+
   const navigate = useNavigate();
 
   // useEffect(()=> {
@@ -26,10 +30,14 @@ function Reader({user, setUser}) {
   console.log(chatGptResponse)
 
   useEffect(() => {
+
     getBooks()
     
     .then((data) => {
       console.log(data);
+
+
+
       if (data) setStories([...data]);
     }).catch((e) => console.log(e))
   }, []);
@@ -37,6 +45,7 @@ function Reader({user, setUser}) {
   function backToGame() {
     navigate('/game');
   }
+
 
   
   const chatGptNotAuthorisedMessage = "You need to collect at least 1 star to have access to this feature."
@@ -51,7 +60,6 @@ function Reader({user, setUser}) {
     }
     }
   
-
   return (
     <>
       <div className='reader'>
@@ -73,14 +81,19 @@ function Reader({user, setUser}) {
           {stories.map((book) => {
             return (
               <div className='story' key={book._id}>
-                <Book book={book} setCurrentBook={setCurrentBook} />
+                <Book book={book} setCurrentBook={setCurrentBook} setSoundUrl={setSoundUrl} />
               </div>
             );
           })}
         </div>
 
+
         <div className='index'>
-          <Story currentBook={currentBook} chatGptResponse={chatGptResponse} user={user} setUser={setUser} chatGptNotAuthorisedMessage={chatGptNotAuthorisedMessage}/>
+          <Story currentBook={currentBook} chatGptResponse={chatGptResponse} user={user} setUser={setUser} chatGptNotAuthorisedMessage={chatGptNotAuthorisedMessage} soundUrl={soundUrl}/>
+
+
+
+
         </div>
       </div>
     </>

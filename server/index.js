@@ -19,6 +19,7 @@ app.use(
     },
   })
 );
+app.use(express.static('Audio'))
 
 app.use(cors({origin: 'http://localhost:3000', methods:['POST', 'PUT', 'GET'], credentials:true}))
 app.use(express.json())

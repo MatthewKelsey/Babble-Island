@@ -6,9 +6,9 @@ import ChatGPT from './ChatGPT.js';
 
 
 
-function Story({ currentBook, user, setUser , chatGptResponse}) {
-  console.log({chatGptResponse} ,'Story')
-  console.log({currentBook})
+
+function Story({ currentBook, user, setUser , chatGptResponse, soundUrl}) {
+
   const [text, setText] = useState('');
   const [currentText, setCurrentText] = useState('');
   const [index, setIndex] = useState(0);
@@ -55,6 +55,7 @@ function Story({ currentBook, user, setUser , chatGptResponse}) {
     console.log(text);
   }, [text]);
 
+
   useEffect(() => {
     if ((chatGptResponse.story || story) && index < text.length) {
       setTimeout(() => {
@@ -65,15 +66,25 @@ function Story({ currentBook, user, setUser , chatGptResponse}) {
   }, [index, text, currentText]);
 
   return (
-    <div className='current'>
+    <>
       <div className='story-box'>
         {currentText &&
           storyArray.map((word, index) => {
             return <Words word={word} key={index} />;
           })}
       </div>
+      
       <img className='cover-book' src={currentBook.cover} />
-    </div>
+      {soundUrl && (
+        <audio
+        autoPlay
+          controls
+          name="media"
+          src={`http://localhost:4000/${soundUrl}`}
+          type="audio/mpeg"
+        ></audio>
+      )}
+    </>
   );
 }
 

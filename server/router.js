@@ -4,6 +4,7 @@ const userCTRL = require('./Controllers/userController');
 const characterCTRL = require('./Controllers/characterController');
 const storyCTRl = require('./Controllers/storyController');
 const authMiddleware = require('./middleware/auth');
+const readCTRL = require('./Controllers/VoiceSynth')
 // USERS 
 
 router.post('/register', userCTRL.registerUser);
@@ -26,6 +27,7 @@ router.post('/update', characterCTRL.updateCharacter)
 // STORIES
 
 router.get('/stories', storyCTRl.getStories)
+//Voice
 
-
+router.post('/read', readCTRL.synthesizeSpeech)
 module.exports = router;
