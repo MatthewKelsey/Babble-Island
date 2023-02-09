@@ -51,8 +51,8 @@ function Story({ currentBook, soundUrl}) {
             return <Words word={word} />;
           })}
       </div>
-      
-      <img className='cover-book' src={currentBook.cover} />
+      <div className='right'>
+        <img className='cover-book' src={currentBook.cover} />
       {soundUrl && (
         <audio
         autoPlay
@@ -62,6 +62,7 @@ function Story({ currentBook, soundUrl}) {
           type="audio/mpeg"
         ></audio>
       )}
+      </div>
     </>
   );
 }
