@@ -1,9 +1,14 @@
 
+import { useState } from "react";
+import React from "react";
+import Story from "./Story.js";
+import './ChatGPT.css'
+import Reader from "./Reader.js";
 
-
-export default function chatGPT() {
+export default function ChatGPT({chatGptResponse, setChatGptResponse}) {
   const [input, setInput] = useState('');
-    const [message, setMessage] = useState();
+
+  const chatGptGuidancePrompt = 'I insist that you tell me a story in spanish based on what the user will input, I will not accept any response in any other languages than spanish. Now, tell me a story about'
   
     const handleInput = async (event) => {
       setInput(event.target.value);
@@ -11,6 +16,8 @@ export default function chatGPT() {
   
     const handleSubmit = async (event) => {
       event.preventDefault();
+      // console.log('I AM SUBMITTING')
+      // setChatGptResponse({story:'blabla'})
       try {
         const response = await fetch(
           'https://api.openai.com/v1/completions', {
@@ -20,8 +27,8 @@ export default function chatGPT() {
             'Authorization': `Bearer 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`
           },
           body: JSON.stringify({
-            prompt: input,
-            max_tokens: 100,
+            prompt: `${chatGptGuidancePrompt} ${input}`,
+            max_tokens: 200,
             n: 1,
             stop: null,
             temperature: 0.5,
@@ -29,9 +36,10 @@ export default function chatGPT() {
           })
         });
         const json = await response.json();
-        
-        console.log(json)
-        setMessage(json.choices[0].text);
+        // json.choices[0].text
+        // {story: string}
+        setChatGptResponse({story:json.choices[0].text});
+        console.log({json})
       } catch (error) {
         console.error(error);
       }
@@ -39,14 +47,13 @@ export default function chatGPT() {
 
     return (
       <>
-      
-          <button onClick = {handleClick}></button>
-          {message && <DialogueBox message = {message} setMessage={setMessage}/>}
+      <div className='chatGPT'>
+          {/* {message && <DialogueBox message = {message} setMessage={setMessage}/>} */}
           <form onSubmit={handleSubmit}>
           <input type="text" value={input} onChange={handleInput} />
           <button type="submit">Submit</button>
         </form>
-        {/* <p>{response}</p> */}
+      </div>
       </>
     );
 

@@ -7,17 +7,39 @@ import sky from '../../../pixel/sky.png';
 import exit from '../../../pixel/exit_from_library.png';
 import Story from './Story.js';
 import './library.css';
+import ChatGPT from './ChatGPT.js';
 
-function Reader(props) {
+function Reader({user, setUser}) {
+  console.log('READER')
   const [stories, setStories] = useState([]);
   const [currentBook, setCurrentBook] = useState({});
+
+
+  const [chatGptResponse, setChatGptResponse] = useState({});
+
+  const [isClicked, setIsClicked] = useState(false)
+
   const [soundUrl, setSoundUrl] = useState();
+
   const navigate = useNavigate();
 
+  // useEffect(()=> {
+  //   setUser(user)
+  // }, [])
+
+  console.log(chatGptResponse)
+
   useEffect(() => {
-    getBooks().then((data) => {
+
+    getBooks()
+    
+    .then((data) => {
+      console.log(data);
+
+
+
       if (data) setStories([...data]);
-    });
+    }).catch((e) => console.log(e))
   }, []);
 
   function backToGame() {
@@ -25,7 +47,19 @@ function Reader(props) {
   }
 
 
+  
+  const chatGptNotAuthorisedMessage = "You need to collect at least 1 star to have access to this feature."
+  
+  const userStars = 2 
 
+
+  function checkForAuthorisedOrNot() {
+
+    if(userStars > 1 ) {
+      setIsClicked(!isClicked)
+    }
+    }
+  
   return (
     <>
       <div className='reader'>
@@ -34,6 +68,14 @@ function Reader(props) {
         </div>
 
         <img className='exit' onClick={backToGame} src={exit} />
+        <div>
+
+        <h1 onClick={checkForAuthorisedOrNot}>Tell Me A Story About</h1>
+            {isClicked && 
+            <div>
+              <ChatGPT chatGptResponse={chatGptResponse} setChatGptResponse={setChatGptResponse}/>
+            </div>}
+        </div>
 
         <div className='stories-container'>
           {stories.map((book) => {
@@ -45,8 +87,13 @@ function Reader(props) {
           })}
         </div>
 
-        <div className='current'>
-          <Story currentBook={currentBook} soundUrl={soundUrl} />
+
+        <div className='index'>
+          <Story currentBook={currentBook} chatGptResponse={chatGptResponse} user={user} setUser={setUser} chatGptNotAuthorisedMessage={chatGptNotAuthorisedMessage} soundUrl={soundUrl}/>
+
+
+
+
         </div>
       </div>
     </>
