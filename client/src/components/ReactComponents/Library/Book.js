@@ -3,14 +3,15 @@ import "./library.css";
 import item from "../../../pixel/book.png";
 import { storyReader } from "../../ApiClient.js";
 
-function Book({ book, setCurrentBook }) {
-  const [soundUrl, setSoundUrl] = useState();
+function Book({ book, setCurrentBook, setSoundUrl }) {
+ 
   useEffect(() => {});
 
   async function selectBook() {
     setCurrentBook(book);
     const blob = await storyReader(book);
     setSoundUrl(blob.url);
+
     
   }
 
@@ -18,15 +19,7 @@ function Book({ book, setCurrentBook }) {
     <div className="book" onClick={selectBook}>
       <img className="cover" src={item} />
       <div className="book-title">{book.title}</div>
-      {soundUrl && (
-        <audio
-        autoPlay
-          controls
-          name="media"
-          src={`http://localhost:4000/${soundUrl}`}
-          type="audio/mpeg"
-        ></audio>
-      )}
+   
     </div>
   );
 }

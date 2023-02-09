@@ -11,6 +11,7 @@ import './library.css';
 function Reader(props) {
   const [stories, setStories] = useState([]);
   const [currentBook, setCurrentBook] = useState({});
+  const [soundUrl, setSoundUrl] = useState();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -38,14 +39,14 @@ function Reader(props) {
           {stories.map((book) => {
             return (
               <div className='story' key={book._id}>
-                <Book book={book} setCurrentBook={setCurrentBook} />
+                <Book book={book} setCurrentBook={setCurrentBook} setSoundUrl={setSoundUrl} />
               </div>
             );
           })}
         </div>
 
         <div className='current'>
-          <Story currentBook={currentBook} />
+          <Story currentBook={currentBook} soundUrl={soundUrl} />
         </div>
       </div>
     </>

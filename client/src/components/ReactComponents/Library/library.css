@@ -92,6 +92,9 @@
   max-height: 500px;
   height: fit-content;
 }
+.story-box::-webkit-scrollbar {
+  display: none;
+}
 
 .cover-book {
   max-width: 800px;

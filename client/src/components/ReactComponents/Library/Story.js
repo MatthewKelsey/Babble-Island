@@ -3,7 +3,7 @@ import Words from './Words.js';
 import './library.css';
 import { useState, useEffect } from 'react';
 
-function Story({ currentBook }) {
+function Story({ currentBook, soundUrl}) {
   const [text, setText] = useState('');
   const [currentText, setCurrentText] = useState('');
   const [index, setIndex] = useState(0);
@@ -53,6 +53,15 @@ function Story({ currentBook }) {
       </div>
       
       <img className='cover-book' src={currentBook.cover} />
+      {soundUrl && (
+        <audio
+        autoPlay
+          controls
+          name="media"
+          src={`http://localhost:4000/${soundUrl}`}
+          type="audio/mpeg"
+        ></audio>
+      )}
     </>
   );
 }
