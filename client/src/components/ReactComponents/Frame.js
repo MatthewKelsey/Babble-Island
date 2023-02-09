@@ -77,7 +77,7 @@ async  function exit() {
       </div>
       {menuActive && (
         <div className='menu-open' onClick={() => setMenuActive(false)}>
-          <img className='setting' src={settings} />
+          {/* <img className='setting' src={settings} /> */}
           <img className='quit' src={quit} onClick={exit} />
         </div>
       )}
