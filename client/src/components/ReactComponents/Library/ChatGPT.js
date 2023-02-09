@@ -1,9 +1,14 @@
 
+import { useState } from "react";
+import React from "react";
+import Story from "./Story.js";
+import './ChatGPT.css'
+import Reader from "./Reader.js";
 
-
-export default function chatGPT() {
+export default function ChatGPT({chatGptResponse, setChatGptResponse}) {
   const [input, setInput] = useState('');
-    const [message, setMessage] = useState();
+
+  const chatGptGuidancePrompt = 'I insist that you tell me a story in spanish based on what the user will input, I will not accept any response in any other languages than spanish. Now, tell me a story about'
   
     const handleInput = async (event) => {
       setInput(event.target.value);
@@ -20,7 +25,7 @@ export default function chatGPT() {
             'Authorization': `Bearer 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`
           },
           body: JSON.stringify({
-            prompt: input,
+            prompt: `${chatGptGuidancePrompt} ${input}`,
             max_tokens: 100,
             n: 1,
             stop: null,
@@ -31,22 +36,23 @@ export default function chatGPT() {
         const json = await response.json();
         
         console.log(json)
-        setMessage(json.choices[0].text);
+        setChatGptResponse(json.choices[0].text);
       } catch (error) {
         console.error(error);
       }
     };
+    console.log(chatGptResponse)
 
     return (
       <>
-      
-          <button onClick = {handleClick}></button>
-          {message && <DialogueBox message = {message} setMessage={setMessage}/>}
+      <div className='chatGPT'>
+HELLO I AM CHAT GPT 
+          {/* {message && <DialogueBox message = {message} setMessage={setMessage}/>} */}
           <form onSubmit={handleSubmit}>
           <input type="text" value={input} onChange={handleInput} />
           <button type="submit">Submit</button>
         </form>
-        {/* <p>{response}</p> */}
+      </div>
       </>
     );
 

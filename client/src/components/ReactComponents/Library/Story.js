@@ -2,18 +2,34 @@ import React from 'react';
 import Words from './Words.js';
 import './library.css';
 import { useState, useEffect } from 'react';
+import ChatGPT from './ChatGPT.js';
 
-function Story({ currentBook }) {
+function Story({currentBook, chatGptResponse, user, setUser}) {
   const [text, setText] = useState('');
   const [currentText, setCurrentText] = useState('');
   const [index, setIndex] = useState(0);
   const story = currentBook.story;
 
+  console.log(user.stars)
+
+  useEffect(()=> {
+    setUser(user)
+  }, [])
+  
+  if(chatGptResponse) {
+    console.log(chatGptResponse)
+  }
+
   useEffect(() => {
     setIndex(0);
-    setText(story);
+    if(user.stars > 26) {
+      setText(chatGptResponse);
+    } else {
+      setText(story)
+    }
+
     console.log(currentText);
-  }, [story]);
+  }, [story, chatGptResponse]);
 
   const storyArray = objectify(currentText);
   function objectify(story) {
@@ -34,7 +50,7 @@ function Story({ currentBook }) {
   }, [text]);
 
   useEffect(() => {
-    if (story && index < text.length) {
+    if (chatGptResponse && index < text.length) {
       setTimeout(() => {
         setCurrentText(currentText + text[index]);
         setIndex(index + 1);
@@ -46,8 +62,8 @@ function Story({ currentBook }) {
     <div className='current'>
       <div className='story-box'>
         {currentText &&
-          storyArray.map((word) => {
-            return <Words word={word} />;
+          storyArray.map((word, index) => {
+            return <Words word={word} key={index}/>;
           })}
       </div>
       <img className='cover-book' src={currentBook.cover} />

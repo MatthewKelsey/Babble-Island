@@ -10,6 +10,7 @@ import MiniGame2 from "./components/scenes/MiniGame2";
 import Map from "./components/scenes/Map";
 import { useNavigate } from "react-router-dom";
 import { refreshUser,updateStars  } from "./ApiClient";
+import ChatGPT from "./components/ReactComponents/Library/ChatGPT.js"
 
 function Game({ user, setUser, characterList }) {
   const [message, setMessage] = useState();

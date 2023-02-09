@@ -7,11 +7,17 @@ import sky from '../../../pixel/sky.png';
 import exit from '../../../pixel/exit_from_library.png';
 import Story from './Story.js';
 import './library.css';
+import ChatGPT from './ChatGPT.js';
 
-function Reader(props) {
+function Reader({user, setUser}) {
   const [stories, setStories] = useState([]);
   const [currentBook, setCurrentBook] = useState({});
+  const [chatGptResponse, setChatGptResponse] = useState('');
   const navigate = useNavigate();
+
+  useEffect(()=> {
+    setUser(user)
+  }, [])
 
   useEffect(() => {
     getBooks().then((data) => {
@@ -44,7 +50,10 @@ function Reader(props) {
         </div>
 
         <div className='index'>
-          <Story currentBook={currentBook} />
+          <Story currentBook={currentBook} chatGptResponse={chatGptResponse} user={user} setUser={setUser}/>
+        </div>
+        <div className='chatGPT'>
+          <ChatGPT chatGptResponse={chatGptResponse} setChatGptResponse={setChatGptResponse}/>
         </div>
       </div>
     </>
