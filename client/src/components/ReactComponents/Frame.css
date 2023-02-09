@@ -67,7 +67,7 @@
   height: 130px;
   position: absolute;
   top: 0px;
-  right: 40px; 
+  right: 40px;
   padding: 30px;
 }
 
@@ -129,8 +129,8 @@
   }
   .x {
     left: 60px;
-    top: 30px;
-    right:none; 
+    top: 0px;
+    right:none;
   }
   .in-nav {
     margin-bottom: 5px;

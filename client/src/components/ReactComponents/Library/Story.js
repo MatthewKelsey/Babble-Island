@@ -33,6 +33,7 @@ function Story({ currentBook }) {
     console.log(text);
   }, [text]);
 
+
   useEffect(() => {
     if (story && index < text.length) {
       setTimeout(() => {
@@ -43,15 +44,16 @@ function Story({ currentBook }) {
   }, [index, text, currentText]);
 
   return (
-    <div className='current'>
+    <>
       <div className='story-box'>
         {currentText &&
           storyArray.map((word) => {
             return <Words word={word} />;
           })}
       </div>
+      
       <img className='cover-book' src={currentBook.cover} />
-    </div>
+    </>
   );
 }
 

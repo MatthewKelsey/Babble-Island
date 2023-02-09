@@ -43,7 +43,7 @@ function Reader(props) {
           })}
         </div>
 
-        <div className='index'>
+        <div className='current'>
           <Story currentBook={currentBook} />
         </div>
       </div>
