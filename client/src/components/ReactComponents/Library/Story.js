@@ -4,32 +4,32 @@ import './library.css';
 import { useState, useEffect } from 'react';
 import ChatGPT from './ChatGPT.js';
 
-function Story({currentBook, chatGptResponse, user, setUser}) {
+
+
+function Story({ currentBook, user, setUser , chatGptResponse}) {
+  console.log({chatGptResponse} ,'Story')
+  console.log({currentBook})
   const [text, setText] = useState('');
   const [currentText, setCurrentText] = useState('');
   const [index, setIndex] = useState(0);
   const story = currentBook.story;
 
-  console.log(user.stars)
 
-  useEffect(()=> {
-    setUser(user)
-  }, [])
-  
-  if(chatGptResponse) {
-    console.log(chatGptResponse)
-  }
+  // if (user.stars > 1) setAuthorised(true);
+
+  useEffect(() => {
+    setUser(user);
+  }, []);
+
 
   useEffect(() => {
     setIndex(0);
-    if(user.stars) {
-      setText(chatGptResponse);
-    } else {
-      setText(story)
-    }
+      setText(chatGptResponse.story);
+      // setText(story); 
 
-    console.log(currentText);
-  }, [story, chatGptResponse]);
+  }, [story, chatGptResponse.story]);
+  
+
 
   const storyArray = objectify(currentText);
   function objectify(story) {
@@ -43,14 +43,16 @@ function Story({currentBook, chatGptResponse, user, setUser}) {
     }
   }
 
+  // SLOW READER 
+
   useEffect(() => {
-    setIndex(0);
+    // setIndex(0);
     setCurrentText('');
     console.log(text);
   }, [text]);
 
   useEffect(() => {
-    if ((chatGptResponse || story ) && index < text.length) {
+    if ((chatGptResponse.story || story) && index < text.length) {
       setTimeout(() => {
         setCurrentText(currentText + text[index]);
         setIndex(index + 1);
@@ -63,7 +65,7 @@ function Story({currentBook, chatGptResponse, user, setUser}) {
       <div className='story-box'>
         {currentText &&
           storyArray.map((word, index) => {
-            return <Words word={word} key={index}/>;
+            return <Words word={word} key={index} />;
           })}
       </div>
       <img className='cover-book' src={currentBook.cover} />

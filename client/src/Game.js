@@ -16,6 +16,8 @@ function Game({ user, setUser, characterList }) {
   const [message, setMessage] = useState();
   const [stars, setStars] = useState();
   const [isCharacterActiveOrNot, setisCharacterActiveOrNot] = useState();
+  const [isEventTriggered, setIsEventTriggered] = useState(false);
+
   const navigate = useNavigate();
 
   console.log(characterList)
@@ -100,15 +102,25 @@ function Game({ user, setUser, characterList }) {
   }, [isCharacterActiveOrNot]);
 
   // LISTEN OUT FOR STARS COLLECTED
-useEffect(() => {
-  const reactCollectStarsListener = () => {
-    console.log('I AM IN THE LISTENER')
-    setStars(user.stars++)
-    addOneStar(user._id);
-  };
-  window.addEventListener("starCollected", reactCollectStarsListener);
 
-}, [user.stars])
+  useEffect(() => {
+    const reactCollectStarsListener = () => {
+      if (!isEventTriggered) {
+        setIsEventTriggered(true);
+        console.log('I AM IN THE LISTENER');
+        setUser(prevUser => ({ ...prevUser, stars: prevUser.stars + 1 }));
+        addOneStar(user._id);
+        setTimeout(() => {
+          setIsEventTriggered(false);
+        }, 1000);
+      }
+    };
+    window.addEventListener('starCollected', reactCollectStarsListener);
+    return () => {
+      window.removeEventListener('starCollected', reactCollectStarsListener);
+    };
+    }, [user, isEventTriggered])
+
 
   const navigateToLibrary = () => {
     navigate("/library");

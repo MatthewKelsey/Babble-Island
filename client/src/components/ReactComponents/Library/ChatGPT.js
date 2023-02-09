@@ -16,6 +16,8 @@ export default function ChatGPT({chatGptResponse, setChatGptResponse}) {
   
     const handleSubmit = async (event) => {
       event.preventDefault();
+      // console.log('I AM SUBMITTING')
+      // setChatGptResponse({story:'blabla'})
       try {
         const response = await fetch(
           'https://api.openai.com/v1/completions', {
@@ -26,7 +28,7 @@ export default function ChatGPT({chatGptResponse, setChatGptResponse}) {
           },
           body: JSON.stringify({
             prompt: `${chatGptGuidancePrompt} ${input}`,
-            max_tokens: 100,
+            max_tokens: 200,
             n: 1,
             stop: null,
             temperature: 0.5,
@@ -34,14 +36,14 @@ export default function ChatGPT({chatGptResponse, setChatGptResponse}) {
           })
         });
         const json = await response.json();
-        
-        console.log(json)
-        setChatGptResponse(json.choices[0].text);
+        // json.choices[0].text
+        // {story: string}
+        setChatGptResponse({story:json.choices[0].text});
+        console.log({json})
       } catch (error) {
         console.error(error);
       }
     };
-    console.log(chatGptResponse)
 
     return (
       <>

@@ -10,14 +10,20 @@ import './library.css';
 import ChatGPT from './ChatGPT.js';
 
 function Reader({user, setUser}) {
+  console.log('READER')
   const [stories, setStories] = useState([]);
   const [currentBook, setCurrentBook] = useState({});
-  const [chatGptResponse, setChatGptResponse] = useState('');
+  console.log({currentBook})
+  const [chatGptResponse, setChatGptResponse] = useState({});
+  console.log({chatGptResponse})
+  const [isClicked, setIsClicked] = useState(false)
   const navigate = useNavigate();
 
-  useEffect(()=> {
-    setUser(user)
-  }, [])
+  // useEffect(()=> {
+  //   setUser(user)
+  // }, [])
+
+  console.log(chatGptResponse)
 
   useEffect(() => {
     getBooks().then((data) => {
@@ -30,6 +36,20 @@ function Reader({user, setUser}) {
     navigate('/game');
   }
 
+  
+  const chatGptNotAuthorisedMessage = "You need to collect at least 1 star to have access to this feature."
+  
+  const userStars = 2 
+
+
+  function checkForAuthorisedOrNot() {
+
+    if(userStars > 1 ) {
+      setIsClicked(!isClicked)
+    }
+    }
+  
+
   return (
     <>
       <div className='reader'>
@@ -38,6 +58,8 @@ function Reader({user, setUser}) {
         </div>
 
         <img className='exit' onClick={backToGame} src={exit} />
+        
+        <h1 onClick={checkForAuthorisedOrNot}>CLICK ME </h1>
 
         <div className='stories-container'>
           {stories.map((book) => {
@@ -50,11 +72,12 @@ function Reader({user, setUser}) {
         </div>
 
         <div className='index'>
-          <Story currentBook={currentBook} chatGptResponse={chatGptResponse} user={user} setUser={setUser}/>
+          <Story currentBook={currentBook} chatGptResponse={chatGptResponse} user={user} setUser={setUser} chatGptNotAuthorisedMessage={chatGptNotAuthorisedMessage}/>
         </div>
+        {isClicked && 
         <div className='chatGPT'>
           <ChatGPT chatGptResponse={chatGptResponse} setChatGptResponse={setChatGptResponse}/>
-        </div>
+        </div>}
       </div>
     </>
   );
