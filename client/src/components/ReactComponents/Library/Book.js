@@ -1,14 +1,23 @@
 import React, { useEffect } from 'react';
 import './library.css';
 import item from '../../../pixel/book.png';
+import { storyReader } from '../../ApiClient.js';
 
 function Book({ book, setCurrentBook }) {
   useEffect(() => {
-    console.log(book);
+    
   });
 
+ async function selectBook(){
+    console.log('book chosen')
+    setCurrentBook(book)
+    const blob = await storyReader(book.story)
+    console.log(blob)
+  }
+
+
   return (
-    <div className='book' onClick={() => setCurrentBook(book)}>
+    <div className='book' onClick={selectBook}>
       <img className='cover' src={item} />
       <div className='book-title'>{book.title}</div>
     </div>

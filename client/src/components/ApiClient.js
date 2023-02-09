@@ -154,3 +154,17 @@ export const translateWord = async(word) =>{
     }
   }
 
+export const storyReader = async(text)=>{
+  try {
+    const response = await fetch(`${baseUrl}/read`, {
+      method:'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({text:text})
+    })
+    
+    return response
+    
+  } catch (error) {
+    console.log(error)
+  }
+}
