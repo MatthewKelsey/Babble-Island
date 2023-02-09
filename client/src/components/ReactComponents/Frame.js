@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import './Frame.css';
 import HeartImg from '../../pixel/heart.png';
 import StarImg from '../../pixel/star.png';
-import SmallMap from '../../pixel/bbislandMap.png';
+import SmallMap from '../../pixel/bbislandMap2.png';
 import mapIcon from '../../pixel/mapIcon.png';
 import x from '../../pixel/x.png';
 import menuIcon from '../../pixel/menuIcon.png';
