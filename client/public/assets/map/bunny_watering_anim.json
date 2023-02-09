@@ -1,0 +1,44 @@
+{
+    "anims": [
+        {
+            "key": "watering",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "bunny_watering",
+                    "frame": "bunny_watering1"
+                },
+                {
+                    "key": "bunny_watering",
+                    "frame": "bunny_watering2"
+                },
+                {
+                    "key": "bunny_watering",
+                    "frame": "bunny_watering3"
+                },
+                {
+                    "key": "bunny_watering",
+                    "frame": "bunny_watering4"
+                },
+                {
+                    "key": "bunny_watering",
+                    "frame": "bunny_watering5"
+                },
+                {
+                    "key": "bunny_watering",
+                    "frame": "bunny_watering6"
+                },
+                {
+                    "key": "bunny_watering",
+                    "frame": "bunny_watering7"
+                },
+                {
+                    "key": "bunny_watering",
+                    "frame": "bunny_watering8"
+                }
+            ]
+        }
+    ]
+}
