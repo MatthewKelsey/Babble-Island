@@ -19,7 +19,7 @@ function Reader({user, setUser}) {
 
   const [isClicked, setIsClicked] = useState(false)
 
-  const [soundUrl, setSoundUrl] = useState();
+  // const [soundUrl, setSoundUrl] = useState();
 
   const navigate = useNavigate();
 
@@ -81,7 +81,7 @@ function Reader({user, setUser}) {
           {stories.map((book) => {
             return (
               <div className='story' key={book._id}>
-                <Book book={book} setCurrentBook={setCurrentBook} setSoundUrl={setSoundUrl} />
+                <Book book={book} setCurrentBook={setCurrentBook} />
               </div>
             );
           })}
@@ -89,7 +89,7 @@ function Reader({user, setUser}) {
 
 
         <div className='index'>
-          <Story currentBook={currentBook} chatGptResponse={chatGptResponse} user={user} setUser={setUser} chatGptNotAuthorisedMessage={chatGptNotAuthorisedMessage} soundUrl={soundUrl}/>
+          <Story currentBook={currentBook} chatGptResponse={chatGptResponse} user={user} setUser={setUser} chatGptNotAuthorisedMessage={chatGptNotAuthorisedMessage}/>
 
 
 

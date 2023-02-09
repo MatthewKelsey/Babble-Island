@@ -7,13 +7,11 @@ function Book({ book, setCurrentBook, setSoundUrl }) {
  
   useEffect(() => {});
 
-  async function selectBook() {
-    setCurrentBook(book);
-    const blob = await storyReader(book);
-    setSoundUrl(blob.url);
-
-    
-  }
+  // async function selectBook() {
+  //   setCurrentBook(book);
+  //   const blob = await storyReader(book);
+  //   setSoundUrl(blob.url);
+  // }
 
   return (
     <div className="book" onClick={selectBook}>
