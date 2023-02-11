@@ -231,6 +231,6 @@ export default class Preloader extends Phaser.Scene {
       repeat: -1,
     });
 
-    this.scene.start('MiniGame1');
+    this.scene.start('Map');
   }
 }

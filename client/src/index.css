@@ -19,10 +19,6 @@ code {
   flex-direction: column;
 }
 
-#phaser-game {
-  font-family: 'Press Start 2P', cursive;
-  font-size: 1000px;
-}
 .message-box {
   position: absolute;
   bottom: 25px;
