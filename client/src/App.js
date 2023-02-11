@@ -13,7 +13,9 @@ function App() {
   const [user, setUser] = useState({});
   const [characterList, setCharacterList] = useState([]);
 
-  console.log(user);
+  useEffect(() => {
+    setUser(user)
+  }, [])
 
   useEffect(() => {
     fetchCharacters().then((data) => {
@@ -38,9 +40,9 @@ function App() {
           }
         />
         <Route path='/landing' element={<LandingPage user={user} />} />
-        <Route path='/story' element={<Story user={user} />} />
+        <Route path='/story' element={<Story />} />
         <Route path='/miniGame1' element={<MiniGame1Content/>} />
-        <Route path='/library' element={<Reader />} />
+        <Route path='/library' element={<Reader user={user} setUser={setUser}/>} />
 
         {/* <Route path = '/game' element = {<Frame  user ={user} setUser={setUser}/>} /> */}
       </Routes>

@@ -2,18 +2,38 @@ import React from 'react';
 import Words from './Words.js';
 import './library.css';
 import { useState, useEffect } from 'react';
+import ChatGPT from './ChatGPT.js';
 
-function Story({ currentBook, soundUrl}) {
+
+
+
+function Story({ currentBook, user, setUser , chatGptResponse, soundUrl}) {
+
   const [text, setText] = useState('');
   const [currentText, setCurrentText] = useState('');
   const [index, setIndex] = useState(0);
   const story = currentBook.story;
 
+
+  // if (user.stars > 1) setAuthorised(true);
+
+  // useEffect(() => {
+  //   setUser(user);
+  // }, []);
+
+
   useEffect(() => {
     setIndex(0);
-    setText(story);
-    console.log(currentText);
-  }, [story]);
+    if(chatGptResponse.story) {
+      setText(chatGptResponse.story);
+    }
+    if(story) {
+      setText(story); 
+    }
+
+  }, [story, chatGptResponse.story]);
+  
+
 
   const storyArray = objectify(currentText);
   function objectify(story) {
@@ -27,15 +47,17 @@ function Story({ currentBook, soundUrl}) {
     }
   }
 
+  // SLOW READER 
+
   useEffect(() => {
-    setIndex(0);
+    // setIndex(0);
     setCurrentText('');
     console.log(text);
   }, [text]);
 
 
   useEffect(() => {
-    if (story && index < text.length) {
+    if ((chatGptResponse.story || story) && index < text.length) {
       setTimeout(() => {
         setCurrentText(currentText + text[index]);
         setIndex(index + 1);
@@ -47,12 +69,12 @@ function Story({ currentBook, soundUrl}) {
     <>
       <div className='story-box'>
         {currentText &&
-          storyArray.map((word) => {
-            return <Words word={word} />;
+          storyArray.map((word, index) => {
+            return <Words word={word} key={index} />;
           })}
       </div>
-      
-      <img className='cover-book' src={currentBook.cover} />
+      <div className='right'>
+        <img className='cover-book' src={currentBook.cover} />
       {soundUrl && (
         <audio
         autoPlay
@@ -62,6 +84,7 @@ function Story({ currentBook, soundUrl}) {
           type="audio/mpeg"
         ></audio>
       )}
+      </div>
     </>
   );
 }

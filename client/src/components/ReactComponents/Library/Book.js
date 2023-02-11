@@ -6,11 +6,13 @@ import { storyReader } from "../../ApiClient.js";
 function Book({ book, setCurrentBook, setSoundUrl }) {
   useEffect(() => {});
 
+
   async function selectBook() {
     setCurrentBook(book);
     const blob = await storyReader(book);
     setSoundUrl(blob.url);
   }
+
 
   return (
     <div className="book" onClick={selectBook}>

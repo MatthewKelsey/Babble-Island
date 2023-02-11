@@ -19,10 +19,6 @@ code {
   flex-direction: column;
 }
 
-#phaser-game {
-  font-family: 'Press Start 2P', cursive;
-  font-size: 1000px;
-}
 .message-box {
   position: absolute;
   bottom: 25px;
@@ -31,7 +27,7 @@ code {
   flex-direction: column;
   align-self: center;
   /* justify-self: center; */
-  min-width: 775px;
+  min-width: 800px;
   border-radius: 10px;
   border: 2px solid white;
   color: white;
@@ -78,6 +74,7 @@ code {
 h1 {
   justify-self: center;
 }
+
 @media only screen and (max-width: 767px) {
   .message-box {
     min-width: 80%;
@@ -95,3 +92,5 @@ h1 {
     margin-right: 10px;
   }
 }
+
+
