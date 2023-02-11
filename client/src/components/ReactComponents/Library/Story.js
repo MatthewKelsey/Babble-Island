@@ -28,11 +28,11 @@ function Story({ currentBook, user, setUser , chatGptResponse, soundUrl}) {
       setText(chatGptResponse.story);
     }
     if(story) {
-      setText(story); 
+      setText(story);
     }
 
   }, [story, chatGptResponse.story]);
-  
+
 
 
   const storyArray = objectify(currentText);
@@ -47,7 +47,7 @@ function Story({ currentBook, user, setUser , chatGptResponse, soundUrl}) {
     }
   }
 
-  // SLOW READER 
+  // SLOW READER
 
   useEffect(() => {
     // setIndex(0);
@@ -66,7 +66,7 @@ function Story({ currentBook, user, setUser , chatGptResponse, soundUrl}) {
   }, [index, text, currentText]);
 
   return (
-    <>
+    <div className='current'>
       <div className='story-box'>
         {currentText &&
           storyArray.map((word, index) => {
@@ -85,7 +85,7 @@ function Story({ currentBook, user, setUser , chatGptResponse, soundUrl}) {
         ></audio>
       )}
       </div>
-    </>
+    </div>
   );
 }
 
