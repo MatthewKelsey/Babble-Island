@@ -4,6 +4,7 @@ import item from "../../../pixel/book.png";
 import { storyReader } from "../../ApiClient.js";
 
 function Book({ book, setCurrentBook, setSoundUrl }) {
+
   useEffect(() => {});
 
 
@@ -14,10 +15,12 @@ function Book({ book, setCurrentBook, setSoundUrl }) {
   }
 
 
+
   return (
     <div className="book" onClick={selectBook}>
       <img className="cover" src={item} />
       <div className="book-title">{book.title}</div>
+
     </div>
   );
 }

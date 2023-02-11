@@ -89,7 +89,7 @@
   display: flex;
   flex-wrap: wrap;
   overflow: scroll;
-  max-height: 500px;
+  max-height: 450px;
   height: fit-content;
 }
 .story-box::-webkit-scrollbar {

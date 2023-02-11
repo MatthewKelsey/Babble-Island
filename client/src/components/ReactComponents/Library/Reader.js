@@ -32,7 +32,7 @@ function Reader({user, setUser}) {
   useEffect(() => {
 
     getBooks()
-    
+
     .then((data) => {
       console.log(data);
 
@@ -47,10 +47,10 @@ function Reader({user, setUser}) {
   }
 
 
-  
+
   const chatGptNotAuthorisedMessage = "You need to collect at least 1 star to have access to this feature."
-  
-  const userStars = 2 
+
+  const userStars = 2
 
 
   function checkForAuthorisedOrNot() {
@@ -59,7 +59,7 @@ function Reader({user, setUser}) {
       setIsClicked(!isClicked)
     }
     }
-  
+
   return (
     <>
       <div className='reader'>
@@ -71,7 +71,7 @@ function Reader({user, setUser}) {
         <div>
 
         <h1 onClick={checkForAuthorisedOrNot}>Tell Me A Story About</h1>
-            {isClicked && 
+            {isClicked &&
             <div>
               <ChatGPT chatGptResponse={chatGptResponse} setChatGptResponse={setChatGptResponse}/>
             </div>}
@@ -87,14 +87,9 @@ function Reader({user, setUser}) {
           })}
         </div>
 
-
-        <div className='index'>
           <Story currentBook={currentBook} chatGptResponse={chatGptResponse} user={user} setUser={setUser} chatGptNotAuthorisedMessage={chatGptNotAuthorisedMessage}/>
 
 
-
-
-        </div>
       </div>
     </>
   );
