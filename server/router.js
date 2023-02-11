@@ -13,7 +13,7 @@ router.post('/login', userCTRL.login);
 
 router.get('/users', userCTRL.getUsers);
 
-router.put('/user/:id',authMiddleware, userCTRL.updateUserStar)
+router.put('/user/:id', userCTRL.updateUserStar)
 router.get('/refresh', userCTRL.refreshUser)
 router.post('/logout',authMiddleware, userCTRL.logout)
 // CHARACTERS 
@@ -27,6 +27,7 @@ router.post('/update', characterCTRL.updateCharacter)
 // STORIES
 
 router.get('/stories', storyCTRl.getStories)
+router.post('/stories', storyCTRl.addStory)
 //Voice
 
 router.post('/read', readCTRL.synthesizeSpeech)
