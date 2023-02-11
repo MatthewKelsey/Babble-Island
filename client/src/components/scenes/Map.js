@@ -363,7 +363,7 @@ class Map extends Phaser.Scene {
     //SIGN 4
 
     this.sign4 = this.physics.add
-      .sprite(340, 1025, 'beetroot_sign')
+      .sprite(340, 1040, 'beetroot_sign')
       .setData('character', 'sign4');
       this.sign4.body.immovable = true;
 
@@ -577,6 +577,7 @@ class Map extends Phaser.Scene {
     // LIBRARY
 
     this.physics.add.collider(this.player, door3, (libraryDoor) => {
+      this.music.stop();
       const libraryEntrance = new CustomEvent('library', {
         detail: {
           libraryDoor,

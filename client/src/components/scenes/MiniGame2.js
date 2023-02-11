@@ -116,7 +116,7 @@ class MiniGame2 extends Phaser.Scene {
         walls.create(this.scale.width, 0, 'longVerticalWall').setScale(4,this.scale.width).refreshBody();
 
 
-    this.door = this.physics.add.sprite(width / 2, 100, 'bomb');
+    // this.door = this.physics.add.sprite(width / 2, 100, 'bomb');
 
     this.player = this.physics.add
       .sprite(width * 0.5, height * 0.5, "bunny")
