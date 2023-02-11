@@ -18,7 +18,7 @@ class MiniGame1 extends Phaser.Scene {
 
   create() {
 
-    // FADE IN SCENE 
+    // FADE IN SCENE
 
     this.cameras.main.fadeIn(1000, 0, 0, 0)
     this.cameras.main.setBackgroundColor('#aed499')
@@ -43,7 +43,7 @@ class MiniGame1 extends Phaser.Scene {
       seek: 0,
       loop: true,
       delay: 0,
-      
+
     };
 
     this.music.play(musicConfig);
@@ -66,7 +66,7 @@ class MiniGame1 extends Phaser.Scene {
     // set collisions
     walls.setCollisionByProperty({ collides: true });
 
-    
+
 
     // create doors Sprite
 
@@ -104,13 +104,13 @@ class MiniGame1 extends Phaser.Scene {
     this.player = this.physics.add.sprite(30, 30, 'bunny');
     this.player.setCollideWorldBounds(true);
     this.physics.add.collider(this.player, walls);
-   
-   // FADE OUT OF MINI GAME 1 
+
+   // FADE OUT OF MINI GAME 1
 
     this.physics.add.collider(this.player, this.doorSprite, () => {
       this.cameras.main.fadeOut(1000, 0, 0, 0)
     });
-    
+
     this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
       this.music.stop(musicConfig);
       // this.scene.stop('MiniGame1')
@@ -120,7 +120,7 @@ class MiniGame1 extends Phaser.Scene {
 
     this.physics.add.overlap(this.player, fruits, collectFruits, null, this);
 
-  
+
     let content = [
       'Frutas:',
       '',
@@ -202,17 +202,17 @@ class MiniGame1 extends Phaser.Scene {
       );
       return this.chestSprite;
     };
- 
+
 
     // OPEN CHEST
- 
+
     function openChest() {
       this.input.keyboard.on('keyup-SPACE', (e) => {
         e.preventDefault()
         if (!chestOpened) {
           this.chestSprite.anims.play('openChest', true);
           const star = this.add.sprite(350, 180, 'star')
-          star.scale = 0 
+          star.scale = 0
           // star.alpha = 0
           this.tweens.add({
             targets: star,
@@ -282,7 +282,7 @@ class MiniGame1 extends Phaser.Scene {
 
       const fruitsRemaining = fruitsLayer.slice(fruitScore);
 
-      if (fruitsRemaining.length) {
+      if (!fruitsRemaining.length) {
         generateChest(350, 180);
         this.chestFound.play()
         this.doorSprite.anims.play('openDoors');
@@ -396,7 +396,7 @@ class MiniGame1 extends Phaser.Scene {
     // const spacePressed = Phaser.Input.Keyboard.JustUp(this.cursors.space)
     // if (spacePressed) {
     //   console.log('hello')
-     
+
     // }
 
     if (cursors.left.isDown) {
