@@ -13,5 +13,13 @@ exports.getStories = async (req, res) => {
 };
 
 
-
+exports.addStory = async(req,res)=>{
+  try {
+    const newStory = await Story.create(req.body)
+    res.status(201).send(newStory)
+  } catch (error) {
+    console.log(error)
+    res.sendStatus(400)
+  }
+}
 

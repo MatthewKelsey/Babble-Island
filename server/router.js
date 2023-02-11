@@ -12,7 +12,9 @@ router.post('/register', userCTRL.registerUser);
 router.post('/login', userCTRL.login);
 
 router.get('/users', userCTRL.getUsers);
+
 // ,authMiddleware,
+
 router.put('/user/:id', userCTRL.updateUserStar)
 router.get('/refresh', userCTRL.refreshUser)
 router.post('/logout',authMiddleware, userCTRL.logout)
@@ -27,6 +29,7 @@ router.post('/update', characterCTRL.updateCharacter)
 // STORIES
 
 router.get('/stories', storyCTRl.getStories)
+router.post('/stories', storyCTRl.addStory)
 //Voice
 
 router.post('/read', readCTRL.synthesizeSpeech)

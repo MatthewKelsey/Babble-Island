@@ -5,15 +5,15 @@ const { Schema } = mongoose;
 const storySchema = new Schema({
   title: {
     type: String,
-    required: true,
+    required: false,
   },
   story: {
     type: String,
-    required: true,
+    required: false,
   },
   cover: {
     type: String,
-    required: true,
+    required: false,
   },
 
   level:{
