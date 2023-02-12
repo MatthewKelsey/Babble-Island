@@ -7,8 +7,8 @@ Babble Island was designed as a game for kids. Set on an island in pixel art sty
 ## Screenshots
 
 <p align="center">
-  <img src="images/img01" />
-  <img src="images/img02" />
+  <img src="images/img01.png" />
+  <img src="images/img02.png" />
 </p>
 
 
