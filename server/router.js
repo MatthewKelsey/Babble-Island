@@ -33,4 +33,5 @@ router.post('/stories', storyCTRl.addStory)
 //Voice
 
 router.post('/read', readCTRL.synthesizeSpeech)
+// router.post('/translate' , readCTRL.translateWord)
 module.exports = router;
