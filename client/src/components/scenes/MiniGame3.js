@@ -1,12 +1,9 @@
-import Phaser from 'phaser';
+import Phaser from "phaser";
 
 export default class MiniGame3 extends Phaser.Scene {
-  constructor(){
-    super('MiniGame3');
-
-
+  constructor() {
+    super("MiniGame3");
   }
-
 
   // create(){
 
@@ -25,7 +22,6 @@ export default class MiniGame3 extends Phaser.Scene {
   //     .sprite(250, 250, 'bunny')
   //     .setSize(10, 10)
   //     .setScale(1.5)
-
 
   //   this.physics.add.collider(this.player, layer1);
 
@@ -86,10 +82,6 @@ export default class MiniGame3 extends Phaser.Scene {
   //     repeat: -1,
   //   });
   // }
-
-
-
-
 
   // update() {
   //   const cursors = this.input.keyboard.createCursorKeys();
