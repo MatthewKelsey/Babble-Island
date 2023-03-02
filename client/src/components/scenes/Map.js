@@ -608,6 +608,7 @@ class Map extends Phaser.Scene {
 
     this.physics.add.collider(this.player, door3, (libraryDoor) => {
       this.music.stop();
+      this.game.destroy(true)
       const libraryEntrance = new CustomEvent("library", {
         detail: {
           libraryDoor,
