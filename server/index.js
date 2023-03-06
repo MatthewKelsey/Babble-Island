@@ -1,7 +1,7 @@
 "use strict";
 const express = require("express");
 const app = express();
-const PORT = 4000;
+const port = process.env.PORT || 4000;
 const router = require("./router");
 const cors = require("cors");
 const session = require("express-session");
@@ -31,8 +31,8 @@ app.use(
 app.use(express.json());
 app.use(router);
 
-app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
 });
 
 module.exports = app;
