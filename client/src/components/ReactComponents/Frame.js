@@ -8,14 +8,12 @@ import SmallMap from "../../pixel/bbislandMap2.png";
 import mapIcon from "../../pixel/mapIcon.png";
 import x from "../../pixel/x.png";
 import menuIcon from "../../pixel/menuIcon.png";
-import settings from "../../pixel/settings.png";
 import quit from "../../pixel/quit.png";
 import { useNavigate } from "react-router-dom";
-// import HeartImg from '../../../public/assets/pixel/heart';
 import { logout } from "../../ApiClient.js";
 function Frame({ user, setUser }) {
   const [stars, setStars] = useState([]);
-  const [hearts, setHearts] = useState([1, 2]);
+  const [hearts] = useState([1, 2]);
   const [popupActive, setPopupActive] = useState(false);
   const [menuActive, setMenuActive] = useState(false);
 
@@ -31,7 +29,7 @@ function Frame({ user, setUser }) {
   }, [user.stars]);
 
   async function exit() {
-    const response = await logout();
+   await logout();
 
     navigate("/");
   }

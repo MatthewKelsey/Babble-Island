@@ -17,9 +17,9 @@ class Map extends Phaser.Scene {
     this.music = this.sound.add("gentle");
     this.walk = this.sound.add("walk");
 
-    const walkConfig = {
-      loop: false,
-    };
+    // const walkConfig = {
+    //   loop: false,
+    // };
     // MUSIC CONFIG
 
     const musicConfig = {
@@ -401,7 +401,7 @@ class Map extends Phaser.Scene {
 
     // DISPATCHING CUSTOM EVENT!!!
 
-    let isCharacterActive = false;
+    // let isCharacterActive = false;
 
     // CHARACTER 1
 

@@ -1,8 +1,6 @@
 import { useState } from "react";
 import React from "react";
-import Story from "./Story.js";
 import "./ChatGPT.css";
-import Reader from "./Reader.js";
 
 export default function ChatGPT({ chatGptResponse, setChatGptResponse }) {
   const [input, setInput] = useState("");

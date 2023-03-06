@@ -2,7 +2,7 @@ import React from "react";
 import Words from "./Words.js";
 import "./library.css";
 import { useState, useEffect } from "react";
-import ChatGPT from "./ChatGPT.js";
+
 
 function Story({ currentBook, user, setUser, chatGptResponse, soundUrl }) {
   const [text, setText] = useState("");

@@ -5,7 +5,13 @@ const characterCTRL = require("./Controllers/characterController");
 const storyCTRl = require("./Controllers/storyController");
 const authMiddleware = require("./middleware/auth");
 const readCTRL = require("./Controllers/VoiceSynth");
+const path = require('path')
 // USERS
+
+router.get('/*', function (req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  });
+  
 
 router.post("/register", userCTRL.registerUser);
 

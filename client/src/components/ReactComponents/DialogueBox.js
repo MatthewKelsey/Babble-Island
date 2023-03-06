@@ -9,7 +9,6 @@ export default function DialogueBox({ message, setMessage }) {
   const [currentText, setCurrentText] = useState("");
   const [index, setIndex] = useState(0);
   const [isClicked, setIsClicked] = useState(false);
-
   const [instantText, setInstantText] = useState("");
 
   useEffect(() => {
@@ -18,14 +17,10 @@ export default function DialogueBox({ message, setMessage }) {
     }
   }, []);
 
-  console.log(instantText);
-
-  console.log(message.res);
-
-  if (message.responseGood && message.responseBad) {
+  
     useEffect(() => {
+      if (message.responseGood && message.responseBad) 
       setIndex(0);
-
       setCurrentText("");
     }, [text]);
 
@@ -37,7 +32,7 @@ export default function DialogueBox({ message, setMessage }) {
         }, 40);
       }
     }, [index, text, currentText]);
-  }
+  
 
   const handleClickGood = () => {
     setText(message.good[0]);
