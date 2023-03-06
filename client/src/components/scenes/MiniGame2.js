@@ -170,21 +170,21 @@ class MiniGame2 extends Phaser.Scene {
     });
   }
 
-  createWordBox() {
-    const width = this.scale.width;
-    let x = 0.4;
-    let y = 20;
+  // createWordBox() {
+  //   const width = this.scale.width;
+  //   let x = 0.4;
+  //   let y = 20;
 
-    for (let row = 0; row < wordBox.length; row++) {
-      for (let col = 0; col < wordBox[row].length; col += 2) {
-        this.add.text(x * width, y, wordBox[row][0]);
-        x += 0.2;
-        this.add.text(x * width, y, wordBox[row][1]);
-      }
-      x = 0.4;
-      y += 20;
-    }
-  }
+  //   for (let row = 0; row < wordBox.length; row++) {
+  //     for (let col = 0; col < wordBox[row].length; col += 2) {
+  //       this.add.text(x * width, y, wordBox[row][0]);
+  //       x += 0.2;
+  //       this.add.text(x * width, y, wordBox[row][1]);
+  //     }
+  //     x = 0.4;
+  //     y += 20;
+  //   }
+  // }
 
   createSpanishBoxes() {
     const width = this.scale.width;
