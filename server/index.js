@@ -5,7 +5,7 @@ const PORT = 4000;
 const router = require("./router");
 const cors = require("cors");
 const session = require("express-session");
-
+const path = require('path')
 app.use(
   session({
     name: "uid",
@@ -19,7 +19,7 @@ app.use(
     },
   })
 );
-app.use(express.static("Audio"));
+app.use(express.static(path.join(__dirname, 'build')));
 
 app.use(
   cors({

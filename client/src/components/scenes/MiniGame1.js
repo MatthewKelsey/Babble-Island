@@ -53,10 +53,12 @@ class MiniGame1 extends Phaser.Scene {
     // first id is the name on the JSON, second id refers the id used for the image
 
     const tileset = map.addTilesetImage("Wooden_House", "mini_game_1");
-    const tileset2 = map.addTilesetImage("doors", "doors");
+    // const tileset2 = 
+    map.addTilesetImage("doors", "doors");
 
     // create layers ie ground or walls
-    const ground = map.createLayer("ground", tileset);
+    // const ground = 
+    map.createLayer("ground", tileset);
     const walls = map.createLayer("walls", tileset);
     // const doors = map.createLayer('doors', tileset2);
     const fruitsLayer = map.getObjectLayer("all_fruits")["objects"];

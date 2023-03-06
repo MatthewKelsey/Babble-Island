@@ -212,7 +212,7 @@ export default class Preloader extends Phaser.Scene {
   }
 
   create() {
-    let soundPlayed = false;
+    // let soundPlayed = false;
     this.anims.create({
       key: "idle",
       frames: [{ key: "bunny", frame: 0 }],

@@ -170,21 +170,21 @@ class MiniGame2 extends Phaser.Scene {
     });
   }
 
-  createWordBox() {
-    const width = this.scale.width;
-    let x = 0.4;
-    let y = 20;
+  // createWordBox() {
+  //   const width = this.scale.width;
+  //   let x = 0.4;
+  //   let y = 20;
 
-    for (let row = 0; row < wordBox.length; row++) {
-      for (let col = 0; col < wordBox[row].length; col += 2) {
-        this.add.text(x * width, y, wordBox[row][0]);
-        x += 0.2;
-        this.add.text(x * width, y, wordBox[row][1]);
-      }
-      x = 0.4;
-      y += 20;
-    }
-  }
+  //   for (let row = 0; row < wordBox.length; row++) {
+  //     for (let col = 0; col < wordBox[row].length; col += 2) {
+  //       this.add.text(x * width, y, wordBox[row][0]);
+  //       x += 0.2;
+  //       this.add.text(x * width, y, wordBox[row][1]);
+  //     }
+  //     x = 0.4;
+  //     y += 20;
+  //   }
+  // }
 
   createSpanishBoxes() {
     const width = this.scale.width;
@@ -194,7 +194,8 @@ class MiniGame2 extends Phaser.Scene {
 
     for (let row = 0; row < spanishBoxContent.length; row++) {
       for (let col = 0; col < spanishBoxContent[row].length; col++) {
-        const box = this.boxGroup
+        // const box = 
+        this.boxGroup
           .get(width * x, height * y, "boxes")
           .setScale(3)
           .setSize(46, 32)
@@ -216,7 +217,8 @@ class MiniGame2 extends Phaser.Scene {
 
     for (let row = 0; row < englishBoxContent.length; row++) {
       for (let col = 0; col < englishBoxContent[row].length; col++) {
-        const box = this.boxGroup
+        // const box = 
+        this.boxGroup
           .get(width * x, height * y, "boxes")
           .setScale(3)
           .setSize(46, 32)
@@ -266,7 +268,7 @@ class MiniGame2 extends Phaser.Scene {
     }
     this.checkBox.play();
     const item = box.getData("item");
-    const language = box.getData("language");
+    // const language = box.getData("language");
     /**@type {Phaser.GameObjects.Sprite} */
     let itemPic;
     console.log(itemPic);
@@ -445,7 +447,7 @@ class MiniGame2 extends Phaser.Scene {
             },
           });
           if (!chestOpened) {
-            console.log("I AM IN CHEST");
+
             this.chestSprite.anims.play("openChest", true);
             const star = this.add.sprite(
               this.scale.width / 2,
@@ -473,6 +475,7 @@ class MiniGame2 extends Phaser.Scene {
   };
 
   openChest() {
+    let chestOpened = false
     this.input.keyboard.on("keyup-SPACE", (e) => {
       e.preventDefault();
       if (!chestOpened) {
