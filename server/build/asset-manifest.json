@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.1ac22cb5.css",
+    "main.js": "/static/js/main.0313d324.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/sky.png": "/static/media/sky.dc983cfef57472f35b21.png",
+    "static/media/babble_island_big.png": "/static/media/babble_island_big.6a88267152b059ff0242.png",
+    "static/media/mapIcon.png": "/static/media/mapIcon.9c9085d18873ab94b798.png",
+    "static/media/bbislandMap2.png": "/static/media/bbislandMap2.02759063c08d944dfc9b.png",
+    "index.html": "/index.html",
+    "main.1ac22cb5.css.map": "/static/css/main.1ac22cb5.css.map",
+    "main.0313d324.js.map": "/static/js/main.0313d324.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1ac22cb5.css",
+    "static/js/main.0313d324.js"
+  ]
+}
