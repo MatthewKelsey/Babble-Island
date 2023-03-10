@@ -19,7 +19,7 @@ app.use(
     },
   })
 );
-// app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static('Audio'));
 
 app.use(
   cors({
