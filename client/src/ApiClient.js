@@ -1,4 +1,4 @@
-const baseUrl = "https://proud-silence-7750.fly.dev:8080";
+const baseUrl = "https://proud-silence-7750.fly.dev";
 
 // FOR LOGIN
 
