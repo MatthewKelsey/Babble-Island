@@ -1,9 +1,12 @@
-const baseUrl = "https://babble-island.fly.dev";
+// const baseUrl = "https://babble-island.fly.dev";
+
+const baseUrl = 'http://localhost:4000'
 
 // FOR LOGIN
 
 export const login = async (user) => {
   try {
+    console.log('in login')
     const response = await fetch(`${baseUrl}/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -28,7 +31,6 @@ export const register = async (user) => {
       body: JSON.stringify(user),
     });
     const data = await response.json();
-
     return data;
   } catch (error) {
     console.log(error);

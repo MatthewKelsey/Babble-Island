@@ -3,7 +3,6 @@ const bcrypt = require("bcrypt");
 const saltRounds = 12;
 
 exports.registerUser = async (req, res) => {
-  console.log("i made it to the controller");
   const { userName, password } = req.body;
   const user = await User.findOne({ userName: userName });
   if (user)
@@ -31,6 +30,7 @@ exports.login = async (req, res) => {
     console.log(user);
     const valid = await bcrypt.compare(req.body.password, user.password);
     if (valid) {
+      console.log('inside if statement')
       req.session.uid = user._id;
       console.log(req.session.uid, "inside login");
       res.send(user);
