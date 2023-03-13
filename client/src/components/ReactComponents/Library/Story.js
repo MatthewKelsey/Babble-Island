@@ -70,7 +70,7 @@ function Story({ currentBook, user, setUser, chatGptResponse, soundUrl }) {
             autoPlay
             controls
             name="media"
-            src={`http://localhost:4000/${currentBook.storyUrl}`}
+            src={`https://babble-island.fly.dev/${currentBook.storyUrl}`}
             type="audio/mpeg"
           ></audio>
         )}
