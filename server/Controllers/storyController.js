@@ -1,5 +1,5 @@
 const Story = require("../Models/storySchema");
-const stories = require("../StoriesOfflineDB.js");
+// const stories = require("../StoriesOfflineDB.js");
 exports.getStories = async (req, res) => {
   try {
     const stories = await Story.find();

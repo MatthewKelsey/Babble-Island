@@ -21,6 +21,10 @@ const storySchema = new Schema({
     required: false,
     default: 0,
   },
+  storyUrl: {
+    type: String,
+    required: false
+  }
 });
 
 const Story = mongoose.model("Stories", storySchema);
