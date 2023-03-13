@@ -23,7 +23,8 @@ const Register = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log('in submit')
+    console.log(initialState)
     const { userName, password, nickName } = state;
     const user = { userName, password, nickName };
     const res = await register(user);

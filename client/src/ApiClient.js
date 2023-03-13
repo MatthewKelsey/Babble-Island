@@ -1,17 +1,17 @@
-// const baseUrl = "https://babble-island.fly.dev";
+const baseUrl = "https://babble-island.fly.dev";
 
-const baseUrl = 'http://localhost:4000'
+// const baseUrl = 'http://localhost:4000'
 
 // FOR LOGIN
 
 export const login = async (user) => {
   try {
     console.log('in login')
+    console.log(user)
     const response = await fetch(`${baseUrl}/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
-      credentials: "include",
       mode: "cors",
     });
     const loggedUser = await response.json();
@@ -24,6 +24,7 @@ export const login = async (user) => {
 
 export const register = async (user) => {
   try {
+    console.log(user)
     console.log("help Im stuck in the api service");
     const response = await fetch(`${baseUrl}/register`, {
       method: "POST",

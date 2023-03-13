@@ -26,7 +26,8 @@ function Login(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log('in submit')
+    console.log(state)
     const { userName, password } = state;
     const user = { userName: userName, password: password };
     const res = await login(user);
